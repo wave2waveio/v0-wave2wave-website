@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { Mail, Phone, MapPin, Clock, X, CheckCircle, AlertCircle } from "lucide-react"
 
@@ -12,19 +11,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-// Remove this import:
-// import { submitContactForm } from "./actions"
-
-// Add this mock function instead:
-const submitContactForm = async (formData: FormData) => {
-  // Simulate API delay
-  await new Promise((resolve) => setTimeout(resolve, 1000))
-
-  return {
-    success: true,
-    message: "Your message has been sent successfully! We will get back to you within 24 hours.",
-  }
-}
+import { submitContactForm } from "./actions"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -46,6 +33,8 @@ export default function ContactPage() {
     setIsSubmitting(true)
     setSubmitResult(null)
 
+    console.log("Contact form submission started...")
+
     try {
       const formDataToSubmit = new FormData()
       formDataToSubmit.append("firstName", formData.firstName)
@@ -57,11 +46,14 @@ export default function ContactPage() {
       formDataToSubmit.append("message", formData.message)
 
       // Add files to FormData
-      formData.uploadedFiles.forEach((file) => {
-        formDataToSubmit.append("files", file)
+      formData.uploadedFiles.forEach((file, index) => {
+        formDataToSubmit.append(`file_${index}`, file)
       })
 
+      console.log("Calling submitContactForm...")
       const result = await submitContactForm(formDataToSubmit)
+      console.log("submitContactForm result:", result)
+
       setSubmitResult(result)
 
       if (result.success) {
@@ -78,6 +70,7 @@ export default function ContactPage() {
         })
       }
     } catch (error) {
+      console.error("Contact form error:", error)
       setSubmitResult({
         success: false,
         message: "There was an error sending your message. Please try again.",

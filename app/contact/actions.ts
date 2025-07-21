@@ -29,10 +29,10 @@ export async function submitContactForm(formData: FormData) {
 
   // Check if environment variables are available
   if (!GOOGLE_SHEETS_ID || !GOOGLE_SERVICE_ACCOUNT_EMAIL || !GOOGLE_PRIVATE_KEY) {
-    console.log(`[${timestamp}] Missing environment variables - returning mock response`)
+    console.log(`[${timestamp}] Missing environment variables`)
     return {
       success: false,
-      message: "Configuration error: Missing required environment variables. Please check server logs.",
+      message: "Configuration error: Missing required environment variables. Please contact support.",
     }
   }
 
@@ -57,7 +57,14 @@ export async function submitContactForm(formData: FormData) {
     })
 
     // Get uploaded files
-    const files = formData.getAll("files") as File[]
+    const files: File[] = []
+    for (let i = 0; i < 3; i++) {
+      const file = formData.get(`file_${i}`) as File
+      if (file && file.size > 0) {
+        files.push(file)
+      }
+    }
+
     console.log(`[${timestamp}] Files uploaded: ${files.length}`)
     files.forEach((file, index) => {
       console.log(`[${timestamp}] File ${index}: ${file.name} (${file.size} bytes, ${file.type})`)
@@ -65,15 +72,6 @@ export async function submitContactForm(formData: FormData) {
 
     // Initialize Google Auth
     console.log(`[${timestamp}] Initializing Google Auth...`)
-
-    // Validate private key format
-    if (!GOOGLE_PRIVATE_KEY.includes("-----BEGIN PRIVATE KEY-----")) {
-      console.error(`[${timestamp}] Private key format error: Missing BEGIN marker`)
-      return {
-        success: false,
-        message: "Configuration error: Invalid private key format. Please check server logs.",
-      }
-    }
 
     const auth = new google.auth.GoogleAuth({
       credentials: {
@@ -90,71 +88,54 @@ export async function submitContactForm(formData: FormData) {
     const sheets = google.sheets({ version: "v4", auth: authClient })
     const drive = google.drive({ version: "v3", auth: authClient })
 
-    // Test sheets access first
-    console.log(`[${timestamp}] Testing sheets access...`)
-    try {
-      const sheetInfo = await sheets.spreadsheets.get({
-        spreadsheetId: GOOGLE_SHEETS_ID,
-      })
-      console.log(`[${timestamp}] Sheet access successful: ${sheetInfo.data.properties?.title}`)
-    } catch (sheetTestError) {
-      console.error(`[${timestamp}] Sheet access test failed:`, sheetTestError)
-      return {
-        success: false,
-        message: `Sheet access error: ${sheetTestError instanceof Error ? sheetTestError.message : "Unknown error"}`,
-      }
-    }
-
     // Upload files to Google Drive
     const uploadedFileUrls: string[] = []
     console.log(`[${timestamp}] Starting file uploads...`)
 
     for (let i = 0; i < files.length; i++) {
       const file = files[i]
-      if (file.size > 0) {
-        console.log(`[${timestamp}] Uploading file ${i + 1}/${files.length}: ${file.name} (${file.size} bytes)`)
+      console.log(`[${timestamp}] Uploading file ${i + 1}/${files.length}: ${file.name} (${file.size} bytes)`)
 
-        try {
-          const buffer = Buffer.from(await file.arrayBuffer())
-          console.log(`[${timestamp}] File buffer created: ${buffer.length} bytes`)
+      try {
+        const buffer = Buffer.from(await file.arrayBuffer())
+        console.log(`[${timestamp}] File buffer created: ${buffer.length} bytes`)
 
-          const fileMetadata = {
-            name: file.name,
-            parents: GOOGLE_DRIVE_FOLDER_ID ? [GOOGLE_DRIVE_FOLDER_ID] : undefined,
-          }
-
-          const media = {
-            mimeType: file.type,
-            body: buffer,
-          }
-
-          const uploadResponse = await drive.files.create({
-            requestBody: fileMetadata,
-            media: media,
-          })
-
-          console.log(`[${timestamp}] File uploaded successfully: ${uploadResponse.data.id}`)
-
-          // Make file accessible
-          await drive.permissions.create({
-            fileId: uploadResponse.data.id!,
-            requestBody: {
-              role: "reader",
-              type: "anyone",
-            },
-          })
-
-          const fileUrl = `https://drive.google.com/file/d/${uploadResponse.data.id}/view`
-          uploadedFileUrls.push(fileUrl)
-          console.log(`[${timestamp}] File URL created: ${fileUrl}`)
-        } catch (fileError) {
-          console.error(`[${timestamp}] Error uploading file ${file.name}:`, fileError)
-          // Continue with other files
+        const fileMetadata = {
+          name: `${timestamp}_${file.name}`, // Add timestamp to avoid conflicts
+          parents: GOOGLE_DRIVE_FOLDER_ID ? [GOOGLE_DRIVE_FOLDER_ID] : undefined,
         }
+
+        const media = {
+          mimeType: file.type || "application/octet-stream",
+          body: buffer,
+        }
+
+        const uploadResponse = await drive.files.create({
+          requestBody: fileMetadata,
+          media: media,
+        })
+
+        console.log(`[${timestamp}] File uploaded successfully: ${uploadResponse.data.id}`)
+
+        // Make file accessible
+        await drive.permissions.create({
+          fileId: uploadResponse.data.id!,
+          requestBody: {
+            role: "reader",
+            type: "anyone",
+          },
+        })
+
+        const fileUrl = `https://drive.google.com/file/d/${uploadResponse.data.id}/view`
+        uploadedFileUrls.push(`${file.name}: ${fileUrl}`)
+        console.log(`[${timestamp}] File URL created: ${fileUrl}`)
+      } catch (fileError) {
+        console.error(`[${timestamp}] Error uploading file ${file.name}:`, fileError)
+        uploadedFileUrls.push(`${file.name}: Upload failed`)
       }
     }
 
-    console.log(`[${timestamp}] Files processed: ${uploadedFileUrls.length} successful uploads`)
+    console.log(`[${timestamp}] Files processed: ${uploadedFileUrls.length} entries`)
 
     // Prepare data for Google Sheets
     const rowData = [
@@ -166,7 +147,7 @@ export async function submitContactForm(formData: FormData) {
       phone || "",
       inquiryType || "",
       message,
-      uploadedFileUrls.join(", "),
+      uploadedFileUrls.join(" | "),
     ]
 
     console.log(`[${timestamp}] Adding data to Google Sheets...`)
@@ -206,7 +187,7 @@ export async function submitContactForm(formData: FormData) {
 
     return {
       success: false,
-      message: `There was an error sending your message: ${error instanceof Error ? error.message : "Unknown error"}. Please check the server logs for details.`,
+      message: `There was an error sending your message: ${error instanceof Error ? error.message : "Unknown error"}. Please try again or contact support.`,
     }
   }
 }
