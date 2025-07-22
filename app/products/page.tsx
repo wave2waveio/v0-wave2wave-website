@@ -102,14 +102,108 @@ export default function ProductsPage() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
+
       <section className="bg-gradient-to-br from-slate-900 to-blue-900 text-white py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Complete Product Portfolio</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              Custom and Off-the-Shelf Products Kitted for Easy, Fast Installation
+            </h1>
             <p className="text-xl mb-8 text-slate-200">
               From fiber optic assemblies to network infrastructure, discover our comprehensive range of products
               designed to elevate your network performance, reliability, and scalability.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Product Lines */}
+      <section className="py-16 bg-slate-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">Custom & Featured Product Lines</h2>
+            <p className="text-xl text-slate-600">Kitted, modern network infrastructure solutions.</p>
+          </div>
+
+          <div className="grid lg:grid-cols-3 gap-8">
+            <Card className="border-0 shadow-lg bg-gradient-to-br from-blue-50 to-blue-100">
+              <CardHeader className="pb-0">
+                <div className="w-full h-48 mb-4 overflow-hidden rounded-t-lg">
+                  <Image
+                    src="/placeholder.svg?height=300&width=400&text=Fiber+Optic+Solutions"
+                    alt="Fiber Optic Solutions"
+                    width={400}
+                    height={300}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <CardTitle className="text-xl text-blue-900">Fiber Optic Solutions</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-blue-800 mb-4">
+                  Complete range of custom and pre-cut fiber optic cables, assemblies, and components for high-speed
+                  data transmission.
+                </CardDescription>
+                <ul className="space-y-2 text-sm text-blue-700">
+                  <li>• Pre-terminated assemblies</li>
+                  <li>• MTP/MPO solutions</li>
+                  <li>• Custom patch cables</li>
+                  <li>• Bulk cable options</li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="border-0 shadow-lg bg-gradient-to-br from-green-50 to-green-100">
+              <CardHeader className="pb-0">
+                <div className="w-full h-48 mb-4 overflow-hidden rounded-t-lg">
+                  <Image
+                    src="/placeholder.svg?height=300&width=400&text=Ethernet+Infrastructure"
+                    alt="Ethernet Infrastructure"
+                    width={400}
+                    height={300}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <CardTitle className="text-xl text-green-900">Ethernet Infrastructure</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-green-800 mb-4">
+                  Comprehensive custom and pre-cut Ethernet cabling and connectivity solutions for all network speeds
+                </CardDescription>
+                <ul className="space-y-2 text-sm text-green-700">
+                  <li>• Cat5e through Cat8 cables</li>
+                  <li>• Patch panels and jacks</li>
+                  <li>• Network switches</li>
+                  <li>• Installation tools</li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="border-0 shadow-lg bg-gradient-to-br from-purple-50 to-purple-100">
+              <CardHeader className="pb-0">
+                <div className="w-full h-48 mb-4 overflow-hidden rounded-t-lg">
+                  <Image
+                    src="/placeholder.svg?height=300&width=400&text=Infrastructure+Hardware"
+                    alt="Infrastructure Hardware"
+                    width={400}
+                    height={300}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <CardTitle className="text-xl text-purple-900">Infrastructure Hardware</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-purple-800 mb-4">
+                  Custom and standard Racks, enclosures, and support hardware for professional installations
+                </CardDescription>
+                <ul className="space-y-2 text-sm text-purple-700">
+                  <li>• Network racks and cabinets</li>
+                  <li>• Cable management</li>
+                  <li>• Test equipment</li>
+                  <li>• Cleaning supplies</li>
+                </ul>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -149,71 +243,6 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* Featured Categories */}
-      <section className="py-16 bg-slate-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Featured Product Lines</h2>
-            <p className="text-xl text-slate-600">
-              Our most popular and innovative solutions for modern network infrastructure
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-8">
-            <Card className="border-0 shadow-lg bg-gradient-to-br from-blue-50 to-blue-100">
-              <CardHeader>
-                <CardTitle className="text-xl text-blue-900">Fiber Optic Solutions</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-blue-800 mb-4">
-                  Complete range of fiber optic cables, assemblies, and components for high-speed data transmission
-                </CardDescription>
-                <ul className="space-y-2 text-sm text-blue-700">
-                  <li>• Pre-terminated assemblies</li>
-                  <li>• MTP/MPO solutions</li>
-                  <li>• Custom patch cables</li>
-                  <li>• Bulk cable options</li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg bg-gradient-to-br from-green-50 to-green-100">
-              <CardHeader>
-                <CardTitle className="text-xl text-green-900">Ethernet Infrastructure</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-green-800 mb-4">
-                  Comprehensive Ethernet cabling and connectivity solutions for all network speeds
-                </CardDescription>
-                <ul className="space-y-2 text-sm text-green-700">
-                  <li>• Cat5e through Cat8 cables</li>
-                  <li>• Patch panels and jacks</li>
-                  <li>• Network switches</li>
-                  <li>• Installation tools</li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg bg-gradient-to-br from-purple-50 to-purple-100">
-              <CardHeader>
-                <CardTitle className="text-xl text-purple-900">Infrastructure Hardware</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-purple-800 mb-4">
-                  Racks, enclosures, and support hardware for professional installations
-                </CardDescription>
-                <ul className="space-y-2 text-sm text-purple-700">
-                  <li>• Network racks and cabinets</li>
-                  <li>• Cable management</li>
-                  <li>• Test equipment</li>
-                  <li>• Cleaning supplies</li>
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
       {/* Custom Solutions CTA */}
       <section className="py-16">
         <div className="container mx-auto px-4">
@@ -223,9 +252,11 @@ export default function ProductsPage() {
               We specialize in custom-engineered products tailored to your exact specifications. From DCIM designs to
               field requirements, we deliver solutions that fit perfectly.
             </p>
-            <Button size="lg" className="bg-white text-blue-600 hover:bg-slate-100">
-              Request Custom Quote
-              <ArrowRight className="ml-2 h-4 w-4" />
+            <Button size="lg" className="bg-white text-blue-600 hover:bg-slate-100" asChild>
+              <Link href="/contact">
+                Request Custom Quote
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
             </Button>
           </div>
         </div>
@@ -294,15 +325,16 @@ export default function ProductsPage() {
             next project.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-blue-900 hover:bg-slate-100">
+            <Button size="lg" className="bg-white text-blue-900 hover:bg-slate-100" asChild>
               <Link href="/contact">Contact Product Specialist</Link>
             </Button>
             <Button
               size="lg"
               variant="outline"
               className="border-white text-white hover:bg-white hover:text-blue-900 bg-transparent"
+              asChild
             >
-              Request Product Samples
+              <Link href="/contact">Request Product Samples</Link>
             </Button>
           </div>
         </div>

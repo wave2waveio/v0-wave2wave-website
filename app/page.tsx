@@ -50,16 +50,11 @@ export default function HomePage() {
               network operators, system integrators and more
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-3">
-                Request a Quote
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white text-white hover:bg-white hover:text-slate-900 text-lg px-8 py-3 bg-transparent"
-              >
-                Request Consultation
+              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-3" asChild>
+                <Link href="/contact">
+                  Get Started
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
               </Button>
             </div>
           </div>
@@ -238,15 +233,8 @@ export default function HomePage() {
             precision logistics.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-blue-900 hover:bg-slate-100 text-lg px-8 py-3">
-              Request a Quote
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-white text-white hover:bg-white hover:text-blue-900 text-lg px-8 py-3 bg-transparent"
-            >
-              Talk to an Expert
+            <Button size="lg" className="bg-white text-blue-900 hover:bg-slate-100 text-lg px-8 py-3" asChild>
+              <Link href="/contact">Request a Quote</Link>
             </Button>
           </div>
         </div>

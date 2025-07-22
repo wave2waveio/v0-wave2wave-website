@@ -256,15 +256,8 @@ export default function SolutionsPage() {
             time to deployment.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-blue-900 hover:bg-slate-100">
-              Request Consultation
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-white text-white hover:bg-white hover:text-blue-900 bg-transparent"
-            >
-              Download Solution Brief
+            <Button size="lg" className="bg-white text-blue-900 hover:bg-slate-100" asChild>
+              <Link href="/contact">Request Consultation</Link>
             </Button>
           </div>
         </div>

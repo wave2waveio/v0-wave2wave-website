@@ -217,13 +217,6 @@ export default function IndustriesPage() {
             <Button size="lg" className="bg-white text-blue-900 hover:bg-slate-100">
               <Link href="/contact">Discuss Your Industry Needs</Link>
             </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-white text-white hover:bg-white hover:text-blue-900 bg-transparent"
-            >
-              Download Industry Brief
-            </Button>
           </div>
         </div>
       </section>
