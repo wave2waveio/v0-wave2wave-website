@@ -2,7 +2,7 @@
 
 import { Readable } from "stream"
 
-const MAX_FILE_SIZE = 4 * 1024 * 1024 // 4MB to match client-side limit
+const MAX_FILE_SIZE = 5 * 1024 * 1024 // 5MB to match client-side limit
 
 export async function submitContactForm(formData: FormData): Promise<{ success: boolean; message: string }> {
   const timestamp = new Date().toISOString()
@@ -84,7 +84,7 @@ export async function submitContactForm(formData: FormData): Promise<{ success: 
 
         // Check file size
         if (file.size > MAX_FILE_SIZE) {
-          fileErrors.push(`${file.name} is too large (max 4MB)`)
+          fileErrors.push(`${file.name} is too large (max 5MB)`)
           continue
         }
 
@@ -113,6 +113,7 @@ export async function submitContactForm(formData: FormData): Promise<{ success: 
     if (!process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL) missingEnvVars.push("GOOGLE_SERVICE_ACCOUNT_EMAIL")
     if (!process.env.GOOGLE_PRIVATE_KEY) missingEnvVars.push("GOOGLE_PRIVATE_KEY")
     if (!process.env.GOOGLE_DRIVE_FOLDER_ID) missingEnvVars.push("GOOGLE_DRIVE_FOLDER_ID")
+    if (!process.env.GOOGLE_APPS_SCRIPT_URL) missingEnvVars.push("GOOGLE_APPS_SCRIPT_URL")
 
     if (missingEnvVars.length > 0) {
       console.log(`[${timestamp}] Missing environment variables: ${missingEnvVars.join(", ")}`)
@@ -153,7 +154,7 @@ export async function submitContactForm(formData: FormData): Promise<{ success: 
       const folderResponse = await drive.files.get({
         fileId: process.env.GOOGLE_DRIVE_FOLDER_ID,
         fields: "id, name, mimeType",
-        supportsAllDrives: true, // Support Shared Drives
+        supportsAllDrives: true,
       })
       if (folderResponse.data.mimeType !== "application/vnd.google-apps.folder") {
         throw new Error(`Invalid Google Drive folder ID: ${process.env.GOOGLE_DRIVE_FOLDER_ID} is not a folder`)
@@ -196,7 +197,7 @@ export async function submitContactForm(formData: FormData): Promise<{ success: 
           resource: fileMetadata,
           media,
           fields: "id,webViewLink",
-          supportsAllDrives: true, // Support Shared Drives
+          supportsAllDrives: true,
         })
         const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error("Upload timeout")), 60000))
 
@@ -211,7 +212,7 @@ export async function submitContactForm(formData: FormData): Promise<{ success: 
           await drive.permissions.create({
             fileId: fileResponse.data.id,
             requestBody: { role: "reader", type: "anyone" },
-            supportsAllDrives: true, // Support Shared Drives
+            supportsAllDrives: true,
           })
           console.log(`[${timestamp}] File uploaded and permissions set: ${file.name}`)
         } catch (permError: any) {
@@ -241,6 +242,7 @@ export async function submitContactForm(formData: FormData): Promise<{ success: 
     console.log(`[${timestamp}] Row data prepared: ${rowData.length} columns`)
 
     // Add data to Google Sheets
+    let rowIndex
     try {
       const sheetsPromise = sheets.spreadsheets.values.append({
         spreadsheetId: process.env.GOOGLE_SHEETS_ID,
@@ -252,7 +254,14 @@ export async function submitContactForm(formData: FormData): Promise<{ success: 
       })
 
       const sheetsTimeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error("Sheets timeout")), 15000))
-      await Promise.race([sheetsPromise, sheetsTimeoutPromise])
+      const response = await Promise.race([sheetsPromise, sheetsTimeoutPromise])
+      
+      // Estimate row index (append adds to the last row)
+      const sheetData = await sheets.spreadsheets.values.get({
+        spreadsheetId: process.env.GOOGLE_SHEETS_ID,
+        range: "Sheet1!A:A",
+      })
+      rowIndex = sheetData.data.values ? sheetData.data.values.length : 2
     } catch (sheetsError: any) {
       console.error(`[${timestamp}] Google Sheets append failed:`, sheetsError)
       return {
@@ -262,6 +271,29 @@ export async function submitContactForm(formData: FormData): Promise<{ success: 
     }
 
     console.log(`[${timestamp}] Sheets updated successfully`)
+
+    // Call Google Apps Script Web App to trigger sendEmailNotification
+    try {
+      console.log(`[${timestamp}] Calling Google Apps Script Web App...`)
+      const scriptResponse = await fetch(process.env.GOOGLE_APPS_SCRIPT_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          source: { spreadsheetId: process.env.GOOGLE_SHEETS_ID },
+          range: { row: rowIndex, column: 1 },
+          values: rowData,
+        }),
+      })
+
+      if (!scriptResponse.ok) {
+        throw new Error(`HTTP ${scriptResponse.status}: ${await scriptResponse.text()}`)
+      }
+      console.log(`[${timestamp}] Google Apps Script executed successfully`)
+    } catch (scriptError: any) {
+      console.error(`[${timestamp}] Google Apps Script call failed:`, scriptError)
+      // Log error but don't fail the submission
+    }
+
     console.log(`[${timestamp}] === CONTACT FORM SUBMISSION SUCCESS ===`)
 
     return {
@@ -275,7 +307,7 @@ export async function submitContactForm(formData: FormData): Promise<{ success: 
 
     let message = `There was an error sending your message: ${error.message || "Unknown error"}. Please try again or contact us at info@wave2wave.io`
     if (error.message.includes("Payload Too Large") || error.message.includes("FUNCTION_PAYLOAD_TOO_LARGE")) {
-      message = "The uploaded file is too large (max 4MB). Please upload a smaller file or try without files."
+      message = "The uploaded file is too large (max 5MB). Please upload a smaller file or try without files."
     } else if (error.message.includes("pipe is not a function")) {
       message = "Error processing file upload. Please try a different file or contact us at info@wave2wave.io"
     } else if (error.message.includes("File not found") || error.status === 404) {
