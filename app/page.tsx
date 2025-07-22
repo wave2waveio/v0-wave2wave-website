@@ -214,12 +214,6 @@ export default function HomePage() {
               Join industry leaders like Equinix, Cisco, Dell, HPE, Juniper Networks, Palo Alto Networks, Foxconn, and
               Flex who trust Wave2Wave.io for their infrastructure solutions
             </p>
-            <Button asChild className="bg-blue-600 hover:bg-blue-700">
-              <Link href="/contact">
-                Become Our Next Success Story
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
           </div>
         </div>
       </section>
