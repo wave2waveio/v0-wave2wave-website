@@ -14,6 +14,20 @@ import { Alert, AlertDescription } from "@/components/ui/alert"
 import { submitContactForm } from "./actions"
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024 // 10MB
+const ALLOWED_FILE_TYPES = [
+  "application/pdf",
+  "application/msword",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "application/vnd.ms-excel",
+  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  "text/csv",
+  "text/plain",
+  "application/acad",
+  "application/dxf",
+  "application/zip",
+  "application/xml",
+  "application/json",
+]
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -73,11 +87,11 @@ export default function ContactPage() {
         })
         setFileError(null)
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error("Contact form error:", error)
       setSubmitResult({
         success: false,
-        message: "There was an error sending your message. Please try again.",
+        message: error.message || "There was an error sending your message. Please try again.",
       })
     } finally {
       setIsSubmitting(false)
@@ -100,10 +114,24 @@ export default function ContactPage() {
       return
     }
 
+    // Validate file types
+    const invalidFiles = files.filter((file) => !ALLOWED_FILE_TYPES.includes(file.type))
+    if (invalidFiles.length > 0) {
+      setFileError(`Invalid file types: ${invalidFiles.map((f) => f.name).join(", ")}. Supported formats: PDF, DOC, XLS, CSV, TXT, DWG, DXF, ZIP, XML, JSON`)
+      e.target.value = ""
+      return
+    }
+
+    // Validate file count
     const currentFiles = formData.uploadedFiles
-    const newFiles = [...currentFiles, ...files].slice(0, 3) // Limit to 3 files
+    const newFiles = [...currentFiles, ...files].slice(0, 5) // Limit to 5 files
+    if (files.length + currentFiles.length > 5) {
+      setFileError("You can upload a maximum of 5 files.")
+      e.target.value = ""
+      return
+    }
+
     setFormData((prev) => ({ ...prev, uploadedFiles: newFiles }))
-    // Clear the input to allow re-selecting the same file
     e.target.value = ""
   }
 
@@ -260,7 +288,7 @@ export default function ContactPage() {
                   <div className="space-y-2">
                     <Label htmlFor="file-upload">Upload Documents</Label>
                     <div className="space-y-2">
-                      {formData.uploadedFiles.length < 3 && (
+                      {formData.uploadedFiles.length < 5 && (
                         <Input
                           id="file-upload"
                           type="file"
@@ -271,8 +299,7 @@ export default function ContactPage() {
                         />
                       )}
                       <p className="text-sm text-slate-500">
-                        Upload DCIM design, spreadsheet or other document with your specifications (up to 3 files, max
-                        10MB each)
+                        Upload DCIM design, spreadsheet or other document (up to 5 files, max 10MB each, formats: PDF, DOC, XLS, CSV, TXT, DWG, DXF, ZIP, XML, JSON)
                       </p>
                       {formData.uploadedFiles.length > 0 && (
                         <div className="space-y-2">
@@ -299,9 +326,22 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
-                    {isSubmitting ? "Sending..." : "Send Message"}
-                  </Button>
+                  <div className="flex space-x-4">
+                    <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
+                      {isSubmitting ? "Sending..." : "Send Message"}
+                    </Button>
+                    {submitResult && !submitResult.success && (
+                      <Button
+                        type="button"
+                        size="lg"
+                        variant="outline"
+                        onClick={handleSubmit}
+                        disabled={isSubmitting}
+                      >
+                        Retry
+                      </Button>
+                    )}
+                  </div>
                 </form>
               </CardContent>
             </Card>

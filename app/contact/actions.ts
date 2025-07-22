@@ -2,28 +2,21 @@
 
 import { google } from "googleapis"
 
-// Google Sheets and Drive configuration
-const GOOGLE_SHEETS_ID = process.env.GOOGLE_SHEETS_ID
-const GOOGLE_DRIVE_FOLDER_ID = process.env.GOOGLE_DRIVE_FOLDER_ID
-const GOOGLE_SERVICE_ACCOUNT_EMAIL = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL
-const GOOGLE_PRIVATE_KEY = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n")
-
-// File size limit (10MB)
-const MAX_FILE_SIZE = 10 * 1024 * 1024
+const MAX_FILE_SIZE = 10 * 1024 * 1024 // 10MB
 
 export async function submitContactForm(formData: FormData) {
   const timestamp = new Date().toISOString()
   console.log(`[${timestamp}] === CONTACT FORM SUBMISSION START ===`)
 
   try {
-    // Extract form data first
-    const firstName = formData.get("firstName") as string
-    const lastName = formData.get("lastName") as string
-    const email = formData.get("email") as string
-    const company = formData.get("company") as string
-    const phone = formData.get("phone") as string
-    const inquiryType = formData.get("inquiryType") as string
-    const message = formData.get("message") as string
+    // Extract form data
+    const firstName = formData.get("firstName")?.toString()
+    const lastName = formData.get("lastName")?.toString()
+    const email = formData.get("email")?.toString()
+    const company = formData.get("company")?.toString()
+    const phone = formData.get("phone")?.toString() || ""
+    const inquiryType = formData.get("inquiryType")?.toString() || ""
+    const message = formData.get("message")?.toString()
 
     console.log(`[${timestamp}] Form data extracted:`, {
       firstName,
@@ -47,10 +40,24 @@ export async function submitContactForm(formData: FormData) {
     // Get uploaded files and validate them
     const files: File[] = []
     const fileErrors: string[] = []
+    const allowedTypes = [
+      "application/pdf",
+      "application/msword",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "application/vnd.ms-excel",
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "text/csv",
+      "text/plain",
+      "application/acad",
+      "application/dxf",
+      "application/zip",
+      "application/xml",
+      "application/json",
+    ]
 
-    for (let i = 0; i < 3; i++) {
-      const file = formData.get(`file_${i}`) as File
-      if (file && file.size > 0) {
+    for (let i = 0; i < 5; i++) {
+      const file = formData.get(`file_${i}`)
+      if (file instanceof File && file.size > 0) {
         console.log(`[${timestamp}] Processing file ${i}: ${file.name} (${file.size} bytes)`)
 
         // Check file size
@@ -60,22 +67,9 @@ export async function submitContactForm(formData: FormData) {
         }
 
         // Check file type
-        const allowedTypes = [
-          "application/pdf",
-          "application/msword",
-          "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-          "application/vnd.ms-excel",
-          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-          "text/csv",
-          "text/plain",
-          "application/zip",
-          "application/xml",
-          "application/json",
-        ]
-
         if (file.type && !allowedTypes.includes(file.type)) {
-          console.log(`[${timestamp}] File type not allowed: ${file.type}`)
-          // Still allow it but log it
+          fileErrors.push(`${file.name} has an unsupported file type. Supported formats: PDF, DOC, XLS, CSV, TXT, DWG, DXF, ZIP, XML, JSON`)
+          continue
         }
 
         files.push(file)
@@ -92,7 +86,12 @@ export async function submitContactForm(formData: FormData) {
     }
 
     // Check environment variables
-    if (!GOOGLE_SHEETS_ID || !GOOGLE_SERVICE_ACCOUNT_EMAIL || !GOOGLE_PRIVATE_KEY) {
+    if (
+      !process.env.GOOGLE_SHEETS_ID ||
+      !process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL ||
+      !process.env.GOOGLE_PRIVATE_KEY ||
+      !process.env.GOOGLE_DRIVE_FOLDER_ID
+    ) {
       console.log(`[${timestamp}] Missing environment variables`)
       return {
         success: false,
@@ -104,77 +103,82 @@ export async function submitContactForm(formData: FormData) {
     console.log(`[${timestamp}] Initializing Google Auth...`)
     const auth = new google.auth.GoogleAuth({
       credentials: {
-        client_email: GOOGLE_SERVICE_ACCOUNT_EMAIL,
-        private_key: GOOGLE_PRIVATE_KEY,
+        client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+        private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n"),
       },
-      scopes: ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive.file"],
+      scopes: ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"],
     })
 
-    const authClient = await auth.getClient()
-    const sheets = google.sheets({ version: "v4", auth: authClient })
-    const drive = google.drive({ version: "v3", auth: authClient })
+    const sheets = google.sheets({ version: "v4", auth })
+    const drive = google.drive({ version: "v3", auth })
 
     console.log(`[${timestamp}] Google Auth successful`)
 
-    // Upload files to Google Drive (with timeout and error handling)
-    const uploadedFileUrls: string[] = []
+    // Upload files to Google Drive
+    const fileUrls = ["", "", "", "", ""] // Initialize 5 slots for URLs
+    for (let i = 0; i < Math.min(files.length, 5); i++) {
+      const file = files[i]
+      console.log(`[${timestamp}] Uploading file ${i + 1}/${files.length}: ${file.name}`)
 
-    if (files.length > 0) {
-      console.log(`[${timestamp}] Starting file uploads...`)
-
-      for (let i = 0; i < files.length; i++) {
-        const file = files[i]
-        console.log(`[${timestamp}] Uploading file ${i + 1}/${files.length}: ${file.name}`)
-
-        try {
-          // Create a timeout promise
-          const uploadPromise = uploadFileToGoogleDrive(drive, file, timestamp, GOOGLE_DRIVE_FOLDER_ID)
-          const timeoutPromise = new Promise(
-            (_, reject) => setTimeout(() => reject(new Error("Upload timeout")), 30000), // 30 second timeout
-          )
-
-          const fileUrl = (await Promise.race([uploadPromise, timeoutPromise])) as string
-          uploadedFileUrls.push(`${file.name}: ${fileUrl}`)
-          console.log(`[${timestamp}] File uploaded successfully: ${file.name}`)
-        } catch (fileError) {
-          console.error(`[${timestamp}] Error uploading file ${file.name}:`, fileError)
-          uploadedFileUrls.push(
-            `${file.name}: Upload failed - ${fileError instanceof Error ? fileError.message : "Unknown error"}`,
-          )
+      try {
+        const fileMetadata = {
+          name: `${timestamp}_${file.name}`,
+          parents: [process.env.GOOGLE_DRIVE_FOLDER_ID],
         }
+        const media = {
+          mimeType: file.type || "application/octet-stream",
+          body: file.stream(),
+        }
+        const uploadPromise = drive.files.create({
+          resource: fileMetadata,
+          media,
+          fields: "id,webViewLink",
+        })
+        const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error("Upload timeout")), 30000))
+
+        const fileResponse = await Promise.race([uploadPromise, timeoutPromise])
+        fileUrls[i] = fileResponse.data.webViewLink
+
+        // Make file publicly accessible
+        await drive.permissions.create({
+          fileId: fileResponse.data.id,
+          requestBody: { role: "reader", type: "anyone" },
+        })
+        console.log(`[${timestamp}] File uploaded successfully: ${file.name}`)
+      } catch (fileError: any) {
+        console.error(`[${timestamp}] Error uploading file ${file.name}:`, fileError)
+        fileUrls[i] = `Upload failed: ${fileError.message}`
       }
     }
 
-    // Prepare data for Google Sheets
+    // Prepare data for Google Sheets (13 columns, including timestamp)
     const rowData = [
       timestamp,
       firstName,
       lastName,
       email,
       company,
-      phone || "",
-      inquiryType || "",
+      phone,
+      inquiryType,
       message,
-      uploadedFileUrls.join(" | ") || "No files",
+      ...fileUrls,
     ]
 
     console.log(`[${timestamp}] Adding data to Google Sheets...`)
+    console.log(`[${timestamp}] Row data prepared: ${rowData.length} columns`)
 
-    // Add data to Google Sheets with timeout
+    // Add data to Google Sheets
     const sheetsPromise = sheets.spreadsheets.values.append({
-      spreadsheetId: GOOGLE_SHEETS_ID,
-      range: "Sheet1!A:I",
-      valueInputOption: "RAW",
+      spreadsheetId: process.env.GOOGLE_SHEETS_ID,
+      range: "Sheet1!A2:M", // 13 columns, start at A2 to skip headers
+      valueInputOption: "USER_ENTERED",
       requestBody: {
         values: [rowData],
       },
     })
 
-    const sheetsTimeoutPromise = new Promise(
-      (_, reject) => setTimeout(() => reject(new Error("Sheets timeout")), 10000), // 10 second timeout
-    )
-
-    const sheetsResponse = await Promise.race([sheetsPromise, sheetsTimeoutPromise])
+    const sheetsTimeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error("Sheets timeout")), 15000))
+    await Promise.race([sheetsPromise, sheetsTimeoutPromise])
 
     console.log(`[${timestamp}] Sheets updated successfully`)
     console.log(`[${timestamp}] === CONTACT FORM SUBMISSION SUCCESS ===`)
@@ -183,44 +187,14 @@ export async function submitContactForm(formData: FormData) {
       success: true,
       message: "Your message has been sent successfully! We will get back to you within 24 hours.",
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error(`[${timestamp}] === ERROR IN CONTACT FORM ===`)
     console.error(`[${timestamp}] Error:`, error)
     console.error(`[${timestamp}] === END ERROR ===`)
 
     return {
       success: false,
-      message: `There was an error sending your message. Please try again or contact us directly at info@wave2wave.io`,
+      message: `There was an error sending your message: ${error.message || "Unknown error"}. Please try again or contact us at info@wave2wave.io`,
     }
   }
-}
-
-async function uploadFileToGoogleDrive(drive: any, file: File, timestamp: string, folderId?: string): Promise<string> {
-  const buffer = Buffer.from(await file.arrayBuffer())
-
-  const fileMetadata = {
-    name: `${timestamp}_${file.name}`,
-    parents: folderId ? [folderId] : undefined,
-  }
-
-  const media = {
-    mimeType: file.type || "application/octet-stream",
-    body: buffer,
-  }
-
-  const uploadResponse = await drive.files.create({
-    requestBody: fileMetadata,
-    media: media,
-  })
-
-  // Make file accessible
-  await drive.permissions.create({
-    fileId: uploadResponse.data.id!,
-    requestBody: {
-      role: "reader",
-      type: "anyone",
-    },
-  })
-
-  return `https://drive.google.com/file/d/${uploadResponse.data.id}/view`
 }
