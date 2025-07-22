@@ -13,7 +13,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { submitContactForm } from "./actions"
 
-const MAX_FILE_SIZE = 10 * 1024 * 1024 // 10MB
+const MAX_FILE_SIZE = 5 * 1024 * 1024 // 5MB file limit
 const ALLOWED_FILE_TYPES = [
   "application/pdf",
   "application/msword",
@@ -74,6 +74,7 @@ export default function ContactPage() {
       console.log("submitContactForm result:", result)
 
       if (!result || typeof result !== "object" || !("success" in result) || !("message" in result)) {
+        console.error("Invalid server response:", result)
         throw new Error("Invalid response from server")
       }
 
@@ -94,9 +95,13 @@ export default function ContactPage() {
       }
     } catch (error: any) {
       console.error("Contact form error:", error)
+      let errorMessage = error.message || "There was an error sending your message. Please try again."
+      if (error.message === "Invalid response from server") {
+        errorMessage = "The uploaded file is too large (max 5MB). Please upload a smaller file or try without files."
+      }
       setSubmitResult({
         success: false,
-        message: error.message || "There was an error sending your message. Please try again.",
+        message: errorMessage,
       })
     } finally {
       setIsSubmitting(false)
@@ -114,7 +119,7 @@ export default function ContactPage() {
     // Validate file sizes
     const oversizedFiles = files.filter((file) => file.size > MAX_FILE_SIZE)
     if (oversizedFiles.length > 0) {
-      setFileError(`Files too large (max 10MB): ${oversizedFiles.map((f) => f.name).join(", ")}`)
+      setFileError(`Files too large (max 4MB): ${oversizedFiles.map((f) => f.name).join(", ")}`)
       e.target.value = ""
       return
     }
@@ -304,7 +309,7 @@ export default function ContactPage() {
                         />
                       )}
                       <p className="text-sm text-slate-500">
-                        Upload DCIM design, spreadsheet or other document (up to 5 files, max 10MB each, formats: PDF, DOC, XLS, CSV, TXT, DWG, DXF, ZIP, XML, JSON)
+                        Upload DCIM design, spreadsheet or other document (up to 5 files, max 5MB each, formats: PDF, DOC, XLS, CSV, TXT, DWG, DXF, ZIP, XML, JSON)
                       </p>
                       {formData.uploadedFiles.length > 0 && (
                         <div className="space-y-2">

@@ -2,11 +2,20 @@
 
 import { google } from "googleapis"
 
-const MAX_FILE_SIZE = 10 * 1024 * 1024 // 10MB
+const MAX_FILE_SIZE = 5 * 1024 * 1024 // 5MB to match client-side limit
 
-export async function submitContactForm(formData: FormData) {
+export async function submitContactForm(formData: FormData): Promise<{ success: boolean; message: string }> {
   const timestamp = new Date().toISOString()
   console.log(`[${timestamp}] === CONTACT FORM SUBMISSION START ===`)
+
+  // Mock response for v0.dev previews
+  if (process.env.NEXT_PUBLIC_ENV === "preview") {
+    console.log(`[${timestamp}] Preview mode: Skipping Google API calls`)
+    return {
+      success: true,
+      message: "Preview mode: Form submission simulated successfully",
+    }
+  }
 
   try {
     // Extract form data with type safety
@@ -58,11 +67,11 @@ export async function submitContactForm(formData: FormData) {
     for (let i = 0; i < 5; i++) {
       const file = formData.get(`file_${i}`)
       if (file instanceof File && file.size > 0) {
-        console.log(`[${timestamp}] Processing file ${i}: ${file.name} (${file.size} bytes)`)
+        console.log(`[${timestamp}] Processing file ${i}: ${file.name} (${file.size} bytes, type: ${file.type})`)
 
         // Check file size
         if (file.size > MAX_FILE_SIZE) {
-          fileErrors.push(`${file.name} is too large (max 10MB)`)
+          fileErrors.push(`${file.name} is too large (max 5MB)`)
           continue
         }
 
@@ -110,26 +119,26 @@ export async function submitContactForm(formData: FormData) {
       scopes: ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"],
     })
 
+    let authClient
     try {
-      await auth.getClient()
+      authClient = await auth.getClient()
+      console.log(`[${timestamp}] Google Auth successful`)
     } catch (authError: any) {
       console.error(`[${timestamp}] Google Auth failed:`, authError)
       return {
         success: false,
-        message: "Authentication error with Google services. Please try again later.",
+        message: `Authentication error with Google services: ${authError.message || "Unknown error"}. Please try again later.`,
       }
     }
 
-    const sheets = google.sheets({ version: "v4", auth })
-    const drive = google.drive({ version: "v3", auth })
-
-    console.log(`[${timestamp}] Google Auth successful`)
+    const sheets = google.sheets({ version: "v4", auth: authClient })
+    const drive = google.drive({ version: "v3", auth: authClient })
 
     // Upload files to Google Drive
     const fileUrls = ["", "", "", "", ""] // Initialize 5 slots for URLs
     for (let i = 0; i < Math.min(files.length, 5); i++) {
       const file = files[i]
-      console.log(`[${timestamp}] Uploading file ${i + 1}/${files.length}: ${file.name}`)
+      console.log(`[${timestamp}] Uploading file ${i + 1}/${files.length}: ${file.name} (${file.size} bytes)`)
 
       try {
         const fileMetadata = {
@@ -145,17 +154,25 @@ export async function submitContactForm(formData: FormData) {
           media,
           fields: "id,webViewLink",
         })
-        const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error("Upload timeout")), 30000))
+        const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error("Upload timeout")), 60000))
 
         const fileResponse = await Promise.race([uploadPromise, timeoutPromise])
+        if (!fileResponse || !fileResponse.data || !fileResponse.data.id || !fileResponse.data.webViewLink) {
+          throw new Error(`Invalid file upload response for ${file.name}`)
+        }
         fileUrls[i] = fileResponse.data.webViewLink
 
         // Make file publicly accessible
-        await drive.permissions.create({
-          fileId: fileResponse.data.id,
-          requestBody: { role: "reader", type: "anyone" },
-        })
-        console.log(`[${timestamp}] File uploaded successfully: ${file.name}`)
+        try {
+          await drive.permissions.create({
+            fileId: fileResponse.data.id,
+            requestBody: { role: "reader", type: "anyone" },
+          })
+          console.log(`[${timestamp}] File uploaded and permissions set: ${file.name}`)
+        } catch (permError: any) {
+          console.error(`[${timestamp}] Error setting permissions for ${file.name}:`, permError)
+          fileUrls[i] = `Permission failed: ${permError.message}`
+        }
       } catch (fileError: any) {
         console.error(`[${timestamp}] Error uploading file ${file.name}:`, fileError)
         fileUrls[i] = `Upload failed: ${fileError.message}`
@@ -195,7 +212,7 @@ export async function submitContactForm(formData: FormData) {
       console.error(`[${timestamp}] Google Sheets append failed:`, sheetsError)
       return {
         success: false,
-        message: "Failed to save data to Google Sheets. Please try again.",
+        message: `Failed to save data to Google Sheets: ${sheetsError.message || "Unknown error"}. Please try again.`,
       }
     }
 
@@ -211,9 +228,14 @@ export async function submitContactForm(formData: FormData) {
     console.error(`[${timestamp}] Error:`, error)
     console.error(`[${timestamp}] === END ERROR ===`)
 
+    let message = `There was an error sending your message: ${error.message || "Unknown error"}. Please try again or contact us at info@wave2wave.io`
+    if (error.message.includes("Payload Too Large") || error.message.includes("FUNCTION_PAYLOAD_TOO_LARGE")) {
+      message = "The uploaded file is too large (max 5MB). Please upload a smaller file or try without files."
+    }
+
     return {
       success: false,
-      message: `There was an error sending your message: ${error.message || "Unknown error"}. Please try again or contact us at info@wave2wave.io`,
+      message,
     }
   }
 }
