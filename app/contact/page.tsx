@@ -127,7 +127,9 @@ export default function ContactPage() {
     // Validate file types
     const invalidFiles = files.filter((file) => !ALLOWED_FILE_TYPES.includes(file.type))
     if (invalidFiles.length > 0) {
-      setFileError(`Invalid file types: ${invalidFiles.map((f) => f.name).join(", ")}. Supported formats: PDF, DOC, XLS, CSV, TXT, DWG, DXF, ZIP, XML, JSON`)
+      setFileError(
+        `Invalid file types: ${invalidFiles.map((f) => f.name).join(", ")}. Supported formats: PDF, DOC, XLS, CSV, TXT, DWG, DXF, ZIP, XML, JSON`,
+      )
       e.target.value = ""
       return
     }
@@ -309,7 +311,8 @@ export default function ContactPage() {
                         />
                       )}
                       <p className="text-sm text-slate-500">
-                        Upload DCIM design, spreadsheet or other document (up to 5 files, max 5MB each, formats: PDF, DOC, XLS, CSV, TXT, DWG, DXF, ZIP, XML, JSON)
+                        Upload DCIM design, spreadsheet or other document (up to 5 files, max 5MB each, formats: PDF,
+                        DOC, XLS, CSV, TXT, DWG, DXF, ZIP, XML, JSON)
                       </p>
                       {formData.uploadedFiles.length > 0 && (
                         <div className="space-y-2">
@@ -341,13 +344,7 @@ export default function ContactPage() {
                       {isSubmitting ? "Sending..." : "Send Message"}
                     </Button>
                     {submitResult && !submitResult.success && (
-                      <Button
-                        type="button"
-                        size="lg"
-                        variant="outline"
-                        onClick={handleSubmit}
-                        disabled={isSubmitting}
-                      >
+                      <Button type="button" size="lg" variant="outline" onClick={handleSubmit} disabled={isSubmitting}>
                         Retry
                       </Button>
                     )}

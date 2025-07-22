@@ -4,17 +4,20 @@ const MAX_FILE_SIZE = 5 * 1024 * 1024 // 5MB limit
 
 export async function submitContactForm(formData: FormData): Promise<{ success: boolean; message: string }> {
   // Generate timestamp in PDT
-  const timestamp = new Intl.DateTimeFormat('en-US', {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
+  const timestamp = new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
     hour12: false,
-    timeZone: 'America/Los_Angeles',
-    timeZoneName: 'short',
-  }).format(new Date()).replace(/,/, '').replace(/(\d+)\/(\d+)\/(\d+)/, '$3-$1-$2')
+    timeZone: "America/Los_Angeles",
+    timeZoneName: "short",
+  })
+    .format(new Date())
+    .replace(/,/, "")
+    .replace(/(\d+)\/(\d+)\/(\d+)/, "$3-$1-$2")
 
   console.log(`[${timestamp}] === CONTACT FORM SUBMISSION START ===`)
 
@@ -59,11 +62,18 @@ export async function submitContactForm(formData: FormData): Promise<{ success: 
     const files: File[] = []
     const fileErrors: string[] = []
     const allowedTypes = [
-      "application/pdf", "application/msword",
+      "application/pdf",
+      "application/msword",
       "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-      "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-      "text/csv", "text/plain", "application/acad", "application/dxf",
-      "application/zip", "application/xml", "application/json",
+      "application/vnd.ms-excel",
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "text/csv",
+      "text/plain",
+      "application/acad",
+      "application/dxf",
+      "application/zip",
+      "application/xml",
+      "application/json",
     ]
 
     for (let i = 0; i < 5; i++) {
@@ -90,8 +100,10 @@ export async function submitContactForm(formData: FormData): Promise<{ success: 
 
     // Check required env vars
     const requiredEnv = [
-      "GOOGLE_SHEETS_ID", "GOOGLE_SERVICE_ACCOUNT_EMAIL",
-      "GOOGLE_PRIVATE_KEY", "GOOGLE_DRIVE_FOLDER_ID",
+      "GOOGLE_SHEETS_ID",
+      "GOOGLE_SERVICE_ACCOUNT_EMAIL",
+      "GOOGLE_PRIVATE_KEY",
+      "GOOGLE_DRIVE_FOLDER_ID",
       "GOOGLE_APPS_SCRIPT_URL",
     ]
     const missingEnv = requiredEnv.filter((key) => !process.env[key])
