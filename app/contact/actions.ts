@@ -9,14 +9,14 @@ export async function submitContactForm(formData: FormData) {
   console.log(`[${timestamp}] === CONTACT FORM SUBMISSION START ===`)
 
   try {
-    // Extract form data
-    const firstName = formData.get("firstName")?.toString()
-    const lastName = formData.get("lastName")?.toString()
-    const email = formData.get("email")?.toString()
-    const company = formData.get("company")?.toString()
+    // Extract form data with type safety
+    const firstName = formData.get("firstName")?.toString() || ""
+    const lastName = formData.get("lastName")?.toString() || ""
+    const email = formData.get("email")?.toString() || ""
+    const company = formData.get("company")?.toString() || ""
     const phone = formData.get("phone")?.toString() || ""
     const inquiryType = formData.get("inquiryType")?.toString() || ""
-    const message = formData.get("message")?.toString()
+    const message = formData.get("message")?.toString() || ""
 
     console.log(`[${timestamp}] Form data extracted:`, {
       firstName,
@@ -25,7 +25,7 @@ export async function submitContactForm(formData: FormData) {
       company,
       hasPhone: !!phone,
       hasInquiryType: !!inquiryType,
-      messageLength: message?.length || 0,
+      messageLength: message.length,
     })
 
     // Validate required fields
@@ -86,16 +86,17 @@ export async function submitContactForm(formData: FormData) {
     }
 
     // Check environment variables
-    if (
-      !process.env.GOOGLE_SHEETS_ID ||
-      !process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL ||
-      !process.env.GOOGLE_PRIVATE_KEY ||
-      !process.env.GOOGLE_DRIVE_FOLDER_ID
-    ) {
-      console.log(`[${timestamp}] Missing environment variables`)
+    const missingEnvVars = []
+    if (!process.env.GOOGLE_SHEETS_ID) missingEnvVars.push("GOOGLE_SHEETS_ID")
+    if (!process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL) missingEnvVars.push("GOOGLE_SERVICE_ACCOUNT_EMAIL")
+    if (!process.env.GOOGLE_PRIVATE_KEY) missingEnvVars.push("GOOGLE_PRIVATE_KEY")
+    if (!process.env.GOOGLE_DRIVE_FOLDER_ID) missingEnvVars.push("GOOGLE_DRIVE_FOLDER_ID")
+
+    if (missingEnvVars.length > 0) {
+      console.log(`[${timestamp}] Missing environment variables: ${missingEnvVars.join(", ")}`)
       return {
         success: false,
-        message: "Configuration error. Please contact support.",
+        message: `Configuration error: Missing ${missingEnvVars.join(", ")}. Please contact support.`,
       }
     }
 
@@ -108,6 +109,16 @@ export async function submitContactForm(formData: FormData) {
       },
       scopes: ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"],
     })
+
+    try {
+      await auth.getClient()
+    } catch (authError: any) {
+      console.error(`[${timestamp}] Google Auth failed:`, authError)
+      return {
+        success: false,
+        message: "Authentication error with Google services. Please try again later.",
+      }
+    }
 
     const sheets = google.sheets({ version: "v4", auth })
     const drive = google.drive({ version: "v3", auth })
@@ -168,17 +179,25 @@ export async function submitContactForm(formData: FormData) {
     console.log(`[${timestamp}] Row data prepared: ${rowData.length} columns`)
 
     // Add data to Google Sheets
-    const sheetsPromise = sheets.spreadsheets.values.append({
-      spreadsheetId: process.env.GOOGLE_SHEETS_ID,
-      range: "Sheet1!A2:M", // 13 columns, start at A2 to skip headers
-      valueInputOption: "USER_ENTERED",
-      requestBody: {
-        values: [rowData],
-      },
-    })
+    try {
+      const sheetsPromise = sheets.spreadsheets.values.append({
+        spreadsheetId: process.env.GOOGLE_SHEETS_ID,
+        range: "Sheet1!A2:M", // 13 columns, start at A2 to skip headers
+        valueInputOption: "USER_ENTERED",
+        requestBody: {
+          values: [rowData],
+        },
+      })
 
-    const sheetsTimeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error("Sheets timeout")), 15000))
-    await Promise.race([sheetsPromise, sheetsTimeoutPromise])
+      const sheetsTimeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error("Sheets timeout")), 15000))
+      await Promise.race([sheetsPromise, sheetsTimeoutPromise])
+    } catch (sheetsError: any) {
+      console.error(`[${timestamp}] Google Sheets append failed:`, sheetsError)
+      return {
+        success: false,
+        message: "Failed to save data to Google Sheets. Please try again.",
+      }
+    }
 
     console.log(`[${timestamp}] Sheets updated successfully`)
     console.log(`[${timestamp}] === CONTACT FORM SUBMISSION SUCCESS ===`)

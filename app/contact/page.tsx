@@ -64,15 +64,20 @@ export default function ContactPage() {
 
       // Add files to FormData
       formData.uploadedFiles.forEach((file, index) => {
-        formDataToSubmit.append(`file_${index}`, file)
+        if (file && file.size > 0) {
+          formDataToSubmit.append(`file_${index}`, file)
+        }
       })
 
       console.log("Calling submitContactForm...")
       const result = await submitContactForm(formDataToSubmit)
       console.log("submitContactForm result:", result)
 
-      setSubmitResult(result)
+      if (!result || typeof result !== "object" || !("success" in result) || !("message" in result)) {
+        throw new Error("Invalid response from server")
+      }
 
+      setSubmitResult(result)
       if (result.success) {
         // Reset form on success
         setFormData({
