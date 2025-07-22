@@ -1,8 +1,9 @@
 "use client"
 
 import type React from "react"
+
 import { useState } from "react"
-import { Mail, Phone, MapPin, Clock, X, CheckCircle, AlertCircle } from "lucide-react"
+import { Mail, Phone, MapPin, Clock, X } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -10,24 +11,6 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Alert, AlertDescription } from "@/components/ui/alert"
-import { submitContactForm } from "./actions"
-
-const MAX_FILE_SIZE = 5 * 1024 * 1024 // 5MB file limit
-const ALLOWED_FILE_TYPES = [
-  "application/pdf",
-  "application/msword",
-  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-  "application/vnd.ms-excel",
-  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-  "text/csv",
-  "text/plain",
-  "application/acad",
-  "application/dxf",
-  "application/zip",
-  "application/xml",
-  "application/json",
-]
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -41,71 +24,10 @@ export default function ContactPage() {
     uploadedFiles: [] as File[],
   })
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitResult, setSubmitResult] = useState<{ success: boolean; message: string } | null>(null)
-  const [fileError, setFileError] = useState<string | null>(null)
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    setIsSubmitting(true)
-    setSubmitResult(null)
-
-    console.log("Contact form submission started...")
-
-    try {
-      const formDataToSubmit = new FormData()
-      formDataToSubmit.append("firstName", formData.firstName)
-      formDataToSubmit.append("lastName", formData.lastName)
-      formDataToSubmit.append("email", formData.email)
-      formDataToSubmit.append("company", formData.company)
-      formDataToSubmit.append("phone", formData.phone)
-      formDataToSubmit.append("inquiryType", formData.inquiryType)
-      formDataToSubmit.append("message", formData.message)
-
-      // Add files to FormData
-      formData.uploadedFiles.forEach((file, index) => {
-        if (file && file.size > 0) {
-          formDataToSubmit.append(`file_${index}`, file)
-        }
-      })
-
-      console.log("Calling submitContactForm...")
-      const result = await submitContactForm(formDataToSubmit)
-      console.log("submitContactForm result:", result)
-
-      if (!result || typeof result !== "object" || !("success" in result) || !("message" in result)) {
-        console.error("Invalid server response:", result)
-        throw new Error("Invalid response from server")
-      }
-
-      setSubmitResult(result)
-      if (result.success) {
-        // Reset form on success
-        setFormData({
-          firstName: "",
-          lastName: "",
-          email: "",
-          company: "",
-          phone: "",
-          inquiryType: "",
-          message: "",
-          uploadedFiles: [],
-        })
-        setFileError(null)
-      }
-    } catch (error: any) {
-      console.error("Contact form error:", error)
-      let errorMessage = error.message || "There was an error sending your message. Please try again."
-      if (error.message === "Invalid response from server") {
-        errorMessage = "The uploaded file is too large (max 5MB). Please upload a smaller file or try without files."
-      }
-      setSubmitResult({
-        success: false,
-        message: errorMessage,
-      })
-    } finally {
-      setIsSubmitting(false)
-    }
+    // Handle form submission
+    console.log("Form submitted:", formData)
   }
 
   const handleInputChange = (field: string, value: string) => {
@@ -114,51 +36,16 @@ export default function ContactPage() {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || [])
-    setFileError(null)
-
-    // Validate file sizes
-    const oversizedFiles = files.filter((file) => file.size > MAX_FILE_SIZE)
-    if (oversizedFiles.length > 0) {
-      setFileError(`Files too large (max 4MB): ${oversizedFiles.map((f) => f.name).join(", ")}`)
-      e.target.value = ""
-      return
-    }
-
-    // Validate file types
-    const invalidFiles = files.filter((file) => !ALLOWED_FILE_TYPES.includes(file.type))
-    if (invalidFiles.length > 0) {
-      setFileError(
-        `Invalid file types: ${invalidFiles.map((f) => f.name).join(", ")}. Supported formats: PDF, DOC, XLS, CSV, TXT, DWG, DXF, ZIP, XML, JSON`,
-      )
-      e.target.value = ""
-      return
-    }
-
-    // Validate file count
     const currentFiles = formData.uploadedFiles
-    const newFiles = [...currentFiles, ...files].slice(0, 5) // Limit to 5 files
-    if (files.length + currentFiles.length > 5) {
-      setFileError("You can upload a maximum of 5 files.")
-      e.target.value = ""
-      return
-    }
-
+    const newFiles = [...currentFiles, ...files].slice(0, 3) // Limit to 3 files
     setFormData((prev) => ({ ...prev, uploadedFiles: newFiles }))
+    // Clear the input to allow re-selecting the same file
     e.target.value = ""
   }
 
   const removeFile = (index: number) => {
     const newFiles = formData.uploadedFiles.filter((_, i) => i !== index)
     setFormData((prev) => ({ ...prev, uploadedFiles: newFiles }))
-    setFileError(null)
-  }
-
-  const formatFileSize = (bytes: number) => {
-    if (bytes === 0) return "0 Bytes"
-    const k = 1024
-    const sizes = ["Bytes", "KB", "MB", "GB"]
-    const i = Math.floor(Math.log(bytes) / Math.log(k))
-    return Number.parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i]
   }
 
   return (
@@ -187,28 +74,6 @@ export default function ContactPage() {
                 <CardDescription>Fill out the form below and we'll get back to you within 24 hours.</CardDescription>
               </CardHeader>
               <CardContent>
-                {submitResult && (
-                  <Alert
-                    className={`mb-6 ${submitResult.success ? "border-green-200 bg-green-50" : "border-red-200 bg-red-50"}`}
-                  >
-                    {submitResult.success ? (
-                      <CheckCircle className="h-4 w-4 text-green-600" />
-                    ) : (
-                      <AlertCircle className="h-4 w-4 text-red-600" />
-                    )}
-                    <AlertDescription className={submitResult.success ? "text-green-800" : "text-red-800"}>
-                      {submitResult.message}
-                    </AlertDescription>
-                  </Alert>
-                )}
-
-                {fileError && (
-                  <Alert className="mb-6 border-red-200 bg-red-50">
-                    <AlertCircle className="h-4 w-4 text-red-600" />
-                    <AlertDescription className="text-red-800">{fileError}</AlertDescription>
-                  </Alert>
-                )}
-
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
@@ -218,7 +83,6 @@ export default function ContactPage() {
                         value={formData.firstName}
                         onChange={(e) => handleInputChange("firstName", e.target.value)}
                         required
-                        disabled={isSubmitting}
                       />
                     </div>
                     <div className="space-y-2">
@@ -228,7 +92,6 @@ export default function ContactPage() {
                         value={formData.lastName}
                         onChange={(e) => handleInputChange("lastName", e.target.value)}
                         required
-                        disabled={isSubmitting}
                       />
                     </div>
                   </div>
@@ -242,7 +105,6 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={(e) => handleInputChange("email", e.target.value)}
                         required
-                        disabled={isSubmitting}
                       />
                     </div>
                     <div className="space-y-2">
@@ -252,7 +114,6 @@ export default function ContactPage() {
                         value={formData.company}
                         onChange={(e) => handleInputChange("company", e.target.value)}
                         required
-                        disabled={isSubmitting}
                       />
                     </div>
                   </div>
@@ -264,13 +125,12 @@ export default function ContactPage() {
                       type="tel"
                       value={formData.phone}
                       onChange={(e) => handleInputChange("phone", e.target.value)}
-                      disabled={isSubmitting}
                     />
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="inquiry-type">Inquiry Type</Label>
-                    <Select onValueChange={(value) => handleInputChange("inquiryType", value)} disabled={isSubmitting}>
+                    <Select onValueChange={(value) => handleInputChange("inquiryType", value)}>
                       <SelectTrigger>
                         <SelectValue placeholder="Select inquiry type" />
                       </SelectTrigger>
@@ -293,42 +153,35 @@ export default function ContactPage() {
                       value={formData.message}
                       onChange={(e) => handleInputChange("message", e.target.value)}
                       required
-                      disabled={isSubmitting}
                     />
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="file-upload">Upload Documents</Label>
                     <div className="space-y-2">
-                      {formData.uploadedFiles.length < 5 && (
+                      {formData.uploadedFiles.length < 3 && (
                         <Input
                           id="file-upload"
                           type="file"
                           onChange={handleFileChange}
                           accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.txt,.dwg,.dxf,.zip,.xml,.json"
                           className="file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
-                          disabled={isSubmitting}
                         />
                       )}
                       <p className="text-sm text-slate-500">
-                        Upload DCIM design, spreadsheet or other document (up to 5 files, max 5MB each, formats: PDF,
-                        DOC, XLS, CSV, TXT, DWG, DXF, ZIP, XML, JSON)
+                        Upload DCIM design, spreadsheet or other document with your specifications (up to 3 files)
                       </p>
                       {formData.uploadedFiles.length > 0 && (
                         <div className="space-y-2">
                           {formData.uploadedFiles.map((file, index) => (
                             <div key={index} className="flex items-center justify-between bg-slate-50 p-2 rounded-md">
-                              <div className="flex-1">
-                                <span className="text-sm text-slate-700">{file.name}</span>
-                                <span className="text-xs text-slate-500 ml-2">({formatFileSize(file.size)})</span>
-                              </div>
+                              <span className="text-sm text-slate-700">{file.name}</span>
                               <Button
                                 type="button"
                                 variant="ghost"
                                 size="sm"
                                 onClick={() => removeFile(index)}
                                 className="h-6 w-6 p-0 hover:bg-red-100"
-                                disabled={isSubmitting}
                               >
                                 <X className="h-4 w-4 text-red-500" />
                               </Button>
@@ -339,16 +192,9 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  <div className="flex space-x-4">
-                    <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
-                      {isSubmitting ? "Sending..." : "Send Message"}
-                    </Button>
-                    {submitResult && !submitResult.success && (
-                      <Button type="button" size="lg" variant="outline" onClick={handleSubmit} disabled={isSubmitting}>
-                        Retry
-                      </Button>
-                    )}
-                  </div>
+                  <Button type="submit" size="lg" className="w-full">
+                    Send Message
+                  </Button>
                 </form>
               </CardContent>
             </Card>

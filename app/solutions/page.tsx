@@ -1,5 +1,6 @@
-import { ArrowRight, CheckCircle, Network, Server, Zap } from "lucide-react"
+import { ArrowRight, CheckCircle } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -26,8 +27,14 @@ export default function SolutionsPage() {
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Structured Cabling */}
             <div className="space-y-6">
-              <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center">
-                <Network className="h-8 w-8 text-blue-600" />
+              <div className="w-full h-48 mb-4">
+                <Image
+                  src="/images/solutions/structured-cabling-hardware.jpeg"
+                  alt="Structured Cabling & Hardware"
+                  width={400}
+                  height={200}
+                  className="w-full h-full object-cover rounded-lg"
+                />
               </div>
               <div>
                 <h2 className="text-2xl font-bold mb-4">Structured Cabling & Hardware</h2>
@@ -77,8 +84,14 @@ export default function SolutionsPage() {
 
             {/* Kitting & Logistics */}
             <div className="space-y-6">
-              <div className="w-16 h-16 bg-orange-100 rounded-xl flex items-center justify-center">
-                <Zap className="h-8 w-8 text-orange-600" />
+              <div className="w-full h-48 mb-4">
+                <Image
+                  src="/images/solutions/advanced-kitting-logistics.jpeg"
+                  alt="Advanced Kitting & Logistics"
+                  width={400}
+                  height={200}
+                  className="w-full h-full object-cover rounded-lg"
+                />
               </div>
               <div>
                 <h2 className="text-2xl font-bold mb-4">Advanced Kitting & Logistics</h2>
@@ -128,8 +141,14 @@ export default function SolutionsPage() {
 
             {/* DCIM Services */}
             <div className="space-y-6">
-              <div className="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center">
-                <Server className="h-8 w-8 text-purple-600" />
+              <div className="w-full h-48 mb-4">
+                <Image
+                  src="/images/solutions/dcim-digital-twin.jpeg"
+                  alt="DCIM & Digital Twin Services"
+                  width={400}
+                  height={200}
+                  className="w-full h-full object-cover rounded-lg"
+                />
               </div>
               <div>
                 <h2 className="text-2xl font-bold mb-4">DCIM & Digital Twin Services</h2>
