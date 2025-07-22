@@ -1,6 +1,6 @@
 "use server"
 
-import { google } from "googleapis"
+import { Readable } from "stream"
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024 // 5MB to match client-side limit
 
@@ -14,6 +14,19 @@ export async function submitContactForm(formData: FormData): Promise<{ success: 
     return {
       success: true,
       message: "Preview mode: Form submission simulated successfully",
+    }
+  }
+
+  // Dynamically import googleapis in production
+  let google
+  try {
+    google = await import("googleapis").then((module) => module.google)
+    console.log(`[${timestamp}] googleapis module loaded successfully`)
+  } catch (importError: any) {
+    console.error(`[${timestamp}] Failed to import googleapis:`, importError)
+    return {
+      success: false,
+      message: "Server configuration error: Unable to load Google APIs. Please try again later or contact us at info@wave2wave.io",
     }
   }
 
@@ -141,13 +154,23 @@ export async function submitContactForm(formData: FormData): Promise<{ success: 
       console.log(`[${timestamp}] Uploading file ${i + 1}/${files.length}: ${file.name} (${file.size} bytes)`)
 
       try {
+        // Convert File to Node.js Readable stream
+        const buffer = await file.arrayBuffer()
+        const readableStream = new Readable({
+          read() {
+            this.push(Buffer.from(buffer))
+            this.push(null) // Signal end of stream
+          },
+        })
+        console.log(`[${timestamp}] Created Readable stream for ${file.name}`)
+
         const fileMetadata = {
           name: `${timestamp}_${file.name}`,
           parents: [process.env.GOOGLE_DRIVE_FOLDER_ID],
         }
         const media = {
           mimeType: file.type || "application/octet-stream",
-          body: file.stream(),
+          body: readableStream,
         }
         const uploadPromise = drive.files.create({
           resource: fileMetadata,
@@ -231,6 +254,8 @@ export async function submitContactForm(formData: FormData): Promise<{ success: 
     let message = `There was an error sending your message: ${error.message || "Unknown error"}. Please try again or contact us at info@wave2wave.io`
     if (error.message.includes("Payload Too Large") || error.message.includes("FUNCTION_PAYLOAD_TOO_LARGE")) {
       message = "The uploaded file is too large (max 5MB). Please upload a smaller file or try without files."
+    } else if (error.message.includes("pipe is not a function")) {
+      message = "Error processing file upload. Please try a different file or contact us at info@wave2wave.io"
     }
 
     return {
