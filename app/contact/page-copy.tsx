@@ -1,6 +1,7 @@
 "use client"
 
 import type React from "react"
+
 import { useState } from "react"
 import { Mail, Phone, MapPin, Clock, X } from "lucide-react"
 
@@ -9,62 +10,24 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    company: "",
     email: "",
+    company: "",
     phone: "",
+    inquiryType: "",
     message: "",
     uploadedFiles: [] as File[],
   })
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const [success, setSuccess] = useState(false)
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    setIsLoading(true)
-    setError(null)
-    setSuccess(false)
-
-    const jotformData = new FormData()
-    jotformData.append("submission[1]", formData.firstName) // Replace with actual field ID
-    jotformData.append("submission[2]", formData.lastName) // Replace with actual field ID
-    jotformData.append("submission[3]", formData.company) // Replace with actual field ID
-    jotformData.append("submission[4]", formData.email) // Replace with actual field ID
-    jotformData.append("submission[5]", formData.phone) // Replace with actual field ID
-    jotformData.append("submission[6]", formData.message) // Replace with actual field ID
-    formData.uploadedFiles.forEach((file, index) => {
-      jotformData.append(`submission[7][${index}]`, file) // Replace with actual file field ID
-    })
-
-    try {
-      const response = await fetch("/api/jotform-upload", {
-        method: "POST",
-        body: jotformData,
-      })
-      const result = await response.json()
-      if (!response.ok) {
-        throw new Error(result.message || "Submission failed")
-      }
-      setSuccess(true)
-      setFormData({
-        firstName: "",
-        lastName: "",
-        company: "",
-        email: "",
-        phone: "",
-        message: "",
-        uploadedFiles: [],
-      })
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred")
-    } finally {
-      setIsLoading(false)
-    }
+    // Handle form submission
+    console.log("Form submitted:", formData)
   }
 
   const handleInputChange = (field: string, value: string) => {
@@ -76,6 +39,7 @@ export default function ContactPage() {
     const currentFiles = formData.uploadedFiles
     const newFiles = [...currentFiles, ...files].slice(0, 3) // Limit to 3 files
     setFormData((prev) => ({ ...prev, uploadedFiles: newFiles }))
+    // Clear the input to allow re-selecting the same file
     e.target.value = ""
   }
 
@@ -111,16 +75,6 @@ export default function ContactPage() {
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  {success && (
-                    <div className="p-4 bg-green-100 text-green-700 rounded-md">
-                      Form submitted successfully!
-                    </div>
-                  )}
-                  {error && (
-                    <div className="p-4 bg-red-100 text-red-700 rounded-md">
-                      Error: {error}
-                    </div>
-                  )}
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="firstName">First Name *</Label>
@@ -144,21 +98,21 @@ export default function ContactPage() {
 
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="company">Company *</Label>
-                      <Input
-                        id="company"
-                        value={formData.company}
-                        onChange={(e) => handleInputChange("company", e.target.value)}
-                        required
-                      />
-                    </div>
-                    <div className="space-y-2">
                       <Label htmlFor="email">Email Address *</Label>
                       <Input
                         id="email"
                         type="email"
                         value={formData.email}
                         onChange={(e) => handleInputChange("email", e.target.value)}
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="company">Company *</Label>
+                      <Input
+                        id="company"
+                        value={formData.company}
+                        onChange={(e) => handleInputChange("company", e.target.value)}
                         required
                       />
                     </div>
@@ -172,6 +126,22 @@ export default function ContactPage() {
                       value={formData.phone}
                       onChange={(e) => handleInputChange("phone", e.target.value)}
                     />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="inquiry-type">Inquiry Type</Label>
+                    <Select onValueChange={(value) => handleInputChange("inquiryType", value)}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select inquiry type" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="structured-cabling">Structured Cabling & Hardware</SelectItem>
+                        <SelectItem value="kitting-logistics">Advanced Kitting & Logistics</SelectItem>
+                        <SelectItem value="dcim-services">DCIM & Digital Twin Services</SelectItem>
+                        <SelectItem value="general">General Inquiry</SelectItem>
+                        <SelectItem value="partnership">Partnership Opportunity</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
 
                   <div className="space-y-2">
@@ -222,8 +192,8 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full" disabled={isLoading}>
-                    {isLoading ? "Submitting..." : "Send Message"}
+                  <Button type="submit" size="lg" className="w-full">
+                    Send Message
                   </Button>
                 </form>
               </CardContent>
@@ -264,7 +234,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold">Address</h3>
-                      <p className="text-slate-600ays">
+                      <p className="text-slate-600">
                         1017 El Camino Real, #448
                         <br />
                         Redwood City, CA 94063
