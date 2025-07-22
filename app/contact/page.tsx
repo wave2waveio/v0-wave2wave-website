@@ -13,6 +13,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { submitContactForm } from "./actions"
 
+const MAX_FILE_SIZE = 10 * 1024 * 1024 // 10MB
+
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -27,6 +29,7 @@ export default function ContactPage() {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitResult, setSubmitResult] = useState<{ success: boolean; message: string } | null>(null)
+  const [fileError, setFileError] = useState<string | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -68,6 +71,7 @@ export default function ContactPage() {
           message: "",
           uploadedFiles: [],
         })
+        setFileError(null)
       }
     } catch (error) {
       console.error("Contact form error:", error)
@@ -86,6 +90,16 @@ export default function ContactPage() {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || [])
+    setFileError(null)
+
+    // Validate file sizes
+    const oversizedFiles = files.filter((file) => file.size > MAX_FILE_SIZE)
+    if (oversizedFiles.length > 0) {
+      setFileError(`Files too large (max 10MB): ${oversizedFiles.map((f) => f.name).join(", ")}`)
+      e.target.value = ""
+      return
+    }
+
     const currentFiles = formData.uploadedFiles
     const newFiles = [...currentFiles, ...files].slice(0, 3) // Limit to 3 files
     setFormData((prev) => ({ ...prev, uploadedFiles: newFiles }))
@@ -96,6 +110,15 @@ export default function ContactPage() {
   const removeFile = (index: number) => {
     const newFiles = formData.uploadedFiles.filter((_, i) => i !== index)
     setFormData((prev) => ({ ...prev, uploadedFiles: newFiles }))
+    setFileError(null)
+  }
+
+  const formatFileSize = (bytes: number) => {
+    if (bytes === 0) return "0 Bytes"
+    const k = 1024
+    const sizes = ["Bytes", "KB", "MB", "GB"]
+    const i = Math.floor(Math.log(bytes) / Math.log(k))
+    return Number.parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i]
   }
 
   return (
@@ -136,6 +159,13 @@ export default function ContactPage() {
                     <AlertDescription className={submitResult.success ? "text-green-800" : "text-red-800"}>
                       {submitResult.message}
                     </AlertDescription>
+                  </Alert>
+                )}
+
+                {fileError && (
+                  <Alert className="mb-6 border-red-200 bg-red-50">
+                    <AlertCircle className="h-4 w-4 text-red-600" />
+                    <AlertDescription className="text-red-800">{fileError}</AlertDescription>
                   </Alert>
                 )}
 
@@ -241,13 +271,17 @@ export default function ContactPage() {
                         />
                       )}
                       <p className="text-sm text-slate-500">
-                        Upload DCIM design, spreadsheet or other document with your specifications (up to 3 files)
+                        Upload DCIM design, spreadsheet or other document with your specifications (up to 3 files, max
+                        10MB each)
                       </p>
                       {formData.uploadedFiles.length > 0 && (
                         <div className="space-y-2">
                           {formData.uploadedFiles.map((file, index) => (
                             <div key={index} className="flex items-center justify-between bg-slate-50 p-2 rounded-md">
-                              <span className="text-sm text-slate-700">{file.name}</span>
+                              <div className="flex-1">
+                                <span className="text-sm text-slate-700">{file.name}</span>
+                                <span className="text-xs text-slate-500 ml-2">({formatFileSize(file.size)})</span>
+                              </div>
                               <Button
                                 type="button"
                                 variant="ghost"
