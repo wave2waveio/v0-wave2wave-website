@@ -5,7 +5,19 @@ import { Readable } from "stream"
 const MAX_FILE_SIZE = 5 * 1024 * 1024 // 5MB to match client-side limit
 
 export async function submitContactForm(formData: FormData): Promise<{ success: boolean; message: string }> {
-  const timestamp = new Date().toISOString()
+    // Generate timestamp in PDT (America/Los_Angeles)
+  const timestamp = new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+    timeZone: 'America/Los_Angeles',
+    timeZoneName: 'short',
+  }).format(new Date()).replace(/,/, '').replace(/(\d+)\/(\d+)\/(\d+)/, '$3-$1-$2')
+
   console.log(`[${timestamp}] === CONTACT FORM SUBMISSION START ===`)
 
   // Mock response for v0.dev previews
