@@ -13,8 +13,6 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             {/* Heading */}
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">About 
-            </h1>
             {/* Logo */}
             <Image
               src="/images/wave2wave-logo.png"

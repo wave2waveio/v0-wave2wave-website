@@ -107,7 +107,7 @@ export default function ProductsPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Custom and Off-the-Shelf Products Kitted for Easy, Fast Installation
+              Custom and Off-the-Shelf Products -- Kitted for Easy, Fast Installation
             </h1>
             <p className="text-xl mb-8 text-slate-200">
               From fiber optic assemblies to network infrastructure, discover our comprehensive range of products
@@ -121,8 +121,8 @@ export default function ProductsPage() {
       <section className="py-16 bg-slate-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Custom & Featured Product Lines</h2>
-            <p className="text-xl text-slate-600">Kitted, modern network infrastructure solutions.</p>
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">Featured Product Lines</h2>
+            <p className="text-xl text-slate-600">Cabling and network infrastructure solutions made easy</p>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8">
@@ -130,11 +130,12 @@ export default function ProductsPage() {
               <CardHeader className="pb-0">
                 <div className="w-full h-48 mb-4 overflow-hidden rounded-t-lg">
                   <Image
-                    src="/placeholder.svg?height=300&width=400&text=Fiber+Optic+Solutions"
-                    alt="Fiber Optic Solutions"
+                    src="/images/products/structured-cabling.webp"
+                    alt="Structured Cabling Solutions"
                     width={400}
                     height={300}
                     className="w-full h-full object-cover"
+                    unoptimized
                   />
                 </div>
                 <CardTitle className="text-xl text-blue-900">Fiber Optic Solutions</CardTitle>
@@ -157,11 +158,12 @@ export default function ProductsPage() {
               <CardHeader className="pb-0">
                 <div className="w-full h-48 mb-4 overflow-hidden rounded-t-lg">
                   <Image
-                    src="/placeholder.svg?height=300&width=400&text=Ethernet+Infrastructure"
+                    src="/images/products/ethernet-cabling.jpg"
                     alt="Ethernet Infrastructure"
                     width={400}
                     height={300}
                     className="w-full h-full object-cover"
+                    unoptimized
                   />
                 </div>
                 <CardTitle className="text-xl text-green-900">Ethernet Infrastructure</CardTitle>
@@ -183,11 +185,12 @@ export default function ProductsPage() {
               <CardHeader className="pb-0">
                 <div className="w-full h-48 mb-4 overflow-hidden rounded-t-lg">
                   <Image
-                    src="/placeholder.svg?height=300&width=400&text=Infrastructure+Hardware"
+                    src="/images/products/network-cable-management.webp"
                     alt="Infrastructure Hardware"
                     width={400}
                     height={300}
                     className="w-full h-full object-cover"
+                    unoptimized
                   />
                 </div>
                 <CardTitle className="text-xl text-purple-900">Infrastructure Hardware</CardTitle>
@@ -214,8 +217,9 @@ export default function ProductsPage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Product Categories</h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Explore our extensive catalog of networking and cabling solutions, each engineered for performance and
-              reliability
+              We have an extensive ablity to provide custom and off-the-shelf networking and cabling solutions, each
+              engineered for performance and reliability. These can all be kitted and packaged with similar products for
+              easy delivery, logistics and installation.
             </p>
           </div>
 
@@ -223,13 +227,16 @@ export default function ProductsPage() {
             {productCategories.map((product, index) => (
               <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow group">
                 <CardHeader className="pb-4">
+                  {/* Commented out image for product categories - can be restored later if needed
                   <Image
                     src={product.image || "/placeholder.svg"}
                     alt={product.title}
                     width={300}
                     height={200}
                     className="w-full h-48 object-cover rounded-lg mb-4"
+                    unoptimized
                   />
+                  */}
                   <CardTitle className="text-lg leading-tight group-hover:text-blue-600 transition-colors">
                     {product.title}
                   </CardTitle>
