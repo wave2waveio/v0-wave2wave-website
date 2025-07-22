@@ -99,20 +99,20 @@ export async function submitContactForm(formData: FormData): Promise<{ success: 
     }
 
     // Check required env vars
-    const requiredEnv = [
-      "GOOGLE_SHEETS_ID",
-      "GOOGLE_SERVICE_ACCOUNT_EMAIL",
-      "GOOGLE_PRIVATE_KEY",
-      "GOOGLE_DRIVE_FOLDER_ID",
-      "GOOGLE_APPS_SCRIPT_URL",
-    ]
-    const missingEnv = requiredEnv.filter((key) => !process.env[key])
-    if (missingEnv.length > 0) {
-      return {
-        success: false,
-        message: `Configuration error: Missing ${missingEnv.join(", ")}`,
-      }
-    }
+   // const requiredEnv = [
+   //   "GOOGLE_SHEETS_ID",
+   //   "GOOGLE_SERVICE_ACCOUNT_EMAIL",
+   //   "GOOGLE_PRIVATE_KEY",
+   //   "GOOGLE_DRIVE_FOLDER_ID",
+   //   "GOOGLE_APPS_SCRIPT_URL",
+   // ]
+   // const missingEnv = requiredEnv.filter((key) => !process.env[key])
+  //  if (missingEnv.length > 0) {
+  //    return {
+  //      success: false,
+   //     message: `Configuration error: Missing ${missingEnv.join(", ")}`,
+  //    }
+  //  }
 
     // Dynamically import Google integration module
     // const { handleGoogleIntegration } = await import("./google-integration")
