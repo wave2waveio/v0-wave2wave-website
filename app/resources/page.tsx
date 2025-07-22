@@ -1,4 +1,4 @@
-import { ArrowRight, FileText, BookOpen, Users, TrendingUp, Calendar, Clock } from "lucide-react"
+import { ArrowRight, Calendar, Clock } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -71,37 +71,6 @@ export default function ResourcesPage() {
     },
   ]
 
-  const resourceCategories = [
-    {
-      title: "Technical Guides",
-      description: "In-depth guides covering structured cabling, fiber optics, and network infrastructure",
-      icon: BookOpen,
-      count: "12 articles",
-      color: "blue",
-    },
-    {
-      title: "Industry Insights",
-      description: "Latest trends, analysis, and insights from the data center and networking industry",
-      icon: TrendingUp,
-      count: "8 articles",
-      color: "green",
-    },
-    {
-      title: "Case Studies",
-      description: "Real-world success stories and deployment examples from our customers",
-      icon: Users,
-      count: "6 studies",
-      color: "purple",
-    },
-    {
-      title: "Best Practices",
-      description: "Expert recommendations and proven methodologies for infrastructure deployment",
-      icon: FileText,
-      count: "10 guides",
-      color: "orange",
-    },
-  ]
-
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
@@ -117,51 +86,6 @@ export default function ResourcesPage() {
         </div>
       </section>
 
-      {/* Resource Categories */}
-/*      <section className="py-16 bg-slate-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Explore by Category</h2>
-            <p className="text-xl text-slate-600">
-              Find the information you need organized by topic and expertise level
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {resourceCategories.map((category, index) => {
-              const IconComponent = category.icon
-              const colorClasses = {
-                blue: "bg-blue-100 text-blue-600 border-blue-200",
-                green: "bg-green-100 text-green-600 border-green-200",
-                purple: "bg-purple-100 text-purple-600 border-purple-200",
-                orange: "bg-orange-100 text-orange-600 border-orange-200",
-              }
-
-              return (
-                <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow cursor-pointer group">
-                  <CardHeader className="text-center">
-                    <div
-                      className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 mx-auto ${colorClasses[category.color as keyof typeof colorClasses]}`}
-                    >
-                      <IconComponent className="h-6 w-6" />
-                    </div>
-                    <CardTitle className="text-lg group-hover:text-blue-600 transition-colors">
-                      {category.title}
-                    </CardTitle>
-                    <Badge variant="secondary" className="w-fit mx-auto">
-                      {category.count}
-                    </Badge>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription className="text-center">{category.description}</CardDescription>
-                  </CardContent>
-                </Card>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-*/  
       {/* Featured Articles */}
       <section className="py-16">
         <div className="container mx-auto px-4">
@@ -259,25 +183,6 @@ export default function ResourcesPage() {
             <Button variant="outline" size="lg">
               View All Articles
               <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Newsletter Signup */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-8 md:p-12 text-white text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Stay Informed</h2>
-            <p className="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
-              Get the latest infrastructure insights, technical guides, and industry updates delivered to your inbox
-              monthly.
-            </p>
-            <Button size="lg" className="bg-white text-blue-600 hover:bg-slate-100" asChild>
-              <Link href="/contact">
-                Subscribe to Newsletter
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
             </Button>
           </div>
         </div>
