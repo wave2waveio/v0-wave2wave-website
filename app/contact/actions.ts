@@ -103,8 +103,8 @@ export async function submitContactForm(formData: FormData): Promise<{ success: 
     }
 
     // Dynamically import Google integration module
-    const { handleGoogleIntegration } = await import("./google-integration")
-    const result = await handleGoogleIntegration({ timestamp, formData, files })
+    // const { handleGoogleIntegration } = await import("./google-integration")
+    // const result = await handleGoogleIntegration({ timestamp, formData, files })
 
     console.log(`[${timestamp}] === CONTACT FORM SUBMISSION SUCCESS ===`)
 
