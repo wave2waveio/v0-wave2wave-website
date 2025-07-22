@@ -23,6 +23,7 @@ export function Navigation() {
                 width={200}
                 height={60}
                 className="h-10 w-auto"
+                unoptimized
               />
             </div>
           </Link>
@@ -90,7 +91,7 @@ export function Navigation() {
             <Button variant="outline" asChild>
               <Link href="/contact">Request Quote</Link>
             </Button>
-           </div>
+          </div>
 
           {/* Mobile Navigation */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>

@@ -15,6 +15,7 @@ export function Footer() {
                 width={200}
                 height={60}
                 className="h-8 w-auto brightness-0 invert"
+                unoptimized
               />
             </div>
             <p className="text-slate-300 mb-4">

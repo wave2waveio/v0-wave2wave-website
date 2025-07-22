@@ -14,8 +14,7 @@ export default function AboutPage() {
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">About Wave2Wave.io</h1>
             <p className="text-xl mb-8 text-slate-200">
-              Pioneering the future of infrastructure with custom engineering, precision logistics, and digital twin
-              expertise.
+              Pioneering the future of networking and data center infrastructure with custom engineering, precision logistics, and digital twin design expertise.
             </p>
           </div>
         </div>
@@ -26,18 +25,18 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Our Story</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Our Story - Cabling, Power, Connectivity - Simplified</h2>
               <p className="text-lg text-slate-600 mb-6">
-                [Placeholder: Company founding story, mission, and vision. Describe how Wave2Wave.io was established to
-                address the growing complexity of data center infrastructure deployment.]
+                For years, cabling was treated as an afterthought—just commodity cables. But as networks scaled, AI workloads exploded, and user and developer expectations surged, the pressure on IT teams, engineers, and data center managers intensified. Standing up new data centers, reconfiguring networks, maximizing uptime—and doing it all quickly—made one thing clear: the answer wasn’t cheap cables sold by the foot.
               </p>
               <p className="text-lg text-slate-600 mb-6">
-                [Placeholder: Key milestones, growth trajectory, and evolution of services. Highlight major achievements
-                and expansion into new markets.]
+                At Cabling123, we saw what others overlooked: cables aren’t just part of the network; they are the network. Every server, switch, and signal depends on the integrity of that physical layer. Today, success means deploying infrastructure faster, with higher quality, and with less friction.
               </p>
               <p className="text-lg text-slate-600">
-                [Placeholder: Current market position and future outlook. Describe Wave2Wave.io's role in shaping the
-                future of infrastructure solutions.]
+                Whether it’s building a new data center, standing up a rack, adding a server, reconfiguring a switch, or swapping out a PDU, our customers need more than a parts supplier—they need a trusted equipment provider and supply chain partner. That realization reshaped how we build and deliver. We design cabling systems as strategic assets—pre-labeled, precision-assembled, and purpose-built to accelerate deployment, improve reliability, and simplify scaling.
+              </p>
+              <p className="text-lg text-slate-600">
+                We don’t just sell cables. We deliver infrastructure you can trust—because the network begins where the cable does.
               </p>
             </div>
             <div className="bg-slate-100 rounded-lg p-8 text-center">
@@ -48,8 +47,7 @@ export default function AboutPage() {
                 height={400}
                 className="w-full h-64 object-cover rounded-lg mb-4"
               />
-              <p className="text-slate-600 italic">[Placeholder: Company photo or office image]</p>
-            </div>
+             </div>
           </div>
         </div>
       </section>
@@ -60,8 +58,7 @@ export default function AboutPage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Our Mission & Values</h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              [Placeholder: Core mission statement and company values that drive our approach to infrastructure
-              solutions.]
+              Cabling & Connectivity – From Commodity Vendor to Supply Chain Partner
             </p>
           </div>
 
@@ -71,11 +68,11 @@ export default function AboutPage() {
                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
                   <Target className="h-6 w-6 text-blue-600" />
                 </div>
-                <CardTitle className="text-xl">Innovation</CardTitle>
+                <CardTitle className="text-xl">Meeting Customer Needs</CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription>
-                  [Placeholder: Description of commitment to innovation and cutting-edge solutions]
+                  Commitment to innovative products and logistics to making customers more successful
                 </CardDescription>
               </CardContent>
             </Card>
@@ -89,7 +86,7 @@ export default function AboutPage() {
               </CardHeader>
               <CardContent>
                 <CardDescription>
-                  [Placeholder: Description of quality standards and commitment to excellence]
+                  Every product is has a thorough quality assurance test. 100% guarantee
                 </CardDescription>
               </CardContent>
             </Card>
@@ -99,11 +96,11 @@ export default function AboutPage() {
                 <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
                   <Users className="h-6 w-6 text-orange-600" />
                 </div>
-                <CardTitle className="text-xl">Partnership</CardTitle>
+                <CardTitle className="text-xl">Innovation</CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription>
-                  [Placeholder: Description of customer partnership approach and collaborative solutions]
+                 Delivering new products that solve customer problems
                 </CardDescription>
               </CardContent>
             </Card>
@@ -113,11 +110,11 @@ export default function AboutPage() {
                 <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
                   <Globe className="h-6 w-6 text-purple-600" />
                 </div>
-                <CardTitle className="text-xl">Global Reach</CardTitle>
+                <CardTitle className="text-xl">Simplify</CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription>
-                  [Placeholder: Description of global capabilities and international presence]
+                 Our goal: Networking, Power and Connectivity - Simplified
                 </CardDescription>
               </CardContent>
             </Card>
@@ -125,150 +122,39 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Leadership Team */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Leadership Team</h2>
-            <p className="text-xl text-slate-600">
-              [Placeholder: Introduction to the leadership team and their expertise]
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="border-0 shadow-lg text-center">
-              <CardHeader>
-                <Image
-                  src="/placeholder.svg?height=200&width=200&text=CEO+Photo"
-                  alt="CEO"
-                  width={200}
-                  height={200}
-                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
-                />
-                <CardTitle className="text-xl">[CEO Name]</CardTitle>
-                <CardDescription className="text-blue-600 font-semibold">Chief Executive Officer</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <CardDescription>[Placeholder: CEO background, experience, and vision for the company]</CardDescription>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg text-center">
-              <CardHeader>
-                <Image
-                  src="/placeholder.svg?height=200&width=200&text=CTO+Photo"
-                  alt="CTO"
-                  width={200}
-                  height={200}
-                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
-                />
-                <CardTitle className="text-xl">[CTO Name]</CardTitle>
-                <CardDescription className="text-blue-600 font-semibold">Chief Technology Officer</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <CardDescription>
-                  [Placeholder: CTO background, technical expertise, and innovation leadership]
-                </CardDescription>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg text-center">
-              <CardHeader>
-                <Image
-                  src="/placeholder.svg?height=200&width=200&text=VP+Photo"
-                  alt="VP Operations"
-                  width={200}
-                  height={200}
-                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
-                />
-                <CardTitle className="text-xl">[VP Name]</CardTitle>
-                <CardDescription className="text-blue-600 font-semibold">VP of Operations</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <CardDescription>
-                  [Placeholder: VP background, operational expertise, and logistics leadership]
-                </CardDescription>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
 
       {/* Company Stats */}
       <section className="py-16 bg-slate-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-900 mb-4">By the Numbers</h2>
-            <p className="text-xl text-slate-600">[Placeholder: Key company statistics and achievements]</p>
+            <p className="text-xl text-slate-600">Key company statistics and achievements</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-4xl font-bold text-blue-600 mb-2">[X]+</div>
+              <div className="text-4xl font-bold text-blue-600 mb-2">15+</div>
               <div className="text-lg font-semibold text-slate-900">Years in Business</div>
               <div className="text-slate-600">Serving the industry</div>
             </div>
 
             <div className="text-center">
-              <div className="text-4xl font-bold text-green-600 mb-2">[X]+</div>
+              <div className="text-4xl font-bold text-green-600 mb-2">200+</div>
               <div className="text-lg font-semibold text-slate-900">Projects Completed</div>
               <div className="text-slate-600">Successful deployments</div>
             </div>
 
             <div className="text-center">
-              <div className="text-4xl font-bold text-orange-600 mb-2">[X]+</div>
+              <div className="text-4xl font-bold text-orange-600 mb-2">30+</div>
               <div className="text-lg font-semibold text-slate-900">Enterprise Clients</div>
               <div className="text-slate-600">Trusted partnerships</div>
             </div>
 
             <div className="text-center">
-              <div className="text-4xl font-bold text-purple-600 mb-2">[X]%</div>
+              <div className="text-4xl font-bold text-purple-600 mb-2">100%</div>
               <div className="text-lg font-semibold text-slate-900">Customer Satisfaction</div>
               <div className="text-slate-600">Quality guarantee</div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Certifications & Awards */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Certifications & Recognition</h2>
-            <p className="text-xl text-slate-600">
-              [Placeholder: Industry certifications, awards, and recognition received]
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="border-0 shadow-lg text-center">
-              <CardHeader>
-                <CardTitle className="text-xl">Industry Certifications</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription>
-                  [Placeholder: List of relevant industry certifications and standards compliance]
-                </CardDescription>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg text-center">
-              <CardHeader>
-                <CardTitle className="text-xl">Awards & Recognition</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription>[Placeholder: Industry awards, recognition, and accolades received]</CardDescription>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg text-center">
-              <CardHeader>
-                <CardTitle className="text-xl">Partner Programs</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription>[Placeholder: Strategic partnerships and vendor certifications]</CardDescription>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </section>
