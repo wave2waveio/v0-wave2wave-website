@@ -12,9 +12,26 @@ export default function AboutPage() {
       <section className="bg-gradient-to-br from-slate-900 to-blue-900 text-white py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">About Wave2Wave.io</h1>
+            {/* Heading */}
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">About 
+            </h1>
+            {/* Logo */}
+            <Image
+              src="/images/wave2wave-logo.png"
+              alt="Wave2Wave.io"
+              width={300}
+              height={90}
+              className="h-16 w-auto mx-auto mb-6 brightness-0 invert"
+              unoptimized
+            />
+
+            {/* Heading */}
+           {/* <h1 className="text-4xl md:text-5xl font-bold mb-6">About Wave2Wave.io</h1>*/}
+
+            {/* Sub-heading */}
             <p className="text-xl mb-8 text-slate-200">
-              Pioneering the future of networking and data center infrastructure with custom engineering, precision logistics, and digital twin design expertise.
+              Pioneering the future of networking and data center infrastructure with custom engineering, precision
+              logistics, and digital twin design expertise.
             </p>
           </div>
         </div>
@@ -25,29 +42,45 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Our Story - Cabling, Power, Connectivity - Simplified</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+                Our Story - Cabling, Power, Connectivity - Simplified
+              </h2>
               <p className="text-lg text-slate-600 mb-6">
-                For years, cabling was treated as an afterthought—just commodity cables. But as networks scaled, AI workloads exploded, and user and developer expectations surged, the pressure on IT teams, engineers, and data center managers intensified. Standing up new data centers, reconfiguring networks, maximizing uptime—and doing it all quickly—made one thing clear: the answer wasn’t cheap cables sold by the foot.
+                For years, cabling was treated as an afterthought—just commodity cables. But as networks scaled, AI
+                workloads exploded, and user and developer expectations surged, the pressure on IT teams, engineers, and
+                data center managers intensified. Standing up new data centers, reconfiguring networks, maximizing
+                uptime—and doing it all quickly—made one thing clear: the answer wasn't cheap cables sold by the foot.
               </p>
               <p className="text-lg text-slate-600 mb-6">
-                At Cabling123, we saw what others overlooked: cables aren’t just part of the network; they are the network. Every server, switch, and signal depends on the integrity of that physical layer. Today, success means deploying infrastructure faster, with higher quality, and with less friction.
+                At Cabling123, we saw what others overlooked: cables aren't just part of the network; they are the
+                network. Every server, switch, and signal depends on the integrity of that physical layer. Today,
+                success means deploying infrastructure faster, with higher quality, and with less friction.
               </p>
               <p className="text-lg text-slate-600">
-                Whether it’s building a new data center, standing up a rack, adding a server, reconfiguring a switch, or swapping out a PDU, our customers need more than a parts supplier—they need a trusted equipment provider and supply chain partner. That realization reshaped how we build and deliver. We design cabling systems as strategic assets—pre-labeled, precision-assembled, and purpose-built to accelerate deployment, improve reliability, and simplify scaling.
+                Whether it's building a new data center, standing up a rack, adding a server, reconfiguring a switch, or
+                swapping out a PDU, our customers need more than a parts supplier—they need a trusted equipment provider
+                and supply chain partner. That realization reshaped how we build and deliver. We design cabling systems
+                as strategic assets—pre-labeled, precision-assembled, and purpose-built to accelerate deployment,
+                improve reliability, and simplify scaling.
               </p>
               <p className="text-lg text-slate-600">
-                We don’t just sell cables. We deliver infrastructure you can trust—because the network begins where the cable does.
+                We don't just sell cables. We deliver infrastructure you can trust—because the network begins where the
+                cable does.
               </p>
             </div>
             <div className="bg-slate-100 rounded-lg p-8 text-center">
               <Image
-                src="/placeholder.svg?height=400&width=500&text=Company+Photo"
-                alt="Wave2Wave.io Team"
+                src="/images/our-team.png"
+                alt="Wave2Wave.io Team Working in Data Center"
                 width={500}
                 height={400}
                 className="w-full h-64 object-cover rounded-lg mb-4"
+                unoptimized
               />
-             </div>
+              <p className="text-slate-600 text-sm">
+                Our team working with structured cabling infrastructure in a modern data center environment
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -99,9 +132,7 @@ export default function AboutPage() {
                 <CardTitle className="text-xl">Innovation</CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription>
-                 Delivering new products that solve customer problems
-                </CardDescription>
+                <CardDescription>Delivering new products that solve customer problems</CardDescription>
               </CardContent>
             </Card>
 
@@ -113,15 +144,12 @@ export default function AboutPage() {
                 <CardTitle className="text-xl">Simplify</CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription>
-                 Our goal: Networking, Power and Connectivity - Simplified
-                </CardDescription>
+                <CardDescription>Our goal: Networking, Power and Connectivity - Simplified</CardDescription>
               </CardContent>
             </Card>
           </div>
         </div>
       </section>
-
 
       {/* Company Stats */}
       <section className="py-16 bg-slate-50">
