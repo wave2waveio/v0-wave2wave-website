@@ -2,7 +2,7 @@
 
 import { Readable } from "stream"
 
-const MAX_FILE_SIZE = 5 * 1024 * 1024 // 5MB to match client-side limit
+const MAX_FILE_SIZE = 4 * 1024 * 1024 // 4MB to match client-side limit
 
 export async function submitContactForm(formData: FormData): Promise<{ success: boolean; message: string }> {
   const timestamp = new Date().toISOString()
@@ -84,7 +84,7 @@ export async function submitContactForm(formData: FormData): Promise<{ success: 
 
         // Check file size
         if (file.size > MAX_FILE_SIZE) {
-          fileErrors.push(`${file.name} is too large (max 5MB)`)
+          fileErrors.push(`${file.name} is too large (max 4MB)`)
           continue
         }
 
@@ -129,7 +129,7 @@ export async function submitContactForm(formData: FormData): Promise<{ success: 
         client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
         private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n"),
       },
-      scopes: ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"],
+      scopes: ["https://www.googleapis.com/auth/drive"],
     })
 
     let authClient
@@ -146,6 +146,26 @@ export async function submitContactForm(formData: FormData): Promise<{ success: 
 
     const sheets = google.sheets({ version: "v4", auth: authClient })
     const drive = google.drive({ version: "v3", auth: authClient })
+
+    // Validate Google Drive folder
+    console.log(`[${timestamp}] Validating Google Drive folder ID: ${process.env.GOOGLE_DRIVE_FOLDER_ID}`)
+    try {
+      const folderResponse = await drive.files.get({
+        fileId: process.env.GOOGLE_DRIVE_FOLDER_ID,
+        fields: "id, name, mimeType",
+        supportsAllDrives: true, // Support Shared Drives
+      })
+      if (folderResponse.data.mimeType !== "application/vnd.google-apps.folder") {
+        throw new Error(`Invalid Google Drive folder ID: ${process.env.GOOGLE_DRIVE_FOLDER_ID} is not a folder`)
+      }
+      console.log(`[${timestamp}] Google Drive folder validated: ${folderResponse.data.name}`)
+    } catch (folderError: any) {
+      console.error(`[${timestamp}] Google Drive folder validation failed:`, folderError)
+      return {
+        success: false,
+        message: `Invalid Google Drive folder configuration: ${folderError.message || "Unknown error"}. Please contact support.`,
+      }
+    }
 
     // Upload files to Google Drive
     const fileUrls = ["", "", "", "", ""] // Initialize 5 slots for URLs
@@ -176,6 +196,7 @@ export async function submitContactForm(formData: FormData): Promise<{ success: 
           resource: fileMetadata,
           media,
           fields: "id,webViewLink",
+          supportsAllDrives: true, // Support Shared Drives
         })
         const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error("Upload timeout")), 60000))
 
@@ -190,6 +211,7 @@ export async function submitContactForm(formData: FormData): Promise<{ success: 
           await drive.permissions.create({
             fileId: fileResponse.data.id,
             requestBody: { role: "reader", type: "anyone" },
+            supportsAllDrives: true, // Support Shared Drives
           })
           console.log(`[${timestamp}] File uploaded and permissions set: ${file.name}`)
         } catch (permError: any) {
@@ -253,9 +275,11 @@ export async function submitContactForm(formData: FormData): Promise<{ success: 
 
     let message = `There was an error sending your message: ${error.message || "Unknown error"}. Please try again or contact us at info@wave2wave.io`
     if (error.message.includes("Payload Too Large") || error.message.includes("FUNCTION_PAYLOAD_TOO_LARGE")) {
-      message = "The uploaded file is too large (max 5MB). Please upload a smaller file or try without files."
+      message = "The uploaded file is too large (max 4MB). Please upload a smaller file or try without files."
     } else if (error.message.includes("pipe is not a function")) {
       message = "Error processing file upload. Please try a different file or contact us at info@wave2wave.io"
+    } else if (error.message.includes("File not found") || error.status === 404) {
+      message = "Google Drive folder not found or inaccessible. Please contact support at info@wave2wave.io"
     }
 
     return {
