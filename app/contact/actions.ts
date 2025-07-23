@@ -31,6 +31,15 @@ export async function submitContactForm(formData: FormData): Promise<{ success: 
       }
     }
 
+console.log("📦 Files received before encoding:", files.map((f, idx) => ({
+  index: idx,
+  name: f?.name,
+  size: f?.size,
+  type: f?.type,
+  isFile: f instanceof File,
+})))
+
+
     // Base64 encode for uploader
     const encodeFile = async (file: File) => {
       const buffer = Buffer.from(await file.arrayBuffer())
@@ -46,7 +55,7 @@ export async function submitContactForm(formData: FormData): Promise<{ success: 
         .filter((f) => f && f.name && f.size > 0 && f.type) // ✅ filter out invalid entries
     .map(encodeFile)
     )
-    
+
     const payload = {
       timestamp,
       firstName: formData.get("firstName")?.toString() || "",
