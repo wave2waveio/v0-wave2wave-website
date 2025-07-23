@@ -11,8 +11,8 @@ export const metadata: Metadata = {
   title: "Wave2Wave.io - Custom Structured Cabling, Data Center & DCIM Solutions",
   description:
     "Wave2Wave.io designs, delivers, and supports the critical physical infrastructure behind tomorrow's networks — combining custom-engineered structured cabling, precision logistics, and digital twin-driven services.",
-  url: "https://www.wave2wave.io"
-  siteName: "Wave2Wave.io"
+  url: "https://www.wave2wave.io",
+  siteName: "Wave2Wave.io",
   images: [
   {     
         url: '/public/images/wave2wave-logo.png', // Relative URL works for Vercel deployment
