@@ -7,8 +7,15 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
+    domains: ['localhost'],
     unoptimized: true,
   },
-}
+  experimental: {
+    serverActions: {
+      allowedOrigins: ['localhost:3000', '*.vercel.app'],
+      bodySizeLimit: '20mb', // ✅ Added to allow larger file uploads
+    },
+  },
+};
 
-export default nextConfig
+export default nextConfig;
