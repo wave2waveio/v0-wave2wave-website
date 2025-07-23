@@ -11,12 +11,25 @@ export const metadata: Metadata = {
   title: "Wave2Wave.io - Custom Structured Cabling, Data Center & DCIM Solutions",
   description:
     "Wave2Wave.io designs, delivers, and supports the critical physical infrastructure behind tomorrow's networks — combining custom-engineered structured cabling, precision logistics, and digital twin-driven services.",
+  url: "https://www.wave2wave.io"
+  siteName: "Wave2Wave.io"
+  images: [
+  {     
+        url: '/public/images/wave2wave-logo.png', // Relative URL works for Vercel deployment
+        width: 1200,
+        height: 630,
+        alt: 'Wave2Wave Logo',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+    generator: 'v0.dev'
+},
   icons: {
     icon: "/favicon.png",
     shortcut: "/favicon.png",
     apple: "/favicon.png",
   },
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({
