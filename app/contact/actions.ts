@@ -60,12 +60,23 @@ export async function submitContactForm(formData: FormData): Promise<{ success: 
     if (!json.success) throw new Error(json.message || "Google Apps Script upload failed")
 
     // Notify via second Apps Script (email, etc.)
-    await fetch(GOOGLE_APPS_SCRIPT_NOTIFY_URL, {
-      method: "POST",
-      body: JSON.stringify(payload),
-      headers: { "Content-Type": "application/json" },
-    })
+ try {
+  const notifyRes = await fetch(GOOGLE_APPS_SCRIPT_NOTIFY_URL, {
+    method: "POST",
+    body: JSON.stringify(payload),
+    headers: { "Content-Type": "application/json" },
+  })
 
+  const notifyJson = await notifyRes.json()
+
+  if (!notifyJson.success) {
+    console.warn("Notification script responded with error:", notifyJson.message)
+  } else {
+    console.log("Notification sent successfully")
+  }
+} catch (notifyError: any) {
+  console.error("Error calling notification script:", notifyError.message)
+}
     return { success: true, message: "Your message was sent successfully!" }
   } catch (error: any) {
     console.error("Form submission error:", error)
