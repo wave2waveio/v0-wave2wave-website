@@ -4,6 +4,19 @@ export async function submitContactForm(formData: FormData): Promise<{ success: 
   const GOOGLE_APPS_SCRIPT_URL = process.env.GOOGLE_APPS_SCRIPT_URL!
   const GOOGLE_APPS_SCRIPT_NOTIFY_URL = process.env.GOOGLE_APPS_SCRIPT_NOTIFY_URL!
 
+  const timestamp = new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+    timeZone: 'America/Los_Angeles',
+    timeZoneName: 'short',
+  }).format(new Date()).replace(/,/, '').replace(/(\d+)\/(\d+)\/(\d+)/, '$3-$1-$2')
+
+
   try {
     const files: File[] = []
     for (let i = 0; i < 5; i++) {
@@ -25,7 +38,7 @@ export async function submitContactForm(formData: FormData): Promise<{ success: 
     const filesEncoded = await Promise.all(files.map(encodeFile))
 
     const payload = {
-      timestamp: new Date().toISOString(),
+      timestamp,
       firstName: formData.get("firstName")?.toString() || "",
       lastName: formData.get("lastName")?.toString() || "",
       email: formData.get("email")?.toString() || "",
