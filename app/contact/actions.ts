@@ -41,8 +41,12 @@ export async function submitContactForm(formData: FormData): Promise<{ success: 
       }
     }
 
-    const filesEncoded = await Promise.all(files.map(encodeFile))
-
+  const filesEncoded = await Promise.all(
+   files
+        .filter((f) => f && f.name && f.size > 0 && f.type) // ✅ filter out invalid entries
+    .map(encodeFile)
+    )
+    
     const payload = {
       timestamp,
       firstName: formData.get("firstName")?.toString() || "",
