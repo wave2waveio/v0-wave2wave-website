@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   title: "Wave2Wave.io - Custom Structured Cabling, Data Center & DCIM Solutions",
   description:
     "Wave2Wave.io designs, delivers, and supports the critical physical infrastructure behind tomorrow's networks — combining custom-engineered structured cabling, precision logistics, and digital twin-driven services.",
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
     generator: 'v0.dev'
 }
 
