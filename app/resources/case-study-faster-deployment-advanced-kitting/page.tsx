@@ -45,7 +45,6 @@ export default function KittingCaseStudyPage() {
               width={800}
               height={400}
               className="w-full h-64 md:h-96 object-cover rounded-lg mb-8"
-              unoptimized
             />
           </div>
         </div>
