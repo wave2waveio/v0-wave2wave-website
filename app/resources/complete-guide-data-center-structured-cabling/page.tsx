@@ -52,163 +52,71 @@ export default function StructuredCablingGuidePage() {
       </section>
 
       {/* Article Content */}
-      <section className="py-12">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="prose prose-lg max-w-none">
-              <p className="text-xl text-slate-600 mb-8">
-                Structured cabling forms the backbone of modern data center infrastructure. This comprehensive guide
-                covers everything from planning and design to implementation and maintenance of structured cabling
-                systems that support today's high-performance computing environments.
-              </p>
+<section class="py-12">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto">
+      <div class="prose prose-lg max-w-none">
+        <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-6">
+          Fiber Optic Systems: Technology and Products
+        </h2>
+        <p class="text-slate-700 mb-6">
+          Fiber optics enable high-speed data transmission with minimal signal loss. Data centers use both multi-mode and single-mode fiber:
+        </p>
+        <ul class="list-disc pl-6 mb-6 text-slate-700">
+          <li>Multi-mode (OM3, OM4, OM5): Ideal for short-distance, high-speed links (up to 400G in some cases). Lower cost transceivers.</li>
+          <li>Single-mode (OS2): Supports long-distance transmission (up to 40 km and beyond). Required for DWDM and high-density spine-leaf fabrics.</li>
+        </ul>
+        <p class="text-slate-700 mb-6">Fiber Products Include:</p>
+        <ul class="list-disc pl-6 mb-6 text-slate-700">
+          <li>Pre-terminated trunk cables (MTP/MPO)</li>
+          <li>Fanout/breakout cables (MTP to LC)</li>
+          <li>Fiber cassettes and patch panels</li>
+          <li>Rack-mounted fiber enclosures</li>
+          <li>Optical transceivers (SFP+, QSFP28, QSFP-DD, OSFP)</li>
+          <li>Test and inspection tools (OTDR, power meters, fiber scopes)</li>
+        </ul>
 
-              <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-6">What is Structured Cabling?</h2>
-              <p className="text-slate-700 mb-6">
-                Structured cabling is a standardized approach to cabling infrastructure that consists of a number of
-                standardized smaller elements called subsystems. It provides a comprehensive telecommunications
-                infrastructure that serves a wide range of uses, such as providing telephone service or transmitting
-                data through a computer network.
-              </p>
+        <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-6">
+          Ethernet Infrastructure: Technology and Products
+        </h2>
+        <p class="text-slate-700 mb-6">
+          Ethernet still plays a critical role in modern networks—particularly within the rack:
+        </p>
+        <ul class="list-disc pl-6 mb-6 text-slate-700">
+          <li>Cat6A: 10Gbps up to 100m; shielded or unshielded</li>
+          <li>Cat8: 25Gbps and 40Gbps up to 30m; ideal for short top-of-rack links</li>
+          <li>Modular patch panels: Easy reconfiguration</li>
+          <li>Field-terminated plugs: Flexible for custom lengths</li>
+          <li>Color-coded patch cords: Simplifies troubleshooting and change management</li>
+        </ul>
 
-              <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-6">
-                Key Components of Data Center Structured Cabling
-              </h2>
+        <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-6">
+          Deployment Logistics: Kitting, Labeling, and Efficiency
+        </h2>
+        <p class="text-slate-700 mb-6">
+          One of the most overlooked but impactful factors in structured cabling is how your components arrive at the job site. Efficient deployment reduces installation time, labor costs, and human error.
+        </p>
 
-              <h3 className="text-xl font-semibold text-slate-900 mt-8 mb-4">1. Horizontal Cabling</h3>
-              <p className="text-slate-700 mb-4">
-                The horizontal cabling subsystem extends from the telecommunications room to the individual workstation
-                outlets. In data centers, this typically includes:
-              </p>
-              <ul className="list-disc pl-6 mb-6 text-slate-700">
-                <li>Copper cables (Cat6, Cat6A, Cat8)</li>
-                <li>Fiber optic cables (single-mode and multi-mode)</li>
-                <li>Patch panels and cross-connects</li>
-                <li>Outlet boxes and faceplates</li>
-              </ul>
+        <h3 class="text-xl font-semibold text-slate-900 mt-8 mb-4">Why Kitting Matters</h3>
+        <ul class="list-disc pl-6 mb-6 text-slate-700">
+          <li>Receive all components per rack rather than by type</li>
+          <li>Eliminate time spent sorting through mixed hardware</li>
+          <li>Each box labeled with rack ID, U position, server/device type</li>
+          <li>Include installation map, labeling guide, and port diagram</li>
+        </ul>
 
-              <h3 className="text-xl font-semibold text-slate-900 mt-8 mb-4">2. Backbone Cabling</h3>
-              <p className="text-slate-700 mb-4">
-                Backbone cabling provides interconnection between telecommunications rooms, equipment rooms, and
-                entrance facilities. This includes:
-              </p>
-              <ul className="list-disc pl-6 mb-6 text-slate-700">
-                <li>High-fiber-count cables</li>
-                <li>Main distribution frames (MDF)</li>
-                <li>Intermediate distribution frames (IDF)</li>
-                <li>Vertical cable management systems</li>
-              </ul>
+        <h3 class="text-xl font-semibold text-slate-900 mt-8 mb-4">Best Practices</h3>
+        <ul class="list-disc pl-6 mb-6 text-slate-700">
+          <li>Use color-coded cables (e.g., blue for Ethernet, yellow for SM fiber, aqua for MM fiber)</li>
+          <li>Use pre-printed port labels and cable flags</li>
+          <li>Include slack management and cable support accessories</li>
+          <li>Deliver cassettes and trunks pre-labeled and polarity verified</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-              <h3 className="text-xl font-semibold text-slate-900 mt-8 mb-4">3. Work Area Components</h3>
-              <p className="text-slate-700 mb-6">
-                Work area components connect end-user equipment to the horizontal cabling system, including patch cords,
-                adapters, and outlet boxes.
-              </p>
-
-              <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-6">Planning Your Structured Cabling System</h2>
-
-              <h3 className="text-xl font-semibold text-slate-900 mt-8 mb-4">Assessment and Requirements Gathering</h3>
-              <p className="text-slate-700 mb-4">
-                Before designing your structured cabling system, conduct a thorough assessment of your current and
-                future needs:
-              </p>
-              <ul className="list-disc pl-6 mb-6 text-slate-700">
-                <li>Current bandwidth requirements</li>
-                <li>Projected growth over 5-10 years</li>
-                <li>Types of applications and services</li>
-                <li>Physical space constraints</li>
-                <li>Environmental considerations</li>
-              </ul>
-
-              <h3 className="text-xl font-semibold text-slate-900 mt-8 mb-4">Design Considerations</h3>
-              <p className="text-slate-700 mb-4">Key design factors include:</p>
-              <ul className="list-disc pl-6 mb-6 text-slate-700">
-                <li>
-                  <strong>Scalability:</strong> Design for future expansion and technology upgrades
-                </li>
-                <li>
-                  <strong>Redundancy:</strong> Implement backup paths for critical connections
-                </li>
-                <li>
-                  <strong>Cable Management:</strong> Plan for proper organization and accessibility
-                </li>
-                <li>
-                  <strong>Standards Compliance:</strong> Follow TIA/EIA and ISO/IEC standards
-                </li>
-              </ul>
-
-              <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-6">Best Practices for Implementation</h2>
-
-              <h3 className="text-xl font-semibold text-slate-900 mt-8 mb-4">Cable Selection</h3>
-              <p className="text-slate-700 mb-4">Choose the right cable types based on your specific requirements:</p>
-              <ul className="list-disc pl-6 mb-6 text-slate-700">
-                <li>
-                  <strong>Cat6A:</strong> Supports 10 Gigabit Ethernet up to 100 meters
-                </li>
-                <li>
-                  <strong>Cat8:</strong> Supports 25/40 Gigabit Ethernet for shorter distances
-                </li>
-                <li>
-                  <strong>Single-mode Fiber:</strong> Long-distance, high-bandwidth applications
-                </li>
-                <li>
-                  <strong>Multi-mode Fiber:</strong> Shorter distances, cost-effective for many applications
-                </li>
-              </ul>
-
-              <h3 className="text-xl font-semibold text-slate-900 mt-8 mb-4">Installation Guidelines</h3>
-              <ul className="list-disc pl-6 mb-6 text-slate-700">
-                <li>Maintain proper bend radius for all cables</li>
-                <li>Use appropriate cable management systems</li>
-                <li>Label all cables and connections clearly</li>
-                <li>Test all connections before final acceptance</li>
-                <li>Document the entire installation thoroughly</li>
-              </ul>
-
-              <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-6">Testing and Certification</h2>
-              <p className="text-slate-700 mb-4">
-                Proper testing ensures your structured cabling system meets performance specifications:
-              </p>
-              <ul className="list-disc pl-6 mb-6 text-slate-700">
-                <li>
-                  <strong>Copper Testing:</strong> Use certified cable testers to verify performance parameters
-                </li>
-                <li>
-                  <strong>Fiber Testing:</strong> Perform OTDR testing and insertion loss measurements
-                </li>
-                <li>
-                  <strong>Documentation:</strong> Maintain detailed test results and certification reports
-                </li>
-                <li>
-                  <strong>Acceptance Testing:</strong> Verify system performance meets design specifications
-                </li>
-              </ul>
-
-              <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-6">Maintenance and Lifecycle Management</h2>
-              <p className="text-slate-700 mb-4">Ongoing maintenance ensures optimal performance and longevity:</p>
-              <ul className="list-disc pl-6 mb-6 text-slate-700">
-                <li>Regular visual inspections of cable infrastructure</li>
-                <li>Periodic performance testing and monitoring</li>
-                <li>Proper change management procedures</li>
-                <li>Planning for technology refresh cycles</li>
-              </ul>
-
-              <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-6">Conclusion</h2>
-              <p className="text-slate-700 mb-6">
-                A well-designed structured cabling system is essential for supporting current and future data center
-                operations. By following industry standards, implementing best practices, and working with experienced
-                professionals, you can create a robust infrastructure that supports your organization's growth and
-                technology evolution.
-              </p>
-              <p className="text-slate-700 mb-6">
-                At Wave2Wave.io, we specialize in designing and implementing custom structured cabling solutions that
-                meet the unique requirements of modern data centers. Our team of experts can help you plan, design, and
-                deploy a structured cabling system that provides the performance, scalability, and reliability your
-                organization needs.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Related Articles */}
       <section className="py-16 bg-slate-50">

@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { CheckCircle, ArrowRight, Building2, Wifi, Users, Laptop } from "lucide-react"
+import { CheckCircle, ArrowRight, Building2, Wifi, Users, Laptop, Server } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -17,6 +17,7 @@ export default function IndustriesPage() {
             </p>
             <div className="flex flex-wrap justify-center gap-6 text-sm">
               <span className="bg-white/10 px-4 py-2 rounded-full">Enterprise Data Centers</span>
+              <span className="bg-white/10 px-4 py-2 rounded-full">Commercial Data Centers</span>
               <span className="bg-white/10 px-4 py-2 rounded-full">Telecommunications</span>
               <span className="bg-white/10 px-4 py-2 rounded-full">System Integrators</span>
               <span className="bg-white/10 px-4 py-2 rounded-full">Enterprise IT</span>
@@ -43,7 +44,7 @@ export default function IndustriesPage() {
                     <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
                       <Building2 className="h-5 w-5 text-blue-600" />
                     </div>
-                    <h3 className="text-2xl font-bold">Enterprise & Commercial Data Centers</h3>
+                    <h3 className="text-2xl font-bold">Enterprise Data Centers</h3>
                   </div>
                   <p className="text-slate-600">
                     From hyperscale facilities to edge computing deployments, we deliver the precision infrastructure
@@ -71,7 +72,46 @@ export default function IndustriesPage() {
                   </ul>
                   <div className="mt-6 pt-4 border-t border-slate-200">
                     <p className="text-sm text-slate-500 mb-2">Typical Project Scale:</p>
-                    <p className="text-sm font-medium text-slate-700">200-2000+ racks, multi-hall deployments</p>
+                    <p className="text-sm font-medium text-slate-700">1 to 20 racks; Lab & On-Prem Data centers</p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
+                      <Server className="h-5 w-5 text-indigo-600" />
+                    </div>
+                    <h3 className="text-2xl font-bold">Commercial Data Centers</h3>
+                  </div>
+                  <p className="text-slate-600">
+                    Scalable infrastructure solutions for colocation providers, cloud service providers, and managed
+                    hosting facilities requiring high-density, multi-tenant environments.
+                  </p>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3 text-slate-600">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span>Multi-tenant cabling and connectivity solutions</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span>High-density fiber distribution systems</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span>Scalable power and cooling infrastructure</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span>Modular deployment and expansion solutions</span>
+                    </li>
+                  </ul>
+                  <div className="mt-6 pt-4 border-t border-slate-200">
+                    <p className="text-sm text-slate-500 mb-2">Typical Project Scale:</p>
+                    <p className="text-sm font-medium text-slate-700">50+ racks; Colocation & cloud facilities</p>
                   </div>
                 </CardContent>
               </Card>

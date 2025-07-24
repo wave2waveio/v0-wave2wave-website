@@ -140,11 +140,11 @@ export default function ResourcesPage() {
         </div>
       </section>
 
-      {/* Recent Articles */}
+      {/* More Articles */}
       <section className="py-16 bg-slate-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Recent Articles</h2>
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">More Articles</h2>
             <p className="text-xl text-slate-600">Stay up to date with the latest insights and technical knowledge</p>
           </div>
 
@@ -180,6 +180,7 @@ export default function ResourcesPage() {
             ))}
           </div>
 
+{/*
           <div className="text-center mt-12">
             <Button variant="outline" size="lg">
               View All Articles
@@ -188,7 +189,7 @@ export default function ResourcesPage() {
           </div>
         </div>
       </section>
-
+*/}
       {/* CTA Section */}
       <section className="py-16 bg-blue-900 text-white">
         <div className="container mx-auto px-4 text-center">
