@@ -25,7 +25,7 @@ export default function ResourcesPage() {
       category: "Industry Insights",
       readTime: "8 min read",
       date: "December 10, 2024",
-      image: "/placeholder.svg?height=200&width=300&text=DCIM+Digital+Twins",
+      image: "/placeholder.svg?height=200&width=300&text=DCIM+Digital+Twin",
       slug: "dcim-digital-twins-reduce-deployment-risk",
     },
     {
@@ -35,7 +35,7 @@ export default function ResourcesPage() {
       category: "Case Study",
       readTime: "6 min read",
       date: "December 5, 2024",
-      image: "/placeholder.svg?height=200&width=300&text=Kitting+Case+Study",
+      image: "/placeholder.svg?height=200&width=300&text=Advanced+Kitting+Case+Study",
       slug: "case-study-faster-deployment-advanced-kitting",
     },
   ]
@@ -106,7 +106,6 @@ export default function ResourcesPage() {
                     width={300}
                     height={200}
                     className="w-full h-48 object-cover rounded-lg mb-4"
-                    unoptimized
                   />
                   <div className="flex items-center justify-between mb-2">
                     <Badge variant="secondary">{article.category}</Badge>

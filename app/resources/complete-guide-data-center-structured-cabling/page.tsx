@@ -41,7 +41,7 @@ export default function StructuredCablingGuidePage() {
             </div>
 
             <Image
-              src="/placeholder.svg?height=400&width=800&text=Data+Center+Structured+Cabling"
+              src="/images/solutions/structured-cabling-hardware.jpeg"
               alt="Data Center Structured Cabling"
               width={800}
               height={400}
@@ -52,71 +52,78 @@ export default function StructuredCablingGuidePage() {
       </section>
 
       {/* Article Content */}
-<section class="py-12">
-  <div class="container mx-auto px-4">
-    <div class="max-w-4xl mx-auto">
-      <div class="prose prose-lg max-w-none">
-        <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-6">
-          Fiber Optic Systems: Technology and Products
-        </h2>
-        <p class="text-slate-700 mb-6">
-          Fiber optics enable high-speed data transmission with minimal signal loss. Data centers use both multi-mode and single-mode fiber:
-        </p>
-        <ul class="list-disc pl-6 mb-6 text-slate-700">
-          <li>Multi-mode (OM3, OM4, OM5): Ideal for short-distance, high-speed links (up to 400G in some cases). Lower cost transceivers.</li>
-          <li>Single-mode (OS2): Supports long-distance transmission (up to 40 km and beyond). Required for DWDM and high-density spine-leaf fabrics.</li>
-        </ul>
-        <p class="text-slate-700 mb-6">Fiber Products Include:</p>
-        <ul class="list-disc pl-6 mb-6 text-slate-700">
-          <li>Pre-terminated trunk cables (MTP/MPO)</li>
-          <li>Fanout/breakout cables (MTP to LC)</li>
-          <li>Fiber cassettes and patch panels</li>
-          <li>Rack-mounted fiber enclosures</li>
-          <li>Optical transceivers (SFP+, QSFP28, QSFP-DD, OSFP)</li>
-          <li>Test and inspection tools (OTDR, power meters, fiber scopes)</li>
-        </ul>
+      <section className="py-12">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="prose prose-lg max-w-none">
+              <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-6">
+                Fiber Optic Systems: Technology and Products
+              </h2>
+              <p className="text-slate-700 mb-6">
+                Fiber optics enable high-speed data transmission with minimal signal loss. Data centers use both
+                multi-mode and single-mode fiber:
+              </p>
+              <ul className="list-disc pl-6 mb-6 text-slate-700">
+                <li>
+                  Multi-mode (OM3, OM4, OM5): Ideal for short-distance, high-speed links (up to 400G in some cases).
+                  Lower cost transceivers.
+                </li>
+                <li>
+                  Single-mode (OS2): Supports long-distance transmission (up to 40 km and beyond). Required for DWDM and
+                  high-density spine-leaf fabrics.
+                </li>
+              </ul>
+              <p className="text-slate-700 mb-6">Fiber Products Include:</p>
+              <ul className="list-disc pl-6 mb-6 text-slate-700">
+                <li>Pre-terminated trunk cables (MTP/MPO)</li>
+                <li>Fanout/breakout cables (MTP to LC)</li>
+                <li>Fiber cassettes and patch panels</li>
+                <li>Rack-mounted fiber enclosures</li>
+                <li>Optical transceivers (SFP+, QSFP28, QSFP-DD, OSFP)</li>
+                <li>Test and inspection tools (OTDR, power meters, fiber scopes)</li>
+              </ul>
 
-        <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-6">
-          Ethernet Infrastructure: Technology and Products
-        </h2>
-        <p class="text-slate-700 mb-6">
-          Ethernet still plays a critical role in modern networks—particularly within the rack:
-        </p>
-        <ul class="list-disc pl-6 mb-6 text-slate-700">
-          <li>Cat6A: 10Gbps up to 100m; shielded or unshielded</li>
-          <li>Cat8: 25Gbps and 40Gbps up to 30m; ideal for short top-of-rack links</li>
-          <li>Modular patch panels: Easy reconfiguration</li>
-          <li>Field-terminated plugs: Flexible for custom lengths</li>
-          <li>Color-coded patch cords: Simplifies troubleshooting and change management</li>
-        </ul>
+              <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-6">
+                Ethernet Infrastructure: Technology and Products
+              </h2>
+              <p className="text-slate-700 mb-6">
+                Ethernet still plays a critical role in modern networks—particularly within the rack:
+              </p>
+              <ul className="list-disc pl-6 mb-6 text-slate-700">
+                <li>Cat6A: 10Gbps up to 100m; shielded or unshielded</li>
+                <li>Cat8: 25Gbps and 40Gbps up to 30m; ideal for short top-of-rack links</li>
+                <li>Modular patch panels: Easy reconfiguration</li>
+                <li>Field-terminated plugs: Flexible for custom lengths</li>
+                <li>Color-coded patch cords: Simplifies troubleshooting and change management</li>
+              </ul>
 
-        <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-6">
-          Deployment Logistics: Kitting, Labeling, and Efficiency
-        </h2>
-        <p class="text-slate-700 mb-6">
-          One of the most overlooked but impactful factors in structured cabling is how your components arrive at the job site. Efficient deployment reduces installation time, labor costs, and human error.
-        </p>
+              <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-6">
+                Deployment Logistics: Kitting, Labeling, and Efficiency
+              </h2>
+              <p className="text-slate-700 mb-6">
+                One of the most overlooked but impactful factors in structured cabling is how your components arrive at
+                the job site. Efficient deployment reduces installation time, labor costs, and human error.
+              </p>
 
-        <h3 class="text-xl font-semibold text-slate-900 mt-8 mb-4">Why Kitting Matters</h3>
-        <ul class="list-disc pl-6 mb-6 text-slate-700">
-          <li>Receive all components per rack rather than by type</li>
-          <li>Eliminate time spent sorting through mixed hardware</li>
-          <li>Each box labeled with rack ID, U position, server/device type</li>
-          <li>Include installation map, labeling guide, and port diagram</li>
-        </ul>
+              <h3 className="text-xl font-semibold text-slate-900 mt-8 mb-4">Why Kitting Matters</h3>
+              <ul className="list-disc pl-6 mb-6 text-slate-700">
+                <li>Receive all components per rack rather than by type</li>
+                <li>Eliminate time spent sorting through mixed hardware</li>
+                <li>Each box labeled with rack ID, U position, server/device type</li>
+                <li>Include installation map, labeling guide, and port diagram</li>
+              </ul>
 
-        <h3 class="text-xl font-semibold text-slate-900 mt-8 mb-4">Best Practices</h3>
-        <ul class="list-disc pl-6 mb-6 text-slate-700">
-          <li>Use color-coded cables (e.g., blue for Ethernet, yellow for SM fiber, aqua for MM fiber)</li>
-          <li>Use pre-printed port labels and cable flags</li>
-          <li>Include slack management and cable support accessories</li>
-          <li>Deliver cassettes and trunks pre-labeled and polarity verified</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
+              <h3 className="text-xl font-semibold text-slate-900 mt-8 mb-4">Best Practices</h3>
+              <ul className="list-disc pl-6 mb-6 text-slate-700">
+                <li>Use color-coded cables (e.g., blue for Ethernet, yellow for SM fiber, aqua for MM fiber)</li>
+                <li>Use pre-printed port labels and cable flags</li>
+                <li>Include slack management and cable support accessories</li>
+                <li>Deliver cassettes and trunks pre-labeled and polarity verified</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Related Articles */}
       <section className="py-16 bg-slate-50">

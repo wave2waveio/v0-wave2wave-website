@@ -40,7 +40,7 @@ export default function DCIMDigitalTwinsPage() {
             </div>
 
             <Image
-              src="/placeholder.svg?height=400&width=800&text=DCIM+Digital+Twin+Visualization"
+              src="/images/solutions/dcim-digital-twin.jpeg"
               alt="DCIM Digital Twin Visualization"
               width={800}
               height={400}
@@ -51,120 +51,203 @@ export default function DCIMDigitalTwinsPage() {
       </section>
 
       {/* Article Content */}
-      <section class="py-12">
-  <div class="container mx-auto px-4">
-    <div class="max-w-4xl mx-auto">
-      <div class="prose prose-lg max-w-none">
-        <p class="text-xl text-slate-600 mb-8">
-          Data center deployments are complex, high-stakes projects where even minor errors can lead to significant delays, rework, and budget overruns. Digital twin technology—powered by modern Data Center Infrastructure Management (DCIM) systems—is transforming how infrastructure is planned, validated, and deployed by providing a real-time, data-rich virtual model of the physical environment.
-        </p>
+      <section className="py-12">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="prose prose-lg max-w-none">
+              <p className="text-xl text-slate-600 mb-8">
+                Data center deployments are complex, high-stakes projects where even minor errors can lead to
+                significant delays, rework, and budget overruns. Digital twin technology—powered by modern Data Center
+                Infrastructure Management (DCIM) systems—is transforming how infrastructure is planned, validated, and
+                deployed by providing a real-time, data-rich virtual model of the physical environment.
+              </p>
 
-        <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-6">What is a DCIM Digital Twin?</h2>
-        <p class="text-slate-700 mb-6">
-          A DCIM digital twin is a real-time, virtual replica of your data center that integrates physical asset data, live environmental telemetry, and operational status into an interactive 3D model. Unlike static diagrams or rack elevation drawings, a digital twin synchronizes with your environment dynamically—capturing changes from live systems, sensors, or network discovery.
-        </p>
+              <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-6">What is a DCIM Digital Twin?</h2>
+              <p className="text-slate-700 mb-6">
+                A DCIM digital twin is a real-time, virtual replica of your data center that integrates physical asset
+                data, live environmental telemetry, and operational status into an interactive 3D model. Unlike static
+                diagrams or rack elevation drawings, a digital twin synchronizes with your environment
+                dynamically—capturing changes from live systems, sensors, or network discovery.
+              </p>
 
-        <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-6">5 Key Ways Digital Twins Reduce Deployment Risk</h2>
+              <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-6">
+                5 Key Ways Digital Twins Reduce Deployment Risk
+              </h2>
 
-        <h3 class="text-xl font-semibold text-slate-900 mt-8 mb-4">1. Accurate Space Planning and Visualization</h3>
-        <p class="text-slate-700 mb-4">
-          Digital twins provide an exact virtual representation of your space before anything is installed:
-        </p>
-        <ul class="list-disc pl-6 mb-6 text-slate-700">
-          <li><strong>Rack-level accuracy:</strong> Visualize specific equipment and spacing</li>
-          <li><strong>Cable routing:</strong> Design and validate routes prior to pulling</li>
-          <li><strong>Clearance verification:</strong> Ensure airflow, power access, and service paths</li>
-          <li><strong>Conflict detection:</strong> Identify obstructions or access issues proactively</li>
-        </ul>
+              <h3 className="text-xl font-semibold text-slate-900 mt-8 mb-4">
+                1. Accurate Space Planning and Visualization
+              </h3>
+              <p className="text-slate-700 mb-4">
+                Digital twins provide an exact virtual representation of your space before anything is installed:
+              </p>
+              <ul className="list-disc pl-6 mb-6 text-slate-700">
+                <li>
+                  <strong>Rack-level accuracy:</strong> Visualize specific equipment and spacing
+                </li>
+                <li>
+                  <strong>Cable routing:</strong> Design and validate routes prior to pulling
+                </li>
+                <li>
+                  <strong>Clearance verification:</strong> Ensure airflow, power access, and service paths
+                </li>
+                <li>
+                  <strong>Conflict detection:</strong> Identify obstructions or access issues proactively
+                </li>
+              </ul>
 
-        <h3 class="text-xl font-semibold text-slate-900 mt-8 mb-4">2. Precise Resource Allocation</h3>
-        <p class="text-slate-700 mb-4">
-          Eliminate guesswork when procuring materials or allocating power and cooling resources:
-        </p>
-        <ul class="list-disc pl-6 mb-6 text-slate-700">
-          <li><strong>Cable lengths:</strong> Determine exact lengths and types required</li>
-          <li><strong>Power requirements:</strong> Allocate capacity down to the PDU outlet level</li>
-          <li><strong>Cooling analysis:</strong> Simulate hot and cold aisle performance</li>
-          <li><strong>Material optimization:</strong> Reduce surplus and over-ordering</li>
-        </ul>
+              <h3 className="text-xl font-semibold text-slate-900 mt-8 mb-4">2. Precise Resource Allocation</h3>
+              <p className="text-slate-700 mb-4">
+                Eliminate guesswork when procuring materials or allocating power and cooling resources:
+              </p>
+              <ul className="list-disc pl-6 mb-6 text-slate-700">
+                <li>
+                  <strong>Cable lengths:</strong> Determine exact lengths and types required
+                </li>
+                <li>
+                  <strong>Power requirements:</strong> Allocate capacity down to the PDU outlet level
+                </li>
+                <li>
+                  <strong>Cooling analysis:</strong> Simulate hot and cold aisle performance
+                </li>
+                <li>
+                  <strong>Material optimization:</strong> Reduce surplus and over-ordering
+                </li>
+              </ul>
 
-        <h3 class="text-xl font-semibold text-slate-900 mt-8 mb-4">3. Enhanced Collaboration and Communication</h3>
-        <p class="text-slate-700 mb-4">
-          A unified, visual environment improves coordination between internal teams and external vendors:
-        </p>
-        <ul class="list-disc pl-6 mb-6 text-slate-700">
-          <li><strong>Visual clarity:</strong> Easier to review, annotate, and share changes</li>
-          <li><strong>Real-time updates:</strong> Ensure everyone is working from the latest version</li>
-          <li><strong>Remote collaboration:</strong> No need to be on-site to approve or troubleshoot</li>
-          <li><strong>Approval acceleration:</strong> Stakeholders can sign off faster with clear visibility</li>
-        </ul>
+              <h3 className="text-xl font-semibold text-slate-900 mt-8 mb-4">
+                3. Enhanced Collaboration and Communication
+              </h3>
+              <p className="text-slate-700 mb-4">
+                A unified, visual environment improves coordination between internal teams and external vendors:
+              </p>
+              <ul className="list-disc pl-6 mb-6 text-slate-700">
+                <li>
+                  <strong>Visual clarity:</strong> Easier to review, annotate, and share changes
+                </li>
+                <li>
+                  <strong>Real-time updates:</strong> Ensure everyone is working from the latest version
+                </li>
+                <li>
+                  <strong>Remote collaboration:</strong> No need to be on-site to approve or troubleshoot
+                </li>
+                <li>
+                  <strong>Approval acceleration:</strong> Stakeholders can sign off faster with clear visibility
+                </li>
+              </ul>
 
-        <h3 class="text-xl font-semibold text-slate-900 mt-8 mb-4">4. Scenario Testing and What-If Analysis</h3>
-        <p class="text-slate-700 mb-4">
-          Test designs before committing to them in the real world, saving time and money:
-        </p>
-        <ul class="list-disc pl-6 mb-6 text-slate-700">
-          <li><strong>Configuration testing:</strong> Explore different rack elevations or footprints</li>
-          <li><strong>Capacity modeling:</strong> Forecast space, power, and cooling limits</li>
-          <li><strong>Failure simulation:</strong> Model failure domains and power path redundancy</li>
-          <li><strong>Performance optimization:</strong> Identify underutilized space or stranded capacity</li>
-        </ul>
+              <h3 className="text-xl font-semibold text-slate-900 mt-8 mb-4">
+                4. Scenario Testing and What-If Analysis
+              </h3>
+              <p className="text-slate-700 mb-4">
+                Test designs before committing to them in the real world, saving time and money:
+              </p>
+              <ul className="list-disc pl-6 mb-6 text-slate-700">
+                <li>
+                  <strong>Configuration testing:</strong> Explore different rack elevations or footprints
+                </li>
+                <li>
+                  <strong>Capacity modeling:</strong> Forecast space, power, and cooling limits
+                </li>
+                <li>
+                  <strong>Failure simulation:</strong> Model failure domains and power path redundancy
+                </li>
+                <li>
+                  <strong>Performance optimization:</strong> Identify underutilized space or stranded capacity
+                </li>
+              </ul>
 
-        <h3 class="text-xl font-semibold text-slate-900 mt-8 mb-4">5. Streamlined Installation and Commissioning</h3>
-        <p class="text-slate-700 mb-4">
-          Use the digital twin as a step-by-step guide for physical deployment and validation:
-        </p>
-        <ul class="list-disc pl-6 mb-6 text-slate-700">
-          <li><strong>Step-by-step guidance:</strong> Visual instructions for installers</li>
-          <li><strong>Quality checkpoints:</strong> Embedded inspection and validation points</li>
-          <li><strong>Documentation automation:</strong> Generate as-built records from live models</li>
-          <li><strong>Commissioning support:</strong> Integrate testing, labeling, and audit workflows</li>
-        </ul>
+              <h3 className="text-xl font-semibold text-slate-900 mt-8 mb-4">
+                5. Streamlined Installation and Commissioning
+              </h3>
+              <p className="text-slate-700 mb-4">
+                Use the digital twin as a step-by-step guide for physical deployment and validation:
+              </p>
+              <ul className="list-disc pl-6 mb-6 text-slate-700">
+                <li>
+                  <strong>Step-by-step guidance:</strong> Visual instructions for installers
+                </li>
+                <li>
+                  <strong>Quality checkpoints:</strong> Embedded inspection and validation points
+                </li>
+                <li>
+                  <strong>Documentation automation:</strong> Generate as-built records from live models
+                </li>
+                <li>
+                  <strong>Commissioning support:</strong> Integrate testing, labeling, and audit workflows
+                </li>
+              </ul>
 
-        <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-6">Real-World Impact: Quantifying Risk Reduction</h2>
-        <p class="text-slate-700 mb-4">
-          Organizations that use DCIM digital twins report measurable improvements across deployment KPIs:
-        </p>
-        <ul class="list-disc pl-6 mb-6 text-slate-700">
-          <li><strong>40% reduction</strong> in total deployment time</li>
-          <li><strong>60% fewer</strong> field errors and corrective actions</li>
-          <li><strong>25% reduction</strong> in material waste or over-ordering</li>
-          <li><strong>90% improvement</strong> in documentation completeness</li>
-          <li><strong>50% faster</strong> validation and go-live readiness</li>
-        </ul>
+              <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-6">
+                Real-World Impact: Quantifying Risk Reduction
+              </h2>
+              <p className="text-slate-700 mb-4">
+                Organizations that use DCIM digital twins report measurable improvements across deployment KPIs:
+              </p>
+              <ul className="list-disc pl-6 mb-6 text-slate-700">
+                <li>
+                  <strong>40% reduction</strong> in total deployment time
+                </li>
+                <li>
+                  <strong>60% fewer</strong> field errors and corrective actions
+                </li>
+                <li>
+                  <strong>25% reduction</strong> in material waste or over-ordering
+                </li>
+                <li>
+                  <strong>90% improvement</strong> in documentation completeness
+                </li>
+                <li>
+                  <strong>50% faster</strong> validation and go-live readiness
+                </li>
+              </ul>
 
-        <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-6">Implementing Digital Twins in Your Organization</h2>
+              <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-6">
+                Implementing Digital Twins in Your Organization
+              </h2>
 
-        <h3 class="text-xl font-semibold text-slate-900 mt-8 mb-4">Getting Started</h3>
-        <p class="text-slate-700 mb-4">
-          A successful digital twin initiative starts with the right tools, data, and internal alignment:
-        </p>
-        <ul class="list-disc pl-6 mb-6 text-slate-700">
-          <li><strong>Assessment:</strong> Review your current diagrams, documentation, and tooling gaps</li>
-          <li><strong>Tool selection:</strong> Evaluate platforms like Sunbird, EkkoSense, or Schneider StruxureWare</li>
-          <li><strong>Data integration:</strong> Pull asset, power, and network data into a unified model</li>
-          <li><strong>Team training:</strong> Upskill facilities, IT, and operations teams to manage models effectively</li>
-        </ul>
+              <h3 className="text-xl font-semibold text-slate-900 mt-8 mb-4">Getting Started</h3>
+              <p className="text-slate-700 mb-4">
+                A successful digital twin initiative starts with the right tools, data, and internal alignment:
+              </p>
+              <ul className="list-disc pl-6 mb-6 text-slate-700">
+                <li>
+                  <strong>Assessment:</strong> Review your current diagrams, documentation, and tooling gaps
+                </li>
+                <li>
+                  <strong>Tool selection:</strong> Evaluate platforms like Sunbird, EkkoSense, or Schneider StruxureWare
+                </li>
+                <li>
+                  <strong>Data integration:</strong> Pull asset, power, and network data into a unified model
+                </li>
+                <li>
+                  <strong>Team training:</strong> Upskill facilities, IT, and operations teams to manage models
+                  effectively
+                </li>
+              </ul>
 
-        <h3 class="text-xl font-semibold text-slate-900 mt-8 mb-4">Best Practices</h3>
-        <ul class="list-disc pl-6 mb-6 text-slate-700">
-          <li>Start with a limited-scope pilot deployment</li>
-          <li>Validate input data regularly and maintain consistency</li>
-          <li>Ensure tight integration with your ITSM or CMDB platform</li>
-          <li>Define governance: who owns updates, approvals, and accuracy</li>
-        </ul>
+              <h3 className="text-xl font-semibold text-slate-900 mt-8 mb-4">Best Practices</h3>
+              <ul className="list-disc pl-6 mb-6 text-slate-700">
+                <li>Start with a limited-scope pilot deployment</li>
+                <li>Validate input data regularly and maintain consistency</li>
+                <li>Ensure tight integration with your ITSM or CMDB platform</li>
+                <li>Define governance: who owns updates, approvals, and accuracy</li>
+              </ul>
 
-        <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-6">The Future of Data Center Deployment</h2>
-        <p class="text-slate-700 mb-6">
-          Digital twins are no longer just a conceptual tool—they’re operational necessities for organizations seeking agility, precision, and efficiency. As infrastructure scales and timelines compress, visual planning and risk modeling will define competitive advantage.
-        </p>
-        <p class="text-slate-700 mb-6">
-          At Wave2Wave.io, our DCIM and digital twin solutions are built to accelerate deployment, eliminate rework, and drive strategic infrastructure decisions. We help you move faster—with clarity, control, and confidence.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+              <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-6">The Future of Data Center Deployment</h2>
+              <p className="text-slate-700 mb-6">
+                Digital twins are no longer just a conceptual tool—they're operational necessities for organizations
+                seeking agility, precision, and efficiency. As infrastructure scales and timelines compress, visual
+                planning and risk modeling will define competitive advantage.
+              </p>
+              <p className="text-slate-700 mb-6">
+                At Wave2Wave.io, our DCIM and digital twin solutions are built to accelerate deployment, eliminate
+                rework, and drive strategic infrastructure decisions. We help you move faster—with clarity, control, and
+                confidence.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Related Articles */}
       <section className="py-16 bg-slate-50">
