@@ -15,7 +15,7 @@ export default function ResourcesPage() {
       category: "Technical Guide",
       readTime: "12 min read",
       date: "December 15, 2024",
-      image: "/placeholder.svg?height=200&width=300&text=Structured+Cabling+Guide",
+      image: "/images/solutions/structured-cabling-hardware.jpeg",
       slug: "complete-guide-data-center-structured-cabling",
     },
     {
@@ -25,7 +25,7 @@ export default function ResourcesPage() {
       category: "Industry Insights",
       readTime: "8 min read",
       date: "December 10, 2024",
-      image: "/placeholder.svg?height=200&width=300&text=DCIM+Digital+Twin",
+      image: "/images/solutions/dcim-digital-twin.jpeg",
       slug: "dcim-digital-twins-reduce-deployment-risk",
     },
     {
@@ -35,7 +35,7 @@ export default function ResourcesPage() {
       category: "Case Study",
       readTime: "6 min read",
       date: "December 5, 2024",
-      image: "/placeholder.svg?height=200&width=300&text=Advanced+Kitting+Case+Study",
+      image: "/images/solutions/advanced-kitting-logistics.jpeg",
       slug: "case-study-faster-deployment-advanced-kitting",
     },
   ]
@@ -106,6 +106,7 @@ export default function ResourcesPage() {
                     width={300}
                     height={200}
                     className="w-full h-48 object-cover rounded-lg mb-4"
+                    unoptimized
                   />
                   <div className="flex items-center justify-between mb-2">
                     <Badge variant="secondary">{article.category}</Badge>

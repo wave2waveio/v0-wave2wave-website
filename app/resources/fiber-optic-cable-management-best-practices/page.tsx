@@ -39,11 +39,12 @@ export default function FiberOpticCableManagementPage() {
             </div>
 
             <Image
-              src="/images/resources/fiber-cable-management.jpg"
-              alt="Fiber Optic Cable Management"
+              src="/images/resources/fiber-cable-management.jpeg"
+              alt="Professional fiber optic cable management in data center rack showing color-coded cables with proper bundling and routing"
               width={800}
               height={400}
               className="w-full h-64 md:h-96 object-cover rounded-lg mb-8"
+              unoptimized
             />
           </div>
         </div>
@@ -55,90 +56,148 @@ export default function FiberOpticCableManagementPage() {
           <div className="max-w-4xl mx-auto">
             <div className="prose prose-lg max-w-none">
               <p className="text-xl text-slate-600 mb-8">
-                Proper fiber optic cable management is essential for maintaining performance, reducing signal loss, and ensuring long-term reliability in high-density environments like data centers and enterprise networks.
+                Proper fiber optic cable management is essential for maintaining performance, reducing signal loss, and
+                ensuring long-term reliability in high-density environments like data centers and enterprise networks.
               </p>
 
-              <h2>1. Technical Best Practices</h2>
-              <h3>a. Maintain Minimum Bend Radius</h3>
-              <ul>
-                <li><strong>Single-mode fiber:</strong> 10x diameter under load, 20x when static</li>
-                <li><strong>Multi-mode fiber:</strong> 10x diameter under load, 15x when static</li>
+              <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-6">1. Technical Best Practices</h2>
+
+              <h3 className="text-xl font-semibold text-slate-900 mt-8 mb-4">Maintain Minimum Bend Radius</h3>
+              <p className="text-slate-700 mb-4">
+                Exceeding the minimum bend radius can cause signal loss and permanent damage to fiber optic cables:
+              </p>
+              <ul className="list-disc pl-6 mb-6 text-slate-700">
+                <li>
+                  <strong>Single-mode fiber:</strong> 10x diameter under load, 20x when static
+                </li>
+                <li>
+                  <strong>Multi-mode fiber:</strong> 10x diameter under load, 15x when static
+                </li>
                 <li>Use radius guides, trays, and slack spools to maintain compliant paths</li>
                 <li>Avoid sharp corners or pulling against fixed objects</li>
               </ul>
 
-              <h3>b. Control Pulling Tension</h3>
-              <ul>
-                <li>Follow manufacturer pulling tension ratings</li>
+              <h3 className="text-xl font-semibold text-slate-900 mt-8 mb-4">Control Pulling Tension</h3>
+              <p className="text-slate-700 mb-4">
+                Excessive pulling tension can damage fiber cores and degrade performance:
+              </p>
+              <ul className="list-disc pl-6 mb-6 text-slate-700">
+                <li>Follow manufacturer pulling tension ratings (typically 600N for distribution cables)</li>
                 <li>Use swivel pulling grips and lubricants for long conduit runs</li>
                 <li>Maintain smooth, steady pulls to reduce microbending</li>
+                <li>Never exceed 1,500N pulling tension for standard indoor cables</li>
               </ul>
 
-              <h3>c. Route and Isolate</h3>
-              <ul>
-                <li>Use dedicated fiber trays or ducts separate from copper or power</li>
+              <h3 className="text-xl font-semibold text-slate-900 mt-8 mb-4">Route and Isolate</h3>
+              <p className="text-slate-700 mb-4">Proper routing prevents interference and physical damage:</p>
+              <ul className="list-disc pl-6 mb-6 text-slate-700">
+                <li>Use dedicated fiber trays or ducts separate from copper or power cables</li>
                 <li>Route horizontally and vertically with consistent standards</li>
-                <li>Avoid EMI by distancing fiber from high-voltage sources</li>
+                <li>Maintain minimum 6-inch separation from high-voltage power sources</li>
+                <li>Use plenum-rated cables in air handling spaces</li>
               </ul>
 
-              <h3>d. Modular and High-Density Hardware</h3>
-              <ul>
+              <h3 className="text-xl font-semibold text-slate-900 mt-8 mb-4">Modular and High-Density Hardware</h3>
+              <p className="text-slate-700 mb-4">Modern fiber management requires scalable, high-density solutions:</p>
+              <ul className="list-disc pl-6 mb-6 text-slate-700">
                 <li>Deploy cassettes (LC, MTP/MPO) with modular patch panels</li>
                 <li>Use rack-mounted enclosures with front/rear access</li>
                 <li>Allow room for adds/moves/changes without disrupting existing fibers</li>
+                <li>Implement color-coding standards for different fiber types and applications</li>
               </ul>
 
-              <h3>e. Clean and Inspect Connectors</h3>
-              <ul>
-                <li>Enforce a “clean before connect” policy</li>
+              <h3 className="text-xl font-semibold text-slate-900 mt-8 mb-4">Clean and Inspect Connectors</h3>
+              <p className="text-slate-700 mb-4">
+                Contaminated connectors are the leading cause of fiber network problems:
+              </p>
+              <ul className="list-disc pl-6 mb-6 text-slate-700">
+                <li>Enforce a "clean before connect" policy for all connections</li>
                 <li>Use dry-clean pens, inspection scopes, and lint-free wipes</li>
                 <li>Terminate in clean environments and protect connectors with dust caps</li>
+                <li>Inspect end-faces with 400x magnification before making connections</li>
               </ul>
 
-              <h2>2. Operational Best Practices</h2>
-              <h3>a. Pre-Design Cable Paths</h3>
-              <ul>
+              <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-6">2. Operational Best Practices</h2>
+
+              <h3 className="text-xl font-semibold text-slate-900 mt-8 mb-4">Pre-Design Cable Paths</h3>
+              <p className="text-slate-700 mb-4">
+                Proper planning prevents installation problems and future limitations:
+              </p>
+              <ul className="list-disc pl-6 mb-6 text-slate-700">
                 <li>Plan with CAD or DCIM tools for route clarity and future capacity</li>
-                <li>Avoid overfilling trays (50% fill ratio max)</li>
-                <li>Document all pathways, lengths, and ports</li>
+                <li>Avoid overfilling trays (50% fill ratio maximum recommended)</li>
+                <li>Document all pathways, lengths, and ports in detail</li>
+                <li>Consider future expansion needs in initial design</li>
               </ul>
 
-              <h3>b. Bundle by Function</h3>
-              <ul>
-                <li>Use hook-and-loop fasteners—not zip ties</li>
+              <h3 className="text-xl font-semibold text-slate-900 mt-8 mb-4">Bundle by Function</h3>
+              <p className="text-slate-700 mb-4">Organized bundling improves maintainability and reduces errors:</p>
+              <ul className="list-disc pl-6 mb-6 text-slate-700">
+                <li>Use hook-and-loop fasteners—never zip ties which can cause stress</li>
                 <li>Bundle cables by application (intra-rack, inter-rack, uplink)</li>
                 <li>Label both ends with port/rack/zone identifiers and color codes</li>
+                <li>Maintain consistent bundle sizes (typically 12-24 fibers per bundle)</li>
               </ul>
 
-              <h3>c. Slack Management and Accessibility</h3>
-              <ul>
-                <li>Leave 1–2 meters of slack per connection point</li>
-                <li>Use trays or slack boxes—do not coil inside enclosures</li>
+              <h3 className="text-xl font-semibold text-slate-900 mt-8 mb-4">Slack Management and Accessibility</h3>
+              <p className="text-slate-700 mb-4">Proper slack management enables maintenance and future changes:</p>
+              <ul className="list-disc pl-6 mb-6 text-slate-700">
+                <li>Leave 1–2 meters of slack per connection point for service loops</li>
+                <li>Use dedicated slack trays or boxes—do not coil inside enclosures</li>
                 <li>Keep patch cords long enough for service loops but short enough to avoid clutter</li>
+                <li>Ensure all connections remain accessible for testing and maintenance</li>
               </ul>
 
-              <h3>d. Schedule Regular Inspections</h3>
-              <ul>
+              <h3 className="text-xl font-semibold text-slate-900 mt-8 mb-4">Schedule Regular Inspections</h3>
+              <p className="text-slate-700 mb-4">Proactive maintenance prevents problems and extends system life:</p>
+              <ul className="list-disc pl-6 mb-6 text-slate-700">
                 <li>Create quarterly cable audits for cleaning, tension checks, and patch integrity</li>
                 <li>Use DCIM systems to reconcile physical layout vs. logical records</li>
-                <li>Log MACs (Moves/Adds/Changes) to keep infrastructure accurate</li>
+                <li>Log MACs (Moves/Adds/Changes) to keep infrastructure documentation accurate</li>
+                <li>Perform optical loss testing annually or after any physical changes</li>
               </ul>
 
-              <h2>3. Business Benefits of Strong Cable Management</h2>
-              <ul>
-                <li><strong>Accelerated Installations:</strong> Mapped, labeled paths speed up technician work</li>
-                <li><strong>Downtime Avoidance:</strong> Prevents patching errors and supports resilience</li>
-                <li><strong>Cost Control:</strong> Reduces labor and premature part replacement</li>
-                <li><strong>Audit and Compliance Readiness:</strong> Supports documentation and inspection requirements</li>
-                <li><strong>Strategic Scalability:</strong> Enables growth with modular pathways and dense designs</li>
+              <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-6">
+                3. Business Benefits of Strong Cable Management
+              </h2>
+              <p className="text-slate-700 mb-4">Proper fiber management delivers measurable business value:</p>
+              <ul className="list-disc pl-6 mb-6 text-slate-700">
+                <li>
+                  <strong>Accelerated Installations:</strong> Mapped, labeled paths speed up technician work by 40%
+                </li>
+                <li>
+                  <strong>Downtime Avoidance:</strong> Prevents patching errors and supports network resilience
+                </li>
+                <li>
+                  <strong>Cost Control:</strong> Reduces labor costs and prevents premature component replacement
+                </li>
+                <li>
+                  <strong>Audit and Compliance Readiness:</strong> Supports documentation and inspection requirements
+                </li>
+                <li>
+                  <strong>Strategic Scalability:</strong> Enables growth with modular pathways and high-density designs
+                </li>
               </ul>
 
-              <h2>Conclusion</h2>
-              <p>
-                Cable management is foundational—not optional—for reliable network operations. With proper planning, execution, and maintenance, organizations can minimize downtime, improve serviceability, and enable long-term scale.
+              <div className="bg-blue-50 border-l-4 border-blue-500 p-6 my-8">
+                <h3 className="text-lg font-semibold text-blue-900 mb-2">Pro Tip</h3>
+                <p className="text-blue-800">
+                  Implement a comprehensive labeling system from day one. Use machine-printed labels that include rack
+                  location, port numbers, and destination information. This small investment in organization pays
+                  dividends during troubleshooting and maintenance activities.
+                </p>
+              </div>
+
+              <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-6">Conclusion</h2>
+              <p className="text-slate-700 mb-6">
+                Cable management is foundational—not optional—for reliable network operations. With proper planning,
+                execution, and maintenance, organizations can minimize downtime, improve serviceability, and enable
+                long-term scalability.
               </p>
-              <p>
-                At <strong>Wave2Wave.io</strong>, we help data centers and network operators deploy fiber systems engineered for growth, clarity, and resilience. From pre-labeled kits to DCIM-integrated layout validation, we bring structure to every strand.
+              <p className="text-slate-700 mb-6">
+                At <strong>Wave2Wave.io</strong>, we help data centers and network operators deploy fiber systems
+                engineered for growth, clarity, and resilience. From pre-labeled kits to DCIM-integrated layout
+                validation, we bring structure to every strand.
               </p>
             </div>
           </div>
