@@ -179,17 +179,9 @@ export default function ResourcesPage() {
               </Card>
             ))}
           </div>
-
-{/*
-          <div className="text-center mt-12">
-            <Button variant="outline" size="lg">
-              View All Articles
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </div>
         </div>
       </section>
-*/}
+
       {/* CTA Section */}
       <section className="py-16 bg-blue-900 text-white">
         <div className="container mx-auto px-4 text-center">
