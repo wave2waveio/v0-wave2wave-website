@@ -39,7 +39,7 @@ export default function EdgeComputingInfrastructurePage() {
             </div>
 
             <Image
-              src="/images/resources/edge-computing-infrastructure.png"
+              src="/placeholder.svg?height=400&width=800&text=Edge+Computing+Infrastructure"
               alt="Edge Computing Infrastructure"
               width={800}
               height={400}

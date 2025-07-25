@@ -107,6 +107,9 @@ export default function ResourcesPage() {
                     height={200}
                     className="w-full h-48 object-cover rounded-lg mb-4"
                     unoptimized
+                    onError={(e) => {
+                      e.currentTarget.src = "/placeholder.svg?height=200&width=300&text=Article+Image"
+                    }}
                   />
                   <div className="flex items-center justify-between mb-2">
                     <Badge variant="secondary">{article.category}</Badge>

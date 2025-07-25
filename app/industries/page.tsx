@@ -256,8 +256,8 @@ export default function IndustriesPage() {
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="border-0 shadow-lg bg-gradient-to-br from-blue-50 to-blue-100 text-center">
               <CardHeader>
-                <div className="text-3xl font-bold text-blue-600 mb-2">Substantially</div>
-                <CardTitle className="text-xl text-blue-900">Faster Deployments</CardTitle>
+                <div className="text-3xl font-bold text-blue-600 mb-2">Faster Deployments</div>
+               {/* <CardTitle className="text-xl text-blue-900">Deployments</CardTitle>*/}
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-blue-800">
@@ -268,8 +268,8 @@ export default function IndustriesPage() {
 
             <Card className="border-0 shadow-lg bg-gradient-to-br from-green-50 to-green-100 text-center">
               <CardHeader>
-                <div className="text-3xl font-bold text-green-600 mb-2">Far Fewer</div>
-                <CardTitle className="text-xl text-green-900">Errors</CardTitle>
+                <div className="text-3xl font-bold text-green-600 mb-2">Fewer Errors</div>
+               {/* <CardTitle className="text-xl text-green-900">Errors</CardTitle>*/}
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-green-800">
@@ -280,8 +280,8 @@ export default function IndustriesPage() {
 
             <Card className="border-0 shadow-lg bg-gradient-to-br from-purple-50 to-purple-100 text-center">
               <CardHeader>
-                <div className="text-3xl font-bold text-purple-600 mb-2">Dramatic</div>
-                <CardTitle className="text-xl text-purple-900">Cost Savings</CardTitle>
+                <div className="text-3xl font-bold text-purple-600 mb-2">Lower Cost</div>
+               {/* <CardTitle className="text-xl text-purple-900">Cost</CardTitle>*/}
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-purple-800">

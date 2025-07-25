@@ -39,8 +39,8 @@ export default function QualityAssurancePage() {
             </div>
 
             <Image
-              src="/images/resources/quality-assurance-manufacturing.png"
-              alt="Quality Assurance in Cable Manufacturing"
+              src="/images/resources/quality-assurance-test.png"
+              alt="Quality assurance technician using handheld fiber optic test equipment showing PASS result, with color-coded cable coils in manufacturing facility background"
               width={800}
               height={400}
               className="w-full h-64 md:h-96 object-cover rounded-lg mb-8"
