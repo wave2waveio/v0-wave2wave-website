@@ -3,6 +3,7 @@
 import type React from "react"
 import { useState } from "react"
 import { Mail, Phone, MapPin, Clock, X, CheckCircle, AlertCircle } from "lucide-react"
+import Link from "next/link"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -366,8 +367,22 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold">Phone</h3>
-                      <p className="text-slate-600">+1-650-260-5095</p>
+                      <p className="text-slate-600">+1 (866) 473-2701</p>
                       <p className="text-sm text-slate-500">Mon-Fri 8:00 AM - 6:00 PM EST</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Phone className="h-5 w-5 text-purple-600" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold">SMS/Text</h3>
+                      <p className="text-slate-600">+1 (866) 473-2701</p>
+                      <p className="text-sm text-slate-500">For quick updates and notifications</p>
+                      <Link href="/sms-consent" className="text-sm text-blue-600 hover:text-blue-800 underline">
+                        SMS Consent & Terms
+                      </Link>
                     </div>
                   </div>
 
