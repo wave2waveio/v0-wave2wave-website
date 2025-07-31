@@ -21,7 +21,8 @@ export default function IndustriesPage() {
               <span className="bg-white/10 px-4 py-2 rounded-full">Broadband, MSO, ISP</span>
               <span className="bg-white/10 px-4 py-2 rounded-full">System Integrators</span>
               <span className="bg-white/10 px-4 py-2 rounded-full">Enterprise IT</span>
-              <span className="bg-white/10 px-4 py-2 rounded-full">HPC & Hardware OEM</span>
+              <span className="bg-white/10 px-4 py-2 rounded-full">High Performance Computing</span>
+              <span className="bg-white/10 px-4 py-2 rounded-full">AI & Server OEMs</span>
               <span className="bg-white/10 px-4 py-2 rounded-full">Telecommunications</span>
 
             </div>
