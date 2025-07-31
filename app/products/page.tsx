@@ -142,11 +142,13 @@ export default function ProductsPage() {
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-blue-800 mb-4">
-                  Complete range of custom and pre-cut fiber optic cables, assemblies, and components for high-speed
+                  Complete range of custom and pre-cut fiber optic cables, terminators, assemblies, and components for high-speed
                   data transmission.
                 </CardDescription>
                 <ul className="space-y-2 text-sm text-blue-700">
                   <li>• Pre-terminated assemblies</li>
+                  <li>• Custom assemblies</li>
+                  <li>• OEM solutions</li>
                   <li>• MTP/MPO solutions</li>
                   <li>• Custom patch cables</li>
                   <li>• Bulk cable options</li>
@@ -173,6 +175,7 @@ export default function ProductsPage() {
                   Comprehensive custom and pre-cut Ethernet cabling and connectivity solutions for all network speeds
                 </CardDescription>
                 <ul className="space-y-2 text-sm text-green-700">
+                  <li>• OEM solutions</li>
                   <li>• Cat5e through Cat8 cables</li>
                   <li>• Patch panels and jacks</li>
                   <li>• Network switches</li>
@@ -201,6 +204,7 @@ export default function ProductsPage() {
                 </CardDescription>
                 <ul className="space-y-2 text-sm text-purple-700">
                   <li>• Network racks and cabinets</li>
+                  <li>• OEM solutions</li>
                   <li>• Cable management</li>
                   <li>• Test equipment</li>
                   <li>• Cleaning supplies</li>

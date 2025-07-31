@@ -438,6 +438,7 @@ export default function ContactPage() {
       </section>
 
       {/* Additional CTA */}
+      {/*
       <section className="py-16 bg-slate-50">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Prefer to Talk Directly?</h2>
@@ -450,6 +451,7 @@ export default function ContactPage() {
           </Button>
         </div>
       </section>
+      */}
     </div>
   )
 }
