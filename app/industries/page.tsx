@@ -2,7 +2,7 @@ import Link from "next/link"
 import { CheckCircle, ArrowRight, Building2, Wifi, Users, Laptop, Server } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader } from "@/components/ui/card"
 
 export default function IndustriesPage() {
   return (
@@ -18,9 +18,12 @@ export default function IndustriesPage() {
             <div className="flex flex-wrap justify-center gap-6 text-sm">
               <span className="bg-white/10 px-4 py-2 rounded-full">Enterprise Data Centers</span>
               <span className="bg-white/10 px-4 py-2 rounded-full">Commercial Data Centers</span>
-              <span className="bg-white/10 px-4 py-2 rounded-full">Telecommunications</span>
+              <span className="bg-white/10 px-4 py-2 rounded-full">Broadband, MSO, ISP</span>
               <span className="bg-white/10 px-4 py-2 rounded-full">System Integrators</span>
               <span className="bg-white/10 px-4 py-2 rounded-full">Enterprise IT</span>
+              <span className="bg-white/10 px-4 py-2 rounded-full">HPC & Hardware OEM</span>
+              <span className="bg-white/10 px-4 py-2 rounded-full">Telecommunications</span>
+
             </div>
           </div>
         </div>
@@ -122,7 +125,7 @@ export default function IndustriesPage() {
                     <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
                       <Wifi className="h-5 w-5 text-green-600" />
                     </div>
-                    <h3 className="text-2xl font-bold">Telecommunications & Broadband</h3>
+                    <h3 className="text-2xl font-bold">Broadband, MSO & ISP</h3>
                   </div>
                   <p className="text-slate-600">
                     Supporting the backbone of connectivity with specialized fiber optic solutions and network
@@ -152,6 +155,47 @@ export default function IndustriesPage() {
                     <p className="text-sm text-slate-500 mb-2">Specialization:</p>
                     <p className="text-sm font-medium text-slate-700">
                       High-fiber-count assemblies, outdoor-rated solutions
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
+                      <Server className="h-5 w-5 text-red-600" />
+                    </div>
+                    <h3 className="text-2xl font-bold">High-Performance Computing (HPC)</h3>
+                  </div>
+                  <p className="text-slate-600">
+                    We enable high-throughput, low-latency structured cabling infrastructure for HPC clusters, AI
+                    workloads, and large-scale compute environments.
+                  </p>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3 text-slate-600">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span>High-density fiber optic and DAC assemblies for maximum bandwidth</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span>Low-loss structured cabling designs to support latency-sensitive workloads</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span>Rack-level interconnects and node-to-node cabling kits</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span>Custom labeling and documentation for simplified deployment and maintenance</span>
+                    </li>
+                  </ul>
+                  <div className="mt-6 pt-4 border-t border-slate-200">
+                    <p className="text-sm text-slate-500 mb-2">Specialization:</p>
+                    <p className="text-sm font-medium text-slate-700">
+                      AI/ML clusters, supercomputing, research facilities
                     </p>
                   </div>
                 </CardContent>
@@ -238,6 +282,88 @@ export default function IndustriesPage() {
                   </div>
                 </CardContent>
               </Card>
+
+              <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center">
+                      <Building2 className="h-5 w-5 text-amber-600" />
+                    </div>
+                    <h3 className="text-2xl font-bold">Original Equipment Manufacturers (OEMs)</h3>
+                  </div>
+                  <p className="text-slate-600">
+                    We collaborate with OEMs to deliver custom interconnect and cabling solutions that integrate
+                    seamlessly with their hardware platforms.
+                  </p>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3 text-slate-600">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span>Application-specific cabling assemblies engineered to exact hardware specs</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span>Signal integrity and thermal consulting for complex system design</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span>Supply chain and kitting services aligned with your production schedule</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span>Scalable domestic and offshore manufacturing with lifecycle support</span>
+                    </li>
+                  </ul>
+                  <div className="mt-6 pt-4 border-t border-slate-200">
+                    <p className="text-sm text-slate-500 mb-2">Partnership Benefits:</p>
+                    <p className="text-sm font-medium text-slate-700">
+                      Custom engineering, flexible manufacturing, program management
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 bg-teal-100 rounded-lg flex items-center justify-center">
+                      <Wifi className="h-5 w-5 text-teal-600" />
+                    </div>
+                    <h3 className="text-2xl font-bold">Telecommunications</h3>
+                  </div>
+                  <p className="text-slate-600">
+                    We support telecom carriers and infrastructure providers with robust, scalable cabling solutions for
+                    central offices, POPs, and edge deployments.
+                  </p>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3 text-slate-600">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span>Modular patch panels and optical distribution frames (ODFs)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span>Pre-terminated fiber assemblies to speed deployment and reduce errors</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span>Hybrid copper/fiber solutions for power and data transport</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span>Cable management and labeling systems for operational efficiency and traceability</span>
+                    </li>
+                  </ul>
+                  <div className="mt-6 pt-4 border-t border-slate-200">
+                    <p className="text-sm text-slate-500 mb-2">Applications:</p>
+                    <p className="text-sm font-medium text-slate-700">
+                      Central offices, POPs, edge deployments, carrier networks
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
@@ -257,7 +383,7 @@ export default function IndustriesPage() {
             <Card className="border-0 shadow-lg bg-gradient-to-br from-blue-50 to-blue-100 text-center">
               <CardHeader>
                 <div className="text-3xl font-bold text-blue-600 mb-2">Faster Deployments</div>
-               {/* <CardTitle className="text-xl text-blue-900">Deployments</CardTitle>*/}
+                {/* <CardTitle className="text-xl text-blue-900">Deployments</CardTitle>*/}
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-blue-800">
@@ -269,7 +395,7 @@ export default function IndustriesPage() {
             <Card className="border-0 shadow-lg bg-gradient-to-br from-green-50 to-green-100 text-center">
               <CardHeader>
                 <div className="text-3xl font-bold text-green-600 mb-2">Fewer Errors</div>
-               {/* <CardTitle className="text-xl text-green-900">Errors</CardTitle>*/}
+                {/* <CardTitle className="text-xl text-green-900">Errors</CardTitle>*/}
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-green-800">
@@ -281,7 +407,7 @@ export default function IndustriesPage() {
             <Card className="border-0 shadow-lg bg-gradient-to-br from-purple-50 to-purple-100 text-center">
               <CardHeader>
                 <div className="text-3xl font-bold text-purple-600 mb-2">Lower Cost</div>
-               {/* <CardTitle className="text-xl text-purple-900">Cost</CardTitle>*/}
+                {/* <CardTitle className="text-xl text-purple-900">Cost</CardTitle>*/}
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-purple-800">

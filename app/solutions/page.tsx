@@ -24,7 +24,7 @@ export default function SolutionsPage() {
       {/* Solutions Grid */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-3 gap-12">
+          <div className="grid lg:grid-cols-4 gap-8">
             {/* Structured Cabling */}
             <div className="space-y-6">
               <div className="w-full h-48 mb-4">
@@ -190,6 +190,74 @@ export default function SolutionsPage() {
                 <Button className="mt-6" asChild>
                   <Link href="/contact">
                     Explore DCIM Services
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
+            </div>
+
+            {/* OEM Structured Cabling */}
+            <div className="space-y-6">
+              <div className="w-full h-48 mb-4">
+                <Image
+                  src="/images/solutions/oem-solutions.png"
+                  alt="High-performance server with custom fiber optic interconnects and structured cabling in data center rack"
+                  width={400}
+                  height={200}
+                  className="w-full h-full object-cover rounded-lg"
+                />
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold mb-4">HPC, Telecom & OEM Structured Cabling</h2>
+                <p className="text-slate-600 mb-6">
+                  Custom-engineered structured cabling & optical interconnect solutions optimized for complex hardware
+                  platforms—from GPU servers to next-generation data appliances.
+                </p>
+
+                <div className="space-y-4">
+                  <h3 className="font-semibold text-lg">Key Benefits:</h3>
+                  <ul className="space-y-2 text-slate-600">
+                    <li className="flex items-start">
+                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span>
+                        Custom Interconnect Solutions – fiber optic and copper assemblies built to your hardware specs
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span>
+                        Design & Engineering Services – consulting to optimize signal integrity and mechanical fit
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span>
+                        Kitting & Supply Chain – Pre-configured kits and JIT delivery aligned to production workflows
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span>
+                        Scalable Manufacturing – Flexible production to support prototyping through high-volume ramp
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span>Quality & Compliance Assurance – All assemblies tested to meet industry standards</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span>
+                        Dedicated Program Support – Single point of contact with program management and lifecycle change
+                        control
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+
+                <Button className="mt-6" asChild>
+                  <Link href="/contact">
+                    Discuss OEM Partnership
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
