@@ -379,10 +379,20 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-semibold">SMS/Text</h3>
                       <p className="text-slate-600">+1 (866) 473-2701</p>
-                      <p className="text-sm text-slate-500">For quick updates and notifications</p>
-                      <Link href="/sms-consent" className="text-sm text-blue-600 hover:text-blue-800 underline">
-                        SMS Consent & Terms
-                      </Link>
+                      <p className="text-sm text-slate-500">
+                        By submitting your phone number, you are consenting to receive text messages from us. Opt out at
+                        any time by texting "STOP"
+                      </p>
+                      <div className="flex items-center space-x-2">
+                        <input
+                          type="checkbox"
+                          id="smsConsentInfo"
+                          className="h-3 w-3 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                        />
+                        <Link href="/sms-consent" className="text-sm text-blue-600 hover:text-blue-800 underline">
+                          SMS Consent & Terms
+                        </Link>
+                      </div>
                     </div>
                   </div>
 
