@@ -46,8 +46,8 @@ export default function HomePage() {
               <span className="text-blue-400"> Simplifying Cabling, Power & Connectivity</span>{" "}
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-slate-200 leading-relaxed">
-              Custom cabling, advanced kitting, and DCIM expertise for enterprise data centers, commercial data centers,
-              network operators, system integrators and more
+              Custom cabling, data center hardware, OEM networking & interconnect, advanced kitting, and DCIM expertise for enterprise data centers, commercial data centers,
+              network operators, system integrators, hardware OEMs, high-performance computing and more
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-3" asChild>
