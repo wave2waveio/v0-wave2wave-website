@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { ArrowRight, Calendar, Clock } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
@@ -5,6 +6,18 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+
+export const metadata: Metadata = {
+  title: "Resources & Insights – Data Center Cabling Guides, Case Studies & Blog | Wave2Wave",
+  description:
+    "Explore Wave2Wave's library of expert content: technical guides on structured cabling, DCIM and digital twin insights, fiber optic best practices, and real-world case studies. Stay informed on the latest in data center infrastructure and network cabling trends. Learn, then leverage our expertise in your projects.",
+  openGraph: {
+    title: "Resources & Insights – Data Center Cabling Guides, Case Studies & Blog | Wave2Wave",
+    description:
+      "Explore Wave2Wave's library of expert content: technical guides on structured cabling, DCIM and digital twin insights, fiber optic best practices, and real-world case studies. Stay informed on the latest in data center infrastructure and network cabling trends. Learn, then leverage our expertise in your projects.",
+    type: "website",
+  },
+}
 
 export default function ResourcesPage() {
   const featuredArticles = [
@@ -29,7 +42,7 @@ export default function ResourcesPage() {
       slug: "dcim-digital-twins-reduce-deployment-risk",
     },
     {
-      title: "Case Study: 40% Faster Deployment with Advanced Kitting",
+      title: "Case Study: Significantly Faster Deployment with Advanced Kitting",
       description:
         "How a Fortune 500 company accelerated their data center expansion using Wave2Wave's precision kitting services.",
       category: "Case Study",

@@ -33,10 +33,10 @@ export default function IndustriesPage() {
               <span className="bg-white/10 px-4 py-2 rounded-full">Colocation Data Centers</span>
               <span className="bg-white/10 px-4 py-2 rounded-full">Commercial Data Centers</span>
               <span className="bg-white/10 px-4 py-2 rounded-full">Broadband, MSO, ISP</span>
-              <span className="bg-white/10 px-4 py-2 rounded-full">System Integrators/Resellers</span>
+              <span className="bg-white/10 px-4 py-2 rounded-full">System Integrators</span>
+              <span className="bg-white/10 px-4 py-2 rounded-full">Value Added Resellers</span>
               <span className="bg-white/10 px-4 py-2 rounded-full">Enterprise IT/Lab</span>
-              <span className="bg-white/10 px-4 py-2 rounded-full">High Performance Computing</span>
-              <span className="bg-white/10 px-4 py-2 rounded-full">AI & OEMs</span>
+              <span className="bg-white/10 px-4 py-2 rounded-full">Hardware OEMs (AI, GPU, HPC)</span>
               <span className="bg-white/10 px-4 py-2 rounded-full">Telecommunications</span>
             </div>
           </div>
@@ -61,7 +61,7 @@ export default function IndustriesPage() {
                     <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
                       <Building2 className="h-5 w-5 text-blue-600" />
                     </div>
-                    <h3 className="text-2xl font-bold">Enterprise Data Centers</h3>
+                    <h3 className="text-2xl font-bold">Enterprise Data Center Solutions</h3>
                   </div>
                   <p className="text-slate-600">
                     From hyperscale facilities to edge computing deployments, we deliver the precision infrastructure
@@ -100,7 +100,7 @@ export default function IndustriesPage() {
                     <div className="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
                       <Server className="h-5 w-5 text-indigo-600" />
                     </div>
-                    <h3 className="text-2xl font-bold">Colocation & Commercial Data Centers</h3>
+                    <h3 className="text-2xl font-bold">Colocation Data Center Solutions</h3>
                   </div>
                   <p className="text-slate-600">
                     Scalable infrastructure solutions for large scale data centers, colocation providers, cloud service
@@ -139,7 +139,7 @@ export default function IndustriesPage() {
                     <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
                       <Wifi className="h-5 w-5 text-green-600" />
                     </div>
-                    <h3 className="text-2xl font-bold">Broadband, MSO & ISP</h3>
+                    <h3 className="text-2xl font-bold">Broadband, MSO & ISP Solutions</h3>
                   </div>
                   <p className="text-slate-600">
                     Supporting the backbone of connectivity with specialized fiber optic solutions and network
@@ -180,7 +180,7 @@ export default function IndustriesPage() {
                     <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
                       <Server className="h-5 w-5 text-red-600" />
                     </div>
-                    <h3 className="text-2xl font-bold">High-Performance Computing (HPC)</h3>
+                    <h3 className="text-2xl font-bold">High-Performance Computing (HPC) Solutions</h3>
                   </div>
                   <p className="text-slate-600">
                     We enable high-throughput, low-latency structured cabling infrastructure for HPC clusters, AI
@@ -223,7 +223,7 @@ export default function IndustriesPage() {
                     <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
                       <Users className="h-5 w-5 text-orange-600" />
                     </div>
-                    <h3 className="text-2xl font-bold">System Integrators & VARs</h3>
+                    <h3 className="text-2xl font-bold">Solutions for System Integrators & VARs</h3>
                   </div>
                   <p className="text-slate-600">
                     Empowering partners with custom fulfillment, design services, and logistics support to accelerate
@@ -234,7 +234,7 @@ export default function IndustriesPage() {
                   <ul className="space-y-3 text-slate-600">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span>Custom design and engineering services</span>
+                      <span>Custom cabling, white label cabling and engineering services</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
@@ -242,7 +242,7 @@ export default function IndustriesPage() {
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span>Drop-ship and logistics coordination</span>
+                      <span>Drop-ship and logistics support for integrators</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
@@ -273,7 +273,7 @@ export default function IndustriesPage() {
                   <ul className="space-y-3 text-slate-600">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span>Campus and building network infrastructure</span>
+                      <span>Lab, office, campus and building network infrastructure</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
@@ -347,11 +347,16 @@ export default function IndustriesPage() {
                     <h3 className="text-2xl font-bold">Telecommunications</h3>
                   </div>
                   <p className="text-slate-600">
-                    We support telecom carriers and infrastructure providers with robust, scalable cabling solutions for
+                    Telecom fiber cabling and infrastructure solutions with outdoor/harsh environment cabling, OSP fiber, and other scalable cabling solutions for
                     central offices, POPs, and edge deployments.
                   </p>
                 </CardHeader>
                 <CardContent>
+                  <ul className="space-y-3 text-slate-600">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span>Rugged outdoor cabling / OSP fiber</span>
+                    </li>
                   <ul className="space-y-3 text-slate-600">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />

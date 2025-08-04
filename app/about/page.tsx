@@ -1,9 +1,22 @@
+import type { Metadata } from "next"
 import { ArrowRight, Users, Target, Award, Globe } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+
+export const metadata: Metadata = {
+  title: "About Wave2Wave – Your Data Center Cabling & Infrastructure Partner",
+  description:
+    "Learn about Wave2Wave's mission to simplify networking infrastructure. With over 15 years in business and 200+ projects completed, we transform cabling from commodity to strategic asset. Our story, values (quality, innovation, customer success), and commitment to custom-engineered solutions show why we're a trusted data center cabling partner. Meet the team that's powering tomorrow's networks.",
+  openGraph: {
+    title: "About Wave2Wave – Your Data Center Cabling & Infrastructure Partner",
+    description:
+      "Learn about Wave2Wave's mission to simplify networking infrastructure. With over 15 years in business and 200+ projects completed, we transform cabling from commodity to strategic asset. Our story, values (quality, innovation, customer success), and commitment to custom-engineered solutions show why we're a trusted data center cabling partner. Meet the team that's powering tomorrow's networks.",
+    type: "website",
+  },
+}
 
 export default function AboutPage() {
   return (
@@ -24,7 +37,7 @@ export default function AboutPage() {
             />
 
             {/* Heading */}
-           {/* <h1 className="text-4xl md:text-5xl font-bold mb-6">About Wave2Wave.io</h1>*/}
+            {/* <h1 className="text-4xl md:text-5xl font-bold mb-6">About Wave2Wave.io</h1>*/}
 
             {/* Sub-heading */}
             <p className="text-xl mb-8 text-slate-200">
@@ -41,7 +54,7 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-                Our Story - Cabling, Power, Connectivity - Simplified
+                Wave2Wave.io Story: Cabling, Power, Connectivity - Simplified
               </h2>
               <p className="text-lg text-slate-600 mb-6">
                 For years, cabling was treated as an afterthought—just commodity cables. But as networks scaled, AI
@@ -50,20 +63,20 @@ export default function AboutPage() {
                 uptime—and doing it all quickly—made one thing clear: the answer wasn't cheap cables sold by the foot.
               </p>
               <p className="text-lg text-slate-600 mb-6">
-                At Cabling123, we saw what others overlooked: cables aren't just part of the network; they are the
+                At Wave2Wave.io, we saw what others overlooked: cables aren't just part of the network; they are the
                 network. Every server, switch, and signal depends on the integrity of that physical layer. Today,
                 success means deploying infrastructure faster, with higher quality, and with less friction.
               </p>
               <p className="text-lg text-slate-600">
                 Whether it's building a new data center, standing up a rack, adding a server, reconfiguring a switch, or
                 swapping out a PDU, our customers need more than a parts supplier—they need a trusted equipment provider
-                and supply chain partner. That realization reshaped how we build and deliver. We design cabling systems
-                as strategic assets—pre-labeled, precision-assembled, and purpose-built to accelerate deployment,
-                improve reliability, and simplify scaling.
+                and supply chain partner. That realization reshaped how we build and deliver. Wave2Wave.io designs
+                cabling systems as strategic assets—pre-labeled, precision-assembled, and purpose-built to accelerate
+                deployment, improve reliability, and simplify scaling.
               </p>
               <p className="text-lg text-slate-600">
-                We don't just sell cables. We deliver infrastructure you can trust—because the network begins where the
-                cable does.
+                Wave2Wave.io doesn't just sell cables. We deliver infrastructure you can trust—because the network
+                begins where the cable does.
               </p>
             </div>
             <div className="bg-slate-100 rounded-lg p-8 text-center">
