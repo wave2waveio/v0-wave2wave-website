@@ -1,9 +1,33 @@
 import { ArrowRight, CheckCircle } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import type { Metadata } from "next"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+
+export const metadata: Metadata = {
+  title: "Data Center Solutions – Custom Structured Cabling, rack Kitting, DCIM | Wave2Wave",
+  description:
+    "End-to-end data center solutions to design, build, and manage your data center. Wave2Wave offers custom structured cabling systems, pre-terminated cable assemblies, rack-level kitting, and DCIM/digital twin consulting to accelerate deployment and reduce risk. Learn more & request a consultation.",
+  openGraph: {
+    title: "Data Center Solutions – Custom Structured Cabling, rack Kitting, DCIM | Wave2Wave",
+    description:
+      "End-to-end data center solutions to design, build, and manage your data center. Wave2Wave offers custom structured cabling systems, pre-terminated cable assemblies, rack-level kitting, and DCIM/digital twin consulting to accelerate deployment and reduce risk. Learn more & request a consultation.",
+    url: "https://www.wave2wave.io/solutions",
+    siteName: "Wave2Wave.io",
+    images: [
+      {
+        url: "/images/wave2wave-logo.png",
+        width: 600,
+        height: 325,
+        alt: "Wave2Wave Logo",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+}
 
 export default function SolutionsPage() {
   return (
@@ -40,7 +64,7 @@ export default function SolutionsPage() {
                 <h2 className="text-2xl font-bold mb-4">Structured Cabling & Hardware</h2>
                 <p className="text-slate-600 mb-6">
                   Custom-engineered cabling systems, power distribution, and connectivity hardware designed to your
-                  exact specifications and site requirements.
+                  exact specifications and site requirements. Whether you need a high-density cabling design for a new data hall or a retrofit of existing cable infrastructure, our team delivers a tailored solution.
                 </p>
 
                 <div className="space-y-4">
@@ -48,19 +72,15 @@ export default function SolutionsPage() {
                   <ul className="space-y-2 text-slate-600">
                     <li className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                      <span>Copper and fiber optic cabling systems (w-Ignite brand fiber)</span>
+                      <span>Pre-terminated cable assemblies and harnesses copper and fiber optic cabling systems minimize on-site termination work.</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                      <span>Custom patch panels, racks, and enclosures</span>
+                      <span>Custom racks, enclosures, and patch panels built to fit your design, ensuring optimal airflow and cable management.</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
                       <span>Power distribution units (PDUs) and power management</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                      <span>Pre-terminated harnesses and cable assemblies</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
@@ -94,10 +114,10 @@ export default function SolutionsPage() {
                 />
               </div>
               <div>
-                <h2 className="text-2xl font-bold mb-4">Advanced Kitting & Logistics</h2>
+                <h2 className="text-2xl font-bold mb-4">Data Center Rack Kitting & Logistics</h2>
                 <p className="text-slate-600 mb-6">
-                  Precision-organized hardware and cabling kits that dramatically reduce installation time, costs, and
-                  the risk of deployment errors.
+                  Precision-organized hardware, cabling kits and kitting services for data center deployment  dramatically reduce installation time, costs, and
+                  the risk of deployment errors. Ideal for multi-rack deployments, new site rollouts, or rapid expansions where on-site resources are limited.
                 </p>
 
                 <div className="space-y-4">
@@ -125,7 +145,7 @@ export default function SolutionsPage() {
                     </li>
                     <li className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                      <span>Complete project logistics coordination</span>
+                      <span>Complete deployment logistics coordination</span>
                     </li>
                   </ul>
                 </div>
@@ -154,7 +174,7 @@ export default function SolutionsPage() {
                 <h2 className="text-2xl font-bold mb-4">DCIM & Digital Twin Services</h2>
                 <p className="text-slate-600 mb-6">
                   Comprehensive data center infrastructure management consulting, digital twin design, and ongoing
-                  managed services for optimal performance.
+                  managed services for optimal performance. Using data center digital twin technology, we create virtual models of your facility to optimize layouts and capacity planning
                 </p>
 
                 <div className="space-y-4">
@@ -174,7 +194,7 @@ export default function SolutionsPage() {
                     </li>
                     <li className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                      <span>Infrastructure visualization and planning</span>
+                      <span>Data center infrastructure planning service</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />

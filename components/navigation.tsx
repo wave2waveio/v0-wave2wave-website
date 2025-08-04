@@ -33,6 +33,15 @@ export function Navigation() {
             <NavigationMenuList>
               <NavigationMenuLink asChild>
                 <Link
+                  href="/"
+                  className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
+                >
+                  Home
+                </Link>
+              </NavigationMenuLink>
+
+              <NavigationMenuLink asChild>
+                <Link
                   href="/solutions"
                   className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
                 >
@@ -103,6 +112,9 @@ export function Navigation() {
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
               <div className="flex flex-col space-y-4 mt-4">
+                <Link href="/" className="text-lg font-medium" onClick={() => setIsOpen(false)}>
+                  Home
+                </Link>
                 <Link href="/solutions" className="text-lg font-medium" onClick={() => setIsOpen(false)}>
                   Solutions
                 </Link>

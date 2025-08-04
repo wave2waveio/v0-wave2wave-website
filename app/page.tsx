@@ -1,9 +1,33 @@
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import type { Metadata } from "next"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+
+export const metadata: Metadata = {
+  title: "Wave2Wave – Custom Data Center Cabling & DCIM Solutions",
+  description:
+    "Custom structured cabling, advanced kitting, and DCIM/digital twin services for modern data centers. Simplify your network infrastructure deployment with a single expert partner – Wave2Wave. Contact us for a quote.",
+  openGraph: {
+    title: "Wave2Wave – Custom Data Center Cabling & DCIM Solutions",
+    description:
+      "Custom structured cabling, advanced kitting, and DCIM/digital twin services for modern data centers. Simplify your network infrastructure deployment with a single expert partner – Wave2Wave. Contact us for a quote.",
+    url: "https://www.wave2wave.io",
+    siteName: "Wave2Wave.io",
+    images: [
+      {
+        url: "/images/wave2wave-logo.png",
+        width: 600,
+        height: 325,
+        alt: "Wave2Wave Logo",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+}
 
 export default function HomePage() {
   const customerLogos = [
@@ -43,11 +67,12 @@ export default function HomePage() {
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
               From Design to Deployment —
-              <span className="text-blue-400"> Simplifying Cabling, Power & Connectivity</span>{" "}
+              <span className="text-blue-400">Simplifying Data Center Cabling, Power & Connectivity</span>{" "}
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-slate-200 leading-relaxed">
-              Custom cabling, data center hardware, OEM networking & interconnect, advanced kitting, and DCIM expertise for enterprise data centers, commercial data centers,
-              network operators, system integrators, hardware OEMs, high-performance computing and more
+              Custom cabling, data center hardware, OEM networking & interconnect, advanced kitting, and DCIM services
+              for enterprise data centers, colocation data centers, commercial data centers, network operators, system integrators, hardware
+              OEMs, high-performance computing and more
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-3" asChild>
@@ -57,6 +82,7 @@ export default function HomePage() {
                 </Link>
               </Button>
             </div>
+            <p className="text-sm text-slate-300 mt-6 italic">Serving customers worldwide!</p>
           </div>
         </div>
       </section>
@@ -67,8 +93,8 @@ export default function HomePage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Why Choose Wave2Wave.io</h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              We combine custom engineering, precision logistics, and digital twin expertise to deliver the critical
-              infrastructure behind tomorrow's networks
+              Wave2Wave is a custom network infrastructure partner providing structured cabling solutions, power
+              distribution, rack kitting, and DCIM services for data centers worldwide.
             </p>
           </div>
 
@@ -84,7 +110,11 @@ export default function HomePage() {
                     className="h-6 w-6"
                   />
                 </div>
-                <CardTitle className="text-xl">Custom Designs, Engineered for You</CardTitle>
+                <CardTitle className="text-xl">
+                  <Link href="/solutions#structured-cabling-hardware" className="hover:text-blue-600 transition-colors">
+                    Custom Designs, Engineered for You
+                  </Link>
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-base">
@@ -105,7 +135,11 @@ export default function HomePage() {
                     className="h-6 w-6"
                   />
                 </div>
-                <CardTitle className="text-xl">Diligent Quality, No Surprises</CardTitle>
+                <CardTitle className="text-xl">
+                  <Link href="/solutions#rack-kitting-logistics" className="hover:text-blue-600 transition-colors">
+                    Diligent Quality, No Surprises
+                  </Link>
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-base">
@@ -147,12 +181,16 @@ export default function HomePage() {
                     className="h-6 w-6"
                   />
                 </div>
-                <CardTitle className="text-xl">Digital Twin Expertise</CardTitle>
+                <CardTitle className="text-xl">
+                  <Link href="/solutions#dcim-digital-twin" className="hover:text-blue-600 transition-colors">
+                    Digital Twin Services
+                  </Link>
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-base">
-                  We offer DCIM consulting, digital twin design, and ongoing managed services to help you plan,
-                  visualize, and maintain your data center's infrastructure with precision.
+                  We offer DCIM Services, data center digital twin services, and ongoing managed services to help you
+                  plan, visualize, and maintain your data center's infrastructure with precision.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -168,7 +206,11 @@ export default function HomePage() {
                     className="h-6 w-6"
                   />
                 </div>
-                <CardTitle className="text-xl">Increased Convenience, Reduced Risk</CardTitle>
+                <CardTitle className="text-xl">
+                  <Link href="/solutions#rack-kitting-logistics" className="hover:text-blue-600 transition-colors">
+                    Increased Convenience, Reduced Risk
+                  </Link>
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-base">

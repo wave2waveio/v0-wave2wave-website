@@ -1,8 +1,21 @@
 import Link from "next/link"
 import { CheckCircle, ArrowRight, Building2, Wifi, Users, Laptop, Server } from "lucide-react"
+import type { Metadata } from "next"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader } from "@/components/ui/card"
+
+export const metadata: Metadata = {
+  title: "Industries – Data Center & Network Infrastructure Solutions by Sector | Wave2Wave",
+  description:
+    "Wave2Wave delivers custom infrastructure solutions tailored to your industry. Whether you operate an enterprise data center, a colocation facility, a telecom network, or serve as a system integrator or IT department, our team understands your unique challenges. Accelerate deployments in any sector with our expert cabling, power, and DCIM solutions",
+  openGraph: {
+    title: "Industries – Data Center & Network Infrastructure Solutions by Sector | Wave2Wave",
+    description:
+      "Wave2Wave delivers custom infrastructure solutions tailored to your industry. Whether you operate an enterprise data center, a colocation facility, a telecom network, or serve as a system integrator or IT department, our team understands your unique challenges. Accelerate deployments in any sector with our expert cabling, power, and DCIM solutions",
+    type: "website",
+  },
+}
 
 export default function IndustriesPage() {
   return (
@@ -17,14 +30,14 @@ export default function IndustriesPage() {
             </p>
             <div className="flex flex-wrap justify-center gap-6 text-sm">
               <span className="bg-white/10 px-4 py-2 rounded-full">Enterprise Data Centers</span>
+              <span className="bg-white/10 px-4 py-2 rounded-full">Colocation Data Centers</span>
               <span className="bg-white/10 px-4 py-2 rounded-full">Commercial Data Centers</span>
               <span className="bg-white/10 px-4 py-2 rounded-full">Broadband, MSO, ISP</span>
-              <span className="bg-white/10 px-4 py-2 rounded-full">System Integrators</span>
-              <span className="bg-white/10 px-4 py-2 rounded-full">Enterprise IT</span>
+              <span className="bg-white/10 px-4 py-2 rounded-full">System Integrators/Resellers</span>
+              <span className="bg-white/10 px-4 py-2 rounded-full">Enterprise IT/Lab</span>
               <span className="bg-white/10 px-4 py-2 rounded-full">High Performance Computing</span>
-              <span className="bg-white/10 px-4 py-2 rounded-full">AI & Server OEMs</span>
+              <span className="bg-white/10 px-4 py-2 rounded-full">AI & OEMs</span>
               <span className="bg-white/10 px-4 py-2 rounded-full">Telecommunications</span>
-
             </div>
           </div>
         </div>
@@ -87,11 +100,11 @@ export default function IndustriesPage() {
                     <div className="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
                       <Server className="h-5 w-5 text-indigo-600" />
                     </div>
-                    <h3 className="text-2xl font-bold">Commercial Data Centers</h3>
+                    <h3 className="text-2xl font-bold">Colocation & Commercial Data Centers</h3>
                   </div>
                   <p className="text-slate-600">
-                    Scalable infrastructure solutions for colocation providers, cloud service providers, and managed
-                    hosting facilities requiring high-density, multi-tenant environments.
+                    Scalable infrastructure solutions for large scale data centers, colocation providers, cloud service
+                    providers, and managed hosting facilities requiring high-density, multi-tenant environments.
                   </p>
                 </CardHeader>
                 <CardContent>
