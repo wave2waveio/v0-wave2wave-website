@@ -20,7 +20,6 @@ export const metadata: Metadata = {
 export default function IndustriesPage() {
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Hero Section */}
       <section className="bg-gradient-to-br from-slate-900 to-blue-900 text-white py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
@@ -43,7 +42,6 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      {/* Industry Details */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -347,8 +345,8 @@ export default function IndustriesPage() {
                     <h3 className="text-2xl font-bold">Telecommunications</h3>
                   </div>
                   <p className="text-slate-600">
-                    Telecom fiber cabling and infrastructure solutions with outdoor/harsh environment cabling, OSP fiber, and other scalable cabling solutions for
-                    central offices, POPs, and edge deployments.
+                    Telecom fiber cabling and infrastructure solutions with outdoor/harsh environment cabling, OSP
+                    fiber, and other scalable cabling solutions for central offices, POPs, and edge deployments.
                   </p>
                 </CardHeader>
                 <CardContent>
@@ -357,7 +355,6 @@ export default function IndustriesPage() {
                       <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
                       <span>Rugged outdoor cabling / OSP fiber</span>
                     </li>
-                  <ul className="space-y-3 text-slate-600">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
                       <span>Modular patch panels and optical distribution frames (ODFs)</span>
@@ -388,7 +385,6 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      {/* Success Stories */}
       <section className="py-16 bg-slate-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -402,7 +398,6 @@ export default function IndustriesPage() {
             <Card className="border-0 shadow-lg bg-gradient-to-br from-blue-50 to-blue-100 text-center">
               <CardHeader>
                 <div className="text-3xl font-bold text-blue-600 mb-2">Faster Deployments</div>
-                {/* <CardTitle className="text-xl text-blue-900">Deployments</CardTitle>*/}
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-blue-800">
@@ -414,7 +409,6 @@ export default function IndustriesPage() {
             <Card className="border-0 shadow-lg bg-gradient-to-br from-green-50 to-green-100 text-center">
               <CardHeader>
                 <div className="text-3xl font-bold text-green-600 mb-2">Fewer Errors</div>
-                {/* <CardTitle className="text-xl text-green-900">Errors</CardTitle>*/}
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-green-800">
@@ -426,7 +420,6 @@ export default function IndustriesPage() {
             <Card className="border-0 shadow-lg bg-gradient-to-br from-purple-50 to-purple-100 text-center">
               <CardHeader>
                 <div className="text-3xl font-bold text-purple-600 mb-2">Lower Cost</div>
-                {/* <CardTitle className="text-xl text-purple-900">Cost</CardTitle>*/}
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-purple-800">
@@ -439,7 +432,6 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="py-16 bg-blue-900 text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Industry Infrastructure?</h2>
