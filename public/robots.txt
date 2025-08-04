@@ -17,4 +17,4 @@ Disallow: /.well-known/
 Crawl-delay: 1
 
 # Sitemap location
-Sitemap: https://wave2wave.com/sitemap.xml
+Sitemap: https://www.wave2wave.io/sitemap.xml
