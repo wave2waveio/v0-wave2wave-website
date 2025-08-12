@@ -4,6 +4,7 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
+import { AnnouncementBanner } from "@/components/announcement-banner"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -17,29 +18,29 @@ export const metadata: Metadata = {
       "Wave2Wave.io designs, delivers, and supports the critical physical infrastructure behind tomorrow's networks — combining custom-engineered structured cabling, precision logistics, and digital twin-driven services.",
     url: "https://www.wave2wave.io",
     siteName: "Wave2Wave.io",
-      images: [
-      {     
-        url: '/images/wave2wave-logo.png', // Relative URL works for Vercel deployment
+    images: [
+      {
+        url: "/images/wave2wave-logo.png", // Relative URL works for Vercel deployment
         width: 600,
         height: 325,
-        alt: 'Wave2Wave Logo',
+        alt: "Wave2Wave Logo",
       },
     ],
-    locale: 'en_US',
-    type: 'website',
+    locale: "en_US",
+    type: "website",
   },
   icons: {
     icon: "/favicon.png",
     shortcut: "/favicon.png",
     apple: "/favicon.png",
   },
-    generator: 'v0.dev'
+    generator: 'v0.app'
 }
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="en">
@@ -65,15 +66,16 @@ export default function RootLayout({
             src="https://www.googletagmanager.com/ns.html?id=GTM-P9KTZ7PC"
             height="0"
             width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
+            style={{ display: "none", visibility: "hidden" }}
           ></iframe>
         </noscript>
         {/* End Google Tag Manager (noscript) */}
 
+        <AnnouncementBanner />
         <Navigation />
         <main>{children}</main>
         <Footer />
       </body>
     </html>
-  );
+  )
 }
