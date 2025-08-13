@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 export const metadata: Metadata = {
-  title: "Welcome Cabling123 Customers | Wave2Wave",
+  title: "Welcome Cabling123 Customers | Wave2Wave.io",
   description:
     "Cabling123 is now part of Wave2Wave.io. Learn about our enhanced services and how we continue to serve your data center cabling needs.",
   openGraph: {
@@ -50,7 +50,7 @@ export default function Cabling123Page() {
 
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Welcome Cabling123 Customers</h1>
             <p className="text-xl md:text-2xl text-slate-600 mb-8 leading-relaxed">
-              We're excited to announce that Cabling123 is now part of the Wave2Wave family! This transition brings you
+              We're excited to announce that Cabling123 is now part of the Wave2Wave.io family! This transition brings you
               enhanced services, expanded capabilities, and the same trusted expertise you've come to rely on.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
