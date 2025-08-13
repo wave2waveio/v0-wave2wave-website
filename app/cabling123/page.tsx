@@ -9,11 +9,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 export const metadata: Metadata = {
   title: "Welcome Cabling123 Customers | Wave2Wave.io",
   description:
-    "Cabling123 is now part of Wave2Wave.io. Learn about our enhanced services and how we continue to serve your data center cabling needs.",
+    "Cabling123 is now part of Wave2Wave.io. Learn about how we continue to serve your data center cabling needs.",
   openGraph: {
-    title: "Welcome Cabling123 Customers | Wave2Wave",
+    title: "Welcome Cabling123 Customers | Wave2Wave.iio",
     description:
-      "Cabling123 is now part of Wave2Wave.io. Learn about our enhanced services and how we continue to serve your data center cabling needs.",
+      "Cabling123 is now part of Wave2Wave.io. Learn about how we continue to serve your data center cabling needs.",
     url: "https://www.wave2wave.io/cabling123",
     siteName: "Wave2Wave.io",
     images: [
@@ -50,8 +50,7 @@ export default function Cabling123Page() {
 
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Welcome Cabling123 Customers</h1>
             <p className="text-xl md:text-2xl text-slate-600 mb-8 leading-relaxed">
-              We're excited to announce that Cabling123 is now part of the Wave2Wave.io family! This transition brings you
-              enhanced services, expanded capabilities, and the same trusted expertise you've come to rely on.
+              We're excited to announce that Cabling123 is now part of the Wave2Wave.io family! This transition brings you the same trusted expertise you've come to rely on.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-3" asChild>
@@ -87,7 +86,7 @@ export default function Cabling123Page() {
                 </CardContent>
               </Card>
 
-              <Card className="border-0 shadow-lg">
+{/*              <Card className="border-0 shadow-lg">
                 <CardHeader>
                   <CardTitle className="text-xl text-green-600">✓ Enhanced Capabilities</CardTitle>
                 </CardHeader>
@@ -98,7 +97,7 @@ export default function Cabling123Page() {
                   </CardDescription>
                 </CardContent>
               </Card>
-
+*/}
               <Card className="border-0 shadow-lg">
                 <CardHeader>
                   <CardTitle className="text-xl text-green-600">✓ Seamless Transition</CardTitle>
@@ -111,7 +110,7 @@ export default function Cabling123Page() {
                 </CardContent>
               </Card>
 
-              <Card className="border-0 shadow-lg">
+{/*              <Card className="border-0 shadow-lg">
                 <CardHeader>
                   <CardTitle className="text-xl text-green-600">✓ Expanded Resources</CardTitle>
                 </CardHeader>
@@ -126,9 +125,9 @@ export default function Cabling123Page() {
           </div>
         </div>
       </section>
-
+*/}
       {/* New Services Section */}
-      <section className="py-16 bg-slate-50">
+{/*      <section className="py-16 bg-slate-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-8 text-center">
@@ -202,7 +201,7 @@ export default function Cabling123Page() {
           </div>
         </div>
       </section>
-
+*/}
       {/* Contact Section */}
       <section className="py-16 bg-blue-900 text-white">
         <div className="container mx-auto px-4">
