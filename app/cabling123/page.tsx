@@ -53,17 +53,6 @@ export default function Cabling123Page() {
               We're excited to announce that Cabling123 is now part of the Wave2Wave.io family! This transition brings
               you the same trusted expertise you've come to rely on.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-3" asChild>
-                <Link href="/contact">
-                  Contact Our Team
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline" className="text-lg px-8 py-3 bg-transparent" asChild>
-                <Link href="/solutions">Explore Our Services</Link>
-              </Button>
-            </div>
           </div>
         </div>
       </section>
@@ -89,36 +78,12 @@ export default function Cabling123Page() {
 
               <Card className="border-0 shadow-lg">
                 <CardHeader>
-                  <CardTitle className="text-xl text-green-600">✓ Enhanced Capabilities</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base">
-                    Access to Wave2Wave's expanded services including DCIM/digital twin solutions, advanced kitting, and
-                    comprehensive data center infrastructure services.
-                  </CardDescription>
-                </CardContent>
-              </Card>
-
-              <Card className="border-0 shadow-lg">
-                <CardHeader>
                   <CardTitle className="text-xl text-green-600">✓ Seamless Transition</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-base">
                     No disruption to your current projects or orders. All existing contracts, warranties, and support
                     agreements remain in full effect.
-                  </CardDescription>
-                </CardContent>
-              </Card>
-
-              <Card className="border-0 shadow-lg">
-                <CardHeader>
-                  <CardTitle className="text-xl text-green-600">✓ Expanded Resources</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base">
-                    Benefit from Wave2Wave's larger scale, enhanced manufacturing capabilities, and broader supplier
-                    network for even better service and competitive pricing.
                   </CardDescription>
                 </CardContent>
               </Card>
@@ -132,7 +97,7 @@ export default function Cabling123Page() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-8 text-center">
-              New Services Now Available
+              Same Great Services Still Available
             </h2>
 
             <div className="grid md:grid-cols-3 gap-8">
@@ -220,8 +185,8 @@ export default function Cabling123Page() {
                 </CardHeader>
                 <CardContent className="text-center">
                   <p className="text-blue-100 mb-2">Speak directly with our team</p>
-                  <a href="tel:+1-408-834-3434" className="text-xl font-bold text-white hover:text-blue-200">
-                    +1 (408) 834-3434
+                  <a href="tel:+1-866-473-2701" className="text-xl font-bold text-white hover:text-blue-200">
+                    +1 (866) 473-2701
                   </a>
                 </CardContent>
               </Card>
