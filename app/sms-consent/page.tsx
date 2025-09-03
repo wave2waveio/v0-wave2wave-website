@@ -37,8 +37,7 @@ export default function SMSConsentPage() {
               <CardContent className="space-y-4">
                 <p className="text-slate-700">
                   By providing your mobile phone number to Wave2Wave.io, you consent to receive text messages from us
-                  regarding your inquiries, project updates, and service notifications. This consent is not required as
-                  a condition of purchase.
+                  regarding your product inquiries, project updates, and shipping notifications (if requested). This consent is not required as a condition of purchase.  We will not use your phone number for marketing purposes.
                 </p>
 
                 <div className="bg-blue-50 border-l-4 border-blue-500 p-4">
@@ -47,7 +46,7 @@ export default function SMSConsentPage() {
                     <li>Project status updates and notifications</li>
                     <li>Appointment confirmations and reminders</li>
                     <li>Quote and proposal delivery notifications</li>
-                    <li>Important service announcements</li>
+                    <li>Shipping notifications (if requested)</li>
                   </ul>
                 </div>
               </CardContent>
@@ -62,8 +61,7 @@ export default function SMSConsentPage() {
                   <div>
                     <h3 className="font-semibold text-slate-900 mb-2">Message Frequency</h3>
                     <p className="text-slate-700">
-                      Message frequency varies based on your project activity and preferences. You may receive up to 5
-                      messages per week during active projects.
+                      Message frequency varies based on your project activity and preferences.
                     </p>
                   </div>
                   <div>
@@ -105,8 +103,7 @@ export default function SMSConsentPage() {
 
                 <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4">
                   <p className="text-yellow-800">
-                    <strong>Note:</strong> After opting out, you may receive one final confirmation message. You may
-                    still receive SMS messages related to active service requests or appointments.
+                    <strong>Note:</strong> After opting out, you may receive one final confirmation message.
                   </p>
                 </div>
               </CardContent>
