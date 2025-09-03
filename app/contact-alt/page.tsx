@@ -483,9 +483,9 @@ export default function ContactAltPage() {
               {/* Quick SMS Contact Form */}
               <Card className="border-0 shadow-lg">
                 <CardHeader>
-                  <CardTitle className="text-xl">Quick SMS Contact Request</CardTitle>
+                  <CardTitle className="text-xl">Quick Contact Request</CardTitle>
                   <CardDescription>
-                    Need a quick response? Send us your contact info and we'll text you back within 24 hours.
+                    Have a quick question? Need a quick response? Send us an SMS and we'll respond fast.
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
