@@ -12,7 +12,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { submitContactForm } from "./actions"
+import { submitContactForm } from "../contact/actions"
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024 // 5MB file limit
 const ALLOWED_FILE_TYPES = [
@@ -30,7 +30,7 @@ const ALLOWED_FILE_TYPES = [
   "application/json",
 ]
 
-export default function ContactPage() {
+export default function ContactAltPage() {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -481,7 +481,7 @@ export default function ContactPage() {
               </Card>
 
               {/* Quick SMS Contact Form */}
-              {/*<Card className="border-0 shadow-lg">
+              <Card className="border-0 shadow-lg">
                 <CardHeader>
                   <CardTitle className="text-xl">Quick SMS Contact Request</CardTitle>
                   <CardDescription>
@@ -576,7 +576,6 @@ export default function ContactPage() {
                   </form>
                 </CardContent>
               </Card>
-            */}
             </div>
           </div>
         </div>
