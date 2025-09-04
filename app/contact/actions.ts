@@ -124,8 +124,6 @@ console.log("📦 Files received before encoding:", files.map((f, idx) => ({
   }
 }
 
-"use server"
-
 // ---------- OpenPhone SMS: Server Action ----------
 type SmsResult = { success: boolean; message: string }
 
