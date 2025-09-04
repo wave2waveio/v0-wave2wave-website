@@ -590,7 +590,7 @@ const handleSmsSubmit = async (e: React.FormEvent) => {
             </Card>
 
             {/* Quick SMS Contact Form */}
-            <Card className="border-0 shadow-lg">
+{/*            <Card className="border-0 shadow-lg">
               <CardHeader>
                 <CardTitle className="text-xl">Quick SMS Contact Request</CardTitle>
                 <CardDescription>
@@ -725,6 +725,7 @@ const handleSmsSubmit = async (e: React.FormEvent) => {
                 </form>
               </CardContent>
             </Card>
+            */}
           </div>
         </div>
       </section>
