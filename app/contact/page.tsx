@@ -12,7 +12,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { submitContactForm } from "./actions"
+import { submitContactForm, submitSmsForm } from "./actions"
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024 // 5MB file limit
 const ALLOWED_FILE_TYPES = [
@@ -30,6 +30,71 @@ const ALLOWED_FILE_TYPES = [
   "application/json",
 ]
 
+// Country codes with their names and codes
+const COUNTRY_CODES = [
+  { name: "United States", code: "+1", flag: "🇺🇸" },
+  { name: "Canada", code: "+1", flag: "🇨🇦" },
+  { name: "United Kingdom", code: "+44", flag: "🇬🇧" },
+  { name: "Australia", code: "+61", flag: "🇦🇺" },
+  { name: "Germany", code: "+49", flag: "🇩🇪" },
+  { name: "France", code: "+33", flag: "🇫🇷" },
+  { name: "Italy", code: "+39", flag: "🇮🇹" },
+  { name: "Spain", code: "+34", flag: "🇪🇸" },
+  { name: "Netherlands", code: "+31", flag: "🇳🇱" },
+  { name: "Belgium", code: "+32", flag: "🇧🇪" },
+  { name: "Switzerland", code: "+41", flag: "🇨🇭" },
+  { name: "Austria", code: "+43", flag: "🇦🇹" },
+  { name: "Sweden", code: "+46", flag: "🇸🇪" },
+  { name: "Norway", code: "+47", flag: "🇳🇴" },
+  { name: "Denmark", code: "+45", flag: "🇩🇰" },
+  { name: "Finland", code: "+358", flag: "🇫🇮" },
+  { name: "Japan", code: "+81", flag: "🇯🇵" },
+  { name: "South Korea", code: "+82", flag: "🇰🇷" },
+  { name: "China", code: "+86", flag: "🇨🇳" },
+  { name: "India", code: "+91", flag: "🇮🇳" },
+  { name: "Singapore", code: "+65", flag: "🇸🇬" },
+  { name: "Hong Kong", code: "+852", flag: "🇭🇰" },
+  { name: "Taiwan", code: "+886", flag: "🇹🇼" },
+  { name: "Brazil", code: "+55", flag: "🇧🇷" },
+  { name: "Mexico", code: "+52", flag: "🇲🇽" },
+  { name: "Argentina", code: "+54", flag: "🇦🇷" },
+  { name: "Chile", code: "+56", flag: "🇨🇱" },
+  { name: "Colombia", code: "+57", flag: "🇨🇴" },
+  { name: "Peru", code: "+51", flag: "🇵🇪" },
+  { name: "South Africa", code: "+27", flag: "🇿🇦" },
+  { name: "Israel", code: "+972", flag: "🇮🇱" },
+  { name: "United Arab Emirates", code: "+971", flag: "🇦🇪" },
+  { name: "Saudi Arabia", code: "+966", flag: "🇸🇦" },
+  { name: "Turkey", code: "+90", flag: "🇹🇷" },
+  { name: "Russia", code: "+7", flag: "🇷🇺" },
+  { name: "Poland", code: "+48", flag: "🇵🇱" },
+  { name: "Czech Republic", code: "+420", flag: "🇨🇿" },
+  { name: "Hungary", code: "+36", flag: "🇭🇺" },
+  { name: "Romania", code: "+40", flag: "🇷🇴" },
+  { name: "Greece", code: "+30", flag: "🇬🇷" },
+  { name: "Portugal", code: "+351", flag: "🇵🇹" },
+  { name: "Ireland", code: "+353", flag: "🇮🇪" },
+  { name: "New Zealand", code: "+64", flag: "🇳🇿" },
+  { name: "Thailand", code: "+66", flag: "🇹🇭" },
+  { name: "Malaysia", code: "+60", flag: "🇲🇾" },
+  { name: "Philippines", code: "+63", flag: "🇵🇭" },
+  { name: "Indonesia", code: "+62", flag: "🇮🇩" },
+  { name: "Vietnam", code: "+84", flag: "🇻🇳" },
+]
+
+// E.164 phone number validation (without country code)
+const validatePhoneNumber = (phoneNumber: string): boolean => {
+  // Remove all non-digit characters
+  const cleaned = phoneNumber.replace(/\D/g, "")
+  // Should have at least 4 digits and no more than 15 digits (total E.164 limit minus country code)
+  return cleaned.length >= 4 && cleaned.length <= 15
+}
+
+const formatPhoneNumber = (input: string): string => {
+  // Remove all non-digit characters
+  return input.replace(/\D/g, "")
+}
+
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -44,6 +109,7 @@ export default function ContactPage() {
 
   const [smsFormData, setSmsFormData] = useState({
     name: "",
+    countryCode: "+1", // Default to US
     phone: "",
     message: "",
     smsConsent: false,
@@ -55,6 +121,7 @@ export default function ContactPage() {
 
   const [isSmsSubmitting, setIsSmsSubmitting] = useState(false)
   const [smsSubmitResult, setSmsSubmitResult] = useState<{ success: boolean; message: string } | null>(null)
+  const [phoneValidationError, setPhoneValidationError] = useState<string | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -119,51 +186,79 @@ export default function ContactPage() {
     }
   }
 
-  const handleSmsSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!smsFormData.smsConsent) {
-      setSmsSubmitResult({
-        success: false,
-        message: "Please consent to receive SMS messages before submitting.",
-      })
-      return
-    }
+const handleSmsSubmit = async (e: React.FormEvent) => {
+  e.preventDefault()
 
-    setIsSmsSubmitting(true)
-    setSmsSubmitResult(null)
+  // Validate SMS consent
+  if (!smsFormData.smsConsent) {
+    setSmsSubmitResult({
+      success: false,
+      message: "Please consent to receive SMS messages before submitting.",
+    })
+    return
+  }
 
-    try {
-      // Simulate SMS form submission
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+  // Validate phone number format
+  if (!validatePhoneNumber(smsFormData.phone)) {
+    setPhoneValidationError("Please enter a valid phone number (4-15 digits)")
+    return
+  }
 
-      setSmsSubmitResult({
-        success: true,
-        message: "SMS request submitted successfully! We'll text you within 24 hours.",
-      })
+  setIsSmsSubmitting(true)
+  setSmsSubmitResult(null)
+  setPhoneValidationError(null)
 
+  try {
+    // Build full E.164 phone for the customer
+    const fullPhoneNumber = smsFormData.countryCode + formatPhoneNumber(smsFormData.phone)
+
+    const fd = new FormData()
+    fd.append("name", smsFormData.name)
+    fd.append("phone", fullPhoneNumber)       // E.164
+    fd.append("message", smsFormData.message)
+    fd.append("smsConsent", String(smsFormData.smsConsent))
+
+    const result = await submitSmsForm(fd)
+
+    setSmsSubmitResult(result)
+
+    if (result.success) {
       // Reset SMS form on success
       setSmsFormData({
         name: "",
+        countryCode: "+1",
         phone: "",
         message: "",
         smsConsent: false,
       })
-    } catch (error: any) {
-      setSmsSubmitResult({
-        success: false,
-        message: "There was an error submitting your SMS request. Please try again.",
-      })
-    } finally {
-      setIsSmsSubmitting(false)
     }
+  } catch (error: any) {
+    setSmsSubmitResult({
+      success: false,
+      message: "There was an error submitting your SMS request. Please try again.",
+    })
+  } finally {
+    setIsSmsSubmitting(false)
   }
+}
 
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
   }
 
   const handleSmsInputChange = (field: string, value: string | boolean) => {
-    setSmsFormData((prev) => ({ ...prev, [field]: value }))
+    if (field === "phone" && typeof value === "string") {
+      // Format phone number (remove non-digits)
+      const formattedPhone = formatPhoneNumber(value)
+      setSmsFormData((prev) => ({ ...prev, [field]: formattedPhone }))
+
+      // Clear validation error when user starts typing
+      if (phoneValidationError) {
+        setPhoneValidationError(null)
+      }
+    } else {
+      setSmsFormData((prev) => ({ ...prev, [field]: value }))
+    }
   }
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -230,34 +325,94 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Quick Response Times Section */}
+      {/* Quick Response Times & Contact Information Section */}
       <section className="py-12 bg-slate-50">
         <div className="container mx-auto px-4">
-          <Card className="border-0 shadow-lg max-w-4xl mx-auto">
-            <CardHeader className="text-center">
-              <CardTitle className="text-2xl">Commited to Quick Response Times</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-3 gap-6">
-                <div className="flex items-center space-x-3">
-                  <Clock className="h-6 w-6 text-blue-600 flex-shrink-0" />
-                  <span className="text-slate-600">Initial response within 24 hours</span>
+          <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {/* Quick Response Times */}
+            <Card className="border-0 shadow-lg">
+              <CardHeader className="text-center">
+                <CardTitle className="text-2xl">Committed to Quick Response Times</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-6">
+                  <div className="flex items-center space-x-3">
+                    <Clock className="h-6 w-6 text-blue-600 flex-shrink-0" />
+                    <div>
+                      <div className="font-semibold">Initial response within 24 hours</div>
+                      <div className="text-sm text-slate-500">
+                        We'll acknowledge your inquiry and provide next steps
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <Clock className="h-6 w-6 text-blue-600 flex-shrink-0" />
+                    <div>
+                      <div className="font-semibold">Quote turnaround in 2-3 business days</div>
+                      <div className="text-sm text-slate-500">Detailed proposals for your project requirements</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <Clock className="h-6 w-6 text-blue-600 flex-shrink-0" />
+                    <div>
+                      <div className="font-semibold">Technical consultation within 48 hours</div>
+                      <div className="text-sm text-slate-500">Expert guidance from our engineering team</div>
+                    </div>
+                  </div>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <Clock className="h-6 w-6 text-blue-600 flex-shrink-0" />
-                  <span className="text-slate-600">Quote turnaround in 2-3 business days</span>
+              </CardContent>
+            </Card>
+
+            {/* Contact Information */}
+            <Card className="border-0 shadow-lg">
+              <CardHeader className="text-center">
+                <CardTitle className="text-2xl">Contact Information</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Phone className="h-5 w-5 text-blue-600" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold">Phone</h3>
+                      <p className="text-slate-600">+1 (866) 473-2701</p>
+                      <p className="text-sm text-slate-500">Mon-Fri 8:00 AM - 6:00 PM EST</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Mail className="h-5 w-5 text-green-600" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold">Email</h3>
+                      <p className="text-slate-600">info@wave2wave.io</p>
+                      <p className="text-sm text-slate-500">We respond within 24 hours</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <MapPin className="h-5 w-5 text-orange-600" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold">Address</h3>
+                      <p className="text-slate-600">
+                        1017 El Camino Real, #448
+                        <br />
+                        Redwood City, CA 94063
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <Clock className="h-6 w-6 text-blue-600 flex-shrink-0" />
-                  <span className="text-slate-600">Technical consultation within 48 hours</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 
-      {/* Contact Form & Info */}
+      {/* Contact Form & SMS Form */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12">
@@ -434,91 +589,80 @@ export default function ContactPage() {
               </CardContent>
             </Card>
 
-            {/* Contact Information and SMS Form */}
-            <div className="space-y-8">
-              {/* Contact Information */}
-              <Card className="border-0 shadow-lg">
-                <CardHeader>
-                  <CardTitle className="text-xl">Contact Information</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Phone className="h-5 w-5 text-blue-600" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold">Phone</h3>
-                      <p className="text-slate-600">+1 (866) 473-2701</p>
-                      <p className="text-sm text-slate-500">Mon-Fri 8:00 AM - 6:00 PM EST</p>
-                    </div>
+            {/* Quick SMS Contact Form */}
+            <Card className="border-0 shadow-lg">
+              <CardHeader>
+                <CardTitle className="text-xl">Quick SMS Contact Request</CardTitle>
+                <CardDescription>
+                  Need a quick response? Send us your contact info and we'll text you back within 24 hours.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                {smsSubmitResult && (
+                  <Alert
+                    className={`mb-6 ${smsSubmitResult.success ? "border-green-200 bg-green-50" : "border-red-200 bg-red-50"}`}
+                  >
+                    {smsSubmitResult.success ? (
+                      <CheckCircle className="h-4 w-4 text-green-600" />
+                    ) : (
+                      <AlertCircle className="h-4 w-4 text-red-600" />
+                    )}
+                    <AlertDescription className={smsSubmitResult.success ? "text-green-800" : "text-red-800"}>
+                      {smsSubmitResult.message}
+                    </AlertDescription>
+                  </Alert>
+                )}
+
+                {phoneValidationError && (
+                  <Alert className="mb-6 border-red-200 bg-red-50">
+                    <AlertCircle className="h-4 w-4 text-red-600" />
+                    <AlertDescription className="text-red-800">{phoneValidationError}</AlertDescription>
+                  </Alert>
+                )}
+
+                <form onSubmit={handleSmsSubmit} className="space-y-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="sms-name">Name *</Label>
+                    <Input
+                      id="sms-name"
+                      value={smsFormData.name}
+                      onChange={(e) => handleSmsInputChange("name", e.target.value)}
+                      required
+                      disabled={isSmsSubmitting}
+                      placeholder="Your full name"
+                    />
                   </div>
 
-                  <div className="flex items-start space-x-4">
-                    <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Mail className="h-5 w-5 text-green-600" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold">Email</h3>
-                      <p className="text-slate-600">info@wave2wave.io</p>
-                      <p className="text-sm text-slate-500">We respond within 24 hours</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start space-x-4">
-                    <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <MapPin className="h-5 w-5 text-orange-600" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold">Address</h3>
-                      <p className="text-slate-600">
-                        1017 El Camino Real, #448
-                        <br />
-                        Redwood City, CA 94063
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Quick SMS Contact Form */}
-              {/*<Card className="border-0 shadow-lg">
-                <CardHeader>
-                  <CardTitle className="text-xl">Quick SMS Contact Request</CardTitle>
-                  <CardDescription>
-                    Need a quick response? Send us your contact info and we'll text you back within 24 hours.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  {smsSubmitResult && (
-                    <Alert
-                      className={`mb-6 ${smsSubmitResult.success ? "border-green-200 bg-green-50" : "border-red-200 bg-red-50"}`}
+                  <div className="space-y-2">
+                    <Label htmlFor="sms-country">Country *</Label>
+                    <Select
+                      value={smsFormData.countryCode}
+                      onValueChange={(value) => handleSmsInputChange("countryCode", value)}
+                      disabled={isSmsSubmitting}
                     >
-                      {smsSubmitResult.success ? (
-                        <CheckCircle className="h-4 w-4 text-green-600" />
-                      ) : (
-                        <AlertCircle className="h-4 w-4 text-red-600" />
-                      )}
-                      <AlertDescription className={smsSubmitResult.success ? "text-green-800" : "text-red-800"}>
-                        {smsSubmitResult.message}
-                      </AlertDescription>
-                    </Alert>
-                  )}
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select country" />
+                      </SelectTrigger>
+                      <SelectContent className="max-h-60">
+                        {COUNTRY_CODES.map((country) => (
+                          <SelectItem key={`${country.name}-${country.code}`} value={country.code}>
+                            <span className="flex items-center space-x-2">
+                              <span>{country.flag}</span>
+                              <span>{country.name}</span>
+                              <span className="text-slate-500">({country.code})</span>
+                            </span>
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
 
-                  <form onSubmit={handleSmsSubmit} className="space-y-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="sms-name">Name *</Label>
-                      <Input
-                        id="sms-name"
-                        value={smsFormData.name}
-                        onChange={(e) => handleSmsInputChange("name", e.target.value)}
-                        required
-                        disabled={isSmsSubmitting}
-                        placeholder="Your full name"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="sms-phone">Phone Number *</Label>
+                  <div className="space-y-2">
+                    <Label htmlFor="sms-phone">Phone Number *</Label>
+                    <div className="flex space-x-2">
+                      <div className="flex items-center px-3 py-2 border border-gray-300 rounded-md bg-gray-50 text-sm font-medium text-gray-700 min-w-[80px]">
+                        {smsFormData.countryCode}
+                      </div>
                       <Input
                         id="sms-phone"
                         type="tel"
@@ -526,58 +670,61 @@ export default function ContactPage() {
                         onChange={(e) => handleSmsInputChange("phone", e.target.value)}
                         required
                         disabled={isSmsSubmitting}
-                        placeholder="(555) 123-4567"
+                        placeholder="1234567890"
+                        className={`flex-1 ${phoneValidationError ? "border-red-300 focus:border-red-500" : ""}`}
                       />
                     </div>
+                    <p className="text-sm text-slate-500">
+                      Enter your phone number without the country code (e.g., 1234567890)
+                    </p>
+                  </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="sms-message">Brief Message</Label>
-                      <Textarea
-                        id="sms-message"
-                        rows={3}
-                        value={smsFormData.message}
-                        onChange={(e) => handleSmsInputChange("message", e.target.value)}
+                  <div className="space-y-2">
+                    <Label htmlFor="sms-message">Brief Message</Label>
+                    <Textarea
+                      id="sms-message"
+                      rows={3}
+                      value={smsFormData.message}
+                      onChange={(e) => handleSmsInputChange("message", e.target.value)}
+                      disabled={isSmsSubmitting}
+                      placeholder="Brief description of what you need help with..."
+                    />
+                  </div>
+
+                  <div className="space-y-4">
+                    <div className="flex items-start space-x-2">
+                      <input
+                        type="checkbox"
+                        id="smsConsent"
+                        checked={smsFormData.smsConsent}
+                        onChange={(e) => handleSmsInputChange("smsConsent", e.target.checked)}
+                        className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded mt-1"
                         disabled={isSmsSubmitting}
-                        placeholder="Brief description of what you need help with..."
                       />
+                      <Label htmlFor="smsConsent" className="text-sm text-slate-600 leading-relaxed">
+                        By submitting your phone number, you are consenting to receive text messages from us. You can
+                        opt out at any time by texting "STOP". Message and data rates may apply.
+                      </Label>
                     </div>
 
-                    <div className="space-y-4">
-                      <div className="flex items-start space-x-2">
-                        <input
-                          type="checkbox"
-                          id="smsConsent"
-                          checked={smsFormData.smsConsent}
-                          onChange={(e) => handleSmsInputChange("smsConsent", e.target.checked)}
-                          className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded mt-1"
-                          disabled={isSmsSubmitting}
-                        />
-                        <Label htmlFor="smsConsent" className="text-sm text-slate-600 leading-relaxed">
-                          By submitting your phone number, you are consenting to receive text messages from us. You can
-                          opt out at any time by texting "STOP". Message and data rates may apply.
-                        </Label>
-                      </div>
-
-                      <div className="text-sm text-slate-500">
-                        <Link href="/sms-consent" className="text-blue-600 hover:text-blue-800 underline">
-                          View SMS Consent & Terms
-                        </Link>
-                      </div>
+                    <div className="text-sm text-slate-500">
+                      <Link href="/sms-consent" className="text-blue-600 hover:text-blue-800 underline">
+                        View SMS Consent & Terms
+                      </Link>
                     </div>
+                  </div>
 
-                    <Button
-                      type="submit"
-                      size="lg"
-                      className="w-full"
-                      disabled={isSmsSubmitting || !smsFormData.smsConsent}
-                    >
-                      {isSmsSubmitting ? "Sending..." : "Send SMS Request"}
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
-            */}
-            </div>
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="w-full"
+                    disabled={isSmsSubmitting || !smsFormData.smsConsent}
+                  >
+                    {isSmsSubmitting ? "Sending..." : "Send SMS Request"}
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>

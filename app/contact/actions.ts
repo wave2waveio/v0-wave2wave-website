@@ -123,3 +123,116 @@ console.log("📦 Files received before encoding:", files.map((f, idx) => ({
     }
   }
 }
+
+"use server"
+
+// ---------- OpenPhone SMS: Server Action ----------
+type SmsResult = { success: boolean; message: string }
+
+const OPENPHONE_API_BASE = "https://api.openphone.com/v1"
+
+function requireEnv(name: string): string {
+  const v = process.env[name]
+  if (!v) throw new Error(`Missing env var: ${name}`)
+  return v
+}
+
+// Cache the number ID for warm lambdas
+let cachedPhoneNumberId: string | null = null
+
+/** Look up the OpenPhone phoneNumberId that corresponds to OPENPHONE_FROM_NUMBER */
+async function getOpenPhoneNumberId(apiKey: string, fromNumberE164: string): Promise<string> {
+  if (cachedPhoneNumberId) return cachedPhoneNumberId
+
+  const res = await fetch(`${OPENPHONE_API_BASE}/phone-numbers`, {
+    method: "GET",
+    headers: { Authorization: apiKey },
+    cache: "no-store",
+  })
+  if (!res.ok) throw new Error(`OpenPhone: list numbers failed (${res.status})`)
+  const json = await res.json()
+  const match = (json?.data ?? []).find((n: any) => n?.number === fromNumberE164)
+  if (!match?.id) throw new Error(`OpenPhone: could not find phoneNumberId for ${fromNumberE164}`)
+  cachedPhoneNumberId = match.id as string
+  return cachedPhoneNumberId
+}
+
+/** Send a single SMS via OpenPhone */
+async function sendOpenPhoneSms(params: {
+  apiKey: string
+  phoneNumberId: string
+  from: string // E.164
+  to: string   // E.164
+  content: string
+}): Promise<void> {
+  const { apiKey, phoneNumberId, from, to, content } = params
+  const res = await fetch(`${OPENPHONE_API_BASE}/messages`, {
+    method: "POST",
+    headers: {
+      // OpenPhone uses the API key as the Authorization header value (not Bearer)
+      Authorization: apiKey,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      content,
+      phoneNumberId,
+      from,
+      to: [to],
+    }),
+  })
+  // Successful responses are typically 201 or 202
+  if (!res.ok && res.status !== 202) {
+    const text = await res.text().catch(() => "")
+    throw new Error(`OpenPhone: send failed (${res.status}) ${text}`)
+  }
+}
+
+/**
+ * submitSmsForm — server action to:
+ * 1) SMS your own number with the lead details ("SMS: {name}, {phone}, {message}")
+ * 2) SMS the customer an acknowledgement
+ */
+export async function submitSmsForm(formData: FormData): Promise<SmsResult> {
+  try {
+    const apiKey = requireEnv("OPENPHONE_API_KEY")
+    const fromNumber = requireEnv("OPENPHONE_FROM_NUMBER")           // your OpenPhone-managed number (E.164)
+    const yourNumber = requireEnv("OPENPHONE_YOUR_PHONE_NUMBER")     // your personal/work E.164 to receive the lead
+
+    const name = String(formData.get("name") || "").trim()
+    const phone = String(formData.get("phone") || "").trim()         // full E.164 from client
+    const message = String(formData.get("message") || "").trim()
+    const smsConsent = String(formData.get("smsConsent") || "") === "true"
+
+    if (!name || !phone) return { success: false, message: "Name and phone are required." }
+    if (!smsConsent) return { success: false, message: "SMS consent is required." }
+    if (!/^\+\d{4,15}$/.test(phone)) return { success: false, message: "Invalid phone number format." }
+
+    const phoneNumberId = await getOpenPhoneNumberId(apiKey, fromNumber)
+
+    // 1) Send lead details to YOU
+    const internalText = `SMS: ${name}, ${phone}, ${message || "(no message)"}`
+    await sendOpenPhoneSms({
+      apiKey,
+      phoneNumberId,
+      from: fromNumber,
+      to: yourNumber,
+      content: internalText,
+    })
+
+    // 2) Auto-reply to the CUSTOMER
+    const customerText =
+      "Thanks for contacting Wave2Wave.io. We got your message and will get back to you soon."
+    await sendOpenPhoneSms({
+      apiKey,
+      phoneNumberId,
+      from: fromNumber,
+      to: phone,
+      content: customerText,
+    })
+
+    return { success: true, message: "Thanks! We’ll text you shortly." }
+  } catch (err: any) {
+    console.error("submitSmsForm error:", err)
+    return { success: false, message: "There was an error sending your SMS. Please try again." }
+  }
+}
