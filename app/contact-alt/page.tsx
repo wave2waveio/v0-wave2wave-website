@@ -699,7 +699,7 @@ export default function ContactPage() {
                         disabled={isSmsSubmitting}
                       />
                       <Label htmlFor="smsConsent" className="text-sm text-slate-600 leading-relaxed">
-                        By submitting your phone number, you are consenting to receive text messages from us. You can
+                        By submitting your phone number, you are consenting to receive text messages from us and agree to the SMS Terms. You can
                         opt out at any time by texting "STOP". Message and data rates may apply.
                       </Label>
                     </div>
