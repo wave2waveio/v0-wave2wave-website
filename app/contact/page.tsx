@@ -186,61 +186,61 @@ export default function ContactPage() {
     }
   }
 
-const handleSmsSubmit = async (e: React.FormEvent) => {
-  e.preventDefault()
+  const handleSmsSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
 
-  // Validate SMS consent
-  if (!smsFormData.smsConsent) {
-    setSmsSubmitResult({
-      success: false,
-      message: "Please consent to receive SMS messages before submitting.",
-    })
-    return
-  }
-
-  // Validate phone number format
-  if (!validatePhoneNumber(smsFormData.phone)) {
-    setPhoneValidationError("Please enter a valid phone number (4-15 digits)")
-    return
-  }
-
-  setIsSmsSubmitting(true)
-  setSmsSubmitResult(null)
-  setPhoneValidationError(null)
-
-  try {
-    // Build full E.164 phone for the customer
-    const fullPhoneNumber = smsFormData.countryCode + formatPhoneNumber(smsFormData.phone)
-
-    const fd = new FormData()
-    fd.append("name", smsFormData.name)
-    fd.append("phone", fullPhoneNumber)       // E.164
-    fd.append("message", smsFormData.message)
-    fd.append("smsConsent", String(smsFormData.smsConsent))
-
-    const result = await submitSmsForm(fd)
-
-    setSmsSubmitResult(result)
-
-    if (result.success) {
-      // Reset SMS form on success
-      setSmsFormData({
-        name: "",
-        countryCode: "+1",
-        phone: "",
-        message: "",
-        smsConsent: false,
+    // Validate SMS consent
+    if (!smsFormData.smsConsent) {
+      setSmsSubmitResult({
+        success: false,
+        message: "Please consent to receive SMS messages before submitting.",
       })
+      return
     }
-  } catch (error: any) {
-    setSmsSubmitResult({
-      success: false,
-      message: "There was an error submitting your SMS request. Please try again.",
-    })
-  } finally {
-    setIsSmsSubmitting(false)
+
+    // Validate phone number format
+    if (!validatePhoneNumber(smsFormData.phone)) {
+      setPhoneValidationError("Please enter a valid phone number (4-15 digits)")
+      return
+    }
+
+    setIsSmsSubmitting(true)
+    setSmsSubmitResult(null)
+    setPhoneValidationError(null)
+
+    try {
+      // Build full E.164 phone for the customer
+      const fullPhoneNumber = smsFormData.countryCode + formatPhoneNumber(smsFormData.phone)
+
+      const fd = new FormData()
+      fd.append("name", smsFormData.name)
+      fd.append("phone", fullPhoneNumber) // E.164
+      fd.append("message", smsFormData.message)
+      fd.append("smsConsent", String(smsFormData.smsConsent))
+
+      const result = await submitSmsForm(fd)
+
+      setSmsSubmitResult(result)
+
+      if (result.success) {
+        // Reset SMS form on success
+        setSmsFormData({
+          name: "",
+          countryCode: "+1",
+          phone: "",
+          message: "",
+          smsConsent: false,
+        })
+      }
+    } catch (error: any) {
+      setSmsSubmitResult({
+        success: false,
+        message: "There was an error submitting your SMS request. Please try again.",
+      })
+    } finally {
+      setIsSmsSubmitting(false)
+    }
   }
-}
 
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
@@ -724,7 +724,7 @@ const handleSmsSubmit = async (e: React.FormEvent) => {
                   </Button>
                 </form>
               </CardContent>
-            </Card>
+            </Card> 
             */}
           </div>
         </div>
