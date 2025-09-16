@@ -221,7 +221,7 @@ export default function IndustriesPage() {
                     <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
                       <Users className="h-5 w-5 text-orange-600" />
                     </div>
-                    <h3 className="text-2xl font-bold">Solutions for System Integrators & VARs</h3>
+                    <h3 className="text-2xl font-bold">System Integrators & VARs</h3>
                   </div>
                   <p className="text-slate-600">
                     Empowering partners with custom fulfillment, design services, and logistics support to accelerate

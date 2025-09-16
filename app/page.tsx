@@ -9,11 +9,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 export const metadata: Metadata = {
   title: "Wave2Wave – Custom Data Center Cabling & DCIM Solutions",
   description:
-    "Custom structured cabling, advanced kitting, and DCIM/digital twin services for modern data centers. Simplify your network infrastructure deployment with a single expert partner – Wave2Wave. Contact us for a quote.",
+    "Custom data center cabling, labeling & kitting for easy deployment, and digital twin design services for modern data centers. Simplify your network infrastructure deployment with a single expert partner – Wave2Wave. Contact us for a quote.",
   openGraph: {
     title: "Wave2Wave – Custom Data Center Cabling & DCIM Solutions",
     description:
-      "Custom structured cabling, advanced kitting, and DCIM/digital twin services for modern data centers. Simplify your network infrastructure deployment with a single expert partner – Wave2Wave. Contact us for a quote.",
+      "Custom data center cabling, labeling & kitting for easy deployment, and digital twin services for modern data centers. Simplify your network infrastructure deployment with a single expert partner – Wave2Wave. Contact us for a quote.",
     url: "https://www.wave2wave.io",
     siteName: "Wave2Wave.io",
     images: [

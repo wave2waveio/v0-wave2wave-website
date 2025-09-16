@@ -61,10 +61,10 @@ export default function SolutionsPage() {
                 />
               </div>
               <div>
-                <h2 className="text-2xl font-bold mb-4">Structured Cabling & Hardware</h2>
+                <h2 className="text-2xl font-bold mb-4">Cabling, Patch Panels & Hardware</h2>
                 <p className="text-slate-600 mb-6">
-                  Custom-engineered cabling systems, power distribution, and connectivity hardware designed to your
-                  exact specifications and site requirements. Whether you need a high-density cabling design for a new data hall or a retrofit of existing cable infrastructure, our team delivers a tailored solution.
+                  Custom-engineered fiber optic cables, high speed interconnect (800G/400G) custom cat5/cat6 ethernet cables, patch panels, cassetts, power distribution, and networking hardware designed to your
+                  exact specifications and site requirements. Whether you need a high-density cabling design for a new data hall, high speed  or a retrofit of existing cable infrastructure, our team delivers a tailored solution.
                 </p>
 
                 <div className="space-y-4">
@@ -72,23 +72,31 @@ export default function SolutionsPage() {
                   <ul className="space-y-2 text-slate-600">
                     <li className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                      <span>Pre-terminated cable assemblies and harnesses copper and fiber optic cabling systems minimize on-site termination work.</span>
+                      <span>High-Speed Interconnects (DAC / AOC / Transceivers)</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                      <span>Custom racks, enclosures, and patch panels built to fit your design, ensuring optimal airflow and cable management.</span>
+                      <span>Fiber Cabling (Trunks, Patch Cords, MPO/MTP)</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                      <span>Power distribution units (PDUs) and power management</span>
+                      <span>Fiber Connectivity Hardware (Patch Panels, Cassettes, Enclosures)</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                      <span>Cable management hardware and accessories</span>
+                      <span>Copper Cabling (Cat6A / Cat7 / Bundled Assemblies)</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                      <span>Connectors, jacks, outlets, and faceplates</span>
+                      <span>Power & Rack Infrastructure (PDUs, Power Cords, Racks)</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span>Testing & Lab Solutions (Loopbacks, Fiber-in-a-Box)</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span>Accessories (Labeling, Cable Management, Cleaning Tools)</span>
                     </li>
                   </ul>
                 </div>
@@ -230,8 +238,8 @@ export default function SolutionsPage() {
               <div>
                 <h2 className="text-2xl font-bold mb-4">HPC, Telecom & OEM Structured Cabling</h2>
                 <p className="text-slate-600 mb-6">
-                  Custom-engineered structured cabling & optical interconnect solutions optimized for complex hardware
-                  platforms—from GPU servers to next-generation data appliances.
+                  Custom-engineered high speed cabling & optical interconnect solutions optimized for complex hardware
+                  platforms—from GPU servers to next-generation data appliances. Custom high speed 400G and 800G AOC and DAC cables, trunk cables, risers and more.
                 </p>
 
                 <div className="space-y-4">
