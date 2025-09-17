@@ -629,7 +629,7 @@ export default function ContactPage() {
                       onChange={(e) => handleSmsInputChange("name", e.target.value)}
                       required
                       disabled={isSmsSubmitting}
-                      placeholder="We'd love to know your name."
+                      placeholder="Not required but let us know your name."
                     />
                   </div>
 
@@ -675,7 +675,7 @@ export default function ContactPage() {
                       />
                     </div>
                     <p className="text-sm text-slate-500">
-                      Enter your phone number without the country code if you would like us to respond via SMS or phone (e.g., 1234567890)
+                      Enter your phone number without the country code if you would like us to respond via SMS or phone (e.g., 1234567890). Or enter your email in the message box.
                     </p>
                   </div>
 
