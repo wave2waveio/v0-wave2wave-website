@@ -1,348 +1,808 @@
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, Zap, Cable, Server, Sheet as Ethernet, Power, TestTube, Settings, ChevronDown } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
 
 export default function ProductsPage() {
-  const productCategories = [
+  const categories = [
     {
-      title: "Custom Fiber Optic Patch Cables & Enclosures",
-      description:
-        "Precision-engineered custom fiber patch cables, enclosures, panels, and couplers for unique installations. Tailored to exact specifications for connector types, lengths, labeling, and enclosure dimensions to ensure seamless integration.",
-      image: "/placeholder.svg?height=200&width=300",
+      id: "high-speed-interconnects",
+      title: "High-Speed Interconnects",
+      subtitle: "DAC / AOC / Transceivers",
+      icon: Zap,
+      color: "blue",
+      gradient: "from-blue-500 to-blue-600",
     },
     {
-      title: "Pre-Terminated Fiber Optic Cable Assemblies",
-      description:
-        "High-performance pre-terminated fiber optic cable assemblies for rapid deployment and minimal on-site termination. Available with a range of connectors, jacket types, and precise cut lengths to meet demanding data center and enterprise requirements. We can customize the lengths, colors, and labeling per your specification or taken directly from the DCIM design.",
-      image: "/placeholder.svg?height=200&width=300",
+      id: "fiber-cabling",
+      title: "Fiber Cabling",
+      subtitle: "Trunks, Patch Cords, MPO/MTP",
+      icon: Cable,
+      color: "green",
+      gradient: "from-green-500 to-green-600",
     },
     {
-      title: "Transceivers/SFP Modules, Media Converters",
-      description:
-        "Enterprise-grade SFP transceivers, and media converters to power high-speed data center, campus, and edge networks. Multi-vendor compatible for seamless connectivity and network expansion.",
-      image: "/placeholder.svg?height=200&width=300",
+      id: "fiber-connectivity-hardware",
+      title: "Fiber Connectivity Hardware",
+      subtitle: "Patch Panels, Cassettes, Enclosures",
+      icon: Server,
+      color: "purple",
+      gradient: "from-purple-500 to-purple-600",
     },
     {
-      title: "Fiber Optic Termination Boxes & Adapter Panels",
-      description:
-        "Versatile fiber optic termination boxes and adapter panels supporting a wide range of connector styles and port densities. Modular designs with flexible sizing and labeling options to support structured cabling builds.",
-      image: "/placeholder.svg?height=200&width=300",
+      id: "copper-cabling",
+      title: "Copper Cabling",
+      subtitle: "Cat6A / Cat7 / Bundled Assemblies",
+      icon: Ethernet,
+      color: "orange",
+      gradient: "from-orange-500 to-orange-600",
     },
     {
-      title: "Fiber MTP / MPO Cassettes and Components",
-      description:
-        "High-density MTP/MPO cassettes and components for efficient fiber management and breakout applications. Enable seamless connections between trunk cables and patching environments with minimal loss.",
-      image: "/placeholder.svg?height=200&width=300",
+      id: "power-rack-infrastructure",
+      title: "Power & Rack Infrastructure",
+      subtitle: "PDUs, Power Cords, Racks",
+      icon: Power,
+      color: "red",
+      gradient: "from-red-500 to-red-600",
     },
     {
-      title: "Fiber Optic Cable by the Foot (Unterminated)",
-      description:
-        "High-quality bulk fiber optic cable sold by the foot, ideal for custom field terminations or installations requiring precise cable runs. Available in singlemode, multimode, and specialty constructions. We can customize the lengths, colors, and labeling per your specification or taken directly from the DCIM design.",
-      image: "/placeholder.svg?height=200&width=300",
+      id: "testing-lab-solutions",
+      title: "Testing & Lab Solutions",
+      subtitle: "Loopbacks, Fiber-in-a-Box",
+      icon: TestTube,
+      color: "indigo",
+      gradient: "from-indigo-500 to-indigo-600",
     },
     {
-      title: "Fiber Optic Test Instruments",
-      description:
-        "Comprehensive fiber optic test equipment including OTDRs, power meters, light sources, and inspection scopes to validate network performance and ensure optimal link integrity.",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-    {
-      title: "Fiber Optic Cleaning Products",
-      description:
-        "Critical fiber optic cleaning tools and supplies—wipes, sticks, cassettes, and solvents—to maintain connector cleanliness and reduce signal loss, ensuring peak network performance.",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-    {
-      title: "Ethernet Patch Cables (Cat 5E, 6, 6A, 7, 8)",
-      description:
-        "Premium Ethernet patch cables in Cat5e, Cat6, Cat6A, Cat7, and Cat8 standards. Customizable in shielding and build quality for enterprise networks and data centers. We can customize the lengths, colors, and labeling per your specification or taken directly from the DCIM design.",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-    {
-      title: "Bulk Ethernet Cable (Cat 5E, 6E, 6A, 7A, 8)",
-      description:
-        "High-performance bulk Ethernet cable spools for structured cabling projects, available in a full range of categories and shielding options. Perfect for in-building or campus deployments. We can customize the lengths, colors, and labeling per your specification or taken directly from the DCIM design.",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-    {
-      title: "Ethernet Keystone Jacks, Plugs, Boots, Wallplates",
-      description:
-        "Reliable Ethernet keystone jacks, RJ45 plugs, strain relief boots, and wallplates for clean, professional network terminations and structured cabling builds.",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-    {
-      title: "Tactical, Rugged, and Harsh Environment Cabling",
-      description:
-        "Durable, ruggedized fiber and copper cabling built for extreme environments—military, industrial, outdoor, or broadcast. Engineered for resistance to moisture, abrasion, temperature, and impact, with customizable build options.",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-    {
-      title: "Patch Panels",
-      description:
-        "Modular Ethernet patch panels in various port counts and configurations for neat, organized cable management. Available for shielded and unshielded applications.",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-    {
-      title: "Datacom Installation Tools and Testers",
-      description:
-        "Professional-grade datacom installation tools and testers for copper and fiber networks, including crimpers, punchdown tools, cable testers, and certification kits.",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-    {
-      title: "Network Racks, Cabinets, and Metal Products",
-      description:
-        "Sturdy network racks, cabinets, and metal enclosures designed for optimal airflow, cable management, and equipment security in data center and telecom environments.",
-      image: "/placeholder.svg?height=200&width=300",
+      id: "accessories",
+      title: "Accessories",
+      subtitle: "Labeling, Cable Management, Cleaning Tools",
+      icon: Settings,
+      color: "teal",
+      gradient: "from-teal-500 to-teal-600",
     },
   ]
 
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-
-      <section className="bg-gradient-to-br from-slate-900 to-blue-900 text-white py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Custom and Off-the-Shelf Products -- Kitted for Easy, Fast Installation
+      <section className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/images/hero-background.png')] bg-cover bg-center opacity-10"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-5xl mx-auto text-center">
+            <Badge className="mb-6 bg-blue-500/20 text-blue-200 border-blue-400/30 px-4 py-2 text-sm font-medium">
+              High-Performance Network Infrastructure
+            </Badge>
+            <h1 className="text-5xl md:text-6xl font-bold mb-8 leading-tight">
+              Next-Generation
+              <span className="block bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                Network Products
+              </span>
             </h1>
-            <p className="text-xl mb-8 text-slate-200">
-              From fiber optic assemblies to network infrastructure, discover our comprehensive range of products
-              designed to elevate your network performance, reliability, and scalability.
+            <p className="text-xl md:text-2xl mb-10 text-slate-300 leading-relaxed max-w-4xl mx-auto">
+              From 400G DAC cables to complete fiber solutions, discover our comprehensive range of products designed
+              for modern data centers and enterprise networks.
             </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg">
+                Explore Products
+                <ChevronDown className="ml-2 h-5 w-5" />
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg bg-transparent"
+              >
+                Request Quote
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Featured Product Lines */}
-      <section className="py-16 bg-slate-50">
+      {/* Category Index */}
+      <section className="py-20 bg-gradient-to-b from-slate-50 to-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Featured Product Lines</h2>
-            <p className="text-xl text-slate-600">Cabling and network infrastructure solutions made easy</p>
+          <div className="text-center mb-16">
+            <Badge className="mb-4 bg-slate-100 text-slate-700 border-slate-200">Product Categories</Badge>
+            <h2 className="text-4xl font-bold text-slate-900 mb-6">Choose Your Solution</h2>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+              Jump to any category below to explore our comprehensive product offerings
+            </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
-            <Card className="border-0 shadow-lg bg-gradient-to-br from-blue-50 to-blue-100">
-              <CardHeader className="pb-0">
-                <div className="w-full h-48 mb-4 overflow-hidden rounded-t-lg">
-                  <Image
-                    src="/images/products/structured-cabling.webp"
-                    alt="Structured Cabling Solutions"
-                    width={400}
-                    height={300}
-                    className="w-full h-full object-cover"
-                    unoptimized
-                  />
-                </div>
-                <CardTitle className="text-xl text-blue-900">Fiber Optic Solutions</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-blue-800 mb-4">
-                  Complete range of custom and pre-cut fiber optic cables, terminators, assemblies, and components for high-speed
-                  data transmission.
-                </CardDescription>
-                <ul className="space-y-2 text-sm text-blue-700">
-                  <li>• Pre-terminated assemblies</li>
-                  <li>• Custom assemblies</li>
-                  <li>• OEM solutions</li>
-                  <li>• MTP/MPO solutions</li>
-                  <li>• Custom patch cables</li>
-                  <li>• Bulk cable options</li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg bg-gradient-to-br from-green-50 to-green-100">
-              <CardHeader className="pb-0">
-                <div className="w-full h-48 mb-4 overflow-hidden rounded-t-lg">
-                  <Image
-                    src="/images/products/ethernet-cabling.jpg"
-                    alt="Ethernet Infrastructure"
-                    width={400}
-                    height={300}
-                    className="w-full h-full object-cover"
-                    unoptimized
-                  />
-                </div>
-                <CardTitle className="text-xl text-green-900">Ethernet Infrastructure</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-green-800 mb-4">
-                  Comprehensive custom and pre-cut Ethernet cabling and connectivity solutions for all network speeds
-                </CardDescription>
-                <ul className="space-y-2 text-sm text-green-700">
-                  <li>• OEM solutions</li>
-                  <li>• Cat5e through Cat8 cables</li>
-                  <li>• Patch panels and jacks</li>
-                  <li>• Network switches</li>
-                  <li>• Installation tools</li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg bg-gradient-to-br from-purple-50 to-purple-100">
-              <CardHeader className="pb-0">
-                <div className="w-full h-48 mb-4 overflow-hidden rounded-t-lg">
-                  <Image
-                    src="/images/products/network-cable-management.webp"
-                    alt="Infrastructure Hardware"
-                    width={400}
-                    height={300}
-                    className="w-full h-full object-cover"
-                    unoptimized
-                  />
-                </div>
-                <CardTitle className="text-xl text-purple-900">Infrastructure Hardware</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-purple-800 mb-4">
-                  Custom and standard Racks, enclosures, and support hardware for professional installations
-                </CardDescription>
-                <ul className="space-y-2 text-sm text-purple-700">
-                  <li>• Network racks and cabinets</li>
-                  <li>• OEM solutions</li>
-                  <li>• Cable management</li>
-                  <li>• Test equipment</li>
-                  <li>• Cleaning supplies</li>
-                </ul>
-              </CardContent>
-            </Card>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {categories.map((category) => {
+              const IconComponent = category.icon
+              return (
+                <Link
+                  key={category.id}
+                  href={`#${category.id}`}
+                  className="group relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-slate-200"
+                >
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br ${category.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
+                  ></div>
+                  <div className="p-6 relative z-10">
+                    <div
+                      className={`inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br ${category.gradient} text-white mb-4 group-hover:scale-110 transition-transform duration-300`}
+                    >
+                      <IconComponent className="h-7 w-7" />
+                    </div>
+                    <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-slate-700">
+                      {category.title}
+                    </h3>
+                    <p className="text-sm text-slate-600 group-hover:text-slate-500">{category.subtitle}</p>
+                  </div>
+                </Link>
+              )
+            })}
           </div>
         </div>
       </section>
 
-      {/* Product Categories */}
-      <section className="py-16">
+      {/* 1. High-Speed Interconnects */}
+      <section id="high-speed-interconnects" className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Product Categories</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              We have an extensive ablity to provide custom and off-the-shelf networking and cabling solutions, each
-              engineered for performance and reliability. These can all be kitted and packaged with similar products for
-              easy delivery, logistics and installation.
-            </p>
+          <div className="flex items-center gap-4 mb-12">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 text-white">
+              <Zap className="h-8 w-8" />
+            </div>
+            <div>
+              <h2 className="text-4xl font-bold text-slate-900">High-Speed Interconnects</h2>
+              <p className="text-xl text-slate-600">AOC / DAC / Transceivers</p>
+            </div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {productCategories.map((product, index) => (
-              <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow group">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="relative">
+              <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-3xl blur-xl"></div>
+              <Image
+                src="/400g-dac-and-aoc-cables-side-by-side.jpg"
+                alt="400G DAC and AOC cables"
+                width={600}
+                height={400}
+                className="relative w-full h-80 object-cover rounded-2xl shadow-2xl"
+                unoptimized
+              />
+            </div>
+            <div className="space-y-8">
+              <Card className="border-0 shadow-lg bg-gradient-to-br from-blue-50 to-blue-100/50 hover:shadow-xl transition-shadow">
                 <CardHeader className="pb-4">
-                  {/* Commented out image for product categories - can be restored later if needed
-                  <Image
-                    src={product.image || "/placeholder.svg"}
-                    alt={product.title}
-                    width={300}
-                    height={200}
-                    className="w-full h-48 object-cover rounded-lg mb-4"
-                    unoptimized
-                  />
-                  */}
-                  <CardTitle className="text-lg leading-tight group-hover:text-blue-600 transition-colors">
-                    {product.title}
+                  <div className="flex items-center gap-3">
+                    <Badge className="bg-blue-500 text-white">DAC Cables</Badge>
+                    <CardTitle className="text-xl text-blue-900">Direct Attach Copper</CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-blue-800 mb-4 text-base">
+                    SFP+, SFP28, QSFP+, QSFP28, QSFP56, QSFP-DD; 10G to 400G; passive and active options.
+                  </CardDescription>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                      <span className="text-sm text-blue-700">10G SFP+ DAC</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                      <span className="text-sm text-blue-700">25G SFP28 DAC</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                      <span className="text-sm text-blue-700">100G QSFP28 DAC</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                      <span className="text-sm text-blue-700">400G QSFP-DD DAC</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="border-0 shadow-lg bg-gradient-to-br from-cyan-50 to-cyan-100/50 hover:shadow-xl transition-shadow">
+                <CardHeader className="pb-4">
+                  <div className="flex items-center gap-3">
+                    <Badge className="bg-cyan-500 text-white">AOC Cables</Badge>
+                    <CardTitle className="text-xl text-cyan-900">Active Optical</CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-cyan-800 mb-4 text-base">
+                    QSFP28, QSFP-DD, OSFP; 100G to 800G for long-distance, high-speed connections.
+                  </CardDescription>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-cyan-500 rounded-full"></div>
+                      <span className="text-sm text-cyan-700">100G QSFP28 AOC</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-cyan-500 rounded-full"></div>
+                      <span className="text-sm text-cyan-700">400G QSFP-DD AOC</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-cyan-500 rounded-full"></div>
+                      <span className="text-sm text-cyan-700">800G OSFP AOC</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-cyan-500 rounded-full"></div>
+                      <span className="text-sm text-cyan-700">Custom Lengths</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="border-0 shadow-lg bg-gradient-to-br from-indigo-50 to-indigo-100/50 hover:shadow-xl transition-shadow">
+                <CardHeader className="pb-4">
+                  <div className="flex items-center gap-3">
+                    <Badge className="bg-indigo-500 text-white">Transceivers</Badge>
+                    <CardTitle className="text-xl text-indigo-900">Breakout & Modules</CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-indigo-800 text-base">
+                    QSFP28 to 4×SFP28 (100G to 4×25G) breakouts, plus SFP+, SFP28, QSFP28, QSFP-DD, OSFP transceivers
+                    with LR4, SR4, CWDM4, PSM4 modules.
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. Fiber Cabling */}
+      <section id="fiber-cabling" className="py-20 bg-gradient-to-b from-green-50/50 to-white">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center gap-4 mb-12">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500 to-green-600 text-white">
+              <Cable className="h-8 w-8" />
+            </div>
+            <div>
+              <h2 className="text-4xl font-bold text-slate-900">Fiber Cabling</h2>
+              <p className="text-xl text-slate-600">Trunks, Patch Cords, MPO/MTP</p>
+            </div>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <Card className="border-0 shadow-lg bg-gradient-to-br from-green-50 to-green-100/50 hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <CardTitle className="text-xl text-green-900 flex items-center gap-3">
+                    <Badge className="bg-green-500 text-white">Trunk Cables</Badge>
+                    Pre-terminated Solutions
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-sm">{product.description}</CardDescription>
+                  <CardDescription className="text-green-800 text-base">
+                    MTP/MPO, LC, SC; SM & MM; plenum/LSZH rated for demanding environments.
+                  </CardDescription>
                 </CardContent>
               </Card>
-            ))}
+
+              <Card className="border-0 shadow-lg bg-gradient-to-br from-emerald-50 to-emerald-100/50 hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <CardTitle className="text-xl text-emerald-900 flex items-center gap-3">
+                    <Badge className="bg-emerald-500 text-white">Patch Cords</Badge>
+                    Flexible Connectivity
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-emerald-800 text-base">
+                    LC, SC, ST, FC, MPO; uni-boot, push-pull tab, bend-insensitive options.
+                  </CardDescription>
+                </CardContent>
+              </Card>
+
+              <Card className="border-0 shadow-lg bg-gradient-to-br from-teal-50 to-teal-100/50 hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <CardTitle className="text-xl text-teal-900 flex items-center gap-3">
+                    <Badge className="bg-teal-500 text-white">MPO/MTP</Badge>
+                    High-Density Harnesses
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-teal-800 text-base">
+                    MPO to LC fanouts, 12F, 24F, 48F configurations for high-density applications.
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            </div>
+            <div className="relative">
+              <div className="absolute -inset-4 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-3xl blur-xl"></div>
+              <Image
+                src="/mpo-trunk-cables-neatly-coiled.jpg"
+                alt="MPO trunk cables"
+                width={600}
+                height={400}
+                className="relative w-full h-80 object-cover rounded-2xl shadow-2xl"
+                unoptimized
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Fiber Connectivity Hardware */}
+      <section id="fiber-connectivity-hardware" className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center gap-4 mb-12">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 text-white">
+              <Server className="h-8 w-8" />
+            </div>
+            <div>
+              <h2 className="text-4xl font-bold text-slate-900">Fiber Connectivity Hardware</h2>
+              <p className="text-xl text-slate-600">Patch Panels, Cassettes, Enclosures</p>
+            </div>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="relative">
+              <div className="absolute -inset-4 bg-gradient-to-r from-purple-500/20 to-violet-500/20 rounded-3xl blur-xl"></div>
+              <Image
+                src="/1u-patch-panel-with-cassettes.jpg"
+                alt="1U patch panel with cassettes"
+                width={600}
+                height={400}
+                className="relative w-full h-80 object-cover rounded-2xl shadow-2xl"
+                unoptimized
+              />
+            </div>
+            <div className="space-y-8">
+              <Card className="border-0 shadow-lg bg-gradient-to-br from-purple-50 to-purple-100/50 hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <CardTitle className="text-xl text-purple-900 flex items-center gap-3">
+                    <Badge className="bg-purple-500 text-white">Patch Panels</Badge>
+                    High-Density Chassis
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-purple-800 text-base">
+                    1U/2U/4U chassis, high-density options for maximum port count in minimal space.
+                  </CardDescription>
+                </CardContent>
+              </Card>
+
+              <Card className="border-0 shadow-lg bg-gradient-to-br from-violet-50 to-violet-100/50 hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <CardTitle className="text-xl text-violet-900 flex items-center gap-3">
+                    <Badge className="bg-violet-500 text-white">Cassettes</Badge>
+                    Modular Breakouts
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-violet-800 text-base">
+                    MPO/MTP-LC breakout, 12F/24F/48F configurations for flexible connectivity.
+                  </CardDescription>
+                </CardContent>
+              </Card>
+
+              <Card className="border-0 shadow-lg bg-gradient-to-br from-fuchsia-50 to-fuchsia-100/50 hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <CardTitle className="text-xl text-fuchsia-900 flex items-center gap-3">
+                    <Badge className="bg-fuchsia-500 text-white">Enclosures</Badge>
+                    Complete Solutions
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-fuchsia-800 text-base">
+                    Rackmount fiber enclosures, wall-mount boxes for various installation scenarios.
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Copper Cabling */}
+      <section id="copper-cabling" className="py-20 bg-gradient-to-b from-orange-50/50 to-white">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center gap-4 mb-12">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 text-white">
+              <Ethernet className="h-8 w-8" />
+            </div>
+            <div>
+              <h2 className="text-4xl font-bold text-slate-900">Copper Cabling</h2>
+              <p className="text-xl text-slate-600">Cat6A / Cat7 / Bundled Assemblies</p>
+            </div>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <Card className="border-0 shadow-lg bg-gradient-to-br from-orange-50 to-orange-100/50 hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <CardTitle className="text-xl text-orange-900 flex items-center gap-3">
+                    <Badge className="bg-orange-500 text-white">Cat6A/Cat7</Badge>
+                    High-Performance Patch Cords
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-orange-800 text-base">
+                    Standard & slim versions, multiple colors, snagless boots for reliable connections.
+                  </CardDescription>
+                </CardContent>
+              </Card>
+
+              <Card className="border-0 shadow-lg bg-gradient-to-br from-amber-50 to-amber-100/50 hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <CardTitle className="text-xl text-amber-900 flex items-center gap-3">
+                    <Badge className="bg-amber-500 text-white">Bundled</Badge>
+                    Pre-Configured Assemblies
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-amber-800 text-base">
+                    Rack-to-server bundles with custom labeling for organized installations.
+                  </CardDescription>
+                </CardContent>
+              </Card>
+
+              <Card className="border-0 shadow-lg bg-gradient-to-br from-yellow-50 to-yellow-100/50 hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <CardTitle className="text-xl text-yellow-900 flex items-center gap-3">
+                    <Badge className="bg-yellow-500 text-white">Infrastructure</Badge>
+                    Complete Solutions
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-yellow-800 text-base">
+                    Bulk cable, patch panels, and keystone jacks for complete copper connectivity.
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            </div>
+            <div className="relative">
+              <div className="absolute -inset-4 bg-gradient-to-r from-orange-500/20 to-amber-500/20 rounded-3xl blur-xl"></div>
+              <Image
+                src="/slim-cat6a-patch-cords-in-multiple-colors.jpg"
+                alt="Cat6A patch cords in multiple colors"
+                width={600}
+                height={400}
+                className="relative w-full h-80 object-cover rounded-2xl shadow-2xl"
+                unoptimized
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Power & Rack Infrastructure */}
+      <section id="power-rack-infrastructure" className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center gap-4 mb-12">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-red-500 to-red-600 text-white">
+              <Power className="h-8 w-8" />
+            </div>
+            <div>
+              <h2 className="text-4xl font-bold text-slate-900">Power & Rack Infrastructure</h2>
+              <p className="text-xl text-slate-600">PDUs, Power Cords, Racks</p>
+            </div>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="relative">
+              <div className="absolute -inset-4 bg-gradient-to-r from-red-500/20 to-rose-500/20 rounded-3xl blur-xl"></div>
+              <Image
+                src="/pdus-and-colored-c13-c14-power-cords.jpg"
+                alt="PDUs and colored power cords"
+                width={600}
+                height={400}
+                className="relative w-full h-80 object-cover rounded-2xl shadow-2xl"
+                unoptimized
+              />
+            </div>
+            <div className="space-y-8">
+              <Card className="border-0 shadow-lg bg-gradient-to-br from-red-50 to-red-100/50 hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <CardTitle className="text-xl text-red-900 flex items-center gap-3">
+                    <Badge className="bg-red-500 text-white">Power Cords</Badge>
+                    Custom & Standard
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-red-800 text-base">
+                    C13–C14, C19–C20; black and color-coded options; custom lengths available.
+                  </CardDescription>
+                </CardContent>
+              </Card>
+
+              <Card className="border-0 shadow-lg bg-gradient-to-br from-rose-50 to-rose-100/50 hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <CardTitle className="text-xl text-rose-900 flex items-center gap-3">
+                    <Badge className="bg-rose-500 text-white">Rack PDUs</Badge>
+                    Power Distribution
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-rose-800 text-base">
+                    Basic & intelligent PDU options for power distribution and monitoring.
+                  </CardDescription>
+                </CardContent>
+              </Card>
+
+              <Card className="border-0 shadow-lg bg-gradient-to-br from-pink-50 to-pink-100/50 hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <CardTitle className="text-xl text-pink-900 flex items-center gap-3">
+                    <Badge className="bg-pink-500 text-white">Infrastructure</Badge>
+                    Complete Rack Solutions
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-pink-800 text-base">
+                    2-post/4-post racks, cable trays, and management solutions for organized installations.
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Testing & Lab Solutions */}
+      <section id="testing-lab-solutions" className="py-20 bg-gradient-to-b from-indigo-50/50 to-white">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center gap-4 mb-12">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-indigo-600 text-white">
+              <TestTube className="h-8 w-8" />
+            </div>
+            <div>
+              <h2 className="text-4xl font-bold text-slate-900">Testing & Lab Solutions</h2>
+              <p className="text-xl text-slate-600">Loopbacks, Fiber-in-a-Box</p>
+            </div>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <Card className="border-0 shadow-lg bg-gradient-to-br from-indigo-50 to-indigo-100/50 hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <CardTitle className="text-xl text-indigo-900 flex items-center gap-3">
+                    <Badge className="bg-indigo-500 text-white">Loopbacks</Badge>
+                    Testing Modules
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-indigo-800 text-base">
+                    SFP+, QSFP+, QSFP28, MPO, OSFP loopback modules for testing and validation.
+                  </CardDescription>
+                </CardContent>
+              </Card>
+
+              <Card className="border-0 shadow-lg bg-gradient-to-br from-blue-50 to-blue-100/50 hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <CardTitle className="text-xl text-blue-900 flex items-center gap-3">
+                    <Badge className="bg-blue-500 text-white">Fiber-in-a-Box</Badge>
+                    Distance Simulation
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-blue-800 text-base">
+                    1km to 200km spools for distance simulation and testing scenarios.
+                  </CardDescription>
+                </CardContent>
+              </Card>
+
+              <Card className="border-0 shadow-lg bg-gradient-to-br from-sky-50 to-sky-100/50 hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <CardTitle className="text-xl text-sky-900 flex items-center gap-3">
+                    <Badge className="bg-sky-500 text-white">Custom Harnesses</Badge>
+                    Lab Kits
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-sky-800 text-base">
+                    Labeled, short-run kits for lab setups and specialized testing requirements.
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            </div>
+            <div className="relative">
+              <div className="absolute -inset-4 bg-gradient-to-r from-indigo-500/20 to-blue-500/20 rounded-3xl blur-xl"></div>
+              <Image
+                src="/loopback-modules-and-fiber-in-a-box-spools.jpg"
+                alt="Loopback modules and Fiber-in-a-Box"
+                width={600}
+                height={400}
+                className="relative w-full h-80 object-cover rounded-2xl shadow-2xl"
+                unoptimized
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. Accessories */}
+      <section id="accessories" className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center gap-4 mb-12">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-teal-500 to-teal-600 text-white">
+              <Settings className="h-8 w-8" />
+            </div>
+            <div>
+              <h2 className="text-4xl font-bold text-slate-900">Accessories</h2>
+              <p className="text-xl text-slate-600">Labeling, Cable Management, Cleaning Tools</p>
+            </div>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="relative">
+              <div className="absolute -inset-4 bg-gradient-to-r from-teal-500/20 to-cyan-500/20 rounded-3xl blur-xl"></div>
+              <Image
+                src="/cable-labels--cleaning-sticks--and-rfid-tags.jpg"
+                alt="Cable labels, cleaning tools, and RFID tags"
+                width={600}
+                height={400}
+                className="relative w-full h-80 object-cover rounded-2xl shadow-2xl"
+                unoptimized
+              />
+            </div>
+            <div className="space-y-8">
+              <Card className="border-0 shadow-lg bg-gradient-to-br from-teal-50 to-teal-100/50 hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <CardTitle className="text-xl text-teal-900 flex items-center gap-3">
+                    <Badge className="bg-teal-500 text-white">Labeling</Badge>
+                    Identification Tools
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-teal-800 text-base">
+                    Serialized tags, RFID options for comprehensive asset management.
+                  </CardDescription>
+                </CardContent>
+              </Card>
+
+              <Card className="border-0 shadow-lg bg-gradient-to-br from-cyan-50 to-cyan-100/50 hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <CardTitle className="text-xl text-cyan-900 flex items-center gap-3">
+                    <Badge className="bg-cyan-500 text-white">Cleaning</Badge>
+                    Maintenance Tools
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-cyan-800 text-base">
+                    MPO/MTP cleaners, lint-free wipes, inspection scopes for optimal performance.
+                  </CardDescription>
+                </CardContent>
+              </Card>
+
+              <Card className="border-0 shadow-lg bg-gradient-to-br from-emerald-50 to-emerald-100/50 hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <CardTitle className="text-xl text-emerald-900 flex items-center gap-3">
+                    <Badge className="bg-emerald-500 text-white">Hardware</Badge>
+                    Installation Support
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-emerald-800 text-base">
+                    Optical attenuators, fiber adapters, rack screws, cage nuts, and filler panels.
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Custom Solutions CTA */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-8 md:p-12 text-white text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Need Custom Solutions?</h2>
-            <p className="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
-              We specialize in custom-engineered products tailored to your exact specifications. From DCIM designs to
-              field requirements, we deliver solutions that fit perfectly.
+      <section className="py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/images/hero-background.png')] bg-cover bg-center opacity-10"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <Badge className="mb-6 bg-blue-500/20 text-blue-200 border-blue-400/30 px-4 py-2">Custom Engineering</Badge>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Need Custom High-Speed Solutions?</h2>
+            <p className="text-xl mb-10 text-slate-300 leading-relaxed">
+              From 400G DAC cables to complete 800G AOC solutions, we engineer products tailored to your exact
+              specifications. DCIM integration, custom labeling, and kitting available.
             </p>
-            <Button size="lg" className="bg-white text-blue-600 hover:bg-slate-100" asChild>
-              <Link href="/contact">
-                Request Custom Quote
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg" asChild>
+                <Link href="/contact">
+                  Request Custom Quote
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg bg-transparent"
+                asChild
+              >
+                <Link href="/contact">Get Product Samples</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Support Section */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-20 bg-gradient-to-b from-slate-50 to-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Product Support & Services</h2>
-            <p className="text-xl text-slate-600">
-              Beyond products, we provide comprehensive support for your infrastructure needs
+          <div className="text-center mb-16">
+            <Badge className="mb-4 bg-slate-100 text-slate-700 border-slate-200">Product Support</Badge>
+            <h2 className="text-4xl font-bold text-slate-900 mb-6">Comprehensive Support & Services</h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              Beyond products, we provide comprehensive support for your high-speed infrastructure needs
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="text-center border-0 shadow-md">
-              <CardHeader>
-                <CardTitle className="text-lg">Custom Engineering</CardTitle>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <Card className="text-center border-0 shadow-lg hover:shadow-xl transition-shadow bg-gradient-to-br from-blue-50 to-blue-100/50">
+              <CardHeader className="pb-4">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 text-white mx-auto mb-4">
+                  <Settings className="h-6 w-6" />
+                </div>
+                <CardTitle className="text-lg text-blue-900">Custom Engineering</CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription>
-                  Tailored solutions designed to your exact specifications and requirements
+                <CardDescription className="text-blue-800">
+                  Tailored 400G, 800G, and specialty solutions designed to your exact specifications
                 </CardDescription>
               </CardContent>
             </Card>
 
-            <Card className="text-center border-0 shadow-md">
-              <CardHeader>
-                <CardTitle className="text-lg">Technical Support</CardTitle>
+            <Card className="text-center border-0 shadow-lg hover:shadow-xl transition-shadow bg-gradient-to-br from-green-50 to-green-100/50">
+              <CardHeader className="pb-4">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-green-600 text-white mx-auto mb-4">
+                  <TestTube className="h-6 w-6" />
+                </div>
+                <CardTitle className="text-lg text-green-900">Technical Support</CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription>
-                  Expert guidance for product selection, installation, and troubleshooting
+                <CardDescription className="text-green-800">
+                  Expert guidance for high-speed product selection, installation, and troubleshooting
                 </CardDescription>
               </CardContent>
             </Card>
 
-            <Card className="text-center border-0 shadow-md">
-              <CardHeader>
-                <CardTitle className="text-lg">Quality Assurance</CardTitle>
+            <Card className="text-center border-0 shadow-lg hover:shadow-xl transition-shadow bg-gradient-to-br from-purple-50 to-purple-100/50">
+              <CardHeader className="pb-4">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 text-white mx-auto mb-4">
+                  <Zap className="h-6 w-6" />
+                </div>
+                <CardTitle className="text-lg text-purple-900">Quality Assurance</CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription>Rigorous testing and validation for all products before shipment</CardDescription>
+                <CardDescription className="text-purple-800">
+                  Rigorous testing and validation for all products before shipment
+                </CardDescription>
               </CardContent>
             </Card>
 
-            <Card className="text-center border-0 shadow-md">
-              <CardHeader>
-                <CardTitle className="text-lg">Fast Delivery</CardTitle>
+            <Card className="text-center border-0 shadow-lg hover:shadow-xl transition-shadow bg-gradient-to-br from-orange-50 to-orange-100/50">
+              <CardHeader className="pb-4">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 text-white mx-auto mb-4">
+                  <ArrowRight className="h-6 w-6" />
+                </div>
+                <CardTitle className="text-lg text-orange-900">Fast Delivery</CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription>Quick turnaround times with organized kitting and logistics support</CardDescription>
+                <CardDescription className="text-orange-800">
+                  Quick turnaround times with organized kitting and logistics support
+                </CardDescription>
               </CardContent>
             </Card>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-blue-900 text-white">
+      {/* Final CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Upgrade Your Infrastructure?</h2>
-          <p className="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
-            Contact our product specialists to discuss your requirements and get personalized recommendations for your
-            next project.
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Upgrade to High-Speed Infrastructure?</h2>
+          <p className="text-xl mb-10 text-blue-100 max-w-3xl mx-auto leading-relaxed">
+            Contact our product specialists to discuss your 400G, 800G, and high-speed requirements. Get personalized
+            recommendations for your next project.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-blue-900 hover:bg-slate-100" asChild>
+            <Button size="lg" className="bg-white text-blue-600 hover:bg-slate-100 px-8 py-4 text-lg" asChild>
               <Link href="/contact">Contact Product Specialist</Link>
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="border-white text-white hover:bg-white hover:text-blue-900 bg-transparent"
+              className="border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg bg-transparent"
               asChild
             >
               <Link href="/contact">Request Product Samples</Link>
