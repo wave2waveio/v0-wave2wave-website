@@ -1,269 +1,298 @@
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ExternalLink, Download, Zap, Shield, Layers, Gauge, Cable, Settings, CheckCircle } from "lucide-react"
+import { ExternalLink, Download, Zap, Shield, Layers, Play, CheckCircle } from "lucide-react"
 
 export default function EVOProductPage() {
+  const galleryImages = [
+    "https://www.wave2wave.io/images/evo-images/Gallery-1-qr05urokxnjff7t14iblth3hfhg0v1q1d459oil2bk.jpeg",
+    "https://www.wave2wave.io/images/evo-images/Gallery-2-qr05utk9bbm02fqatj4uygmem96rafxi1dg8n2i9z4.jpeg",
+    "https://www.wave2wave.io/images/evo-images/Gallery-3-qr05uwdrvtpv19m7d2cqnxwseesuxj8p1rep2we3gg.jpeg",
+    "https://www.wave2wave.io/images/evo-images/Gallery-4-qr05uz7agbtq03i3wlkmdf766keykmjw25d5iq9wxs.jpeg",
+    "https://www.wave2wave.io/images/evo-images/Gallery-5-qr05v12ytzwanbfdlmdvieq3dc5p00rcqeo4ha74lc.jpeg",
+    "https://www.wave2wave.io/images/evo-images/Gallery-6-qr05v3whei05m5ba55lr7w0h5hrsn42jqsmkx42y2o.jpeg",
+    "https://www.wave2wave.io/images/evo-images/Gallery-7-qr05v6pzz040kz76ootmxdauxndwa7dqr6l1cxyrk0.jpeg",
+    "https://www.wave2wave.io/images/evo-images/Gallery-8-qr05v8loco6l874gdpmw2cts4f4mpll7ffw0bhvz7k.jpeg",
+    "https://www.wave2wave.io/images/evo-images/Gallery-9-qr05vbf6x6ag710cx8urru45wkqqcoweftugrbrsow.jpeg",
+    "https://www.wave2wave.io/images/evo-images/Gallery-10-qr05vdavaud0u8xmm9o0wtn33chgs33v435fpvp0cg.jpeg",
+    "https://www.wave2wave.io/images/evo-images/Gallery-11-qr05vg4dvcgvt2tj5svwmaxgvi3kf6f24h3w5pktts.jpeg",
+    "https://www.wave2wave.io/images/evo-images/Gallery-12-qr05vixwfukqrwpfpc3sbs7unnpo29q94v2cljgnb4.jpeg",
+    "https://www.wave2wave.io/images/evo-images/Gallery-13-qr05vktktinbf4mpecx1grqrufgehnxpt4dbk3duyo.jpeg",
+    "https://www.wave2wave.io/images/evo-images/Gallery-14-qr05vnn3e0r6dyilxw4x6915ml2i4r8wtibrzx9og0.jpeg",
+  ]
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary/5 to-secondary/5 py-20 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
+          <div className="grid lg:grid-cols-3 gap-12 items-center">
+            <div className="lg:col-span-1 space-y-8">
               <div className="space-y-4">
-                <Badge variant="secondary" className="text-sm font-medium">
-                  Cabling123 Solutions
-                </Badge>
-                <h1 className="text-5xl font-bold text-balance leading-tight">
-                  Connecting for Life with <span className="text-primary">EVO™</span>
+                <Badge className="mb-4 bg-green-100 text-green-800 hover:bg-green-200">EVO Solutions</Badge>
+                <h1 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-6">
+                  Evolution in
+                  <span className="text-green-600"> Connectivity</span>
                 </h1>
-                <p className="text-xl text-muted-foreground text-pretty leading-relaxed">
-                  At Cabling123, we believe in creating a future where connectivity is seamless and elegant. Our modular
-                  panel and cassette solutions are designed to elevate the performance of today's data centers while
-                  preparing them for the challenges of tomorrow.
+                <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                  Next-generation EVO solutions that evolve with your business needs, providing cutting-edge technology
+                  for modern data center environments.
                 </p>
               </div>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="text-lg px-8">
-                  Explore EVO Solutions
-                </Button>
-                <Button size="lg" variant="default" className="text-lg px-8 bg-secondary hover:bg-secondary/90">
-                  Request a Quote
-                </Button>
-                <Button variant="outline" size="lg" className="text-lg px-8 bg-transparent">
-                  <Download className="w-5 h-5 mr-2" />
-                  Download Datasheet
-                </Button>
+              <div className="flex flex-col gap-4">
+                <a
+                  href="https://wave2wave.io/datasheets/W2W-C123_EVO-EXO Series Datasheet_REV1.0.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button size="lg" className="w-full bg-green-600 hover:bg-green-700">
+                    <Download className="mr-2 h-5 w-5" />
+                    Download Datasheet
+                  </Button>
+                </a>
               </div>
             </div>
-            <div className="relative">
-              <img
-                src="/evo-modular-fiber-optic-panel-system-in-data-cente.jpg"
-                alt="EVO Modular Panel System"
-                className="w-full h-auto rounded-lg shadow-2xl"
-              />
+
+            <div className="lg:col-span-2">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="md:col-span-2">
+                  <img
+                    src="https://www.wave2wave.io/images/evo-images/Hero-EVO-2RU-Evo-Switch-2.png"
+                    alt="EVO TM Modular Panel and Cassette Solution"
+                    className="w-full h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+                <div>
+                  <img
+                    src="https://www.wave2wave.io/images/evo-images/Hero-EVO-2RU-Evo-1.png"
+                    alt="EVO Evolution Networking Solution"
+                    className="w-full h-64 object-cover rounded-lg shadow-xl"
+                  />
+                </div>
+                <div>
+                  <img
+                    src="https://www.wave2wave.io/images/evo-images/EVO-2RU-Filled-Front-Panel-highlights2-768x441.jpg"
+                    alt="EVO Benefits Diagram"
+                    className="w-full h-64 object-cover rounded-lg shadow-xl"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Product Carousel Section */}
+      {/* Small Packages Intro */}
       <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-4xl font-bold text-balance">EVO™ Modular Panel and Cassette Solution</h2>
-            <p className="text-xl text-muted-foreground">Panels For Unparalleled Efficiency</p>
+        <div className="max-w-7xl mx-auto text-center space-y-16">
+          <div className="space-y-4">
+            <div className="w-24 h-1 bg-primary mx-auto"></div>
+            <h4 className="text-lg font-medium text-primary">Small Packages, Large Impact</h4>
+            <h2 className="text-4xl font-bold text-balance">Modular Cassettes</h2>
           </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="text-center">
-              <CardHeader>
-                <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Layers className="w-8 h-8 text-primary" />
-                </div>
-                <CardTitle className="text-lg">EVO Switch+</CardTitle>
-                <CardDescription>Versatile Application Support</CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="text-center">
-              <CardHeader>
-                <div className="w-16 h-16 bg-secondary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Settings className="w-8 h-8 text-secondary" />
-                </div>
-                <CardTitle className="text-lg">EVO Switch+</CardTitle>
-                <CardDescription>Flexible Mounting Options</CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="text-center">
-              <CardHeader>
-                <div className="w-16 h-16 bg-accent/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Gauge className="w-8 h-8 text-accent" />
-                </div>
-                <CardTitle className="text-lg">EVO Pal</CardTitle>
-                <CardDescription>Compact and Efficient</CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="text-center">
-              <CardHeader>
-                <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Cable className="w-8 h-8 text-primary" />
-                </div>
-                <CardTitle className="text-lg">Modular Cassettes</CardTitle>
-                <CardDescription>Small Packages, Large Impact</CardDescription>
-              </CardHeader>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Small Packages Section */}
-      <section className="py-20 px-4 bg-muted/30">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-4xl font-bold text-balance">Small Packages, Large Impact</h2>
-            <h3 className="text-2xl text-muted-foreground">Modular Cassettes</h3>
-            <p className="text-lg text-muted-foreground max-w-4xl mx-auto text-pretty leading-relaxed">
+          <div className="max-w-4xl mx-auto">
+            <p className="text-xl text-muted-foreground text-pretty leading-relaxed">
               Our engineers face the challenge of building powerful hardware in small, modular form factors. The
               benefits are significant: less space, better airflow, and reduced environmental impact. Innovation thrives
               when stakes are high, and EVO™ stands as a testament to our commitment to technological evolution.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* EVO Modular Cassettes Grid */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Small Packages, Large Impact</h2>
+            <h3 className="text-2xl text-gray-600">EVO Modular Cassettes</h3>
+            <p className="text-lg text-gray-600 max-w-4xl mx-auto mt-4 leading-relaxed">
+              The EVO modular cassettes offer powerful hardware in a small, modular form factor. The benefits are
+              significant: less space, better airflow, and reduced environmental impact.
+            </p>
+          </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              "EVO 6xMTP Feed-through",
-              "EVO 12xMTP Feed-through",
-              "EVO MTP",
-              "EVO LC",
-              "EVO Stacked",
-              "EVO SC",
-              "EVO LC Feed-through",
-              "EVO MTP Feed-through",
-            ].map((product, index) => (
-              <Card key={index} className="text-center">
-                <CardHeader>
-                  <img
-                    src={`/abstract-geometric-shapes.png?height=120&width=200&query=${product} fiber optic cassette`}
-                    alt={product}
-                    className="w-full h-24 object-contain mb-4 rounded"
-                  />
-                  <CardTitle className="text-sm">{product}</CardTitle>
-                </CardHeader>
-              </Card>
-            ))}
+            <Card className="text-center hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <img
+                  src="https://www.wave2wave.io/images/evo-images/EVO_6xMTP_Feed-through.png"
+                  alt="EVO 6xMTP Feed-through"
+                  className="w-full h-32 object-contain mb-4 rounded"
+                />
+                <CardTitle className="text-sm">EVO 6xMTP Feed-through</CardTitle>
+              </CardHeader>
+            </Card>
+
+            <Card className="text-center hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <img
+                  src="https://www.wave2wave.io/images/evo-images/EVO_12xMTP_Feed-through.png"
+                  alt="EVO 12xMTP Feed-through"
+                  className="w-full h-32 object-contain mb-4 rounded"
+                />
+                <CardTitle className="text-sm">EVO 12xMTP Feed-through</CardTitle>
+              </CardHeader>
+            </Card>
+
+            <Card className="text-center hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <img
+                  src="https://www.wave2wave.io/images/evo-images/EVO_Cassette_MTP.png"
+                  alt="EVO MTP"
+                  className="w-full h-32 object-contain mb-4 rounded"
+                />
+                <CardTitle className="text-sm">EVO MTP</CardTitle>
+              </CardHeader>
+            </Card>
+
+            <Card className="text-center hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <img
+                  src="https://www.wave2wave.io/images/evo-images/EVO_LC_Cassette.png"
+                  alt="EVO LC"
+                  className="w-full h-32 object-contain mb-4 rounded"
+                />
+                <CardTitle className="text-sm">EVO LC</CardTitle>
+              </CardHeader>
+            </Card>
+
+            <Card className="text-center hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <img
+                  src="https://www.wave2wave.io/images/evo-images/EVO_Cassettes_Stacked.png"
+                  alt="EVO Stacked"
+                  className="w-full h-32 object-contain mb-4 rounded"
+                />
+                <CardTitle className="text-sm">EVO Stacked</CardTitle>
+              </CardHeader>
+            </Card>
+
+            <Card className="text-center hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <img
+                  src="https://www.wave2wave.io/images/evo-images/EVO-LC.CASSCFT1.png"
+                  alt="EVO SC"
+                  className="w-full h-32 object-contain mb-4 rounded"
+                />
+                <CardTitle className="text-sm">EVO SC</CardTitle>
+              </CardHeader>
+            </Card>
+
+            <Card className="text-center hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <img
+                  src="https://www.wave2wave.io/images/evo-images/EVO-LC-Feedthrough.png"
+                  alt="EVO LC Feed-through"
+                  className="w-full h-32 object-contain mb-4 rounded"
+                />
+                <CardTitle className="text-sm">EVO LC Feed-through</CardTitle>
+              </CardHeader>
+            </Card>
+
+            <Card className="text-center hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <img
+                  src="https://www.wave2wave.io/images/evo-images/EVO_12xMTP_Feed-through.png"
+                  alt="EVO MTP Feed-through"
+                  className="w-full h-32 object-contain mb-4 rounded"
+                />
+                <CardTitle className="text-sm">EVO MTP Feed-through</CardTitle>
+              </CardHeader>
+            </Card>
           </div>
         </div>
       </section>
 
-      {/* Evolution Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto text-center space-y-16">
-          <div className="space-y-4">
-            <h2 className="text-4xl font-bold text-balance">The Evolution of High-Speed Connectivity</h2>
-            <p className="text-xl text-muted-foreground max-w-4xl mx-auto text-pretty">
+      {/* Evolution of High-Speed Connectivity */}
+      <section className="py-20 px-4 bg-white" id="about">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              The Evolution of High-Speed Connectivity
+            </h2>
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
               Our EVO™ panel family brings unmatched scalability and density to your data center. Built with simplicity
               in mind, EVO™ enhances functionality in dynamic, mission-critical applications.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="text-left">
-              <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Layers className="w-6 h-6 text-primary" />
+            <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-blue-50 to-blue-100">
+              <CardHeader className="text-center pb-4">
+                <div className="w-16 h-16 bg-blue-200 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-blue-300 transition-colors">
+                  <Layers className="w-8 h-8 text-blue-700" />
                 </div>
-                <CardTitle>Scalability and Density</CardTitle>
+                <CardTitle className="text-xl font-bold text-gray-900 mb-4">Scalability and Density</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <ul className="space-y-2 text-muted-foreground">
-                  <li>• Unmatched scalability for future-proofing data centers</li>
-                  <li>• High-density solutions to maximize space efficiency</li>
+              <CardContent className="space-y-6">
+                <ul className="space-y-3 text-gray-700">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                    <span>Unmatched scalability for future-proofing data centers</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                    <span>High-density solutions to maximize space efficiency</span>
+                  </li>
                 </ul>
+                <div className="mt-6">
+                  <img
+                    src="https://www.wave2wave.io/images/evo-images/Future-proof-design-cassettes-closeup-lg.jpg"
+                    alt="Scalability and Density"
+                    className="w-full h-48 object-cover rounded-lg shadow-lg group-hover:shadow-xl transition-shadow"
+                  />
+                </div>
               </CardContent>
             </Card>
 
-            <Card className="text-left">
-              <CardHeader>
-                <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Zap className="w-6 h-6 text-secondary" />
+            <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-green-50 to-green-100">
+              <CardHeader className="text-center pb-4">
+                <div className="w-16 h-16 bg-green-200 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-green-300 transition-colors">
+                  <Zap className="w-8 h-8 text-green-700" />
                 </div>
-                <CardTitle>Enhanced Functionality</CardTitle>
+                <CardTitle className="text-xl font-bold text-gray-900 mb-4">Enhanced Functionality</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <ul className="space-y-2 text-muted-foreground">
-                  <li>• Simplified design enhances functionality in dynamic environments</li>
-                  <li>• Versatile platform supports 10G, 40G, and 100/120G connections</li>
+              <CardContent className="space-y-6">
+                <ul className="space-y-3 text-gray-700">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span>Simplified design enhances functionality in dynamic environments</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span>Versatile platform supports 10G, 40G, and 100/120G connections</span>
+                  </li>
                 </ul>
+                <div className="mt-6">
+                  <img
+                    src="https://www.wave2wave.io/images/evo-images/Enhanced-Functionality-Pulltabs-lg.jpg"
+                    alt="Enhanced Functionality"
+                    className="w-full h-48 object-cover rounded-lg shadow-lg group-hover:shadow-xl transition-shadow"
+                  />
+                </div>
               </CardContent>
             </Card>
 
-            <Card className="text-left">
-              <CardHeader>
-                <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
-                  <Shield className="w-6 h-6 text-accent" />
+            <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-purple-50 to-purple-100">
+              <CardHeader className="text-center pb-4">
+                <div className="w-16 h-16 bg-purple-200 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-purple-300 transition-colors">
+                  <Shield className="w-8 h-8 text-purple-700" />
                 </div>
-                <CardTitle>Future-Proof Design</CardTitle>
+                <CardTitle className="text-xl font-bold text-gray-900 mb-4">Future-Proof Design</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <p className="text-muted-foreground">
+              <CardContent className="space-y-6">
+                <p className="text-gray-700 leading-relaxed">
                   Built-in modularity ensures your infrastructure can adapt to emerging technologies and growing
-                  bandwidth demands.
+                  bandwidth demands with seamless integration.
                 </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Product Specifications */}
-      <section className="py-20 px-4 bg-muted/30">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-4xl font-bold">EVO™ Product Specifications</h2>
-            <p className="text-xl text-muted-foreground">Comprehensive solutions for every connectivity need</p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Multi Mode Section */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-2xl">Multi Mode OM4</CardTitle>
-                <CardDescription>High-performance solutions for short to medium range applications</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="space-y-4">
-                  <div className="p-4 bg-muted rounded-lg">
-                    <h4 className="font-semibold mb-2">Part #: 69EVO-2U8P-12</h4>
-                    <p className="text-sm text-muted-foreground">
-                      EVO Switch+ Multi Mode OM4 2U Panel to Support 36 QSFP+/QSFP28 with 2 Additional Slots
-                    </p>
-                  </div>
-                  <div className="p-4 bg-muted rounded-lg">
-                    <h4 className="font-semibold mb-2">Part #: 69EVO-1U8P-4</h4>
-                    <p className="text-sm text-muted-foreground">
-                      EVO Switch+ Multi Mode OM4 1U Panel to Support 12 QSFP+/QSFP28 with 1 Additional Slot
-                    </p>
-                  </div>
-                  <div className="p-4 bg-muted rounded-lg">
-                    <h4 className="font-semibold mb-2">Part #: 69EVO51-8020+</h4>
-                    <p className="text-sm text-muted-foreground">
-                      EVO Switch+ Multi Mode OM4 Cassette to Support 3 QSFP+/QSFP28 to Existing Chassis
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Single Mode Section */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-2xl">Single Mode</CardTitle>
-                <CardDescription>Long-range, high-bandwidth connectivity solutions</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="space-y-4">
-                  <div className="p-4 bg-muted rounded-lg">
-                    <h4 className="font-semibold mb-2">Part #: 69EVO-2U3P-12</h4>
-                    <p className="text-sm text-muted-foreground">
-                      EVO Switch+ Single Mode 2U Panel to Support 36 QSFP+/QSFP28 with 2 Additional Slots
-                    </p>
-                  </div>
-                  <div className="p-4 bg-muted rounded-lg">
-                    <h4 className="font-semibold mb-2">Part #: 69EVO-1U3P-4</h4>
-                    <p className="text-sm text-muted-foreground">
-                      EVO Switch+ Single Mode 1U Panel to Support 12 QSFP+/QSFP28 with 1 Additional Slot
-                    </p>
-                  </div>
-                  <div className="p-4 bg-muted rounded-lg">
-                    <h4 className="font-semibold mb-2">Part #: 69EVO51-3021+</h4>
-                    <p className="text-sm text-muted-foreground">
-                      EVO Switch+ Single Mode Cassette to Support 3 QSFP+/QSFP28 to Existing Chassis
-                    </p>
-                  </div>
+                <div className="mt-6">
+                  <img
+                    src="https://www.wave2wave.io/images/evo-images/Future-proof-design-cassettes-lg.jpg"
+                    alt="Future-Proof Design"
+                    className="w-full h-48 object-cover rounded-lg shadow-lg group-hover:shadow-xl transition-shadow"
+                  />
                 </div>
               </CardContent>
             </Card>
@@ -271,110 +300,248 @@ export default function EVOProductPage() {
         </div>
       </section>
 
-      {/* Highlights Section */}
-      <section className="py-20 px-4">
+      {/* EVO Product Specifications */}
+      <section className="py-20 px-4 bg-gradient-to-br from-gray-50 to-gray-100">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-4xl font-bold">EVO™ Modular Panel and Cassette Solution</h2>
-            <h3 className="text-2xl text-muted-foreground">Highlights</h3>
+          <div className="text-center mb-16">
+            <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">EVO Product Specifications</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Comprehensive technical specifications for Multi Mode and Single Mode EVO solutions
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              "High density chassis with 14 slots in 2U or 5 slots in 1U",
-              "Built-in and pre-installed wire management capabilities",
-              "360° front and rear wire management options",
-              "Cables can be routed top, bottom and sideways",
-              "Grouping fibers with individual slots",
-              "Flexible cassettes and feedthrough plate options",
-              "Supports mix of front and rear mounting of cassettes",
-              "Inter-changeable cassettes between 1U and 2U chassis",
-              "Supports Single Mode (SM) and Multi-Mode applications",
-            ].map((highlight, index) => (
-              <div key={index} className="flex items-start space-x-3">
-                <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                <p className="text-muted-foreground">{highlight}</p>
+          <div className="grid lg:grid-cols-2 gap-12 mb-16">
+            <Card className="group hover:shadow-2xl transition-all duration-300 border-0 bg-gradient-to-br from-blue-50 to-blue-100">
+              <CardHeader className="text-center pb-6">
+                <div className="w-20 h-20 bg-blue-200 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-blue-300 transition-colors">
+                  <Layers className="w-10 h-10 text-blue-700" />
+                </div>
+                <CardTitle className="text-3xl font-bold text-blue-700 mb-2">Multi Mode OM4</CardTitle>
+                <p className="text-gray-700">High-performance solutions for short to medium range applications</p>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                  <h4 className="font-bold text-lg text-gray-900 mb-2">Part #: 69EVO-2U8P-12</h4>
+                  <p className="text-gray-600 leading-relaxed">
+                    EVO Switch+ Multi Mode OM4 2U Panel to Support 36 QSFP+/QSFP28 with 2 Additional Slots
+                  </p>
+                </div>
+                <div className="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                  <h4 className="font-bold text-lg text-gray-900 mb-2">Part #: 69EVO-1U8P-4</h4>
+                  <p className="text-gray-600 leading-relaxed">
+                    EVO Switch+ Multi Mode OM4 1U Panel to Support 12 QSFP+/QSFP28 with 1 Additional Slot
+                  </p>
+                </div>
+                <div className="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                  <h4 className="font-bold text-lg text-gray-900 mb-2">Part #: 69EVO51-8020+</h4>
+                  <p className="text-gray-600 leading-relaxed">
+                    EVO Switch+ Multi Mode OM4 Cassette to Support 3 QSFP+/QSFP28 to Existing Chassis
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="group hover:shadow-2xl transition-all duration-300 border-0 bg-gradient-to-br from-orange-50 to-orange-100">
+              <CardHeader className="text-center pb-6">
+                <div className="w-20 h-20 bg-orange-200 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-orange-300 transition-colors">
+                  <Zap className="w-10 h-10 text-orange-700" />
+                </div>
+                <CardTitle className="text-3xl font-bold text-orange-700 mb-2">Single Mode</CardTitle>
+                <p className="text-gray-700">Long-range, high-bandwidth connectivity solutions</p>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                  <h4 className="font-bold text-lg text-gray-900 mb-2">Part #: 69EVO-2U3P-12</h4>
+                  <p className="text-gray-600 leading-relaxed">
+                    EVO Switch+ Single Mode 2U Panel to Support 36 QSFP+/QSFP28 with 2 Additional Slots
+                  </p>
+                </div>
+                <div className="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                  <h4 className="font-bold text-lg text-gray-900 mb-2">Part #: 69EVO-1U3P-4</h4>
+                  <p className="text-gray-600 leading-relaxed">
+                    EVO Switch+ Single Mode 1U Panel to Support 12 QSFP+/QSFP28 with 1 Additional Slot
+                  </p>
+                </div>
+                <div className="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                  <h4 className="font-bold text-lg text-gray-900 mb-2">Part #: 69EVO51-3021+</h4>
+                  <p className="text-gray-600 leading-relaxed">
+                    EVO Switch+ Single Mode Cassette to Support 3 QSFP+/QSFP28 to Existing Chassis
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Video Section */}
+      <section className="py-20 px-4" id="video">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center space-y-4">
+              <a href="https://youtu.be/m4jIYh3ug9g" target="_blank" rel="noopener noreferrer" className="block">
+                <div className="relative group cursor-pointer">
+                  <img
+                    src="https://img.youtube.com/vi/m4jIYh3ug9g/maxresdefault.jpg"
+                    alt="EVO Panel Solution"
+                    className="w-full h-64 object-cover rounded-lg shadow-lg"
+                  />
+                  <div className="absolute inset-0 bg-black/20 rounded-lg flex items-center justify-center">
+                    <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:bg-red-700 transition-colors">
+                      <Play className="w-8 h-8 text-white ml-1" />
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <h3 className="text-xl font-semibold">EVO Panel Solution</h3>
+            </div>
+
+            <div className="text-center space-y-4">
+              <a href="https://youtu.be/ZX-Q8WJCB-U" target="_blank" rel="noopener noreferrer" className="block">
+                <div className="relative group cursor-pointer">
+                  <img
+                    src="https://img.youtube.com/vi/ZX-Q8WJCB-U/maxresdefault.jpg"
+                    alt="EVO Fiber Panel Solution"
+                    className="w-full h-64 object-cover rounded-lg shadow-lg"
+                  />
+                  <div className="absolute inset-0 bg-black/20 rounded-lg flex items-center justify-center">
+                    <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:bg-red-700 transition-colors">
+                      <Play className="w-8 h-8 text-white ml-1" />
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <h3 className="text-xl font-semibold">
+                EVO Fiber Panel Solution: Plug-n-Play Connectivity with Elegance
+              </h3>
+            </div>
+
+            <div className="text-center space-y-4">
+              <a href="https://youtu.be/PpPtQZOHGeQ" target="_blank" rel="noopener noreferrer" className="block">
+                <div className="relative group cursor-pointer">
+                  <img
+                    src="https://img.youtube.com/vi/PpPtQZOHGeQ/maxresdefault.jpg"
+                    alt="EVO Patch Panels"
+                    className="w-full h-64 object-cover rounded-lg shadow-lg"
+                  />
+                  <div className="absolute inset-0 bg-black/20 rounded-lg flex items-center justify-center">
+                    <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:bg-red-700 transition-colors">
+                      <Play className="w-8 h-8 text-white ml-1" />
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <h3 className="text-xl font-semibold">EVO Patch Panels</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Join the EVO Revolution */}
+      <section className="py-20 px-4 bg-gradient-to-br from-primary/5 to-secondary/5" id="brochure">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center space-y-8 mb-16">
+            <h2 className="text-4xl font-bold">Join the EVO™ Revolution</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              At Wave2Wave.io, we are dedicated to driving innovation and creating solutions that matter.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+            <Card className="text-center hover:shadow-lg transition-shadow">
+              <CardContent className="p-6 space-y-4">
+                <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
+                  <Download className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="font-semibold">EVO Datasheet</h3>
+                <Button variant="outline" size="sm" className="w-full bg-transparent">
+                  SEE BROCHURE ⟶
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center hover:shadow-lg transition-shadow">
+              <CardContent className="p-6 space-y-4">
+                <div className="w-16 h-16 bg-secondary/10 rounded-lg flex items-center justify-center mx-auto">
+                  <Download className="w-8 h-8 text-secondary" />
+                </div>
+                <h3 className="font-semibold">EVO Kite</h3>
+                <Button variant="outline" size="sm" className="w-full bg-transparent">
+                  SEE BROCHURE ⟶
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center hover:shadow-lg transition-shadow">
+              <CardContent className="p-6 space-y-4">
+                <div className="w-16 h-16 bg-accent/10 rounded-lg flex items-center justify-center mx-auto">
+                  <Download className="w-8 h-8 text-accent" />
+                </div>
+                <h3 className="font-semibold">EVO Storybook</h3>
+                <Button variant="outline" size="sm" className="w-full bg-transparent">
+                  SEE BROCHURE ⟶
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center hover:shadow-lg transition-shadow">
+              <CardContent className="p-6 space-y-4">
+                <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
+                  <Download className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="font-semibold">W2W EVO Switch+ Storybook</h3>
+                <Button variant="outline" size="sm" className="w-full bg-transparent">
+                  SEE BROCHURE ⟶
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center hover:shadow-lg transition-shadow">
+              <CardContent className="p-6 space-y-4">
+                <div className="w-16 h-16 bg-secondary/10 rounded-lg flex items-center justify-center mx-auto">
+                  <Download className="w-8 h-8 text-secondary" />
+                </div>
+                <h3 className="font-semibold">W2W EVO Switch+</h3>
+                <Button variant="outline" size="sm" className="w-full bg-transparent">
+                  SEE BROCHURE ⟶
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* EVO Product Gallery */}
+      <section className="py-20 px-4" id="gallery">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center space-y-4 mb-16">
+            <h2 className="text-4xl font-bold">EVO™ Product Gallery</h2>
+            <p className="text-xl text-muted-foreground">
+              Explore our comprehensive EVO™ modular panel and cassette solutions
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {galleryImages.map((imageUrl, index) => (
+              <div
+                key={index}
+                className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                <img
+                  src={imageUrl || "/placeholder.svg"}
+                  alt={`EVO Gallery Image ${index + 1}`}
+                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                      <ExternalLink className="w-6 h-6 text-white" />
+                    </div>
+                  </div>
+                </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Wire Management Section */}
-      <section className="py-20 px-4 bg-muted/30">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <h2 className="text-4xl font-bold text-balance">360° Wire Management</h2>
-                <h3 className="text-2xl text-muted-foreground">Guide the Cables Whichever Way You Like</h3>
-                <p className="text-lg text-muted-foreground text-pretty leading-relaxed">
-                  Combing cables in style, the EVO™ wire manager revolves 360° around the chassis with mounting options
-                  from the front or back, up or down and sideways. Protecting and organizing your physical assets is a
-                  critical first step to secure the digital lifestyle.
-                </p>
-              </div>
-            </div>
-            <div className="relative">
-              <img
-                src="/360-degree-wire-management-system-for-fiber-optic-.jpg"
-                alt="360° Wire Management"
-                className="w-full h-auto rounded-lg shadow-xl"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Intuitive Features */}
-      <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <h2 className="text-4xl font-bold text-balance">Intuitive Features</h2>
-                <h3 className="text-2xl text-muted-foreground">The Subtleties That Intrigue</h3>
-                <p className="text-lg text-muted-foreground text-pretty leading-relaxed">
-                  Designed for human intuition, the EVO™ product family is a creation that was born through vibrant
-                  collaboration among our optical, mechanical, and graphical design teams. Engineered with meanings and
-                  emotions, the EVO™ optimizes the connectivity of a network and ensures an enjoyable user experience.
-                </p>
-              </div>
-            </div>
-            <div className="relative">
-              <img
-                src="/detailed-view-of-modular-fiber-optic-cassettes-and.jpg"
-                alt="EVO Modular Components"
-                className="w-full h-auto rounded-lg shadow-xl"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 px-4 bg-primary text-primary-foreground">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
-          <h2 className="text-4xl font-bold text-balance">Join the EVO™ Revolution</h2>
-          <p className="text-xl opacity-90 text-pretty">
-            At Cabling123, we are dedicated to driving innovation and creating solutions that matter. Discover how EVO™
-            can transform your data center connectivity.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" className="text-lg px-8">
-              Request a Quote
-            </Button>
-            <Button size="lg" variant="secondary" className="text-lg px-8">
-              Request Demo
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="text-lg px-8 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary bg-transparent"
-            >
-              <ExternalLink className="w-5 h-5 mr-2" />
-              View Brochures
-            </Button>
           </div>
         </div>
       </section>

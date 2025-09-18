@@ -66,23 +66,13 @@ export default function HomePage() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              From Design to Deployment —
-              <span className="text-blue-400">Simplifying Data Center Cabling, Power & Connectivity</span>{" "}
+               Design to Deployment —
+              <span className="text-blue-400">Simplifying the Data Center & Networking</span>{" "}
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-slate-200 leading-relaxed">
-              Custom cabling, data center hardware, OEM networking & interconnect, advanced kitting, and DCIM services
-              for enterprise data centers, colocation data centers, commercial data centers, network operators, system integrators, hardware
-              OEMs, high-performance computing and more
+              Custom Fiber Optic & Ethernet cabling, High-Speed 800G/400G AOC/DAC cables, Trunk & Riser Cables, Patch panels, Cassettes, Kitting & Labeling, Digital Twin Design Services and more
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-3" asChild>
-                <Link href="/contact">
-                  Get Started
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-            </div>
-            <p className="text-sm text-slate-300 mt-6 italic">Serving customers worldwide!</p>
+            <p className="text-xl text-slate-300 mt-6 italic">Serving global enterprise data centers, colocation data centers, commercial data centers, network operators, system integrators, hardware OEMs, high-performance computing and more</p>
           </div>
         </div>
       </section>
