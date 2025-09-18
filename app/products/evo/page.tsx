@@ -383,7 +383,7 @@ export default function EVOProductPage() {
               <a href="https://youtu.be/m4jIYh3ug9g" target="_blank" rel="noopener noreferrer" className="block">
                 <div className="relative group cursor-pointer">
                   <img
-                    src="https://img.youtube.com/vi/m4jIYh3ug9g/maxresdefault.jpg"
+                    src="https://www.wave2wave.io/images/evo-images/EVO-2RU-Filled-Front-Panel-highlights2-300x172.jpg"
                     alt="EVO Panel Solution"
                     className="w-full h-64 object-cover rounded-lg shadow-lg"
                   />
