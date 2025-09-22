@@ -1,0 +1,116 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { AlertTriangle, CheckCircle2 } from "lucide-react";
+
+export function ProblemSolution() {
+  return (
+    <section className="py-20 bg-slate-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <Badge variant="outline" className="mb-4">
+            The Challenge & Our Solution
+          </Badge>
+          <h2 className="text-3xl lg:text-4xl text-slate-900 mb-6">
+            Solving the AI & Hyperscale Infrastructure Challenge
+          </h2>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* Problem */}
+          <Card className="border-red-200 bg-red-50/50">
+            <CardHeader>
+              <div className="flex items-center gap-3">
+                <AlertTriangle className="w-6 h-6 text-red-600" />
+                <CardTitle className="text-red-900">The Challenge</CardTitle>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-red-800">
+                Modern AI/ML workloads demand massive east-west bandwidth. Traditional, 
+                low-density cabling creates a "physical layer bottleneck" that limits 
+                GPU cluster performance, complicates network management, and wastes 
+                valuable rack space.
+              </p>
+              
+              <div className="space-y-3">
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0" />
+                  <p className="text-sm text-red-700">
+                    Limited GPU cluster performance due to physical layer constraints
+                  </p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0" />
+                  <p className="text-sm text-red-700">
+                    Complex network management with point-to-point cabling
+                  </p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0" />
+                  <p className="text-sm text-red-700">
+                    Wasted rack space with low-density solutions
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-red-100 p-4 rounded-lg border border-red-200">
+                <p className="text-sm text-red-800">
+                  <strong>Critical Point:</strong> As you scale to 400G and 800G, a robust 
+                  and ultra-dense structured cabling strategy is no longer optional—it's 
+                  essential for performance and ROI.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Solution */}
+          <Card className="border-green-200 bg-green-50/50">
+            <CardHeader>
+              <div className="flex items-center gap-3">
+                <CheckCircle2 className="w-6 h-6 text-green-600" />
+                <CardTitle className="text-green-900">Our Solution</CardTitle>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-green-800">
+                The EVO™ and EXO™ platforms are not just patch panels; they are engineered 
+                ecosystems for high-speed fiber management. They deliver industry-leading 
+                density and signal integrity, creating a reliable physical layer that allows 
+                your active switches and optics to perform at their full potential.
+              </p>
+              
+              <div className="space-y-3">
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-4 h-4 text-green-600 mt-1 flex-shrink-0" />
+                  <p className="text-sm text-green-700">
+                    Industry-leading density with up to 144 duplex links per 1RU
+                  </p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-4 h-4 text-green-600 mt-1 flex-shrink-0" />
+                  <p className="text-sm text-green-700">
+                    Ultra-low loss engineering for optimal signal integrity
+                  </p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-4 h-4 text-green-600 mt-1 flex-shrink-0" />
+                  <p className="text-sm text-green-700">
+                    Modular ecosystem supporting 400G, 800G, and future 1.6T speeds
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-green-100 p-4 rounded-lg border border-green-200">
+                <p className="text-sm text-green-800">
+                  <strong>Result:</strong> A Foundation for Performance that maximizes your 
+                  infrastructure investment while enabling seamless scaling for future 
+                  networking requirements.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </section>
+  );
+}
