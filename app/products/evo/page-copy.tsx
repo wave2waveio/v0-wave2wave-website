@@ -154,7 +154,7 @@ export default function EvoPage() {
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardHeader>
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO_6xMTP_Feed-through%281%29%281%29%281%29%281%29%281%29%281%29-1A3dSzykhOY7tttlTpOI7eA463qKgY.png"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO_6xMTP_Feed-through%281%29%281%29%281%29%281%29%281%29%281%29-8TaYZzirggkeNdbfvvj77RK35VWAUH.png"
                   alt="EVO 6xMTP Feed-through"
                   className="w-full h-32 object-contain mb-4 rounded"
                 />
@@ -165,7 +165,7 @@ export default function EvoPage() {
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardHeader>
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO_12xMTP_Feed-through%281%29%281%29%281%29%281%29%281%29%281%29-qSlK9gMvFHQGmP8rpVmG5JkM9yev4e.png"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO_12xMTP_Feed-through%281%29%281%29%281%29%281%29%281%29%281%29-PgS6LnuyYa9fEdE0fNTujRtwrCcDif.png"
                   alt="EVO 12xMTP Feed-through"
                   className="w-full h-32 object-contain mb-4 rounded"
                 />
@@ -176,7 +176,7 @@ export default function EvoPage() {
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardHeader>
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO_Cassette_MTP%281%29%281%29%281%29%281%29%281%29%281%29-IA2wouH15ZTGGxrxJqPkQ1PtuFQha7.png"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO_Cassette_MTP%281%29%281%29%281%29%281%29%281%29%281%29-Wfw8t9BAbNUul6A6EOgIderoqYE9Rv.png"
                   alt="EVO MTP"
                   className="w-full h-32 object-contain mb-4 rounded"
                 />
@@ -187,7 +187,7 @@ export default function EvoPage() {
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardHeader>
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO_LC_Cassette%281%29%281%29%281%29%281%29%281%29%281%29-jcdNg4zcBvMy0H7QJ8TTSAR3WiJ66S.png"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO_LC_Cassette%281%29%281%29%281%29%281%29%281%29%281%29-DeQxy4JvtEd60TxyrMn8dJugYR0rU5.png"
                   alt="EVO LC"
                   className="w-full h-32 object-contain mb-4 rounded"
                 />
@@ -198,7 +198,7 @@ export default function EvoPage() {
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardHeader>
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO_Cassettes_Stacked%281%29%281%29%281%29%281%29%281%29%281%29-VshnTe7EvXQ556TKZ8DrVNLVizG66r.png"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO_Cassettes_Stacked%281%29%281%29%281%29%281%29%281%29%281%29-zWye8C4QUnjFv8nxxNhY1xH10LmC4F.png"
                   alt="EVO Stacked"
                   className="w-full h-32 object-contain mb-4 rounded"
                 />
@@ -209,7 +209,7 @@ export default function EvoPage() {
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardHeader>
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO-LC.CASSCFT1%281%29%281%29%281%29%281%29%281%29%281%29-cbNgmBx0aa4w90mBL3No4D4zjnMmb0.png"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO-LC.CASSCFT1%281%29%281%29%281%29%281%29%281%29%281%29-6SArO9MTLpslS0UgxOoKrWjo4d1Cxk.png"
                   alt="EVO SC"
                   className="w-full h-32 object-contain mb-4 rounded"
                 />
@@ -220,7 +220,7 @@ export default function EvoPage() {
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardHeader>
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO-LC-Feedthrough%281%29%281%29%281%29%281%29%281%29%281%29-o8i3qGXMokFIn9tXWdJOtD59eZCl7j.png"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO-LC-Feedthrough%281%29%281%29%281%29%281%29%281%29%281%29-zyU6FRIrH1cJZ6Wcdn0IB44MYdJmTz.png"
                   alt="EVO LC Feed-through"
                   className="w-full h-32 object-contain mb-4 rounded"
                 />
@@ -231,7 +231,7 @@ export default function EvoPage() {
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardHeader>
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO_12xMTP_Feed-through%281%29%281%29%281%29%281%29%281%29%281%29-qSlK9gMvFHQGmP8rpVmG5JkM9yev4e.png"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO_12xMTP_Feed-through%281%29%281%29%281%29%281%29%281%29%281%29-PgS6LnuyYa9fEdE0fNTujRtwrCcDif.png"
                   alt="EVO MTP Feed-through"
                   className="w-full h-32 object-contain mb-4 rounded"
                 />
