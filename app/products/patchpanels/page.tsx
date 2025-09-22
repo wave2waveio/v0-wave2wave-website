@@ -19,14 +19,14 @@ import {
   Award,
 } from "lucide-react"
 
-import { Introduction } from "./Introduction";
-import { ProblemSolution } from "./components/ProblemSolution";
-import { ProductOverview } from "./components/ProductOverview";
-import { CompetitiveAdvantages } from "./components/CompetitiveAdvantages";
-import { TechnicalSpecs } from "./components/TechnicalSpecs";
-import { UseCases } from "./components/UseCases";
-import { ProductPerformance } from "./components/ProductPerformance";
-import { InstallationManagement } from "./components/InstallationManagement";
+import { Introduction } from "./products/patchpanels/Introduction";
+import { ProblemSolution } from "./products/patchpanels/ProblemSolution";
+import { ProductOverview } from "./products/patchpanels/ProductOverview";
+import { CompetitiveAdvantages } from "/products/patchpanels/CompetitiveAdvantages";
+import { TechnicalSpecs } from "./products/patchpanels/TechnicalSpecs";
+import { UseCases } from "/products/patchpanels//UseCases";
+import { ProductPerformance } from "/products/patchpanels//ProductPerformance";
+import { InstallationManagement } from "/products/patchpanels//InstallationManagement";
 {/*import { Footer } from "./components/Footer";*/}
 
 
@@ -34,9 +34,7 @@ import { InstallationManagement } from "./components/InstallationManagement";
 export default function App() {
   return (
     <div className="min-h-screen bg-white">
-      <Header />
       <main>
-        <Hero />
         <Introduction />
         <ProblemSolution />
         <ProductOverview />
@@ -46,7 +44,6 @@ export default function App() {
         <ProductPerformance />
         <InstallationManagement />
       </main>
-{/*      <Footer /> */}
     </div>
   );
 }
