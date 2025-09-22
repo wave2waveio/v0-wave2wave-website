@@ -21,7 +21,7 @@ import {
 
 import { Introduction } from "./introduction";
 import { ProblemSolution } from "./problemsolution";
-import { ProductOverview } from "./ProductOverview";
+import { ProductOverview } from "./productoverview";
 import { CompetitiveAdvantages } from "./competitiveadvantages";
 import { TechnicalSpecs } from "./TechnicalSpecs";
 import { UseCases } from "./UseCases";
