@@ -171,7 +171,7 @@ export default function ProductsPage() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-3xl blur-xl"></div>
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/QSFPto4SFP1728.jpg%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29-hUcHLqZGGhGrDG4R45RQIp8HY8Zwpp.jpeg"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/QSFPto4SFP1728.jpg%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29-wbOEx8lmax35o057ogeb6A4Son5ngl.jpeg"
                 alt="QSFP to 4x SFP breakout cables"
                 width={600}
                 height={400}
@@ -326,7 +326,7 @@ export default function ProductsPage() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-3xl blur-xl"></div>
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/MTP_cable.jpg%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29-xxYhse4DhSrokY6xht92vRivz9XCWD.jpeg"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/MTP_cable.jpg%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29-S28qXu5iKE7QTH6eif9z2EicKZK3vZ.jpeg"
                 alt="MTP/MPO fiber optic cable"
                 width={600}
                 height={400}
@@ -358,7 +358,7 @@ export default function ProductsPage() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-purple-500/20 to-violet-500/20 rounded-3xl blur-xl"></div>
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EXO_mini.jpg%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29-7p4sYNISkNRBHVVmzsxPwhwWw8z1z6.jpeg"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EXO_mini.jpg%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29-56KSnqKkHZciBqJQ1jNcaLfc9IS1NU.jpeg"
                 alt="EXO Mini fiber patch panel"
                 width={600}
                 height={400}
@@ -476,7 +476,7 @@ export default function ProductsPage() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-orange-500/20 to-amber-500/20 rounded-3xl blur-xl"></div>
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/71series.jpg%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29-4YVdgKgd6fSAyWbEhDJ3iVPv7p9GlH.jpeg"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/71series.jpg%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29-mTDgs9hYLRlpmLfiXBGTJeoaItVYP2.jpeg"
                 alt="71 Series Cat6A patch cord"
                 width={600}
                 height={400}
@@ -508,7 +508,7 @@ export default function ProductsPage() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-red-500/20 to-rose-500/20 rounded-3xl blur-xl"></div>
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/rackandstack%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29-onVYUt0pzVtsib2gJcDlqQUGQQI05B.png"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/rackandstack%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29-XP8I7ygzHEM3aYvyZ4TwNCtRdcqsNm.png"
                 alt="Data center rack and stack infrastructure"
                 width={600}
                 height={400}

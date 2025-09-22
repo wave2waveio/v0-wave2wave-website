@@ -23,7 +23,7 @@ import { Introduction } from "./introduction";
 import { ProblemSolution } from "./problemsolution";
 import { ProductOverview } from "./productoverview";
 import { CompetitiveAdvantages } from "./competitiveadvantages";
-import { TechnicalSpecs } from "./TechnicalSpecs";
+import { TechnicalSpecs } from "./technicalspecs";
 import { UseCases } from "./UseCases";
 import { ProductPerformance } from "./productperformance";
 import { InstallationManagement } from "./installationmanagement";
