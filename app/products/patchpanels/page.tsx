@@ -19,14 +19,14 @@ import {
   Award,
 } from "lucide-react"
 
-import { Introduction } from "/Introduction";
-import { ProblemSolution } from "/ProblemSolution";
-import { ProductOverview } from "/ProductOverview";
-import { CompetitiveAdvantages } from "/CompetitiveAdvantages";
-import { TechnicalSpecs } from "/TechnicalSpecs";
-import { UseCases } from "/UseCases";
-import { ProductPerformance } from "/ProductPerformance";
-import { InstallationManagement } from "/InstallationManagement";
+import { Introduction } from "./Introduction";
+import { ProblemSolution } from "./ProblemSolution";
+import { ProductOverview } from "./ProductOverview";
+import { CompetitiveAdvantages } from "./CompetitiveAdvantages";
+import { TechnicalSpecs } from "./TechnicalSpecs";
+import { UseCases } from "./UseCases";
+import { ProductPerformance } from "./ProductPerformance";
+import { InstallationManagement } from "./InstallationManagement";
 {/*import { Footer } from "./components/Footer";*/}
 
 
