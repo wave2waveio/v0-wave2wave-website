@@ -171,7 +171,7 @@ export default function ProductsPage() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-3xl blur-xl"></div>
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/QSFPto4SFP1728.jpg%281%29%281%29%281%29%281%29-4O8EvkoWGmoGSnlSHuwf5x7A207Xpe.jpeg"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/QSFPto4SFP1728.jpg%281%29%281%29%281%29%281%29-e2R2qX5m0luyxADxfxupAjQOxexbId.jpeg"
                 alt="QSFP to 4x SFP breakout cables"
                 width={600}
                 height={400}
@@ -326,7 +326,7 @@ export default function ProductsPage() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-3xl blur-xl"></div>
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/MTP_cable.jpg%281%29%281%29%281%29%281%29-sjGNyZIDHhs8jJWArL5WEJNW3G8xvf.jpeg"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/MTP_cable.jpg%281%29%281%29%281%29%281%29-56tnXV0BTJomq1cSAOi96g4fVJGDWh.jpeg"
                 alt="MTP/MPO fiber optic cable"
                 width={600}
                 height={400}
@@ -358,7 +358,7 @@ export default function ProductsPage() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-purple-500/20 to-violet-500/20 rounded-3xl blur-xl"></div>
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EXO_mini.jpg%281%29%281%29%281%29%281%29-lu3WYv5MUWZmoRz1wWQfk4R7Jyir00.jpeg"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EXO_mini.jpg%281%29%281%29%281%29%281%29-dtmJF4lzPYcfBf423y4kgr5GxnEZRp.jpeg"
                 alt="EXO Mini fiber patch panel"
                 width={600}
                 height={400}
@@ -476,7 +476,7 @@ export default function ProductsPage() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-orange-500/20 to-amber-500/20 rounded-3xl blur-xl"></div>
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/71series.jpg%281%29%281%29%281%29%281%29-EC5bcHeNMw1S7W3JsMe9m9CJj1VP3Z.jpeg"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/71series.jpg%281%29%281%29%281%29%281%29-OKkdEOTxOdmpCDv3m6Y1nPERGAqCAz.jpeg"
                 alt="71 Series Cat6A patch cord"
                 width={600}
                 height={400}
@@ -508,7 +508,7 @@ export default function ProductsPage() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-red-500/20 to-rose-500/20 rounded-3xl blur-xl"></div>
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/rackandstack%281%29%281%29%281%29%281%29-XrXvb5Kvy2hR9QaH9lu9yZ3EZBZ2pK.png"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/rackandstack%281%29%281%29%281%29%281%29-64k5ALIFGsliDKMQwhPGtJo8X63ukz.png"
                 alt="Data center rack and stack infrastructure"
                 width={600}
                 height={400}
