@@ -20,7 +20,7 @@ import {
 } from "lucide-react"
 
 import { Introduction } from "./introduction";
-import { ProblemSolution } from "./ProblemSolution";
+import { ProblemSolution } from "./problemsolution";
 import { ProductOverview } from "./ProductOverview";
 import { CompetitiveAdvantages } from "./competitiveadvantages";
 import { TechnicalSpecs } from "./TechnicalSpecs";
