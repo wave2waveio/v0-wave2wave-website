@@ -19,10 +19,10 @@ import {
   Award,
 } from "lucide-react"
 
-import { Introduction } from "./introduction";
+import { Introduction } from "./Introduction";
 import { ProblemSolution } from "./ProblemSolution";
 import { ProductOverview } from "./ProductOverview";
-import { CompetitiveAdvantages } from "./competitiveadvantages";
+import { CompetitiveAdvantages } from "./CompetitiveAdvantages";
 import { TechnicalSpecs } from "./TechnicalSpecs";
 import { UseCases } from "./UseCases";
 import { ProductPerformance } from "./ProductPerformance";
