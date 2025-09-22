@@ -25,7 +25,7 @@ import { ProductOverview } from "./productoverview";
 import { CompetitiveAdvantages } from "./competitiveadvantages";
 import { TechnicalSpecs } from "./TechnicalSpecs";
 import { UseCases } from "./UseCases";
-import { ProductPerformance } from "./ProductPerformance";
+import { ProductPerformance } from "./productperformance";
 import { InstallationManagement } from "./installationmanagement";
 {/*import { Footer } from "./components/Footer";*/}
 
