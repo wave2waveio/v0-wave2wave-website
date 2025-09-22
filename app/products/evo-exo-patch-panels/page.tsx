@@ -93,18 +93,18 @@ export default function EVOEXOProductPage() {
 
             <div className="space-y-6">
               <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/Hero-EVO-2RU-Evo-Switch-2%281%29%281%29-eZ5K6MmhAIzdLzuX3kCBYKQY3xRXZk.png"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/Hero-EVO-2RU-Evo-Switch-2%281%29%281%29-Gnd3nrFG6Q0IScZFOedaqmPBxqGfQZ.png"
                 alt="EVO™ & EXO™ High-Density Patch Panel Platforms"
                 className="w-full h-auto rounded-lg shadow-2xl"
               />
               <div className="grid grid-cols-2 gap-4">
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/Hero-EVO-2RU-Evo-1%281%29%281%29-0fsrdsspVpuNPxR8Lvpa4SL9bdTqDV.png"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/Hero-EVO-2RU-Evo-1%281%29%281%29-mKY6xrUxifK8GR15qE5vXZTQQjJRAp.png"
                   alt="EVO™ Platform"
                   className="w-full h-32 object-cover rounded-lg shadow-xl"
                 />
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO-2RU-Filled-Front-Panel-highlights2-768x441%281%29%281%29-3OsMT50ZFWB0OcnUiyM9ZcwCL1SDFs.jpg"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO-2RU-Filled-Front-Panel-highlights2-768x441%281%29%281%29-4aQmU1ZmsOh1mNpvfBdhGI7qEcVfGS.jpg"
                   alt="EXO™ Platform"
                   className="w-full h-32 object-cover rounded-lg shadow-xl"
                 />
@@ -565,7 +565,7 @@ export default function EVOEXOProductPage() {
             <Card className="text-center hover:shadow-lg transition-shadow border border-gray-200">
               <CardHeader>
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO_6xMTP_Feed-through%281%29%281%29-J98eS1aOKCd8aTJjL0Cs4yR07iduxX.png"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO_6xMTP_Feed-through%281%29%281%29-NhSdfFFm5TIUuGuA810wyEno4TOb4e.png"
                   alt="EVO 6xMTP Feed-through"
                   className="w-full h-32 object-contain mb-4 rounded"
                 />
@@ -576,7 +576,7 @@ export default function EVOEXOProductPage() {
             <Card className="text-center hover:shadow-lg transition-shadow border border-gray-200">
               <CardHeader>
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO_12xMTP_Feed-through%281%29%281%29-Nevutk4Fv7CcghFLkRiLvOm9KMJAc1.png"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO_12xMTP_Feed-through%281%29%281%29-AgT5VcVnrt6NmAQGoeTbZFa7OchexZ.png"
                   alt="EVO 12xMTP Feed-through"
                   className="w-full h-32 object-contain mb-4 rounded"
                 />
@@ -587,7 +587,7 @@ export default function EVOEXOProductPage() {
             <Card className="text-center hover:shadow-lg transition-shadow border border-gray-200">
               <CardHeader>
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO_Cassette_MTP%281%29%281%29-7llSp3GQlcz2KokRDON4SEMBiSt40Z.png"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO_Cassette_MTP%281%29%281%29-WGBuaQ5RZSpSLSIFelRUqndMSvZE7O.png"
                   alt="EVO MTP"
                   className="w-full h-32 object-contain mb-4 rounded"
                 />
@@ -598,7 +598,7 @@ export default function EVOEXOProductPage() {
             <Card className="text-center hover:shadow-lg transition-shadow border border-gray-200">
               <CardHeader>
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO_LC_Cassette%281%29%281%29-q9oz2u6kzoO9Kz9Po9CWd2VrHFVgA9.png"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO_LC_Cassette%281%29%281%29-BbGx2fPAcrmoXgkyVpjmXMIcBDxWFF.png"
                   alt="EVO LC"
                   className="w-full h-32 object-contain mb-4 rounded"
                 />
@@ -609,7 +609,7 @@ export default function EVOEXOProductPage() {
             <Card className="text-center hover:shadow-lg transition-shadow border border-gray-200">
               <CardHeader>
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO_Cassettes_Stacked%281%29%281%29-TMIsDuE0jddWxAF3bZSWklGkZCeFfU.png"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO_Cassettes_Stacked%281%29%281%29-THK5NfzF5BETzuMpaTVd39KxAAqERg.png"
                   alt="EVO Stacked"
                   className="w-full h-32 object-contain mb-4 rounded"
                 />
@@ -620,7 +620,7 @@ export default function EVOEXOProductPage() {
             <Card className="text-center hover:shadow-lg transition-shadow border border-gray-200">
               <CardHeader>
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO-LC.CASSCFT1%281%29%281%29-8u9gXJUQ1QtbETy54FnF98M0Ucrjw1.png"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO-LC.CASSCFT1%281%29%281%29-w7R0hE7EZeYwEQI5IYTFDoHE9fw2gt.png"
                   alt="EVO SC"
                   className="w-full h-32 object-contain mb-4 rounded"
                 />
@@ -631,7 +631,7 @@ export default function EVOEXOProductPage() {
             <Card className="text-center hover:shadow-lg transition-shadow border border-gray-200">
               <CardHeader>
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO-LC-Feedthrough%281%29%281%29-J8SOwMaUGrEK0uqazcYL5zgruHPwtv.png"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO-LC-Feedthrough%281%29%281%29-fw4UZQiFTPmRnKHVyXUv2nwElITd8w.png"
                   alt="EVO LC Feed-through"
                   className="w-full h-32 object-contain mb-4 rounded"
                 />
@@ -642,7 +642,7 @@ export default function EVOEXOProductPage() {
             <Card className="text-center hover:shadow-lg transition-shadow border border-gray-200">
               <CardHeader>
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO_12xMTP_Feed-through%281%29%281%29-Nevutk4Fv7CcghFLkRiLvOm9KMJAc1.png"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO_12xMTP_Feed-through%281%29%281%29-AgT5VcVnrt6NmAQGoeTbZFa7OchexZ.png"
                   alt="EVO MTP Feed-through"
                   className="w-full h-32 object-contain mb-4 rounded"
                 />
@@ -720,7 +720,7 @@ export default function EVOEXOProductPage() {
               <a href="https://youtu.be/m4jIYh3ug9g" target="_blank" rel="noopener noreferrer" className="block">
                 <div className="relative group cursor-pointer">
                   <img
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO-2RU-Filled-Front-Panel-highlights2-300x172%281%29%281%29-bdm0LLGkuJ0kq2OCsGVRz0EKq5oX0h.jpg"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/EVO-2RU-Filled-Front-Panel-highlights2-300x172%281%29%281%29-aX8RNAQ3Y3WQLy1kUNvDzyzNsIjb8i.jpg"
                     alt="EVO Panel Solution"
                     className="w-full h-64 object-cover rounded-lg shadow-lg"
                   />
@@ -738,7 +738,7 @@ export default function EVOEXOProductPage() {
               <a href="https://youtu.be/ZX-Q8WJCB-U" target="_blank" rel="noopener noreferrer" className="block">
                 <div className="relative group cursor-pointer">
                   <img
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/maxresdefault%281%29%281%29-2AvdyFR2mXsBxRlSp47J0Ba0npZ4mO.jpg"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/maxresdefault%281%29%281%29-RdZdrcqdg6rDUmgbw7TjmoIHG9It3f.jpg"
                     alt="EVO Fiber Panel Solution"
                     className="w-full h-64 object-cover rounded-lg shadow-lg"
                   />
@@ -758,7 +758,7 @@ export default function EVOEXOProductPage() {
               <a href="https://youtu.be/PpPtQZOHGeQ" target="_blank" rel="noopener noreferrer" className="block">
                 <div className="relative group cursor-pointer">
                   <img
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/maxresdefault%281%29%281%29-XgJIixiJBJ9V62eSuiaY4gdd8JJAhp.jpg"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/maxresdefault%281%29%281%29-2eOoaGOE89Va5tzPKaG7PdpHIO6ny1.jpg"
                     alt="EVO Patch Panels"
                     className="w-full h-64 object-cover rounded-lg shadow-lg"
                   />
