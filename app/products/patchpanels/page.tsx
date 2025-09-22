@@ -24,7 +24,7 @@ import { ProblemSolution } from "./problemsolution";
 import { ProductOverview } from "./productoverview";
 import { CompetitiveAdvantages } from "./competitiveadvantages";
 import { TechnicalSpecs } from "./technicalspecs";
-import { UseCases } from "./UseCases";
+import { UseCases } from "./usecases";
 import { ProductPerformance } from "./productperformance";
 import { InstallationManagement } from "./installationmanagement";
 {/*import { Footer } from "./components/Footer";*/}
