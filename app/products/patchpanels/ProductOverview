@@ -1,0 +1,174 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Zap, Network, Settings, Database } from "lucide-react";
+
+export function ProductOverview() {
+  return (
+    <section id="products" className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <Badge variant="outline" className="mb-4">
+            Product Platforms
+          </Badge>
+          <h2 className="text-3xl lg:text-4xl text-slate-900 mb-6">
+            Two Platforms for Scalable Connectivity
+          </h2>
+          <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+            Choose the right platform for your infrastructure needs, from ultra-high-density 
+            hyperscale deployments to specialized wavelength division multiplexing applications.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* EVO Platform */}
+          <div className="space-y-8">
+            <Card className="overflow-hidden border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50">
+              <CardHeader className="pb-4">
+                <div className="flex items-center justify-between">
+                  <CardTitle className="text-2xl text-blue-900">EVO™ Platform</CardTitle>
+                  <Badge className="bg-blue-600">Ultra-High-Density</Badge>
+                </div>
+                <p className="text-blue-700">
+                  Engineered for maximum fiber density in hyperscale data centers and large AI clusters
+                </p>
+              </CardHeader>
+              
+              <CardContent className="space-y-6">
+                <div className="aspect-video rounded-lg overflow-hidden">
+                  <ImageWithFallback
+                    src="https://images.unsplash.com/flagged/photo-1579274216947-86eaa4b00475?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzZXJ2ZXIlMjByYWNrJTIwZGF0YSUyMGNlbnRlcnxlbnwxfHx8fDE3NTg1MjcyODd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                    alt="Server rack in data center"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="text-blue-900">Key Features:</h4>
+                  
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-3">
+                      <Network className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <p className="text-sm">
+                          <strong>Industry-Leading Density:</strong> Provides connectivity for up to 48 QSFP-DD/OSFP 
+                          transceivers (144 Duplex LC links) in a 2RU chassis
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-3">
+                      <Settings className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <p className="text-sm">
+                          <strong>MTP-to-LC Breakouts:</strong> Modular cassettes efficiently break out 
+                          high-speed MTP-12/16/24 trunk cables into duplex LC connections
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-3">
+                      <Zap className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <p className="text-sm">
+                          <strong>Ultra-Low Insertion Loss:</strong> Features typical loss of &lt;0.55dB (MM) 
+                          and &lt;0.75dB (SM) per cassette, protecting your optical power budget
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-blue-100 p-4 rounded-lg">
+                  <h5 className="text-blue-900 mb-2">Ideal Applications:</h5>
+                  <ul className="text-sm text-blue-800 space-y-1">
+                    <li>• Hyperscale data centers maximizing connectivity per square foot</li>
+                    <li>• Large AI training facilities requiring structured cabling for thousands of GPU connections</li>
+                  </ul>
+                </div>
+
+                <Button className="w-full bg-blue-600 hover:bg-blue-700">
+                  Learn More About EVO™
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* EXO Platform */}
+          <div className="space-y-8">
+            <Card className="overflow-hidden border-purple-200 bg-gradient-to-br from-purple-50 to-indigo-50">
+              <CardHeader className="pb-4">
+                <div className="flex items-center justify-between">
+                  <CardTitle className="text-2xl text-purple-900">EXO™ Platform</CardTitle>
+                  <Badge className="bg-purple-600">WDM Specialized</Badge>
+                </div>
+                <p className="text-purple-700">
+                  Perfect for service providers or enterprises needing to dramatically increase 
+                  the capacity of existing fiber infrastructure
+                </p>
+              </CardHeader>
+              
+              <CardContent className="space-y-6">
+                <div className="aspect-video rounded-lg overflow-hidden">
+                  <ImageWithFallback
+                    src="https://images.unsplash.com/photo-1738003946582-aabeabf5e009?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxBSSUyMGFydGlmaWNpYWwlMjBpbnRlbGxpZ2VuY2UlMjB0ZWNobm9sb2d5fGVufDF8fHx8MTc1ODU0NjI4MXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                    alt="AI artificial intelligence technology"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="text-purple-900">Key Features:</h4>
+                  
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-3">
+                      <Network className="w-5 h-5 text-purple-600 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <p className="text-sm">
+                          <strong>Wavelength Division Multiplexing:</strong> Utilizes passive WDM technology 
+                          to combine multiple data streams (e.g., 4, 8, or 16 channels) onto a single fiber pair
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-3">
+                      <Database className="w-5 h-5 text-purple-600 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <p className="text-sm">
+                          <strong>Massive Fiber Savings:</strong> Increase the capacity of dark fiber or 
+                          campus links by up to 16x without laying new cables
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-3">
+                      <Settings className="w-5 h-5 text-purple-600 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <p className="text-sm">
+                          <strong>Protocol Agnostic:</strong> Transparently supports a variety of services 
+                          like Ethernet, Fibre Channel, and SONET over the same fiber
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-purple-100 p-4 rounded-lg">
+                  <h5 className="text-purple-900 mb-2">Ideal Applications:</h5>
+                  <ul className="text-sm text-purple-800 space-y-1">
+                    <li>• Data Center Interconnects (DCI) over limited fiber pairs</li>
+                    <li>• 5G networks and service provider backhaul</li>
+                  </ul>
+                </div>
+
+                <Button className="w-full bg-purple-600 hover:bg-purple-700">
+                  Learn More About EXO™
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
