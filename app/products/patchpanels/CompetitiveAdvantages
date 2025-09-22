@@ -1,0 +1,104 @@
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { Badge } from "./ui/badge";
+import { TrendingUp, Cpu, Layers, Wrench } from "lucide-react";
+
+export function CompetitiveAdvantages() {
+  const advantages = [
+    {
+      icon: TrendingUp,
+      title: "Density Leadership",
+      description: "Our EVO™ platform offers the highest MTP and LC termination density in the industry, saving up to 80% of rack space compared to traditional solutions.",
+      color: "text-green-600",
+      bgColor: "bg-green-50",
+      borderColor: "border-green-200"
+    },
+    {
+      icon: Cpu,
+      title: "Enables AI/ML Performance",
+      description: "We provide the stable, high-performance physical foundation that lossless RoCEv2 and InfiniBand fabrics for GPU clusters depend on.",
+      color: "text-blue-600",
+      bgColor: "bg-blue-50",
+      borderColor: "border-blue-200"
+    },
+    {
+      icon: Layers,
+      title: "Future-Proof Architecture",
+      description: "Our modular systems support MTP-12, MTP-16, and MTP-24 connectors, ensuring you're ready for the cabling requirements of 400G, 800G, and future 1.6T optics.",
+      color: "text-purple-600",
+      bgColor: "bg-purple-50",
+      borderColor: "border-purple-200"
+    },
+    {
+      icon: Wrench,
+      title: "Operational Simplicity",
+      description: "Tool-free, hot-swappable cassettes simplify installation and allow for rapid Moves, Adds, and Changes (MACs) without network disruption.",
+      color: "text-orange-600",
+      bgColor: "bg-orange-50",
+      borderColor: "border-orange-200"
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-slate-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <Badge variant="outline" className="mb-4">
+            Competitive Advantages
+          </Badge>
+          <h2 className="text-3xl lg:text-4xl text-slate-900 mb-6">
+            Why Industry Leaders Choose Wave2Wave
+          </h2>
+          <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+            Our platforms deliver unmatched performance, density, and reliability for 
+            mission-critical infrastructure deployments across the globe.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          {advantages.map((advantage, index) => {
+            const IconComponent = advantage.icon;
+            return (
+              <Card 
+                key={index} 
+                className={`${advantage.bgColor} ${advantage.borderColor} border-2 hover:shadow-lg transition-shadow duration-300`}
+              >
+                <CardHeader>
+                  <div className="flex items-center gap-4">
+                    <div className={`p-3 rounded-lg bg-white ${advantage.borderColor} border`}>
+                      <IconComponent className={`w-6 h-6 ${advantage.color}`} />
+                    </div>
+                    <CardTitle className="text-xl text-slate-900">
+                      {advantage.title}
+                    </CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-slate-700 leading-relaxed">
+                    {advantage.description}
+                  </p>
+                </CardContent>
+              </Card>
+            );
+          })}
+        </div>
+
+        <div className="mt-16 text-center">
+          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div className="space-y-2">
+              <div className="text-3xl text-blue-600">80%</div>
+              <div className="text-sm text-slate-600">Rack Space Savings</div>
+            </div>
+            <div className="space-y-2">
+              <div className="text-3xl text-blue-600">2000+</div>
+              <div className="text-sm text-slate-600">Data Centers Deployed</div>
+            </div>
+            <div className="space-y-2">
+              <div className="text-3xl text-blue-600">99.9%</div>
+              <div className="text-sm text-slate-600">Uptime Reliability</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
