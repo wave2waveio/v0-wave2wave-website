@@ -1,0 +1,230 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
+import { CheckCircle2, Zap, Signal, Thermometer } from "lucide-react";
+
+export function ProductPerformance() {
+  const evoMetrics = [
+    { 
+      label: "Insertion Loss (MM)", 
+      value: "<0.55dB", 
+      percentage: 95, 
+      description: "Industry-leading low loss for multimode fiber"
+    },
+    { 
+      label: "Insertion Loss (SM)", 
+      value: "<0.75dB", 
+      percentage: 93, 
+      description: "Exceptional performance for single-mode applications"
+    },
+    { 
+      label: "Return Loss (APC)", 
+      value: ">50dB", 
+      percentage: 98, 
+      description: "Superior signal reflection performance"
+    },
+    { 
+      label: "Return Loss (UPC)", 
+      value: ">35dB", 
+      percentage: 88, 
+      description: "Excellent UPC connector performance"
+    }
+  ];
+
+  const exoMetrics = [
+    { 
+      label: "CWDM Insertion Loss", 
+      value: "<1.8dB", 
+      percentage: 85, 
+      description: "Optimal for CWDM wavelength multiplexing"
+    },
+    { 
+      label: "LAN-WDM Insertion Loss", 
+      value: "<2.2dB", 
+      percentage: 82, 
+      description: "Efficient LAN-WDM performance"
+    },
+    { 
+      label: "8-Channel DWDM", 
+      value: "<3.0dB", 
+      percentage: 78, 
+      description: "High-density DWDM capability"
+    },
+    { 
+      label: "Channel Isolation", 
+      value: ">30dB", 
+      percentage: 95, 
+      description: "Excellent channel separation"
+    }
+  ];
+
+  return (
+    <section id="performance" className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <Badge variant="outline" className="mb-4">
+            Product Performance
+          </Badge>
+          <h2 className="text-3xl lg:text-4xl text-slate-900 mb-6">
+            Proven Signal Integrity for Mission-Critical Applications
+          </h2>
+          <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+            Comprehensive performance metrics demonstrating the exceptional quality and 
+            reliability of our EVO™ and EXO™ platforms in demanding environments.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* EVO Performance */}
+          <Card className="border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50">
+            <CardHeader>
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-blue-600 rounded-lg">
+                  <Zap className="w-5 h-5 text-white" />
+                </div>
+                <CardTitle className="text-2xl text-blue-900">
+                  EVO™ Platform Performance
+                </CardTitle>
+              </div>
+            </CardHeader>
+            
+            <CardContent className="space-y-6">
+              <div className="space-y-4">
+                {evoMetrics.map((metric, index) => (
+                  <div key={index} className="space-y-2">
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm text-blue-800">{metric.label}</span>
+                      <span className="text-sm text-blue-600">{metric.value}</span>
+                    </div>
+                    <Progress value={metric.percentage} className="h-2" />
+                    <p className="text-xs text-blue-700">{metric.description}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="grid grid-cols-2 gap-4 pt-4">
+                <div className="bg-blue-100 p-4 rounded-lg text-center">
+                  <Signal className="w-6 h-6 text-blue-600 mx-auto mb-2" />
+                  <div className="text-lg text-blue-900">OM4/OM5</div>
+                  <div className="text-xs text-blue-700">Fiber Compatibility</div>
+                </div>
+                
+                <div className="bg-blue-100 p-4 rounded-lg text-center">
+                  <Thermometer className="w-6 h-6 text-blue-600 mx-auto mb-2" />
+                  <div className="text-lg text-blue-900">-5°C to +70°C</div>
+                  <div className="text-xs text-blue-700">Operating Range</div>
+                </div>
+              </div>
+
+              <div className="bg-blue-100 p-4 rounded-lg">
+                <h4 className="text-blue-900 mb-3 flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4" />
+                  Key Performance Features
+                </h4>
+                <ul className="text-sm text-blue-800 space-y-1">
+                  <li>• MTP-12/16/24 and duplex LC connector compatibility</li>
+                  <li>• Rigorous testing ensures consistent performance</li>
+                  <li>• Detailed insertion loss measurements provided</li>
+                </ul>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* EXO Performance */}
+          <Card className="border-purple-200 bg-gradient-to-br from-purple-50 to-indigo-50">
+            <CardHeader>
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-purple-600 rounded-lg">
+                  <Signal className="w-5 h-5 text-white" />
+                </div>
+                <CardTitle className="text-2xl text-purple-900">
+                  EXO™ WDM Performance
+                </CardTitle>
+              </div>
+            </CardHeader>
+            
+            <CardContent className="space-y-6">
+              <div className="space-y-4">
+                {exoMetrics.map((metric, index) => (
+                  <div key={index} className="space-y-2">
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm text-purple-800">{metric.label}</span>
+                      <span className="text-sm text-purple-600">{metric.value}</span>
+                    </div>
+                    <Progress value={metric.percentage} className="h-2" />
+                    <p className="text-xs text-purple-700">{metric.description}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="grid grid-cols-2 gap-4 pt-4">
+                <div className="bg-purple-100 p-4 rounded-lg text-center">
+                  <div className="text-lg text-purple-900">16-Ch</div>
+                  <div className="text-xs text-purple-700">DWDM Capacity</div>
+                </div>
+                
+                <div className="bg-purple-100 p-4 rounded-lg text-center">
+                  <div className="text-lg text-purple-900">ITU Grid</div>
+                  <div className="text-xs text-purple-700">Wavelength Compliant</div>
+                </div>
+              </div>
+
+              <div className="bg-purple-100 p-4 rounded-lg">
+                <h4 className="text-purple-900 mb-3 flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4" />
+                  WDM Technology Benefits
+                </h4>
+                <ul className="text-sm text-purple-800 space-y-1">
+                  <li>• Passive operation requires no power consumption</li>
+                  <li>• Protocol agnostic - supports multiple service types</li>
+                  <li>• ITU grid compliant wavelengths for standardization</li>
+                </ul>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="mt-16 text-center">
+          <Card className="max-w-4xl mx-auto bg-gradient-to-r from-slate-50 to-blue-50 border-2 border-blue-200">
+            <CardContent className="p-8">
+              <h3 className="text-2xl text-slate-900 mb-6">
+                Quality Assurance & Testing
+              </h3>
+              <div className="grid md:grid-cols-3 gap-8">
+                <div className="text-center">
+                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <CheckCircle2 className="w-6 h-6 text-green-600" />
+                  </div>
+                  <h4 className="text-lg text-slate-900 mb-2">100% Tested</h4>
+                  <p className="text-sm text-slate-600">
+                    Every module undergoes rigorous performance testing before shipping
+                  </p>
+                </div>
+                
+                <div className="text-center">
+                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <Signal className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <h4 className="text-lg text-slate-900 mb-2">Traceable Performance</h4>
+                  <p className="text-sm text-slate-600">
+                    Detailed insertion loss measurements provided for each cassette
+                  </p>
+                </div>
+                
+                <div className="text-center">
+                  <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <Thermometer className="w-6 h-6 text-purple-600" />
+                  </div>
+                  <h4 className="text-lg text-slate-900 mb-2">Environmental Testing</h4>
+                  <p className="text-sm text-slate-600">
+                    Validated performance across full operating temperature range
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </section>
+  );
+}
