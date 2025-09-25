@@ -1,3 +1,5 @@
+"use client"
+
 import {
   createContext,
   useContext,
@@ -11,8 +13,8 @@ import {
   type TableHTMLAttributes,
   type TdHTMLAttributes,
   type ThHTMLAttributes,
-} from "react";
-import { HeroCarousel } from "./HeroCarousel";
+} from "react"
+import { HeroCarousel } from "./HeroCarousel"
 import {
   AlertTriangle,
   Brain,
@@ -31,14 +33,14 @@ import {
   TrendingUp,
   Wrench,
   Zap,
-} from "lucide-react";
+} from "lucide-react"
 
 function cn(...classes: Array<string | false | null | undefined>) {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(" ")
 }
 
 interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
-  variant?: "solid" | "outline" | "secondary";
+  variant?: "solid" | "outline" | "secondary"
 }
 
 function Badge({ className = "", variant = "solid", ...props }: BadgeProps) {
@@ -47,7 +49,7 @@ function Badge({ className = "", variant = "solid", ...props }: BadgeProps) {
       ? "border border-slate-300 bg-white text-slate-700"
       : variant === "secondary"
         ? "bg-slate-100 text-slate-700"
-        : "bg-blue-600 text-white";
+        : "bg-blue-600 text-white"
 
   return (
     <span
@@ -58,7 +60,7 @@ function Badge({ className = "", variant = "solid", ...props }: BadgeProps) {
         className,
       )}
     />
-  );
+  )
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
@@ -73,61 +75,56 @@ function Button({ className = "", type = "button", ...props }: ButtonProps) {
         className,
       )}
     />
-  );
+  )
 }
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {}
 
 function Card({ className = "", ...props }: CardProps) {
-  return (
-    <div
-      {...props}
-      className={cn("rounded-2xl border border-slate-200 bg-white shadow-sm", className)}
-    />
-  );
+  return <div {...props} className={cn("rounded-2xl border border-slate-200 bg-white shadow-sm", className)} />
 }
 
 function CardHeader({ className = "", ...props }: HTMLAttributes<HTMLDivElement>) {
-  return <div {...props} className={cn("p-6", className)} />;
+  return <div {...props} className={cn("p-6", className)} />
 }
 
 function CardContent({ className = "", ...props }: HTMLAttributes<HTMLDivElement>) {
-  return <div {...props} className={cn("p-6 pt-0", className)} />;
+  return <div {...props} className={cn("p-6 pt-0", className)} />
 }
 
 function CardTitle({ className = "", ...props }: HTMLAttributes<HTMLHeadingElement>) {
-  return <h3 {...props} className={cn("text-lg font-semibold leading-tight", className)} />;
+  return <h3 {...props} className={cn("text-lg font-semibold leading-tight", className)} />
 }
 
 interface TabsContextValue {
-  activeTab: string;
-  setActiveTab: (value: string) => void;
+  activeTab: string
+  setActiveTab: (value: string) => void
 }
 
-const TabsContext = createContext<TabsContextValue | undefined>(undefined);
+const TabsContext = createContext<TabsContextValue | undefined>(undefined)
 
 function useTabsContext() {
-  const context = useContext(TabsContext);
+  const context = useContext(TabsContext)
   if (!context) {
-    throw new Error("Tabs components must be used within a Tabs parent");
+    throw new Error("Tabs components must be used within a Tabs parent")
   }
-  return context;
+  return context
 }
 
 interface TabsProps {
-  defaultValue: string;
-  children: ReactNode;
-  className?: string;
+  defaultValue: string
+  children: ReactNode
+  className?: string
 }
 
 function Tabs({ defaultValue, children, className = "" }: TabsProps) {
-  const [activeTab, setActiveTab] = useState(defaultValue);
+  const [activeTab, setActiveTab] = useState(defaultValue)
 
   return (
     <TabsContext.Provider value={{ activeTab, setActiveTab }}>
       <div className={className}>{children}</div>
     </TabsContext.Provider>
-  );
+  )
 }
 
 function TabsList({ className = "", ...props }: HTMLAttributes<HTMLDivElement>) {
@@ -136,25 +133,25 @@ function TabsList({ className = "", ...props }: HTMLAttributes<HTMLDivElement>) 
       {...props}
       className={cn("inline-flex items-center justify-center gap-2 rounded-xl bg-white p-2 shadow-sm", className)}
     />
-  );
+  )
 }
 
 interface TabsTriggerProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  value: string;
+  value: string
 }
 
 function TabsTrigger({ value, className = "", onClick, ...props }: TabsTriggerProps) {
-  const { activeTab, setActiveTab } = useTabsContext();
-  const isActive = activeTab === value;
+  const { activeTab, setActiveTab } = useTabsContext()
+  const isActive = activeTab === value
 
   return (
     <button
       type="button"
       {...props}
       onClick={(event) => {
-        onClick?.(event);
+        onClick?.(event)
         if (!event.defaultPrevented) {
-          setActiveTab(value);
+          setActiveTab(value)
         }
       }}
       className={cn(
@@ -165,85 +162,77 @@ function TabsTrigger({ value, className = "", onClick, ...props }: TabsTriggerPr
         className,
       )}
     />
-  );
+  )
 }
 
 interface TabsContentProps extends HTMLAttributes<HTMLDivElement> {
-  value: string;
+  value: string
 }
 
 function TabsContent({ value, className = "", ...props }: TabsContentProps) {
-  const { activeTab } = useTabsContext();
+  const { activeTab } = useTabsContext()
   if (activeTab !== value) {
-    return null;
+    return null
   }
-  return <div {...props} className={className} />;
+  return <div {...props} className={className} />
 }
 
 function Table({ className = "", ...props }: TableHTMLAttributes<HTMLTableElement>) {
-  return (
-    <table
-      {...props}
-      className={cn("w-full border-collapse text-left text-sm text-slate-700", className)}
-    />
-  );
+  return <table {...props} className={cn("w-full border-collapse text-left text-sm text-slate-700", className)} />
 }
 
 function TableHeader({ className = "", ...props }: HTMLAttributes<HTMLTableSectionElement>) {
-  return <thead {...props} className={cn("bg-slate-100 text-xs uppercase tracking-wide", className)} />;
+  return <thead {...props} className={cn("bg-slate-100 text-xs uppercase tracking-wide", className)} />
 }
 
 function TableBody({ className = "", ...props }: HTMLAttributes<HTMLTableSectionElement>) {
-  return <tbody {...props} className={cn("divide-y divide-slate-100", className)} />;
+  return <tbody {...props} className={cn("divide-y divide-slate-100", className)} />
 }
 
 function TableRow({ className = "", ...props }: HTMLAttributes<HTMLTableRowElement>) {
-  return <tr {...props} className={cn("border-b last:border-0", className)} />;
+  return <tr {...props} className={cn("border-b last:border-0", className)} />
 }
 
 function TableHead({ className = "", ...props }: ThHTMLAttributes<HTMLTableHeaderCellElement>) {
-  return <th {...props} className={cn("px-4 py-3 font-semibold text-slate-600", className)} />;
+  return <th {...props} className={cn("px-4 py-3 font-semibold text-slate-600", className)} />
 }
 
 function TableCell({ className = "", ...props }: TdHTMLAttributes<HTMLTableCellElement>) {
-  return <td {...props} className={cn("px-4 py-3", className)} />;
+  return <td {...props} className={cn("px-4 py-3", className)} />
 }
 
 function Progress({ value, className = "" }: { value: number; className?: string }) {
-  const clampedValue = Math.min(Math.max(value, 0), 100);
+  const clampedValue = Math.min(Math.max(value, 0), 100)
   return (
     <div className={cn("h-2 w-full rounded-full bg-slate-200", className)}>
-      <div
-        className="h-full rounded-full bg-blue-600 transition-all"
-        style={{ width: `${clampedValue}%` }}
-      />
+      <div className="h-full rounded-full bg-blue-600 transition-all" style={{ width: `${clampedValue}%` }} />
     </div>
-  );
+  )
 }
 
 interface ImageWithFallbackProps extends ImgHTMLAttributes<HTMLImageElement> {
-  fallbackSrc?: string;
+  fallbackSrc?: string
 }
 
 function ImageWithFallback({ fallbackSrc, src, onError, ...props }: ImageWithFallbackProps) {
-  const [currentSrc, setCurrentSrc] = useState(src);
+  const [currentSrc, setCurrentSrc] = useState(src)
 
   useEffect(() => {
-    setCurrentSrc(src);
-  }, [src]);
+    setCurrentSrc(src)
+  }, [src])
 
   return (
     <img
       {...props}
-      src={currentSrc}
+      src={currentSrc || "/placeholder.svg"}
       onError={(event: SyntheticEvent<HTMLImageElement>) => {
-        onError?.(event);
+        onError?.(event)
         if (fallbackSrc && currentSrc !== fallbackSrc) {
-          setCurrentSrc(fallbackSrc);
+          setCurrentSrc(fallbackSrc)
         }
       }}
     />
-  );
+  )
 }
 
 export default function PatchPanelsPage() {
@@ -262,7 +251,7 @@ export default function PatchPanelsPage() {
         <InstallationManagement />
       </main>
     </div>
-  );
+  )
 }
 
 function Introduction() {
@@ -277,18 +266,16 @@ function Introduction() {
               </h2>
 
               <p className="text-lg leading-relaxed text-slate-600">
-                In today's data centers, speed and density are paramount. The backbone of every
-                high-performance network—from AI clusters to hyperscale cloud platforms—is the
-                physical fiber optic infrastructure.
+                In today's data centers, speed and density are paramount. The backbone of every high-performance
+                network—from AI clusters to hyperscale cloud platforms—is the physical fiber optic infrastructure.
               </p>
 
               <p className="text-lg leading-relaxed text-slate-600">
-                High-density patch panels are the central nervous system of this infrastructure, providing
-                a crucial, organized hub for managing the massive number of fiber connections required for
-                400G, 800G, and future terabit networking. They provide the flexibility and scalability to
-                grow and reconfigure as needed, organization and management of the data center, protection
-                of expensive equipment and durability and longevity by shielding permanent infrastructure
-                connections.
+                High-density patch panels are the central nervous system of this infrastructure, providing a crucial,
+                organized hub for managing the massive number of fiber connections required for 400G, 800G, and future
+                terabit networking. They provide the flexibility and scalability to grow and reconfigure as needed,
+                organization and management of the data center, protection of expensive equipment and durability and
+                longevity by shielding permanent infrastructure connections.
               </p>
             </div>
 
@@ -324,7 +311,7 @@ function Introduction() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
 function ProblemSolution() {
@@ -350,15 +337,17 @@ function ProblemSolution() {
             </CardHeader>
             <CardContent className="space-y-4">
               <p className="text-red-800">
-                Modern AI/ML workloads demand massive east-west bandwidth. Traditional, low-density cabling
-                creates a "physical layer bottleneck" that limits GPU cluster performance, complicates network
-                management, and wastes valuable rack space.
+                Modern AI/ML workloads demand massive east-west bandwidth. Traditional, low-density cabling creates a
+                "physical layer bottleneck" that limits GPU cluster performance, complicates network management, and
+                wastes valuable rack space.
               </p>
 
               <div className="space-y-3">
                 <div className="flex items-start gap-3">
                   <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-red-500" />
-                  <p className="text-sm text-red-700">Limited GPU cluster performance due to physical layer constraints</p>
+                  <p className="text-sm text-red-700">
+                    Limited GPU cluster performance due to physical layer constraints
+                  </p>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-red-500" />
@@ -388,9 +377,9 @@ function ProblemSolution() {
             </CardHeader>
             <CardContent className="space-y-4">
               <p className="text-green-800">
-                The EVO™ and EXO™ platforms are not just patch panels; they are engineered ecosystems for high-speed fiber
-                management. They deliver industry-leading density and signal integrity, creating a reliable physical layer that
-                allows your active switches and optics to perform at their full potential.
+                The EVO™ and EXO™ platforms are not just patch panels; they are engineered ecosystems for high-speed
+                fiber management. They deliver industry-leading density and signal integrity, creating a reliable
+                physical layer that allows your active switches and optics to perform at their full potential.
               </p>
 
               <div className="space-y-3">
@@ -404,14 +393,16 @@ function ProblemSolution() {
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="mt-1 h-4 w-4 flex-shrink-0 text-green-600" />
-                  <p className="text-sm text-green-700">Modular ecosystem supporting 400G, 800G, and future 1.6T speeds</p>
+                  <p className="text-sm text-green-700">
+                    Modular ecosystem supporting 400G, 800G, and future 1.6T speeds
+                  </p>
                 </div>
               </div>
 
               <div className="rounded-lg border border-green-200 bg-green-100 p-4">
                 <p className="text-sm text-green-800">
-                  <strong>Result:</strong> A foundation for performance that maximizes your infrastructure investment while enabling
-                  seamless scaling for future networking requirements.
+                  <strong>Result:</strong> A foundation for performance that maximizes your infrastructure investment
+                  while enabling seamless scaling for future networking requirements.
                 </p>
               </div>
             </CardContent>
@@ -419,7 +410,7 @@ function ProblemSolution() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
 function ProductOverview() {
@@ -430,12 +421,10 @@ function ProductOverview() {
           <Badge variant="outline" className="mb-4">
             Product Platforms
           </Badge>
-          <h2 className="mb-6 text-3xl text-slate-900 lg:text-4xl">
-            Two Platforms for Scalable Connectivity
-          </h2>
+          <h2 className="mb-6 text-3xl text-slate-900 lg:text-4xl">Two Platforms for Scalable Connectivity</h2>
           <p className="mx-auto max-w-3xl text-lg text-slate-600">
-            Choose the right platform for your infrastructure needs, from ultra-high-density hyperscale deployments to specialized
-            wavelength division multiplexing applications.
+            Choose the right platform for your infrastructure needs, from ultra-high-density hyperscale deployments to
+            specialized wavelength division multiplexing applications.
           </p>
         </div>
 
@@ -468,24 +457,24 @@ function ProductOverview() {
                     <div className="flex items-start gap-3">
                       <Network className="mt-0.5 h-5 w-5 flex-shrink-0 text-blue-600" />
                       <p className="text-sm">
-                        <strong>Industry-Leading Density:</strong> Provides connectivity for up to 48 QSFP-DD/OSFP transceivers
-                        (144 duplex LC links) in a 2RU chassis
+                        <strong>Industry-Leading Density:</strong> Provides connectivity for up to 48 QSFP-DD/OSFP
+                        transceivers (144 duplex LC links) in a 2RU chassis
                       </p>
                     </div>
 
                     <div className="flex items-start gap-3">
                       <Settings className="mt-0.5 h-5 w-5 flex-shrink-0 text-blue-600" />
                       <p className="text-sm">
-                        <strong>MTP-to-LC Breakouts:</strong> Modular cassettes efficiently break out high-speed MTP-12/16/24 trunk
-                        cables into duplex LC connections
+                        <strong>MTP-to-LC Breakouts:</strong> Modular cassettes efficiently break out high-speed
+                        MTP-12/16/24 trunk cables into duplex LC connections
                       </p>
                     </div>
 
                     <div className="flex items-start gap-3">
                       <Zap className="mt-0.5 h-5 w-5 flex-shrink-0 text-blue-600" />
                       <p className="text-sm">
-                        <strong>Ultra-Low Insertion Loss:</strong> Features typical loss of &lt;0.55dB (MM) and &lt;0.75dB (SM) per cassette,
-                        protecting your optical power budget
+                        <strong>Ultra-Low Insertion Loss:</strong> Features typical loss of &lt;0.55dB (MM) and
+                        &lt;0.75dB (SM) per cassette, protecting your optical power budget
                       </p>
                     </div>
                   </div>
@@ -495,13 +484,13 @@ function ProductOverview() {
                   <h5 className="mb-2 text-blue-900">Ideal Applications:</h5>
                   <ul className="space-y-1 text-sm text-blue-800">
                     <li>- Hyperscale data centers maximizing connectivity per square foot</li>
-                    <li>- Large AI training facilities requiring structured cabling for thousands of GPU connections</li>
+                    <li>
+                      - Large AI training facilities requiring structured cabling for thousands of GPU connections
+                    </li>
                   </ul>
                 </div>
 
-                <Button className="w-full bg-blue-600 text-white hover:bg-blue-700">
-                  Learn More About EVO™
-                </Button>
+                <Button className="w-full bg-blue-600 text-white hover:bg-blue-700">Learn More About EVO™</Button>
               </CardContent>
             </Card>
           </div>
@@ -514,7 +503,8 @@ function ProductOverview() {
                   <Badge className="bg-purple-600">WDM Specialized</Badge>
                 </div>
                 <p className="text-purple-700">
-                  Perfect for service providers or enterprises needing to dramatically increase the capacity of existing fiber infrastructure
+                  Perfect for service providers or enterprises needing to dramatically increase the capacity of existing
+                  fiber infrastructure
                 </p>
               </CardHeader>
 
@@ -534,24 +524,24 @@ function ProductOverview() {
                     <div className="flex items-start gap-3">
                       <Network className="mt-0.5 h-5 w-5 flex-shrink-0 text-purple-600" />
                       <p className="text-sm">
-                        <strong>Wavelength Division Multiplexing:</strong> Utilizes passive WDM technology to combine multiple data streams
-                        (for example 4, 8, or 16 channels) onto a single fiber pair
+                        <strong>Wavelength Division Multiplexing:</strong> Utilizes passive WDM technology to combine
+                        multiple data streams (for example 4, 8, or 16 channels) onto a single fiber pair
                       </p>
                     </div>
 
                     <div className="flex items-start gap-3">
                       <Database className="mt-0.5 h-5 w-5 flex-shrink-0 text-purple-600" />
                       <p className="text-sm">
-                        <strong>Massive Fiber Savings:</strong> Increase the capacity of dark fiber or campus links by up to 16x without laying
-                        new cables
+                        <strong>Massive Fiber Savings:</strong> Increase the capacity of dark fiber or campus links by
+                        up to 16x without laying new cables
                       </p>
                     </div>
 
                     <div className="flex items-start gap-3">
                       <Settings className="mt-0.5 h-5 w-5 flex-shrink-0 text-purple-600" />
                       <p className="text-sm">
-                        <strong>Protocol Agnostic:</strong> Transparently supports a variety of services like Ethernet, Fibre Channel, and SONET
-                        over the same fiber
+                        <strong>Protocol Agnostic:</strong> Transparently supports a variety of services like Ethernet,
+                        Fibre Channel, and SONET over the same fiber
                       </p>
                     </div>
                   </div>
@@ -565,16 +555,14 @@ function ProductOverview() {
                   </ul>
                 </div>
 
-                <Button className="w-full bg-purple-600 text-white hover:bg-purple-700">
-                  Learn More About EXO™
-                </Button>
+                <Button className="w-full bg-purple-600 text-white hover:bg-purple-700">Learn More About EXO™</Button>
               </CardContent>
             </Card>
           </div>
         </div>
       </div>
     </section>
-  );
+  )
 }
 
 function CompetitiveAdvantages() {
@@ -615,7 +603,7 @@ function CompetitiveAdvantages() {
       bgColor: "bg-orange-50",
       borderColor: "border-orange-200",
     },
-  ];
+  ]
 
   return (
     <section id="competitiveadvantages" className="bg-slate-50 py-20">
@@ -626,13 +614,14 @@ function CompetitiveAdvantages() {
           </Badge>
           <h2 className="mb-6 text-3xl text-slate-900 lg:text-4xl">Why Industry Leaders Choose Wave2Wave</h2>
           <p className="mx-auto max-w-3xl text-lg text-slate-600">
-            Our platforms deliver unmatched performance, density, and reliability for mission-critical infrastructure deployments across the globe.
+            Our platforms deliver unmatched performance, density, and reliability for mission-critical infrastructure
+            deployments across the globe.
           </p>
         </div>
 
         <div className="grid gap-8 md:grid-cols-2">
           {advantages.map((advantage, index) => {
-            const IconComponent = advantage.icon;
+            const IconComponent = advantage.icon
             return (
               <Card
                 key={index}
@@ -654,7 +643,7 @@ function CompetitiveAdvantages() {
                   <p className="leading-relaxed text-slate-700">{advantage.description}</p>
                 </CardContent>
               </Card>
-            );
+            )
           })}
         </div>
 
@@ -676,7 +665,7 @@ function CompetitiveAdvantages() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
 function TechnicalSpecs() {
@@ -691,7 +680,7 @@ function TechnicalSpecs() {
     { parameter: "Return Loss (APC)", value: ">50dB" },
     { parameter: "Return Loss (UPC)", value: ">35dB" },
     { parameter: "Operating Temperature", value: "-5°C to +70°C" },
-  ];
+  ]
 
   const exoSpecs = [
     { parameter: "Form Factor", value: "1RU modular chassis" },
@@ -704,7 +693,7 @@ function TechnicalSpecs() {
     { parameter: "16-Channel DWDM", value: "<4.5dB typical" },
     { parameter: "Channel Isolation", value: ">30dB" },
     { parameter: "Operating Wavelengths", value: "ITU Grid compliant" },
-  ];
+  ]
 
   return (
     <section id="technicalspecs" className="bg-white py-20">
@@ -715,7 +704,8 @@ function TechnicalSpecs() {
           </Badge>
           <h2 className="mb-6 text-3xl text-slate-900 lg:text-4xl">Detailed Platform Specifications</h2>
           <p className="mx-auto max-w-3xl text-lg text-slate-600">
-            Comprehensive technical specifications for both EVO™ and EXO™ platforms, engineered for demanding enterprise and hyperscale environments.
+            Comprehensive technical specifications for both EVO™ and EXO™ platforms, engineered for demanding enterprise
+            and hyperscale environments.
           </p>
         </div>
 
@@ -831,7 +821,7 @@ function TechnicalSpecs() {
         </Tabs>
       </div>
     </section>
-  );
+  )
 }
 
 function UseCases() {
@@ -900,7 +890,7 @@ function UseCases() {
         "Cost-effective DCI solutions",
       ],
     },
-  ];
+  ]
 
   return (
     <section id="usecases" className="bg-slate-50 py-20">
@@ -911,13 +901,14 @@ function UseCases() {
           </Badge>
           <h2 className="mb-6 text-3xl text-slate-900 lg:text-4xl">Engineered for Next-Generation Applications</h2>
           <p className="mx-auto max-w-3xl text-lg text-slate-600">
-            From AI training clusters to 5G networks, our platforms enable the most demanding connectivity requirements across diverse industry applications.
+            From AI training clusters to 5G networks, our platforms enable the most demanding connectivity requirements
+            across diverse industry applications.
           </p>
         </div>
 
         <div className="grid gap-8 md:grid-cols-2">
           {useCases.map((useCase, index) => {
-            const IconComponent = useCase.icon;
+            const IconComponent = useCase.icon
             return (
               <Card
                 key={index}
@@ -935,10 +926,7 @@ function UseCases() {
                       </div>
                       <div>
                         <CardTitle className="mb-1 text-xl text-slate-900">{useCase.title}</CardTitle>
-                        <Badge
-                          variant="secondary"
-                          className={cn(useCase.bgColor, useCase.color, "border-0 text-xs")}
-                        >
+                        <Badge variant="secondary" className={cn(useCase.bgColor, useCase.color, "border-0 text-xs")}>
                           {useCase.platform} Platform
                         </Badge>
                       </div>
@@ -953,10 +941,7 @@ function UseCases() {
                     <h4 className="text-slate-900">Key Benefits:</h4>
                     <ul className="space-y-2">
                       {useCase.features.map((feature) => (
-                        <li
-                          key={feature}
-                          className="flex items-start gap-3 text-sm text-slate-700"
-                        >
+                        <li key={feature} className="flex items-start gap-3 text-sm text-slate-700">
                           <div
                             className={cn(
                               "mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full",
@@ -970,7 +955,7 @@ function UseCases() {
                   </div>
                 </CardContent>
               </Card>
-            );
+            )
           })}
         </div>
 
@@ -999,7 +984,7 @@ function UseCases() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
 function ProductPerformance() {
@@ -1028,7 +1013,7 @@ function ProductPerformance() {
       percentage: 88,
       description: "Excellent UPC connector performance",
     },
-  ];
+  ]
 
   const exoMetrics = [
     {
@@ -1055,7 +1040,7 @@ function ProductPerformance() {
       percentage: 95,
       description: "Excellent channel separation",
     },
-  ];
+  ]
 
   return (
     <section id="productperformance" className="bg-white py-20">
@@ -1068,7 +1053,8 @@ function ProductPerformance() {
             Proven Signal Integrity for Mission-Critical Applications
           </h2>
           <p className="mx-auto max-w-3xl text-lg text-slate-600">
-            Comprehensive performance metrics demonstrating the exceptional quality and reliability of our EVO™ and EXO™ platforms in demanding environments.
+            Comprehensive performance metrics demonstrating the exceptional quality and reliability of our EVO™ and EXO™
+            platforms in demanding environments.
           </p>
         </div>
 
@@ -1186,7 +1172,9 @@ function ProductPerformance() {
                     <CheckCircle2 className="h-6 w-6 text-green-600" />
                   </div>
                   <h4 className="mb-2 text-lg text-slate-900">100% Tested</h4>
-                  <p className="text-sm text-slate-600">Every module undergoes rigorous performance testing before shipping</p>
+                  <p className="text-sm text-slate-600">
+                    Every module undergoes rigorous performance testing before shipping
+                  </p>
                 </div>
 
                 <div className="text-center">
@@ -1194,7 +1182,9 @@ function ProductPerformance() {
                     <Signal className="h-6 w-6 text-blue-600" />
                   </div>
                   <h4 className="mb-2 text-lg text-slate-900">Traceable Performance</h4>
-                  <p className="text-sm text-slate-600">Detailed insertion loss measurements provided for each cassette</p>
+                  <p className="text-sm text-slate-600">
+                    Detailed insertion loss measurements provided for each cassette
+                  </p>
                 </div>
 
                 <div className="text-center">
@@ -1202,7 +1192,9 @@ function ProductPerformance() {
                     <Thermometer className="h-6 w-6 text-purple-600" />
                   </div>
                   <h4 className="mb-2 text-lg text-slate-900">Environmental Testing</h4>
-                  <p className="text-sm text-slate-600">Validated performance across the full operating temperature range</p>
+                  <p className="text-sm text-slate-600">
+                    Validated performance across the full operating temperature range
+                  </p>
                 </div>
               </div>
             </CardContent>
@@ -1210,7 +1202,7 @@ function ProductPerformance() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
 function InstallationManagement() {
@@ -1251,7 +1243,7 @@ function InstallationManagement() {
       bgColor: "bg-orange-50",
       borderColor: "border-orange-200",
     },
-  ];
+  ]
 
   return (
     <section id="installationmanagement" className="bg-slate-50 py-20">
@@ -1262,13 +1254,14 @@ function InstallationManagement() {
           </Badge>
           <h2 className="mb-6 text-3xl text-slate-900 lg:text-4xl">Simplified Deployment and Operations</h2>
           <p className="mx-auto max-w-3xl text-lg text-slate-600">
-            Our platforms are designed for operational efficiency, featuring tool-free installation, intelligent cable management, and modular scalability for growing networks.
+            Our platforms are designed for operational efficiency, featuring tool-free installation, intelligent cable
+            management, and modular scalability for growing networks.
           </p>
         </div>
 
         <div className="mb-16 grid gap-8 md:grid-cols-2">
           {features.map((feature, index) => {
-            const IconComponent = feature.icon;
+            const IconComponent = feature.icon
             return (
               <Card
                 key={index}
@@ -1290,7 +1283,7 @@ function InstallationManagement() {
                   <p className="leading-relaxed text-slate-700">{feature.description}</p>
                 </CardContent>
               </Card>
-            );
+            )
           })}
         </div>
 
@@ -1311,7 +1304,9 @@ function InstallationManagement() {
                 0
               </div>
               <h3 className="mb-2 text-xl text-slate-900">Tools Required</h3>
-              <p className="text-sm text-slate-600">Complete installation and maintenance without specialized equipment</p>
+              <p className="text-sm text-slate-600">
+                Complete installation and maintenance without specialized equipment
+              </p>
             </CardContent>
           </Card>
 
@@ -1337,10 +1332,7 @@ function InstallationManagement() {
               <Button className="bg-white text-blue-600 hover:bg-blue-50" type="button">
                 Download Complete Datasheets
               </Button>
-              <Button
-                className="border border-white text-white hover:bg-white hover:text-blue-600"
-                type="button"
-              >
+              <Button className="border border-white text-white hover:bg-white hover:text-blue-600" type="button">
                 Schedule Infrastructure Consultation
               </Button>
             </div>
@@ -1363,5 +1355,5 @@ function InstallationManagement() {
         </Card>
       </div>
     </section>
-  );
+  )
 }
