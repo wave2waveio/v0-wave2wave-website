@@ -590,7 +590,7 @@ export default function ContactPage() {
             </Card>
 
             {/* Quick SMS Contact Form */}
-{/*            <Card className="border-0 shadow-lg">
+            <Card className="border-0 shadow-lg">
               <CardHeader>
                 <CardTitle className="text-xl">Quick SMS Contact Request</CardTitle>
                 <CardDescription>
@@ -622,7 +622,7 @@ export default function ContactPage() {
 
                 <form onSubmit={handleSmsSubmit} className="space-y-6">
                   <div className="space-y-2">
-                    <Label htmlFor="sms-name">Name *</Label>
+                    <Label htmlFor="sms-name">Name</Label>
                     <Input
                       id="sms-name"
                       value={smsFormData.name}
@@ -634,7 +634,7 @@ export default function ContactPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="sms-country">Country *</Label>
+                    <Label htmlFor="sms-country">Country</Label>
                     <Select
                       value={smsFormData.countryCode}
                       onValueChange={(value) => handleSmsInputChange("countryCode", value)}
@@ -658,7 +658,7 @@ export default function ContactPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="sms-phone">Phone Number *</Label>
+                    <Label htmlFor="sms-phone">Phone Number</Label>
                     <div className="flex space-x-2">
                       <div className="flex items-center px-3 py-2 border border-gray-300 rounded-md bg-gray-50 text-sm font-medium text-gray-700 min-w-[80px]">
                         {smsFormData.countryCode}
@@ -687,7 +687,7 @@ export default function ContactPage() {
                       value={smsFormData.message}
                       onChange={(e) => handleSmsInputChange("message", e.target.value)}
                       disabled={isSmsSubmitting}
-                      placeholder="Brief description of what you need help with..."
+                      placeholder="Tell us how we can help you..."
                     />
                   </div>
 
@@ -725,7 +725,6 @@ export default function ContactPage() {
                 </form>
               </CardContent>
             </Card> 
-            */}
           </div>
         </div>
       </section>
