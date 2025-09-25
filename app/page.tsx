@@ -60,7 +60,7 @@ export default function HomePage() {
       <section className="py-16 bg-slate-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Why Choose Wave2Wave.io</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">One Partner - Complete Confidence</h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
               Wave2Wave is more than a cabling vendor—we’re a custom network infrastructure partner. From structured cabling to rack kitting and DCIM digital twin design, we deliver the products and services that keep data centers running smoothly, on time, and with confidence.
             </p>
@@ -203,30 +203,6 @@ export default function HomePage() {
               <CardContent>
                 <CardDescription className="text-base">
                   Our Sunbird DCIM-powered design services let you model your environment, plan capacity, and maintain accuracy through the entire lifecycle.
-                </CardDescription>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow md:col-span-2 lg:col-span-1">
-              <CardHeader className="text-center">
-                <div className="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                  <Image
-                    src="/images/icons/icon-efficient02.png"
-                    alt="One Partner"
-                    width={24}
-                    height={24}
-                    className="h-6 w-6"
-                  />
-                </div>
-                <CardTitle className="text-xl">
-                  <Link href="/solutions#rack-kitting-logistics" className="hover:text-blue-600 transition-colors">
-                    One Partner - Complete Confidence
-                  </Link>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base">
-                  With Wave2Wave, you simplify design, sourcing, kitting, logistics, and lifecycle management. That means fewer vendors, less complexity, reduced risk—and a faster path to deployment.
                 </CardDescription>
               </CardContent>
             </Card>

@@ -15,6 +15,7 @@ import {
   type ThHTMLAttributes,
 } from "react"
 import { HeroCarousel } from "./HeroCarousel"
+import { ProductGallery } from "./ProductGallery"
 import {
   AlertTriangle,
   Brain,
@@ -240,11 +241,12 @@ export default function PatchPanelsPage() {
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       <HeroCarousel />
 
-      <main className="space-y-4 py-4">
+      <main className="space-y-2 py-2">
         <Introduction />
         <ProblemSolution />
         <ProductOverview />
         <CompetitiveAdvantages />
+        <ProductGallery />
         <TechnicalSpecs />
         <UseCases />
         <ProductPerformance />
@@ -256,7 +258,7 @@ export default function PatchPanelsPage() {
 
 function Introduction() {
   return (
-    <section id="introduction" className="py-20 bg-white">
+    <section id="introduction" className="py-12 bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-16 lg:grid-cols-2">
           <div className="space-y-8">
@@ -297,7 +299,7 @@ function Introduction() {
           <div className="relative">
             <div className="aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
               <ImageWithFallback
-                src="https://images.unsplash.com/photo-1624965439943-09e0238644e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaWJlciUyMG9wdGljJTIwY2FibGVzJTIwdGVjaG5vbG9neXxlbnwxfHx8fDE3NTg1NjE5ODF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                src="/images/exo-images/EXO2-down-1.jpeg"
                 alt="Fiber optic cables technology"
                 className="h-full w-full object-cover"
               />
@@ -316,7 +318,7 @@ function Introduction() {
 
 function ProblemSolution() {
   return (
-    <section id="problemsolution" className="bg-slate-50 py-20">
+    <section id="problemsolution" className="bg-slate-50 py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-16 text-center">
           <Badge variant="outline" className="mb-4">
@@ -415,7 +417,7 @@ function ProblemSolution() {
 
 function ProductOverview() {
   return (
-    <section id="productoverview" className="bg-white py-20">
+    <section id="productoverview" className="bg-white py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-16 text-center">
           <Badge variant="outline" className="mb-4">
@@ -444,7 +446,7 @@ function ProductOverview() {
               <CardContent className="space-y-6">
                 <div className="aspect-video overflow-hidden rounded-lg">
                   <ImageWithFallback
-                    src="https://images.unsplash.com/flagged/photo-1579274216947-86eaa4b00475?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzZXJ2ZXIlMjByYWNrJTIwZGF0YSUyMGNlbnRlcnxlbnwxfHx8fDE3NTg1MjcyODd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                    src="/images/evo-images/Future-proof-design-cassettes-closeup-lg.jpg"
                     alt="Server rack in data center"
                     className="h-full w-full object-cover"
                   />
@@ -511,7 +513,7 @@ function ProductOverview() {
               <CardContent className="space-y-6">
                 <div className="aspect-video overflow-hidden rounded-lg">
                   <ImageWithFallback
-                    src="https://images.unsplash.com/photo-1738003946582-aabeabf5e009?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxBSSUyMGFydGlmaWNpYWwlMjBpbnRlbGxpZ2VuY2UlMjB0ZWNobm9sb2d5fGVufDF8fHx8MTc1ODU0NjI4MXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                    src="/images/evo-images/Gallery-10-qr05vdavaud0u8xmm9o0wtn33chgs33v435fpvp0cg.jpeg"
                     alt="AI artificial intelligence technology"
                     className="h-full w-full object-cover"
                   />
@@ -606,7 +608,7 @@ function CompetitiveAdvantages() {
   ]
 
   return (
-    <section id="competitiveadvantages" className="bg-slate-50 py-20">
+    <section id="competitiveadvantages" className="bg-slate-50 py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-16 text-center">
           <Badge variant="outline" className="mb-4">
@@ -696,7 +698,7 @@ function TechnicalSpecs() {
   ]
 
   return (
-    <section id="technicalspecs" className="bg-white py-20">
+    <section id="technicalspecs" className="bg-white py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-16 text-center">
           <Badge variant="outline" className="mb-4">
@@ -893,7 +895,7 @@ function UseCases() {
   ]
 
   return (
-    <section id="usecases" className="bg-slate-50 py-20">
+    <section id="usecases" className="bg-slate-50 py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-16 text-center">
           <Badge variant="outline" className="mb-4">
@@ -1043,7 +1045,7 @@ function ProductPerformance() {
   ]
 
   return (
-    <section id="productperformance" className="bg-white py-20">
+    <section id="productperformance" className="bg-white py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-16 text-center">
           <Badge variant="outline" className="mb-4">
@@ -1246,7 +1248,7 @@ function InstallationManagement() {
   ]
 
   return (
-    <section id="installationmanagement" className="bg-slate-50 py-20">
+    <section id="installationmanagement" className="bg-slate-50 py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-16 text-center">
           <Badge variant="outline" className="mb-4">

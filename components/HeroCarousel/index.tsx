@@ -25,7 +25,7 @@ const slides: HeroSlide[] = [
     subtitle: "Custom Cables. Faster Delivery. Zero Guesswork.",
     description:
       "Building data center, fiber and Ethernet solutions to your exact design, faster lead times, pre-labeled, pre-kitted, and ready to plug and play.",
-    backgroundImage: "/images/design-mode/rackandstack.png",
+    backgroundImage: "/images/rackandstack.png",
   },
   {
     id: 3,

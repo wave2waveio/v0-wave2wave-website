@@ -171,7 +171,7 @@ export default function ProductsPage() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-3xl blur-xl"></div>
               <Image
-                src="images/design-mode/QSFPto4SFP1728.jpg.jpeg"
+                src="images/QSFPto4SFP1728.jpg.jpeg"
                 alt="QSFP to 4x SFP breakout cables"
                 width={600}
                 height={400}
