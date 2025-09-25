@@ -5,6 +5,7 @@ import "./globals.css"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { AnnouncementBanner } from "@/components/announcement-banner"
+import Script from "next/script"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
     shortcut: "/favicon.png",
     apple: "/favicon.png",
   },
-    generator: 'v0.app'
+  generator: "v0.app",
 }
 
 export default function RootLayout({
@@ -44,9 +45,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        {/* Google Tag Manager */}
-        <script
+      <body className={inter.className}>
+        <Script
+          id="gtm-script"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -57,9 +59,7 @@ export default function RootLayout({
             `,
           }}
         />
-        {/* End Google Tag Manager */}
-      </head>
-      <body className={inter.className}>
+
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe

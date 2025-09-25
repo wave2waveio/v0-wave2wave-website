@@ -1,10 +1,10 @@
-import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import type { Metadata } from "next"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import HeroCarousel from "@/components/HeroCarousel"
 
 export const metadata: Metadata = {
   title: "Wave2Wave – Custom Data Center Cabling & DCIM Solutions",
@@ -54,28 +54,7 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Hero Section */}
-      <section className="relative bg-slate-900 text-white py-20 lg:py-32 overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "url('/images/hero-background.png')",
-          }}
-        ></div>
-        <div className="absolute inset-0 bg-slate-900/70"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-               Design to Deployment —
-              <span className="text-blue-400">Simplifying the Data Center & Networking</span>{" "}
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-slate-200 leading-relaxed">
-              Custom Fiber Optic & Ethernet cabling, High-Speed 800G/400G AOC/DAC cables, Trunk & Riser Cables, Patch panels, Cassettes, Kitting & Labeling, Digital Twin Design Services and more
-            </p>
-            <p className="text-xl text-slate-300 mt-6 italic">Serving global enterprise data centers, colocation data centers, commercial data centers, network operators, system integrators, hardware OEMs, high-performance computing and more</p>
-          </div>
-        </div>
-      </section>
+      <HeroCarousel />
 
       {/* Value Propositions */}
       <section className="py-16 bg-slate-50">
@@ -83,8 +62,7 @@ export default function HomePage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Why Choose Wave2Wave.io</h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Wave2Wave is a custom network infrastructure partner providing structured cabling solutions, power
-              distribution, rack kitting, and DCIM services for data centers worldwide.
+              Wave2Wave is more than a cabling vendor—we’re a custom network infrastructure partner. From structured cabling to rack kitting and DCIM digital twin design, we deliver the products and services that keep data centers running smoothly, on time, and with confidence.
             </p>
           </div>
 
@@ -102,14 +80,13 @@ export default function HomePage() {
                 </div>
                 <CardTitle className="text-xl">
                   <Link href="/solutions#structured-cabling-hardware" className="hover:text-blue-600 transition-colors">
-                    Custom Designs, Engineered for You
+                    Custom Engineering - Cables & Systems Built to Your Spec
                   </Link>
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-base">
-                  We work from your digital design, DCIM models, or site requirements to deliver custom-fit structured
-                  cabling, harnesses, PDUs, and accessories — not just stock parts.
+                 We design from your DCIM models, CAD drawings, or detailed requirements—delivering fiber, copper, PDUs, and accessories built exactly to fit your project. No guesswork, no off-the-shelf compromises.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -127,14 +104,13 @@ export default function HomePage() {
                 </div>
                 <CardTitle className="text-xl">
                   <Link href="/solutions#rack-kitting-logistics" className="hover:text-blue-600 transition-colors">
-                    Diligent Quality, No Surprises
+                    Quality Assurance - Top Quality, Every Time
                   </Link>
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-base">
-                  Every product we ship passes a rigorous quality assurance program — from copper/fiber cabling to
-                  connectors, patch panels, racks, and power systems.
+                  Every assembly—cables, connectors, panels, racks, and power—is rigorously tested and certified. You get consistent performance and reliability across your entire deployment.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -150,12 +126,11 @@ export default function HomePage() {
                     className="h-6 w-6"
                   />
                 </div>
-                <CardTitle className="text-xl">Fast Delivery</CardTitle>
+                <CardTitle className="text-xl">Fast Delivery - Weeks, Not Months</CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-base">
-                  Our advanced kitting services organize all needed hardware, cables, and accessories per rack and
-                  server — reducing on-site prep time and cutting install costs.
+                  Why wait 12 weeks? Our streamlined process delivers in just weeks. Pre-kitted and pre-labeled, our solutions cut on-site prep time and reduce installation costs.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -164,8 +139,8 @@ export default function HomePage() {
               <CardHeader className="text-center">
                 <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
                   <Image
-                    src="/images/icons/icon-digital-twin03.png"
-                    alt="Digital Twin Services"
+                    src="/images/icons/icon-diamond-quality.png"
+                    alt="Great Pricing"
                     width={24}
                     height={24}
                     className="h-6 w-6"
@@ -173,14 +148,13 @@ export default function HomePage() {
                 </div>
                 <CardTitle className="text-xl">
                   <Link href="/solutions#dcim-digital-twin" className="hover:text-blue-600 transition-colors">
-                    Digital Twin Services
+                    Great Pricing - Better Value Than the Big Brands
                   </Link>
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-base">
-                  We offer DCIM Services, data center digital twin services, and ongoing managed services to help you
-                  plan, visualize, and maintain your data center's infrastructure with precision.
+                  We offer enterprise-grade cabling solutions at prices that beat the large OEMs. With Wave2Wave, you get the same or better quality—without paying premium brand markups.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -190,7 +164,7 @@ export default function HomePage() {
                 <div className="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
                   <Image
                     src="/images/icons/icon-efficient02.png"
-                    alt="Efficiency and Risk Reduction"
+                    alt="Value-Added Services for No Extra Cost"
                     width={24}
                     height={24}
                     className="h-6 w-6"
@@ -198,17 +172,65 @@ export default function HomePage() {
                 </div>
                 <CardTitle className="text-xl">
                   <Link href="/solutions#rack-kitting-logistics" className="hover:text-blue-600 transition-colors">
-                    Increased Convenience, Reduced Risk
+                    Value-Added Services for No Extra Cost
                   </Link>
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-base">
-                  With Wave2Wave.io, you get a single partner to simplify design, sourcing, kitting, logistics, and
-                  lifecycle management — reducing complexity, cutting risks, and saving time.
+                  Customer Labeling and Kitting - We pre-label every cable and bundle them into organized kits by rack or server. Your installers plug in once and move on—no sorting, tracing, or second-guessing.
                 </CardDescription>
               </CardContent>
             </Card>
+
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow md:col-span-2 lg:col-span-1">
+              <CardHeader className="text-center">
+                <div className="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
+                  <Image
+                    src="/images/icons/icon-efficient02.png"
+                    alt="Digital Twin Services"
+                    width={24}
+                    height={24}
+                    className="h-6 w-6"
+                  />
+                </div>
+                <CardTitle className="text-xl">
+                  <Link href="/solutions#rack-kitting-logistics" className="hover:text-blue-600 transition-colors">
+                    Digital Twin Services - Plan with Precision
+                  </Link>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-base">
+                  Our Sunbird DCIM-powered design services let you model your environment, plan capacity, and maintain accuracy through the entire lifecycle.
+                </CardDescription>
+              </CardContent>
+            </Card>
+
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow md:col-span-2 lg:col-span-1">
+              <CardHeader className="text-center">
+                <div className="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
+                  <Image
+                    src="/images/icons/icon-efficient02.png"
+                    alt="One Partner"
+                    width={24}
+                    height={24}
+                    className="h-6 w-6"
+                  />
+                </div>
+                <CardTitle className="text-xl">
+                  <Link href="/solutions#rack-kitting-logistics" className="hover:text-blue-600 transition-colors">
+                    One Partner - Complete Confidence
+                  </Link>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-base">
+                  With Wave2Wave, you simplify design, sourcing, kitting, logistics, and lifecycle management. That means fewer vendors, less complexity, reduced risk—and a faster path to deployment.
+                </CardDescription>
+              </CardContent>
+            </Card>
+
           </div>
         </div>
       </section>

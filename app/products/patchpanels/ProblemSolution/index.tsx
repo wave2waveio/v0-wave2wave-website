@@ -1,12 +1,12 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { AlertTriangle, CheckCircle2 } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { AlertTriangle, CheckCircle2 } from "lucide-react"
 
 export function ProblemSolution() {
   return (
-    <section className="py-20 bg-slate-50">
+    <section className="py-8 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <Badge variant="outline" className="mb-4">
             The Challenge & Our Solution
           </Badge>
@@ -26,12 +26,11 @@ export function ProblemSolution() {
             </CardHeader>
             <CardContent className="space-y-4">
               <p className="text-red-800">
-                Modern AI/ML workloads demand massive east-west bandwidth. Traditional, 
-                low-density cabling creates a "physical layer bottleneck" that limits 
-                GPU cluster performance, complicates network management, and wastes 
-                valuable rack space.
+                Modern AI/ML workloads demand massive east-west bandwidth. Traditional, low-density cabling creates a
+                "physical layer bottleneck" that limits GPU cluster performance, complicates network management, and
+                wastes valuable rack space.
               </p>
-              
+
               <div className="space-y-3">
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0" />
@@ -41,23 +40,18 @@ export function ProblemSolution() {
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0" />
-                  <p className="text-sm text-red-700">
-                    Complex network management with point-to-point cabling
-                  </p>
+                  <p className="text-sm text-red-700">Complex network management with point-to-point cabling</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0" />
-                  <p className="text-sm text-red-700">
-                    Wasted rack space with low-density solutions
-                  </p>
+                  <p className="text-sm text-red-700">Wasted rack space with low-density solutions</p>
                 </div>
               </div>
 
               <div className="bg-red-100 p-4 rounded-lg border border-red-200">
                 <p className="text-sm text-red-800">
-                  <strong>Critical Point:</strong> As you scale to 400G and 800G, a robust 
-                  and ultra-dense structured cabling strategy is no longer optional—it's 
-                  essential for performance and ROI.
+                  <strong>Critical Point:</strong> As you scale to 400G and 800G, a robust and ultra-dense structured
+                  cabling strategy is no longer optional—it's essential for performance and ROI.
                 </p>
               </div>
             </CardContent>
@@ -73,24 +67,19 @@ export function ProblemSolution() {
             </CardHeader>
             <CardContent className="space-y-4">
               <p className="text-green-800">
-                The EVO™ and EXO™ platforms are not just patch panels; they are engineered 
-                ecosystems for high-speed fiber management. They deliver industry-leading 
-                density and signal integrity, creating a reliable physical layer that allows 
-                your active switches and optics to perform at their full potential.
+                The EVO™ and EXO™ platforms are not just patch panels; they are engineered ecosystems for high-speed
+                fiber management. They deliver industry-leading density and signal integrity, creating a reliable
+                physical layer that allows your active switches and optics to perform at their full potential.
               </p>
-              
+
               <div className="space-y-3">
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="w-4 h-4 text-green-600 mt-1 flex-shrink-0" />
-                  <p className="text-sm text-green-700">
-                    Industry-leading density with up to 144 duplex links per 1RU
-                  </p>
+                  <p className="text-sm text-green-700">Industry-leading density with up to 144 duplex links per 1RU</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="w-4 h-4 text-green-600 mt-1 flex-shrink-0" />
-                  <p className="text-sm text-green-700">
-                    Ultra-low loss engineering for optimal signal integrity
-                  </p>
+                  <p className="text-sm text-green-700">Ultra-low loss engineering for optimal signal integrity</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="w-4 h-4 text-green-600 mt-1 flex-shrink-0" />
@@ -102,9 +91,8 @@ export function ProblemSolution() {
 
               <div className="bg-green-100 p-4 rounded-lg border border-green-200">
                 <p className="text-sm text-green-800">
-                  <strong>Result:</strong> A Foundation for Performance that maximizes your 
-                  infrastructure investment while enabling seamless scaling for future 
-                  networking requirements.
+                  <strong>Result:</strong> A Foundation for Performance that maximizes your infrastructure investment
+                  while enabling seamless scaling for future networking requirements.
                 </p>
               </div>
             </CardContent>
@@ -112,5 +100,5 @@ export function ProblemSolution() {
         </div>
       </div>
     </section>
-  );
+  )
 }
