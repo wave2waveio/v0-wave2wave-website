@@ -174,7 +174,7 @@ export default function ProductsPage() {
                 src="images/products/QSFPto4SFP1728.jpg"
                 alt="QSFP to 4x SFP breakout cables"
                 width={600}
-                height={400}
+                height={600}
                 className="relative w-full h-80 object-cover rounded-2xl shadow-2xl"
                 unoptimized
               />
@@ -329,7 +329,7 @@ export default function ProductsPage() {
                 src="images/products/MTP_Bundle.jpg"
                 alt="MTP/MPO fiber optic cable"
                 width={600}
-                height={400}
+                height={600}
                 className="relative w-full h-80 object-cover rounded-2xl shadow-2xl"
                 unoptimized
               />
@@ -361,7 +361,7 @@ export default function ProductsPage() {
                 src="images/evo-images/EVO-2RU-Filled-Front-Panel-highlights2.jpg"
                 alt="EXO Mini fiber patch panel"
                 width={600}
-                height={400}
+                height={600}
                 className="relative w-full h-80 object-cover rounded-2xl shadow-2xl"
                 unoptimized
               />
@@ -479,7 +479,7 @@ export default function ProductsPage() {
                 src="images/products/structured-cabling.webp"
                 alt="71 Series Cat6A patch cord"
                 width={600}
-                height={400}
+                height={600}
                 className="relative w-full h-80 object-cover rounded-2xl shadow-2xl"
                 unoptimized
               />
@@ -499,8 +499,8 @@ export default function ProductsPage() {
               <Power className="h-8 w-8" />
             </div>
             <div>
-              <h2 className="text-4xl font-bold text-slate-900">Power & Rack Infrastructure</h2>
-              <p className="text-xl text-slate-600">PDUs, Power Cords, Racks</p>
+              <h2 className="text-4xl font-bold text-slate-900">Power & Fiber Accessories</h2>
+              <p className="text-xl text-slate-600">Custom Power Cords, Cables, Adapters, Attentuators, Transceivers and connectors</p>
             </div>
           </div>
 
@@ -508,10 +508,10 @@ export default function ProductsPage() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-red-500/20 to-rose-500/20 rounded-3xl blur-xl"></div>
               <Image
-                src="images/design-mode/rackandstack.png"
+                src="images/rackandstack.png"
                 alt="Data center rack and stack infrastructure"
                 width={600}
-                height={400}
+                height={600}
                 className="relative w-full h-80 object-cover rounded-2xl shadow-2xl"
                 unoptimized
               />
@@ -534,13 +534,13 @@ export default function ProductsPage() {
               <Card className="border-0 shadow-lg bg-gradient-to-br from-slate-50 to-slate-100/50 hover:shadow-xl transition-shadow">
                 <CardHeader>
                   <CardTitle className="text-xl text-slate-900 flex items-center gap-3">
-                    <Badge className="bg-red-600 text-white">Rack PDUs</Badge>
-                    Power Distribution
+                    <Badge className="bg-red-600 text-white">Fiber Accessories</Badge>
+                    Adapters, Transceivers, Attentuators, Couplers
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-slate-700 text-base">
-                    Basic & intelligent PDU options for power distribution and monitoring.
+                    Fiber optic accessories to complete a data center build.
                   </CardDescription>
                 </CardContent>
               </Card>
@@ -548,13 +548,13 @@ export default function ProductsPage() {
               <Card className="border-0 shadow-lg bg-gradient-to-br from-slate-50 to-slate-100/50 hover:shadow-xl transition-shadow">
                 <CardHeader>
                   <CardTitle className="text-xl text-slate-900 flex items-center gap-3">
-                    <Badge className="bg-slate-600 text-white">Infrastructure</Badge>
-                    Complete Rack Solutions
+                    <Badge className="bg-slate-600 text-white">Panels</Badge>
+                    Panels, Enclosures, and more
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-slate-700 text-base">
-                    2-post/4-post racks, cable trays, and management solutions for organized installations.
+                    Fiber enclosures, Panels, Cable trays, and management solutions for organized installations.
                   </CardDescription>
                 </CardContent>
               </Card>
@@ -629,7 +629,7 @@ export default function ProductsPage() {
                 src="/loopback-modules-and-fiber-in-a-box-spools.jpg"
                 alt="Loopback modules and Fiber-in-a-Box"
                 width={600}
-                height={400}
+                height={600}
                 className="relative w-full h-80 object-cover rounded-2xl shadow-2xl"
                 unoptimized
               />
@@ -661,7 +661,7 @@ export default function ProductsPage() {
                 src="/cable-labels--cleaning-sticks--and-rfid-tags.jpg"
                 alt="Cable labels, cleaning tools, and RFID tags"
                 width={600}
-                height={400}
+                height={600}
                 className="relative w-full h-80 object-cover rounded-2xl shadow-2xl"
                 unoptimized
               />
