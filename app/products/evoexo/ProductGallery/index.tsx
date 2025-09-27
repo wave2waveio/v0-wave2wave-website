@@ -10,52 +10,52 @@ export function ProductGallery({}: ProductGalleryProps) {
 
   const galleryImages = [
     {
-      src: "/images/evo-images/Hero-EVO-2RU-Evo-Switch-1.png",
+      src: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/Hero-EVO-2RU-Evo-Switch-1.png",
       alt: "EVO Platform Front View",
       title: "EVO™ 2RU High-Density Platform",
     },
     {
-      src: "/images/exo-images/EXO2-down-1.jpeg",
+      src: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/EXO2-down-1.jpeg",
       alt: "EXO Platform Configuration",
       title: "EXO™ WDM Platform",
     },
     {
-      src: "/images/evo-images/Future-proof-design-cassettes-closeup-lg.jpg",
+      src: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/Future-proof-design-cassettes-closeup-lg.jpg",
       alt: "Modular Cassette Design",
       title: "Modular Cassette System",
     },
     {
-      src: "/images/evo-images/Gallery-10-qr05vdavaud0u8xmm9o0wtn33chgs33v435fpvp0cg.jpeg",
+      src: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/Gallery-10-qr05vdavaud0u8xmm9o0wtn33chgs33v435fpvp0cg.jpeg",
       alt: "Installation View",
       title: "Professional Installation",
     },
     {
-      src: "/fiber-optic-patch-panel-rear-view.jpg",
+      src: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/fiber-optic-patch-panel-rear-view.jpg",
       alt: "Rear Connectivity View",
       title: "Rear Panel Connectivity",
     },
     {
-      src: "/data-center-rack-installation.jpg",
+      src: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/data-center-rack-installation.jpg",
       alt: "Rack Installation",
       title: "Data Center Integration",
     },
     {
-      src: "/fiber-optic-cable-management-system.jpg",
+      src: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/fiber-optic-cable-management-system.jpg",
       alt: "Cable Management System",
       title: "Advanced Cable Management",
     },
     {
-      src: "/high-density-fiber-connections-closeup.jpg",
+      src: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/high-density-fiber-connections-closeup.jpg",
       alt: "High-Density Connections",
       title: "Ultra-High Density Connections",
     },
     {
-      src: "/platform-side-view-with-connectors.jpg",
+      src: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/platform-side-view-with-connectors.jpg",
       alt: "Platform Side View",
       title: "Platform Side Configuration",
     },
     {
-      src: "/modular-design-components-layout.jpg",
+      src: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/modular-design-components-layout.jpg",
       alt: "Modular Components",
       title: "Modular Design Components",
     },

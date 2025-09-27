@@ -171,7 +171,7 @@ export default function ProductsPage() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-3xl blur-xl"></div>
               <Image
-                src="images/products/QSFPto4SFP1728.jpg"
+                src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/QSFPto4SFP1728.jpg"
                 alt="QSFP to 4x SFP breakout cables"
                 width={600}
                 height={600}
@@ -326,7 +326,7 @@ export default function ProductsPage() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-3xl blur-xl"></div>
               <Image
-                src="images/products/MTP_Bundle.jpg"
+                src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/MTP_Bundle.jpg"
                 alt="MTP/MPO fiber optic cable"
                 width={600}
                 height={600}
@@ -358,7 +358,7 @@ export default function ProductsPage() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-purple-500/20 to-violet-500/20 rounded-3xl blur-xl"></div>
               <Image
-                src="images/evo-images/EVO-2RU-Filled-Front-Panel-highlights2.jpg"
+                src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/EVO-2RU-Filled-Front-Panel-highlights2.jpg"
                 alt="EXO Mini fiber patch panel"
                 width={600}
                 height={600}
@@ -476,7 +476,7 @@ export default function ProductsPage() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-orange-500/20 to-amber-500/20 rounded-3xl blur-xl"></div>
               <Image
-                src="images/products/structured-cabling.webp"
+                src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/structured-cabling.webp"
                 alt="71 Series Cat6A patch cord"
                 width={600}
                 height={600}
@@ -508,7 +508,7 @@ export default function ProductsPage() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-red-500/20 to-rose-500/20 rounded-3xl blur-xl"></div>
               <Image
-                src="images/rackandstack.png"
+                src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/rackandstack.png"
                 alt="Data center rack and stack infrastructure"
                 width={600}
                 height={600}
@@ -626,7 +626,7 @@ export default function ProductsPage() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-indigo-500/20 to-blue-500/20 rounded-3xl blur-xl"></div>
               <Image
-                src="/loopback-modules-and-fiber-in-a-box-spools.jpg"
+                src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/loopback-modules-and-fiber-in-a-box-spools.jpg"
                 alt="Loopback modules and Fiber-in-a-Box"
                 width={600}
                 height={600}
@@ -658,7 +658,7 @@ export default function ProductsPage() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-teal-500/20 to-cyan-500/20 rounded-3xl blur-xl"></div>
               <Image
-                src="/cable-labels--cleaning-sticks--and-rfid-tags.jpg"
+                src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/cleaning_cable-labels.jpg"
                 alt="Cable labels, cleaning tools, and RFID tags"
                 width={600}
                 height={600}

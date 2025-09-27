@@ -53,7 +53,7 @@ export default function SolutionsPage() {
             <div className="space-y-6">
               <div className="w-full h-48 mb-4">
                 <Image
-                  src="/images/solutions/structured-cabling-hardware.jpeg"
+                  src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/structured-cabling-hardware.jpeg"
                   alt="Structured Cabling & Hardware"
                   width={400}
                   height={200}
@@ -114,7 +114,7 @@ export default function SolutionsPage() {
             <div className="space-y-6">
               <div className="w-full h-48 mb-4">
                 <Image
-                  src="/images/solutions/advanced-kitting-logistics.jpeg"
+                  src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/imagesadvanced-kitting-logistics.jpeg"
                   alt="Advanced Kitting & Logistics"
                   width={400}
                   height={200}
@@ -171,7 +171,7 @@ export default function SolutionsPage() {
             <div className="space-y-6">
               <div className="w-full h-48 mb-4">
                 <Image
-                  src="/images/solutions/dcim-digital-twin.jpeg"
+                  src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/imagesdcim-digital-twin.jpeg"
                   alt="DCIM & Digital Twin Services"
                   width={400}
                   height={200}
@@ -228,7 +228,7 @@ export default function SolutionsPage() {
             <div className="space-y-6">
               <div className="w-full h-48 mb-4">
                 <Image
-                  src="/images/solutions/oem-solutions.png"
+                  src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/oem-solutions.png"
                   alt="High-performance server with custom fiber optic interconnects and structured cabling in data center rack"
                   width={400}
                   height={200}

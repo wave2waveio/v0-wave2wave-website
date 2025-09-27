@@ -40,7 +40,7 @@ export default function KittingCaseStudyPage() {
             </div>
 
             <Image
-              src="/images/solutions/advanced-kitting-logistics.jpeg"
+              src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/advanced-kitting-logistics.jpeg"
               alt="Data Center Deployment Success"
               width={800}
               height={400}

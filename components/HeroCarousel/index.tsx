@@ -17,7 +17,7 @@ const slides: HeroSlide[] = [
     subtitle: "Expert Customer Service, Uncompromising Quality",
     description:
       "Custom fiber & copper cabling, high-speed 400G/800G interconnects, patch panels & cassettes—delivered in weeks, not months. Pre-labeled, pre-kitted, and built to your spec.",
-    backgroundImage: "/images/hero-background.png",
+    backgroundImage: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/hero-background.png",
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const slides: HeroSlide[] = [
     subtitle: "Custom Cables. Faster Delivery. Zero Guesswork.",
     description:
       "Building data center, fiber and Ethernet solutions to your exact design, faster lead times, pre-labeled, pre-kitted, and ready to plug and play.",
-    backgroundImage: "/images/rackandstack.png",
+    backgroundImage: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/rackandstack.png",
   },
   {
     id: 3,
@@ -33,7 +33,7 @@ const slides: HeroSlide[] = [
     subtitle: "Simplifying the modern Data Center",
     description:
       "From AI clusters to colocation racks, we deliver custom fiber & Ethernet cabling, 400G/800G interconnects, labeling, kitting, and DCIM-driven design—everything you need to deploy with speed and confidence.",
-    backgroundImage: "/images/evo-images/Future-proof-design-cassettes-lg.jpg",
+    backgroundImage: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/Future-proof-design-cassettes-lg.jpg",
   },
 ]
 

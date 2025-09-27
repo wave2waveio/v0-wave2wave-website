@@ -18,7 +18,7 @@ export function Navigation() {
           <Link href="/" className="flex items-center space-x-2">
             <div className="flex items-center">
               <Image
-                src="/images/wave2wave-logo.png"
+                src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/wave2wave_logo_anchorcraft_business.png"
                 alt="Wave2Wave.io"
                 width={200}
                 height={60}

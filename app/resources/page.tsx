@@ -114,7 +114,7 @@ export default function ResourcesPage() {
               <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow group">
                 <CardHeader className="pb-4">
                   <Image
-                    src={article.image || "/placeholder.svg"}
+                    src={article.image || "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/Gallery-10-qr05vdavaud0u8xmm9o0wtn33chgs33v435fpvp0cg.jpeg"}
                     alt={article.title}
                     width={300}
                     height={200}

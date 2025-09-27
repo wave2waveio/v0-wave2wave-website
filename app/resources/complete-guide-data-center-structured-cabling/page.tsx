@@ -41,7 +41,7 @@ export default function StructuredCablingGuidePage() {
             </div>
 
             <Image
-              src="/images/solutions/structured-cabling-hardware.jpeg"
+              src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/structured-cabling-hardware.jpeg"
               alt="Data Center Structured Cabling"
               width={800}
               height={400}

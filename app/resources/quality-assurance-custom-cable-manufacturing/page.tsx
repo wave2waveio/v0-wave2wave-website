@@ -39,7 +39,7 @@ export default function QualityAssurancePage() {
             </div>
 
             <Image
-              src="/images/resources/quality-assurance-test.png"
+              src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/patchpanel_Ethernet_CAT6_28AWG5.jpg"
               alt="Quality assurance technician using handheld fiber optic test equipment showing PASS result, with color-coded cable coils in manufacturing facility background"
               width={800}
               height={400}

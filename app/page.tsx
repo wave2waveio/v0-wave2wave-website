@@ -31,25 +31,25 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   const customerLogos = [
-    { src: "/images/customers/equinix-logo.png", alt: "Equinix", name: "Equinix" },
-    { src: "/images/customers/cisco-logo.png", alt: "Cisco", name: "Cisco" },
-    { src: "/images/customers/dell-logo.png", alt: "Dell", name: "Dell" },
-    { src: "/images/customers/broadcom-logo.png", alt: "Broadcom", name: "Broadcom" },
-    { src: "/images/customers/arista-logo.png", alt: "Arista Networks", name: "Arista Networks" },
-    { src: "/images/customers/coherent-logo.png", alt: "Coherent", name: "Coherent" },
-    { src: "/images/customers/cerebras-logo.png", alt: "Cerebras", name: "Cerebras" },
-    { src: "/images/customers/brocade-logo.png", alt: "Brocade", name: "Brocade" },
-    { src: "/images/customers/amaara-logo.jpg", alt: "Amaara Networks", name: "Amaara Networks" },
-    { src: "/images/customers/domotion-logo.png", alt: "Domotion", name: "Domotion" },
-    { src: "/images/customers/hpe-logo.png", alt: "Hewlett Packard Enterprise", name: "HPE" },
-    { src: "/images/customers/juniper-logo.png", alt: "Juniper Networks", name: "Juniper Networks" },
-    { src: "/images/customers/paloalto-logo.png", alt: "Palo Alto Networks", name: "Palo Alto Networks" },
-    { src: "/images/customers/flex-logo.png", alt: "Flex", name: "Flex" },
-    { src: "/images/customers/foxconn-logo.png", alt: "Foxconn", name: "Foxconn" },
-    { src: "/images/customers/rocket-ems-logo.webp", alt: "Rocket EMS", name: "Rocket EMS" },
-    { src: "/images/customers/techconnect-logo.png", alt: "TechConnect", name: "TechConnect" },
-    { src: "/images/customers/mox-logo.png", alt: "MOX", name: "MOX" },
-    { src: "/images/customers/visionit-logo.png", alt: "VisionIT", name: "VisionIT" },
+    { src: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/customers/equinix-logo.png", alt: "Equinix", name: "Equinix" },
+    { src: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/customers/cisco-logo.png", alt: "Cisco", name: "Cisco" },
+    { src: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/customers/dell-logo.png", alt: "Dell", name: "Dell" },
+    { src: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/customers/broadcom-logo.png", alt: "Broadcom", name: "Broadcom" },
+    { src: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/customers/arista-logo.png", alt: "Arista Networks", name: "Arista Networks" },
+    { src: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/customers/coherent-logo.png", alt: "Coherent", name: "Coherent" },
+    { src: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/customers/cerebras-logo.png", alt: "Cerebras", name: "Cerebras" },
+    { src: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/customers/brocade-logo.png", alt: "Brocade", name: "Brocade" },
+    { src: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/customers/amaara-logo.jpg", alt: "Amaara Networks", name: "Amaara Networks" },
+    { src: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/customers/domotion-logo.png", alt: "Domotion", name: "Domotion" },
+    { src: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/customers/hpe-logo.png", alt: "Hewlett Packard Enterprise", name: "HPE" },
+    { src: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/customers/juniper-logo.png", alt: "Juniper Networks", name: "Juniper Networks" },
+    { src: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/customers/paloalto-logo.png", alt: "Palo Alto Networks", name: "Palo Alto Networks" },
+    { src: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/customers/flex-logo.png", alt: "Flex", name: "Flex" },
+    { src: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/customers/foxconn-logo.png", alt: "Foxconn", name: "Foxconn" },
+    { src: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/customers/rocket-ems-logo.webp", alt: "Rocket EMS", name: "Rocket EMS" },
+    { src: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/customers/techconnect-logo.png", alt: "TechConnect", name: "TechConnect" },
+    { src: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/customers/mox-logo.png", alt: "MOX", name: "MOX" },
+    { src: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/customers/visionit-logo.png", alt: "VisionIT", name: "VisionIT" },
   ]
 
   return (
@@ -71,7 +71,7 @@ export default function HomePage() {
               <CardHeader className="text-center">
                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
                   <Image
-                    src="/images/icons/icon-fiber-optic.png"
+                    src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/icons/icon-fiber-optic.png"
                     alt="Custom Engineering"
                     width={24}
                     height={24}
@@ -95,7 +95,7 @@ export default function HomePage() {
               <CardHeader className="text-center">
                 <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
                   <Image
-                    src="/images/icons/icon-diamond-quality.png"
+                    src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/icons/icon-diamond-quality.png"
                     alt="Quality Assurance"
                     width={24}
                     height={24}
@@ -119,7 +119,7 @@ export default function HomePage() {
               <CardHeader className="text-center">
                 <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
                   <Image
-                    src="/images/icons/icon-fast-carrier.png"
+                    src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/icons/icon-fast-carrier.png"
                     alt="Fast Delivery"
                     width={24}
                     height={24}
@@ -139,7 +139,7 @@ export default function HomePage() {
               <CardHeader className="text-center">
                 <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
                   <Image
-                    src="/images/icons/icon-diamond-quality.png"
+                    src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/icons/icon-diamond-quality.png"
                     alt="Great Pricing"
                     width={24}
                     height={24}
@@ -163,7 +163,7 @@ export default function HomePage() {
               <CardHeader className="text-center">
                 <div className="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
                   <Image
-                    src="/images/icons/icon-efficient02.png"
+                    src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/icons/icon-efficient02.png"
                     alt="Value-Added Services for No Extra Cost"
                     width={24}
                     height={24}
@@ -187,7 +187,7 @@ export default function HomePage() {
               <CardHeader className="text-center">
                 <div className="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
                   <Image
-                    src="/images/icons/icon-efficient02.png"
+                    src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/icons/icon-efficient02.png"
                     alt="Digital Twin Services"
                     width={24}
                     height={24}

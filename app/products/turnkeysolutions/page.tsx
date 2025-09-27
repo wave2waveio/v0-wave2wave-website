@@ -40,7 +40,7 @@ export default function TurnkeySolutionsPage() {
             </div>
             <div className="relative">
               <Image
-                src="/turnkey-data-center-solution-deployment.jpg"
+                src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/turnkey-data-center-solution-deployment.jpg"
                 alt="Turnkey Solutions"
                 width={600}
                 height={500}
