@@ -21,8 +21,8 @@ export function Navigation() {
                 src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/wave2wave_logo_anchorcraft_business.png"
                 alt="Wave2Wave.io"
                 width={200}
-                height={60}
-                className="h-10 w-auto"
+                height={80}
+                className="h-20 w-auto"
                 unoptimized
               />
             </div>
