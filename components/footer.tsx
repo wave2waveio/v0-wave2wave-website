@@ -13,7 +13,7 @@ export function Footer() {
                 src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/wave2wave_logo_anchorcraft_business.png"
                 alt="Wave2Wave.io"
                 width={200}
-                height={60}
+                height={100}
                 className="h-8 w-auto brightness-0 invert"
                 unoptimized
               />

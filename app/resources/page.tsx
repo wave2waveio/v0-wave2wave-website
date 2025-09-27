@@ -28,7 +28,7 @@ export default function ResourcesPage() {
       category: "Technical Guide",
       readTime: "12 min read",
       date: "December 15, 2024",
-      image: "/images/solutions/structured-cabling-hardware.jpeg",
+      image: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/structured-cabling-hardware.jpeg",
       slug: "complete-guide-data-center-structured-cabling",
     },
     {
@@ -38,7 +38,7 @@ export default function ResourcesPage() {
       category: "Industry Insights",
       readTime: "8 min read",
       date: "December 10, 2024",
-      image: "/images/solutions/dcim-digital-twin.jpeg",
+      image: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/dcim-digital-twin.jpeg",
       slug: "dcim-digital-twins-reduce-deployment-risk",
     },
     {
@@ -48,7 +48,7 @@ export default function ResourcesPage() {
       category: "Case Study",
       readTime: "6 min read",
       date: "December 5, 2024",
-      image: "/images/solutions/advanced-kitting-logistics.jpeg",
+      image: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/advanced-kitting-logistics.jpeg",
       slug: "case-study-faster-deployment-advanced-kitting",
     },
   ]

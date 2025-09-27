@@ -114,7 +114,7 @@ export default function SolutionsPage() {
             <div className="space-y-6">
               <div className="w-full h-48 mb-4">
                 <Image
-                  src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/imagesadvanced-kitting-logistics.jpeg"
+                  src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/advanced-kitting-logistics.jpeg"
                   alt="Advanced Kitting & Logistics"
                   width={400}
                   height={200}
@@ -171,7 +171,7 @@ export default function SolutionsPage() {
             <div className="space-y-6">
               <div className="w-full h-48 mb-4">
                 <Image
-                  src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/imagesdcim-digital-twin.jpeg"
+                  src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/dcim-digital-twin.jpeg"
                   alt="DCIM & Digital Twin Services"
                   width={400}
                   height={200}

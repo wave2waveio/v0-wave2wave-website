@@ -20,7 +20,7 @@ export const metadata: Metadata = {
       {
         url: "/images/wave2wave-logo.png",
         width: 600,
-        height: 325,
+        height: 400,
         alt: "Wave2Wave Logo",
       },
     ],

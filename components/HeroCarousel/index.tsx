@@ -25,7 +25,7 @@ const slides: HeroSlide[] = [
     subtitle: "Custom Cables. Faster Delivery. Zero Guesswork.",
     description:
       "Building data center, fiber and Ethernet solutions to your exact design, faster lead times, pre-labeled, pre-kitted, and ready to plug and play.",
-    backgroundImage: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/rackandstack.png",
+    backgroundImage: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/Rack_n_Stack8.JPG",
   },
   {
     id: 3,
@@ -33,7 +33,7 @@ const slides: HeroSlide[] = [
     subtitle: "Simplifying the modern Data Center",
     description:
       "From AI clusters to colocation racks, we deliver custom fiber & Ethernet cabling, 400G/800G interconnects, labeling, kitting, and DCIM-driven design—everything you need to deploy with speed and confidence.",
-    backgroundImage: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/Future-proof-design-cassettes-lg.jpg",
+    backgroundImage: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/MTP_Bundle2.jpg",
   },
 ]
 

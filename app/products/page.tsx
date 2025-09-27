@@ -175,7 +175,7 @@ export default function ProductsPage() {
                 alt="QSFP to 4x SFP breakout cables"
                 width={600}
                 height={600}
-                className="relative w-full h-80 object-cover rounded-2xl shadow-2xl"
+                className="relative w-full h-96 object-cover rounded-2xl shadow-2xl"
                 unoptimized
               />
             </div>
@@ -330,7 +330,7 @@ export default function ProductsPage() {
                 alt="MTP/MPO fiber optic cable"
                 width={600}
                 height={600}
-                className="relative w-full h-80 object-cover rounded-2xl shadow-2xl"
+                className="relative w-full h-96 object-cover rounded-2xl shadow-2xl"
                 unoptimized
               />
             </div>
@@ -362,7 +362,7 @@ export default function ProductsPage() {
                 alt="EXO Mini fiber patch panel"
                 width={600}
                 height={600}
-                className="relative w-full h-80 object-cover rounded-2xl shadow-2xl"
+                className="relative w-full h-96 object-cover rounded-2xl shadow-2xl"
                 unoptimized
               />
             </div>
@@ -480,7 +480,7 @@ export default function ProductsPage() {
                 alt="71 Series Cat6A patch cord"
                 width={600}
                 height={600}
-                className="relative w-full h-80 object-cover rounded-2xl shadow-2xl"
+                className="relative w-full h-96 object-cover rounded-2xl shadow-2xl"
                 unoptimized
               />
             </div>
@@ -508,11 +508,11 @@ export default function ProductsPage() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-red-500/20 to-rose-500/20 rounded-3xl blur-xl"></div>
               <Image
-                src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/rackandstack.png"
+                src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/product/C123/rackandstack.png"
                 alt="Data center rack and stack infrastructure"
                 width={600}
                 height={600}
-                className="relative w-full h-80 object-cover rounded-2xl shadow-2xl"
+                className="relative w-full h-96 object-cover rounded-2xl shadow-2xl"
                 unoptimized
               />
             </div>
@@ -626,11 +626,11 @@ export default function ProductsPage() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-indigo-500/20 to-blue-500/20 rounded-3xl blur-xl"></div>
               <Image
-                src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/loopback-modules-and-fiber-in-a-box-spools.jpg"
+                src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/product/Loopback/Ganged_Loopback.jpg"
                 alt="Loopback modules and Fiber-in-a-Box"
                 width={600}
                 height={600}
-                className="relative w-full h-80 object-cover rounded-2xl shadow-2xl"
+                className="relative w-full h-96 object-cover rounded-2xl shadow-2xl"
                 unoptimized
               />
             </div>
@@ -662,7 +662,7 @@ export default function ProductsPage() {
                 alt="Cable labels, cleaning tools, and RFID tags"
                 width={600}
                 height={600}
-                className="relative w-full h-80 object-cover rounded-2xl shadow-2xl"
+                className="relative w-full h-96 object-cover rounded-2xl shadow-2xl"
                 unoptimized
               />
             </div>
