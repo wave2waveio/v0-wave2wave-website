@@ -1,35 +1,33 @@
 import Link from "next/link"
 import Image from "next/image"
 import type { Metadata } from "next"
-
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import HeroCarousel from "@/components/HeroCarousel"
+import { RotatingHeroSection } from "@/components/RotatingHeroSection"
+import { FeatureBlock } from "@/components/FeatureBlock"
+import { CTASection } from "@/components/CTASection"
+import { Ruler, Tag, Package, Shield, Truck } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Wave2Wave – Custom Data Center Cabling & DCIM Solutions",
+  title: "Solutions | Wave2Wave – AI-Ready Data Center Cabling & Infrastructure",
   description:
-    "Custom data center cabling, labeling & kitting for easy deployment, and digital twin design services for modern data centers. Simplify your network infrastructure deployment with a single expert partner – Wave2Wave. Contact us for a quote.",
+    "Wave2Wave provides custom-engineered cabling solutions for AI, cloud, enterprise, and telecom – delivering pre-labeled, plug-and-play fiber and copper infrastructure.",
   openGraph: {
-    title: "Wave2Wave – Custom Data Center Cabling & DCIM Solutions",
+    title: "Solutions | Wave2Wave – AI-Ready Data Center Cabling & Infrastructure",
     description:
-      "Custom data center cabling, labeling & kitting for easy deployment, and digital twin services for modern data centers. Simplify your network infrastructure deployment with a single expert partner – Wave2Wave. Contact us for a quote.",
+      "Wave2Wave provides custom-engineered cabling solutions for AI, cloud, enterprise, and telecom – delivering pre-labeled, plug-and-play fiber and copper infrastructure.",
     url: "https://www.wave2wave.io",
     siteName: "Wave2Wave.io",
-    images: [
-      {
-        url: "/images/wave2wave-logo.png",
-        width: 600,
-        height: 400,
-        alt: "Wave2Wave Logo",
-      },
-    ],
-    locale: "en_US",
     type: "website",
   },
 }
 
 export default function HomePage() {
+  const heroImages = [
+    "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/QSFPto4SFP1728.jpg",
+    "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/MTP_Bundle.jpg",
+    "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/EVO-2RU-Filled-Front-Panel-highlights2.jpg",
+    "/images/hero/01-hero-image-1.png",
+  ]
+
   const customerLogos = [
     { src: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/customers/equinix-logo.png", alt: "Equinix", name: "Equinix" },
     { src: "https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/customers/cisco-logo.png", alt: "Cisco", name: "Cisco" },
@@ -54,175 +52,198 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <HeroCarousel />
+      {/* Hero Section */}
+      <RotatingHeroSection
+        title="Connecting the Physical Backbone of the AI & Datacenter Era"
+        subtitle="Engineered cabling systems that move data, power, and possibility at the speed of light – custom-built, pre-labeled, and deployment-ready."
+        images={heroImages}
+        height="tall"
+      />
 
-      {/* Value Propositions */}
-      <section className="py-16 bg-slate-50">
+      {/* The Wave2Wave Difference */}
+      <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">One Partner - Complete Confidence</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Wave2Wave is more than a cabling vendor—we’re a custom network infrastructure partner. From structured cabling to rack kitting and DCIM digital twin design, we deliver the products and services that keep data centers running smoothly, on time, and with confidence.
+          <div className="text-center mb-10">
+            <h2>Why Wave2Wave?</h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto mt-4">
+              We deliver infrastructure you can trust, because the network begins where the cable does.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader className="text-center">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                  <Image
-                    src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/icons/icon-fiber-optic.png"
-                    alt="Custom Engineering"
-                    width={24}
-                    height={24}
-                    className="h-6 w-6"
-                  />
-                </div>
-                <CardTitle className="text-xl">
-                  <Link href="/solutions#structured-cabling-hardware" className="hover:text-blue-600 transition-colors">
-                    Custom Engineering - Cables & Systems Built to Your Spec
-                  </Link>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base">
-                 We design from your DCIM models, CAD drawings, or detailed requirements—delivering fiber, copper, PDUs, and accessories built exactly to fit your project. No guesswork, no off-the-shelf compromises.
-                </CardDescription>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader className="text-center">
-                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                  <Image
-                    src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/icons/icon-diamond-quality.png"
-                    alt="Quality Assurance"
-                    width={24}
-                    height={24}
-                    className="h-6 w-6"
-                  />
-                </div>
-                <CardTitle className="text-xl">
-                  <Link href="/solutions#rack-kitting-logistics" className="hover:text-blue-600 transition-colors">
-                    Quality Assurance - Top Quality, Every Time
-                  </Link>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base">
-                  Every assembly—cables, connectors, panels, racks, and power—is rigorously tested and certified. You get consistent performance and reliability across your entire deployment.
-                </CardDescription>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader className="text-center">
-                <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                  <Image
-                    src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/icons/icon-fast-carrier.png"
-                    alt="Fast Delivery"
-                    width={24}
-                    height={24}
-                    className="h-6 w-6"
-                  />
-                </div>
-                <CardTitle className="text-xl">Fast Delivery - Weeks, Not Months</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base">
-                  Why wait 12 weeks? Our streamlined process delivers in just weeks. Pre-kitted and pre-labeled, our solutions cut on-site prep time and reduce installation costs.
-                </CardDescription>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader className="text-center">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                  <Image
-                    src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/icons/icon-diamond-quality.png"
-                    alt="Great Pricing"
-                    width={24}
-                    height={24}
-                    className="h-6 w-6"
-                  />
-                </div>
-                <CardTitle className="text-xl">
-                  <Link href="/solutions#dcim-digital-twin" className="hover:text-blue-600 transition-colors">
-                    Great Pricing - Better Value Than the Big Brands
-                  </Link>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base">
-                  We offer enterprise-grade cabling solutions at prices that beat the large OEMs. With Wave2Wave, you get the same or better quality—without paying premium brand markups.
-                </CardDescription>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow md:col-span-2 lg:col-span-1">
-              <CardHeader className="text-center">
-                <div className="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                  <Image
-                    src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/icons/icon-efficient02.png"
-                    alt="Value-Added Services for No Extra Cost"
-                    width={24}
-                    height={24}
-                    className="h-6 w-6"
-                  />
-                </div>
-                <CardTitle className="text-xl">
-                  <Link href="/solutions#rack-kitting-logistics" className="hover:text-blue-600 transition-colors">
-                    Value-Added Services for No Extra Cost
-                  </Link>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base">
-                  Customer Labeling and Kitting - We pre-label every cable and bundle them into organized kits by rack or server. Your installers plug in once and move on—no sorting, tracing, or second-guessing.
-                </CardDescription>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow md:col-span-2 lg:col-span-1">
-              <CardHeader className="text-center">
-                <div className="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                  <Image
-                    src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/icons/icon-efficient02.png"
-                    alt="Digital Twin Services"
-                    width={24}
-                    height={24}
-                    className="h-6 w-6"
-                  />
-                </div>
-                <CardTitle className="text-xl">
-                  <Link href="/solutions#rack-kitting-logistics" className="hover:text-blue-600 transition-colors">
-                    Digital Twin Services - Plan with Precision
-                  </Link>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base">
-                  Our Sunbird DCIM-powered design services let you model your environment, plan capacity, and maintain accuracy through the entire lifecycle.
-                </CardDescription>
-              </CardContent>
-            </Card>
-
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <FeatureBlock
+              icon={<Ruler className="h-6 w-6 text-primary" />}
+              title="Custom Cable Engineering"
+              description="Every cable system engineered to exact specifications (3-inch increments) – no off-the-shelf compromises. Built to your rack geometry for perfect airflow and fit."
+            />
+            <FeatureBlock
+              icon={<Tag className="h-6 w-6 text-primary" />}
+              title="Factory Labeling & Identification"
+              description="Zero field errors and 50-75% faster installs. Every cable ships pre-labeled to your rack and port map – installers just plug in. Installs in days, audits in minutes."
+            />
+            <FeatureBlock
+              icon={<Package className="h-6 w-6 text-primary" />}
+              title="Advanced Deployment Kitting"
+              description="Rack-specific, pre-kitted cables organized by installation phase. No sorting, no waste – cutting installation time by 50-75% and bringing GPU clusters online weeks earlier."
+            />
+            <FeatureBlock
+              icon={<Shield className="h-6 w-6 text-primary" />}
+              title="100% Quality Assurance"
+              description="Every assembly factory-tested and certified for mission-critical reliability. Insertion loss <0.35dB for fiber, TDR verification for copper, bit error rate <1E-12 for AI workloads."
+            />
+            <FeatureBlock
+              icon={<Truck className="h-6 w-6 text-primary" />}
+              title="Fast Global Delivery"
+              description="3-4 week typical delivery – much faster than 8-12 week industry norms. From design to deployment, we move at the speed your infrastructure demands."
+            />
           </div>
         </div>
       </section>
 
-      {/* Customer Showcase */}
-      <section className="py-16">
+      {/* Solutions by Environment */}
+      <section className="py-12 bg-slate-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Trusted by Industry Leaders</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Leading organizations across enterprise, commercial, and telecommunications sectors rely on Wave2Wave.io
-              for their critical infrastructure needs
+          <div className="text-center mb-10">
+            <h2>Solutions for Your Environment</h2>
+            <p className="text-xl text-slate-600 max-w-4xl mx-auto mt-4">
+              Wave2Wave delivers infrastructure for the world's most demanding data centers. Whether you're deploying AI clusters, scaling hyperscale cloud, or refreshing enterprise racks, our custom cabling systems accelerate deployment and eliminate errors.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 items-center">
+          <div className="max-w-6xl mx-auto space-y-12">
+            {/* Enterprise Data Centers */}
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div className="bg-white p-6 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                <h3 className="mb-4 text-blue-900">Enterprise Data Centers & Engineering Labs</h3>
+                <ul className="space-y-3 text-slate-700">
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2 mt-1">•</span>
+                    <span>Rack-ready kits labeled by cabinet/port to enable 50-75% faster installs</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2 mt-1">•</span>
+                    <span>Mix-and-match bundles (10G copper, 25G/100G/400G fiber) delivered as single SKUs</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2 mt-1">•</span>
+                    <span>Modular fiber patch panels that allow protocol upgrades without re-cabling</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="relative h-64 md:h-80 rounded-lg overflow-hidden">
+                <Image
+                  src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?q=80&w=1000"
+                  alt="Enterprise Data Center"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+
+            {/* AI & GPU Clusters */}
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div className="relative h-64 md:h-80 rounded-lg overflow-hidden md:order-1">
+                <Image
+                  src="https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=1000"
+                  alt="AI & GPU Cluster Data Centers"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="md:order-2 bg-white p-6 rounded-lg border-l-4 border-green-500 shadow-sm">
+                <h3 className="mb-4 text-green-900">AI & GPU Cluster Data Centers</h3>
+                <ul className="space-y-3 text-slate-700">
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2 mt-1">•</span>
+                    <span>NVIDIA-validated harnesses for DGX/HGX GPU clusters (400G/800G InfiniBand and Ethernet fabrics)</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2 mt-1">•</span>
+                    <span>Factory-tested for deployments from 8 to 1000+ nodes</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2 mt-1">•</span>
+                    <span>Custom polarity management to eliminate the #1 cause of AI network errors</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Hyperscale & Cloud */}
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div className="bg-white p-6 rounded-lg border-l-4 border-purple-500 shadow-sm">
+                <h3 className="mb-4 text-purple-900">Hyperscale & Cloud Networks</h3>
+                <ul className="space-y-3 text-slate-700">
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2 mt-1">•</span>
+                    <span>Modular patch panel systems supporting 10G → 400G → 800G migrations without replacing cabling</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2 mt-1">•</span>
+                    <span>Spine-leaf kitting that reduces hundreds of SKUs into turnkey assemblies</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2 mt-1">•</span>
+                    <span>End-to-end solutions that scale with next-gen (800G/1.6T) architectures</span>
+                  </li>
+                </ul>
+                <Link href="/fiber/hyperscalers" className="inline-block mt-4 text-primary hover:text-primary-blue-dark font-medium">
+                  Learn more about hyperscale fiber solutions →
+                </Link>
+              </div>
+              <div className="relative h-64 md:h-80 rounded-lg overflow-hidden">
+                <Image
+                  src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1000"
+                  alt="Hyperscale & Cloud Networks"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Telecom & FTTH */}
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div className="relative h-64 md:h-80 rounded-lg overflow-hidden md:order-1">
+                <Image
+                  src="https://images.unsplash.com/photo-1606868306217-dbf5046868d2?q=80&w=1000"
+                  alt="Telecom & Fiber-to-the-Home"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="md:order-2 bg-white p-6 rounded-lg border-l-4 border-orange-500 shadow-sm">
+                <h3 className="mb-4 text-orange-900">Telecom & Fiber-to-the-Home (FTTH)</h3>
+                <ul className="space-y-3 text-slate-700">
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2 mt-1">•</span>
+                    <span>Pre-connectorized assemblies that cut truck rolls by 40%</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2 mt-1">•</span>
+                    <span>Compliance with government standards for broadband projects</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2 mt-1">•</span>
+                    <span>Quick-connect fiber solutions for rapid outdoor deployments</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trusted by Industry Leaders */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-10">
+            <h2>Trusted by Industry Leaders</h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto mt-4">
+              Leading organizations across enterprise, commercial, and telecommunications sectors rely on Wave2Wave.io for their critical infrastructure needs
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 items-center max-w-7xl mx-auto">
             {customerLogos.map((logo, index) => (
               <div
                 key={index}
@@ -238,31 +259,16 @@ export default function HomePage() {
               </div>
             ))}
           </div>
-
-          <div className="text-center mt-12">
-            <p className="text-slate-600 mb-6">
-              Join industry leaders like Equinix, Cisco, Dell, HPE, Juniper Networks, Palo Alto Networks, Foxconn, and
-              Flex who trust Wave2Wave.io for their infrastructure solutions
-            </p>
-          </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-blue-900 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Simplify Your Infrastructure?</h2>
-          <p className="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
-            Let's discuss how Wave2Wave.io can accelerate your next data center deployment with custom engineering and
-            precision logistics.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-blue-900 hover:bg-slate-100 text-lg px-8 py-3" asChild>
-              <Link href="/contact">Request a Quote</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+      <CTASection
+        title="Ready to Accelerate Your Deployment?"
+        subtitle="Contact us to discuss your custom cabling solution and see how Wave2Wave can transform your infrastructure timeline."
+        primaryButtonText="Request a Quote"
+        primaryButtonLink="/contact"
+      />
     </div>
   )
 }

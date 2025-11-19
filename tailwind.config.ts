@@ -26,10 +26,13 @@ const config: Config = {
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
+          blue: 'hsl(var(--primary-blue))',
+          'blue-dark': 'hsl(var(--primary-blue-dark))',
         },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
+          orange: 'hsl(var(--secondary-orange))',
         },
         muted: {
           DEFAULT: 'hsl(var(--muted))',
@@ -43,6 +46,9 @@ const config: Config = {
           DEFAULT: 'hsl(var(--destructive))',
           foreground: 'hsl(var(--destructive-foreground))',
         },
+        success: 'hsl(var(--success))',
+        error: 'hsl(var(--error))',
+        info: 'hsl(var(--info))',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -63,6 +69,20 @@ const config: Config = {
           border: 'hsl(var(--sidebar-border))',
           ring: 'hsl(var(--sidebar-ring))',
         },
+        text: {
+          dark: 'hsl(var(--text-dark))',
+          medium: 'hsl(var(--text-medium))',
+          light: 'hsl(var(--text-light))',
+        },
+      },
+      spacing: {
+        xs: '8px',
+        sm: '16px',
+        md: '24px',
+        lg: '32px',
+        xl: '48px',
+        '2xl': '64px',
+        '3xl': '96px',
       },
       borderRadius: {
         lg: 'var(--radius)',

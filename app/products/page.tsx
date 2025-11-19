@@ -115,9 +115,9 @@ export default function ProductsPage() {
       </section>
 
       {/* Category Index */}
-      <section id="product-categories" className="py-20 bg-gradient-to-b from-slate-50 to-white">
+      <section id="product-categories" className="py-12 bg-gradient-to-b from-slate-50 to-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <h2 className="text-4xl font-bold text-slate-900 mb-6">Product Categories</h2>
           </div>
 
@@ -152,10 +152,10 @@ export default function ProductsPage() {
       </section>
 
       {/* Separator */}
-      <div className="border-t border-slate-200"></div>
+      <div className="h-8 bg-slate-50/60"></div>
 
       {/* 1. High-Speed Interconnects */}
-      <section id="high-speed-interconnects" className="py-20 bg-white">
+      <section id="high-speed-interconnects" className="py-12 bg-gradient-to-b from-blue-50/30 to-white">
         <div className="container mx-auto px-4">
           <div className="flex items-center gap-4 mb-12">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 text-white">
@@ -264,10 +264,10 @@ export default function ProductsPage() {
       </section>
 
       {/* Separator */}
-      <div className="border-t border-slate-200"></div>
+      <div className="h-8 bg-slate-50/60"></div>
 
       {/* 2. Fiber Cabling */}
-      <section id="fiber-cabling" className="py-20 bg-gradient-to-b from-green-50/30 to-white">
+      <section id="fiber-cabling" className="py-12 bg-gradient-to-b from-green-50/30 to-white">
         <div className="container mx-auto px-4">
           <div className="flex items-center gap-4 mb-12">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500 to-green-600 text-white">
@@ -339,10 +339,10 @@ export default function ProductsPage() {
       </section>
 
       {/* Separator */}
-      <div className="border-t border-slate-200"></div>
+      <div className="h-8 bg-slate-50/60"></div>
 
       {/* 3. Fiber Connectivity Hardware */}
-      <section id="fiber-connectivity-hardware" className="py-20 bg-white">
+      <section id="fiber-connectivity-hardware" className="py-12 bg-gradient-to-b from-purple-50/30 to-white">
         <div className="container mx-auto px-4">
           <div className="flex items-center gap-4 mb-12">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 text-white">
@@ -358,7 +358,7 @@ export default function ProductsPage() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-purple-500/20 to-violet-500/20 rounded-3xl blur-xl"></div>
               <Image
-                src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/EVO-2RU-Filled-Front-Panel-highlights2.jpg"
+                src="/images/products/evo/EVO-2RU-Filled-Front-Panel-highlights2.jpg"
                 alt="EXO Mini fiber patch panel"
                 width={600}
                 height={600}
@@ -414,10 +414,10 @@ export default function ProductsPage() {
       </section>
 
       {/* Separator */}
-      <div className="border-t border-slate-200"></div>
+      <div className="h-8 bg-slate-50/60"></div>
 
       {/* 4. Copper Cabling */}
-      <section id="copper-cabling" className="py-20 bg-gradient-to-b from-orange-50/30 to-white">
+      <section id="copper-cabling" className="py-12 bg-gradient-to-b from-orange-50/30 to-white">
         <div className="container mx-auto px-4">
           <div className="flex items-center gap-4 mb-12">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 text-white">
@@ -476,7 +476,7 @@ export default function ProductsPage() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-orange-500/20 to-amber-500/20 rounded-3xl blur-xl"></div>
               <Image
-                src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/structured-cabling.webp"
+                src="/images/products/turnkey/06-cabling-solutions.png"
                 alt="71 Series Cat6A patch cord"
                 width={600}
                 height={600}
@@ -489,10 +489,10 @@ export default function ProductsPage() {
       </section>
 
       {/* Separator */}
-      <div className="border-t border-slate-200"></div>
+      <div className="h-8 bg-slate-50/60"></div>
 
       {/* 5. Power & Rack Infrastructure */}
-      <section id="power-rack-infrastructure" className="py-20 bg-white">
+      <section id="power-rack-infrastructure" className="py-12 bg-gradient-to-b from-rose-50/30 to-white">
         <div className="container mx-auto px-4">
           <div className="flex items-center gap-4 mb-12">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-red-500 to-red-600 text-white">
@@ -564,10 +564,10 @@ export default function ProductsPage() {
       </section>
 
       {/* Separator */}
-      <div className="border-t border-slate-200"></div>
+      <div className="h-8 bg-slate-50/60"></div>
 
       {/* 6. Testing & Lab Solutions */}
-      <section id="testing-lab-solutions" className="py-20 bg-gradient-to-b from-indigo-50/30 to-white">
+      <section id="testing-lab-solutions" className="py-12 bg-gradient-to-b from-indigo-50/30 to-white">
         <div className="container mx-auto px-4">
           <div className="flex items-center gap-4 mb-12">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-indigo-600 text-white">
@@ -639,10 +639,10 @@ export default function ProductsPage() {
       </section>
 
       {/* Separator */}
-      <div className="border-t border-slate-200"></div>
+      <div className="h-8 bg-slate-50/60"></div>
 
       {/* 7. Accessories */}
-      <section id="accessories" className="py-20 bg-white">
+      <section id="accessories" className="py-12 bg-gradient-to-b from-teal-50/30 to-white">
         <div className="container mx-auto px-4">
           <div className="flex items-center gap-4 mb-12">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-teal-500 to-teal-600 text-white">
@@ -714,10 +714,10 @@ export default function ProductsPage() {
       </section>
 
       {/* Separator */}
-      <div className="border-t border-slate-200"></div>
+      <div className="h-8 bg-slate-50/60"></div>
 
       {/* Custom Solutions CTA */}
-      <section className="py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white relative overflow-hidden">
+      <section className="py-12 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/images/hero-background.png')] bg-cover bg-center opacity-10"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
@@ -748,9 +748,9 @@ export default function ProductsPage() {
       </section>
 
       {/* Support Section */}
-      <section className="py-20 bg-gradient-to-b from-slate-50 to-white">
+      <section className="py-12 bg-gradient-to-b from-slate-50 to-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <Badge className="mb-4 bg-slate-100 text-slate-700 border-slate-200">Product Support</Badge>
             <h2 className="text-4xl font-bold text-slate-900 mb-6">Comprehensive Support & Services</h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
@@ -819,7 +819,7 @@ export default function ProductsPage() {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+      <section className="py-12 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Upgrade to High-Speed Infrastructure?</h2>
           <p className="text-xl mb-10 text-blue-100 max-w-3xl mx-auto leading-relaxed">

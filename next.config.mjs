@@ -20,6 +20,15 @@ const nextConfig = {
       allowedOrigins: ['localhost:3000', '*.vercel.app'],
     },
   },
+  async redirects() {
+    return [
+      {
+        source: '/solutions',
+        destination: '/',
+        permanent: true, // 301 redirect
+      },
+    ]
+  },
 }
 
 export default nextConfig
