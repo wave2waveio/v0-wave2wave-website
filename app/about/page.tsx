@@ -28,7 +28,7 @@ export default function AboutPage() {
             {/* Heading */}
             {/* Logo */}
             <Image
-              src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/wave2wave-logo.png"
+              src="/images/design-mode/wave2wave.png"
               alt="Wave2Wave.io"
               width={300}
               height={90}
@@ -81,7 +81,7 @@ export default function AboutPage() {
             </div>
             <div className="bg-slate-100 rounded-lg p-8 text-center">
               <Image
-                src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/our-team.png"
+                src="/images/design-mode/our.png"
                 alt="Wave2Wave.io Team Working in Data Center"
                 width={500}
                 height={400}

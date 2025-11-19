@@ -107,7 +107,7 @@ export function RotatingHeroSection({
       {/* Content */}
       <div className={`relative z-10 container mx-auto px-4 ${textAlign}`}>
         <div className={`max-w-4xl mx-auto flex flex-col ${itemsAlign} gap-6`}>
-          <h1 className="text-5xl md:text-6xl font-bold text-white drop-shadow-lg">{title}</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-white drop-shadow-lg">{title}</h1>
           <p className="text-lg md:text-xl text-white/95 max-w-3xl drop-shadow-md">
             {subtitle}
           </p>

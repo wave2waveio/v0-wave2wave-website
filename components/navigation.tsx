@@ -32,7 +32,7 @@ export function Navigation() {
         <div className="flex h-20 items-center justify-between">
           <Link href="/" className="flex items-center">
             <Image
-              src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/wave2wave_logo_anchorcraft_business.png"
+              src="/images/design-mode/wave2wave_logo_anchorcraft_business.png"
               alt="Wave2Wave.io"
               width={200}
               height={50}

@@ -109,7 +109,7 @@ export function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-4">
               <Image
-                src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/wave2wave_logo_anchorcraft_business.png"
+                src="/images/design-mode/wave2wave_logo_anchorcraft_business.png"
                 alt="Wave2Wave.io"
                 width={150}
                 height={40}
