@@ -4,7 +4,7 @@ import type { Metadata } from "next"
 import { RotatingHeroSection } from "@/components/RotatingHeroSection"
 import { FeatureBlock } from "@/components/FeatureBlock"
 import { CTASection } from "@/components/CTASection"
-import { Ruler, Tag, Package, Shield, Truck } from "lucide-react"
+import { PencilRuler, ScanBarcode, Boxes, ShieldCheck, Globe } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: "Solutions | Wave2Wave – AI-Ready Data Center Cabling & Infrastructure",
@@ -72,29 +72,34 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             <FeatureBlock
-              icon={<Ruler className="h-6 w-6 text-primary" />}
+              icon={<PencilRuler className="h-6 w-6 text-blue-600" />}
               title="Custom Cable Engineering"
               description="Every cable system engineered to exact specifications (3-inch increments) – no off-the-shelf compromises. Built to your rack geometry for perfect airflow and fit."
+              className="border-t-4 border-t-blue-500 bg-slate-50/50 hover:bg-white"
             />
             <FeatureBlock
-              icon={<Tag className="h-6 w-6 text-primary" />}
+              icon={<ScanBarcode className="h-6 w-6 text-indigo-600" />}
               title="Factory Labeling & Identification"
               description="Zero field errors and 50-75% faster installs. Every cable ships pre-labeled to your rack and port map – installers just plug in. Installs in days, audits in minutes."
+              className="border-t-4 border-t-indigo-500 bg-slate-50/50 hover:bg-white"
             />
             <FeatureBlock
-              icon={<Package className="h-6 w-6 text-primary" />}
+              icon={<Boxes className="h-6 w-6 text-cyan-600" />}
               title="Advanced Deployment Kitting"
               description="Rack-specific, pre-kitted cables organized by installation phase. No sorting, no waste – cutting installation time by 50-75% and bringing GPU clusters online weeks earlier."
+              className="border-t-4 border-t-cyan-500 bg-slate-50/50 hover:bg-white"
             />
             <FeatureBlock
-              icon={<Shield className="h-6 w-6 text-primary" />}
+              icon={<ShieldCheck className="h-6 w-6 text-teal-600" />}
               title="100% Quality Assurance"
               description="Every assembly factory-tested and certified for mission-critical reliability. Insertion loss <0.35dB for fiber, TDR verification for copper, bit error rate <1E-12 for AI workloads."
+              className="border-t-4 border-t-teal-500 bg-slate-50/50 hover:bg-white"
             />
             <FeatureBlock
-              icon={<Truck className="h-6 w-6 text-primary" />}
+              icon={<Globe className="h-6 w-6 text-sky-600" />}
               title="Fast Global Delivery"
               description="3-4 week typical delivery – much faster than 8-12 week industry norms. From design to deployment, we move at the speed your infrastructure demands."
+              className="border-t-4 border-t-sky-500 bg-slate-50/50 hover:bg-white"
             />
           </div>
         </div>

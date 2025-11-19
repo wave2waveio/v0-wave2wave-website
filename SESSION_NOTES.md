@@ -95,7 +95,7 @@
 
 ## Git Status at Session Start
 
-```
+\`\`\`
 Current branch: 2025-11-17_redesign
 Main branch: main
 
@@ -104,7 +104,7 @@ M app/products/page.tsx
 
 Untracked:
 ?? .DS_Store
-```
+\`\`\`
 
 ---
 *Session completed: Navigation fixed, High Performance Optics page created and working*
