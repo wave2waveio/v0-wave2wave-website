@@ -39,7 +39,7 @@ export default function Cat6AVsCat8Page() {
             </div>
 
             <Image
-              src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/cat6a-vs-cat8-comparison.png"
+              src="/images/design-mode/cat6a-vs-cat8.png"
               alt="Evolution of Ethernet cable categories from CAT1 to CAT8.2 showing speed capabilities, frequencies, and internal wire configurations"
               width={800}
               height={400}
