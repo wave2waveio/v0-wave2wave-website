@@ -131,7 +131,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <RotatingHeroSection
         title="Connecting the Physical Backbone of the AI & Datacenter Era"
-        subtitle="Engineered cabling systems to simplfy Cabling, Power and Connectivity – custom-built, pre-labeled, and deployment-ready."
+        subtitle="Engineered cabling systems that simplfy Cabling, Power and Connectivity – custom-built, pre-labeled, and deployment-ready."
         images={heroImages}
         height="tall"
       />
