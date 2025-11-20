@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight } from "lucide-react"
 
 interface RotatingHeroProps {
   title: string
@@ -107,16 +107,10 @@ export function RotatingHeroSection({
       {/* Content */}
       <div className={`relative z-10 container mx-auto px-4 ${textAlign}`}>
         <div className={`max-w-4xl mx-auto flex flex-col ${itemsAlign} gap-6`}>
-          <h1 className="text-4xl md:text-5xl font-bold text-white drop-shadow-lg">{title}</h1>
-          <p className="text-lg md:text-xl text-white/95 max-w-3xl drop-shadow-md">
-            {subtitle}
-          </p>
+          <h1 className="text-4xl md:text-6xl font-bold text-white drop-shadow-lg leading-tight">{title}</h1>
+          <p className="text-lg md:text-xl text-white/95 max-w-3xl drop-shadow-md">{subtitle}</p>
           {ctaText && (
-            <Button
-              size="lg"
-              className="mt-4 bg-primary hover:bg-primary-blue-dark text-white shadow-lg"
-              asChild
-            >
+            <Button size="lg" className="mt-4 bg-primary hover:bg-primary-blue-dark text-white shadow-lg" asChild>
               <Link href={ctaLink}>{ctaText}</Link>
             </Button>
           )}

@@ -39,7 +39,7 @@ export default function Cabling123Page() {
             {/* Cabling123 Logo */}
             <div className="mb-8">
               <Image
-                src="/images/design-mode/cabling123.png"
+                src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/cabling123-logo.png"
                 alt="Cabling123 - A Wave2Wave Company"
                 width={400}
                 height={200}
@@ -105,7 +105,7 @@ export default function Cabling123Page() {
                 <CardHeader className="text-center">
                   <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
                     <Image
-                      src="/images/design-mode/icon-digital.png"
+                      src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/icons/icon-digital-twin03.png"
                       alt="DCIM Services"
                       width={24}
                       height={24}
@@ -126,7 +126,7 @@ export default function Cabling123Page() {
                 <CardHeader className="text-center">
                   <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
                     <Image
-                      src="/images/design-mode/icon-fast.png"
+                      src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/icons/icon-fast-carrier.png"
                       alt="Advanced Kitting"
                       width={24}
                       height={24}
@@ -147,7 +147,7 @@ export default function Cabling123Page() {
                 <CardHeader className="text-center">
                   <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
                     <Image
-                      src="/images/design-mode/icon.png"
+                      src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/icons/icon-efficient02.png"
                       alt="OEM Solutions"
                       width={24}
                       height={24}

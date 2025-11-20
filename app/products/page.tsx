@@ -171,7 +171,7 @@ export default function ProductsPage() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-3xl blur-xl"></div>
               <Image
-                src="/images/design-mode/QSFPto4SFP1728.jpg"
+                src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/QSFPto4SFP1728.jpg"
                 alt="QSFP to 4x SFP breakout cables"
                 width={600}
                 height={600}
@@ -326,7 +326,7 @@ export default function ProductsPage() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-3xl blur-xl"></div>
               <Image
-                src="/images/design-mode/MTP_Bundle.jpg"
+                src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/MTP_Bundle.jpg"
                 alt="MTP/MPO fiber optic cable"
                 width={600}
                 height={600}
@@ -508,7 +508,7 @@ export default function ProductsPage() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-red-500/20 to-rose-500/20 rounded-3xl blur-xl"></div>
               <Image
-                src="/images/design-mode/rackandstack.png"
+                src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/product/C123/rackandstack.png"
                 alt="Data center rack and stack infrastructure"
                 width={600}
                 height={600}
@@ -626,7 +626,7 @@ export default function ProductsPage() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-indigo-500/20 to-blue-500/20 rounded-3xl blur-xl"></div>
               <Image
-                src="/images/design-mode/Ganged_Loopback.jpg"
+                src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/product/Loopback/Ganged_Loopback.jpg"
                 alt="Loopback modules and Fiber-in-a-Box"
                 width={600}
                 height={600}
@@ -658,7 +658,7 @@ export default function ProductsPage() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-teal-500/20 to-cyan-500/20 rounded-3xl blur-xl"></div>
               <Image
-                src="/images/design-mode/cleaning_cable.jpg"
+                src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/cleaning_cable-labels.jpg"
                 alt="Cable labels, cleaning tools, and RFID tags"
                 width={600}
                 height={600}

@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { ReactNode } from "react"
+import type { ReactNode } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
 
@@ -12,9 +12,10 @@ interface FeatureBlockProps {
     text: string
   }
   className?: string
+  iconContainerClassName?: string
 }
 
-export function FeatureBlock({ icon, title, description, link, className }: FeatureBlockProps) {
+export function FeatureBlock({ icon, title, description, link, className, iconContainerClassName }: FeatureBlockProps) {
   return (
     <Card
       className={cn(
@@ -24,7 +25,12 @@ export function FeatureBlock({ icon, title, description, link, className }: Feat
     >
       <CardHeader className="text-center">
         {icon && (
-          <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
+          <div
+            className={cn(
+              "w-12 h-12 rounded-lg flex items-center justify-center mb-4 mx-auto",
+              iconContainerClassName || "bg-blue-100",
+            )}
+          >
             {typeof icon === "string" ? (
               <Image src={icon || "/placeholder.svg"} alt="" width={24} height={24} className="h-6 w-6" />
             ) : (

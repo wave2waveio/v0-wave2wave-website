@@ -299,7 +299,7 @@ function Introduction() {
           <div className="relative">
             <div className="aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
               <ImageWithFallback
-                src="/images/design-mode/EXO2-down.jpeg"
+                src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/EXO2-down-1.jpeg"
                 alt="Fiber optic cables technology"
                 className="h-full w-full object-cover"
               />
@@ -446,7 +446,7 @@ function ProductOverview() {
               <CardContent className="space-y-6">
                 <div className="aspect-video overflow-hidden rounded-lg">
                   <ImageWithFallback
-                    src="/images/design-mode/Future-proof-design-cassettes-closeup.jpg"
+                    src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/Future-proof-design-cassettes-closeup-lg.jpg"
                     alt="Server rack in data center"
                     className="h-full w-full object-cover"
                   />
@@ -513,7 +513,7 @@ function ProductOverview() {
               <CardContent className="space-y-6">
                 <div className="aspect-video overflow-hidden rounded-lg">
                   <ImageWithFallback
-                    src="/images/design-mode/Gallery-10.jpeg"
+                    src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/Gallery-10-qr05vdavaud0u8xmm9o0wtn33chgs33v435fpvp0cg.jpeg"
                     alt="AI artificial intelligence technology"
                     className="h-full w-full object-cover"
                   />

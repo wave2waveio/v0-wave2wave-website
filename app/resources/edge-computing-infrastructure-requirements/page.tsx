@@ -39,7 +39,7 @@ export default function EdgeComputingInfrastructurePage() {
             </div>
 
             <Image
-              src="/images/design-mode/oem.png"
+              src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/oem-solutions.png"
               alt="Edge Computing Infrastructure"
               width={800}
               height={400}
