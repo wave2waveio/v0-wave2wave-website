@@ -4,16 +4,16 @@ import { FeatureBlock } from "@/components/FeatureBlock"
 import { CTASection } from "@/components/CTASection"
 
 export const metadata: Metadata = {
-  title: "High Performance Optics | Wave2Wave - AOC, AEC, DAC & Transceivers",
+  title: "High Speed Interconnect | Wave2Wave - AOC, AEC, DAC & Transceivers",
   description:
     "Wave2Wave high-speed optical solutions: Active Optical Cables (AOC), Active Electrical Cables (AEC), Direct Attach Copper (DAC), and optical transceivers for 10G-800G networks.",
 }
 
-export default function HighPerformanceOpticsPage() {
+export default function HighSpeedInterconnectPage() {
   return (
     <div className="flex flex-col min-h-screen">
       <HeroSection
-        title="High Performance Optics - Factory-Terminated for Speed and Reliability"
+        title="High Speed Interconnect - Factory-Terminated for Speed and Reliability"
         subtitle="Active Optical, Active Electrical and Direct Attach Cables (AOC/AEC/DAC) plus Optical Transceivers for 10G-800G applications."
         backgroundImage="/images/hero/01-hero-image-1.png"
       />
@@ -30,7 +30,8 @@ export default function HighPerformanceOpticsPage() {
             <div className="bg-blue-50 p-6 rounded-lg mb-12">
               <h3 className="text-xl font-semibold mb-3">Typical Deployments:</h3>
               <p className="text-slate-700">
-                GPU and AI fabric clusters, hyperscale and colocation data centers, HPC interconnects, and Ethernet/InfiniBand spine-leaf architectures where latency and density are critical.
+                GPU and AI fabric clusters, hyperscale and colocation data centers, HPC interconnects, and
+                Ethernet/InfiniBand spine-leaf architectures where latency and density are critical.
               </p>
             </div>
 
@@ -180,7 +181,8 @@ export default function HighPerformanceOpticsPage() {
             <div className="bg-green-50 p-6 rounded-lg mb-12">
               <h3 className="text-xl font-semibold mb-3">Typical Deployments:</h3>
               <p className="text-slate-700">
-                Enterprise and hyperscale data centers, AI/GPU clusters, and telecom networks - enabling 10G-800G optical connectivity for spine-leaf, inter-rack, and long-reach applications.
+                Enterprise and hyperscale data centers, AI/GPU clusters, and telecom networks - enabling 10G-800G
+                optical connectivity for spine-leaf, inter-rack, and long-reach applications.
               </p>
             </div>
 
@@ -218,7 +220,8 @@ export default function HighPerformanceOpticsPage() {
               <div className="bg-white border-2 border-slate-200 p-6 rounded-lg">
                 <h4 className="font-semibold mb-3">Platform Compatibility:</h4>
                 <p className="text-slate-700">
-                  Fully coded and validated for Cisco, Arista, Juniper, Dell, HPE, NVIDIA, and other major switch/NIC OEMs.
+                  Fully coded and validated for Cisco, Arista, Juniper, Dell, HPE, NVIDIA, and other major switch/NIC
+                  OEMs.
                 </p>
               </div>
 
@@ -238,7 +241,7 @@ export default function HighPerformanceOpticsPage() {
 
       {/* CTA Section */}
       <CTASection
-        title="Need High Performance Optical Solutions?"
+        title="Need High Speed Optical Solutions?"
         subtitle="Contact us to discuss your AOC, AEC, DAC, or transceiver requirements and receive a custom quote."
         primaryButtonText="Request Optics Quote"
         primaryButtonLink="/contact"

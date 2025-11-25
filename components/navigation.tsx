@@ -5,12 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Menu, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import Image from "next/image"
@@ -79,14 +74,14 @@ export function Navigation() {
               Deployment Services
             </Link>
 
-            {/* High Performance Optics */}
+            {/* High Speed Interconnect */}
             <Link
-              href="/high-performance-optics"
+              href="/high-speed-interconnect"
               className={`inline-flex h-9 items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:text-primary ${
-                isActive("/high-performance-optics") ? "text-primary" : ""
+                isActive("/high-speed-interconnect") ? "text-primary" : ""
               }`}
             >
-              High Performance Optics
+              High Speed Interconnect
             </Link>
 
             {/* Fiber */}
@@ -236,27 +231,17 @@ export function Navigation() {
                   </AccordionItem>
                 </Accordion>
 
-                <Link
-                  href="/deployment-services"
-                  className="text-lg font-medium"
-                  onClick={() => setIsOpen(false)}
-                >
+                <Link href="/deployment-services" className="text-lg font-medium" onClick={() => setIsOpen(false)}>
                   Deployment Services
                 </Link>
 
-                <Link
-                  href="/high-performance-optics"
-                  className="text-lg font-medium"
-                  onClick={() => setIsOpen(false)}
-                >
-                  High Performance Optics
+                <Link href="/high-speed-interconnect" className="text-lg font-medium" onClick={() => setIsOpen(false)}>
+                  High Speed Interconnect
                 </Link>
 
                 <Accordion type="single" collapsible className="w-full">
                   <AccordionItem value="fiber" className="border-b-0">
-                    <AccordionTrigger className="text-lg font-medium py-0 hover:no-underline">
-                      Fiber
-                    </AccordionTrigger>
+                    <AccordionTrigger className="text-lg font-medium py-0 hover:no-underline">Fiber</AccordionTrigger>
                     <AccordionContent className="pb-2">
                       <Link
                         href="/fiber"
@@ -331,19 +316,11 @@ export function Navigation() {
                   </AccordionItem>
                 </Accordion>
 
-                <Link
-                  href="/company"
-                  className="text-lg font-medium"
-                  onClick={() => setIsOpen(false)}
-                >
+                <Link href="/company" className="text-lg font-medium" onClick={() => setIsOpen(false)}>
                   Company
                 </Link>
 
-                <Link
-                  href="/contact"
-                  className="text-lg font-medium"
-                  onClick={() => setIsOpen(false)}
-                >
+                <Link href="/contact" className="text-lg font-medium" onClick={() => setIsOpen(false)}>
                   Contact
                 </Link>
 
