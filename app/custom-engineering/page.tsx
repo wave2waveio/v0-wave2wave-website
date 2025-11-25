@@ -251,8 +251,8 @@ export default function CustomEngineeringPage() {
         </div>
       </section>
 
-      {/* DC Twin Callout */}
-      <section className="py-20 bg-gradient-to-br from-blue-600 to-indigo-700 text-white">
+      {/* DC Twin Callout - Updated from purple/indigo gradient to blue/charcoal */}
+      <section className="py-20 bg-gradient-to-br from-[#0072CE] to-[#333333] text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h3 className="text-3xl font-bold mb-6">Before we build any cable, we can design it virtually.</h3>
@@ -260,7 +260,11 @@ export default function CustomEngineeringPage() {
               Learn about our DC Twin™ digital modeling platform that creates a virtual replica of your data hall,
               validates every cable route, and eliminates surprises before production.
             </p>
-            <Button size="lg" asChild className="bg-white text-blue-600 hover:bg-blue-50 border-none h-14 px-8 text-lg">
+            <Button
+              size="lg"
+              asChild
+              className="bg-white text-[#0072CE] hover:bg-blue-50 border-none h-14 px-8 text-lg"
+            >
               <Link href="/custom-engineering/dc-twin">Explore DC Twin™ →</Link>
             </Button>
           </div>

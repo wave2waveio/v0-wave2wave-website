@@ -148,39 +148,39 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             <FeatureBlock
-              icon={<Cpu className="h-6 w-6 text-blue-600" />}
+              icon={<Cpu className="h-6 w-6 text-[#0072CE]" />}
               title="Custom Cable Engineering"
               description="Every cable system engineered to exact specifications (3-inch increments) – no off-the-shelf compromises. Built to your rack geometry for perfect airflow and fit."
-              className="border-t-4 border-t-blue-500 bg-slate-50/50 hover:bg-white border-x border-b border-slate-200"
-              iconContainerClassName="bg-blue-100"
+              className="border-t-4 border-t-[#0072CE] bg-slate-50/50 hover:bg-white border-x border-b border-slate-200"
+              iconContainerClassName="bg-[#0072CE]/10"
             />
             <FeatureBlock
-              icon={<ScanLine className="h-6 w-6 text-indigo-600" />}
+              icon={<ScanLine className="h-6 w-6 text-[#005BA4]" />}
               title="Factory Labeling & Identification"
               description="Zero field errors and 50-75% faster installs. Every cable ships pre-labeled to your rack and port map – installers just plug in. Installs in days, audits in minutes."
-              className="border-t-4 border-t-indigo-500 bg-slate-50/50 hover:bg-white border-x border-b border-slate-200"
-              iconContainerClassName="bg-indigo-100"
+              className="border-t-4 border-t-[#005BA4] bg-slate-50/50 hover:bg-white border-x border-b border-slate-200"
+              iconContainerClassName="bg-[#005BA4]/10"
             />
             <FeatureBlock
-              icon={<PackageCheck className="h-6 w-6 text-cyan-600" />}
+              icon={<PackageCheck className="h-6 w-6 text-[#0090FF]" />}
               title="Advanced Deployment Kitting"
               description="Rack-specific, pre-kitted cables organized by installation phase. No sorting, no waste – cutting installation time by 50-75% and bringing GPU clusters online weeks earlier."
-              className="border-t-4 border-t-cyan-500 bg-slate-50/50 hover:bg-white border-x border-b border-slate-200"
-              iconContainerClassName="bg-cyan-100"
+              className="border-t-4 border-t-[#0090FF] bg-slate-50/50 hover:bg-white border-x border-b border-slate-200"
+              iconContainerClassName="bg-[#0090FF]/10"
             />
             <FeatureBlock
-              icon={<ClipboardCheck className="h-6 w-6 text-teal-600" />}
+              icon={<ClipboardCheck className="h-6 w-6 text-[#333333]" />}
               title="100% Quality Assurance"
               description="Every assembly factory-tested and certified for mission-critical reliability. Insertion loss <0.35dB for fiber, TDR verification for copper, bit error rate <1E-12 for AI workloads."
-              className="border-t-4 border-t-teal-500 bg-slate-50/50 hover:bg-white border-x border-b border-slate-200"
-              iconContainerClassName="bg-teal-100"
+              className="border-t-4 border-t-[#333333] bg-slate-50/50 hover:bg-white border-x border-b border-slate-200"
+              iconContainerClassName="bg-[#333333]/10"
             />
             <FeatureBlock
-              icon={<Rocket className="h-6 w-6 text-sky-600" />}
+              icon={<Rocket className="h-6 w-6 text-[#4D4D4D]" />}
               title="Fast Global Delivery"
               description="3-4 week typical delivery – much faster than 8-12 week industry norms. From design to deployment, we move at the speed your infrastructure demands."
-              className="border-t-4 border-t-sky-500 bg-slate-50/50 hover:bg-white border-x border-b border-slate-200"
-              iconContainerClassName="bg-sky-100"
+              className="border-t-4 border-t-[#4D4D4D] bg-slate-50/50 hover:bg-white border-x border-b border-slate-200"
+              iconContainerClassName="bg-[#4D4D4D]/10"
             />
           </div>
         </div>
@@ -201,19 +201,19 @@ export default function HomePage() {
           <div className="max-w-6xl mx-auto space-y-12">
             {/* Enterprise Data Centers */}
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="bg-white p-6 rounded-lg border-l-4 border-blue-500 shadow-sm">
-                <h3 className="mb-4 text-blue-900">Enterprise Data Centers & Engineering Labs</h3>
+              <div className="bg-white p-6 rounded-lg border-l-4 border-[#0072CE] shadow-sm">
+                <h3 className="mb-4 text-[#005BA4]">Enterprise Data Centers & Engineering Labs</h3>
                 <ul className="space-y-3 text-slate-700">
                   <li className="flex items-start">
-                    <span className="text-primary mr-2 mt-1">•</span>
+                    <span className="text-[#0072CE] mr-2 mt-1">•</span>
                     <span>Rack-ready kits labeled by cabinet/port to enable 50-75% faster installs</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-primary mr-2 mt-1">•</span>
+                    <span className="text-[#0072CE] mr-2 mt-1">•</span>
                     <span>Mix-and-match bundles (10G copper, 25G/100G/400G fiber) delivered as single SKUs</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-primary mr-2 mt-1">•</span>
+                    <span className="text-[#0072CE] mr-2 mt-1">•</span>
                     <span>Modular fiber patch panels that allow protocol upgrades without re-cabling</span>
                   </li>
                 </ul>
@@ -238,21 +238,21 @@ export default function HomePage() {
                   className="object-cover"
                 />
               </div>
-              <div className="md:order-2 bg-white p-6 rounded-lg border-l-4 border-green-500 shadow-sm">
-                <h3 className="mb-4 text-green-900">AI & GPU Cluster Data Centers</h3>
+              <div className="md:order-2 bg-white p-6 rounded-lg border-l-4 border-[#005BA4] shadow-sm">
+                <h3 className="mb-4 text-[#005BA4]">AI & GPU Cluster Data Centers</h3>
                 <ul className="space-y-3 text-slate-700">
                   <li className="flex items-start">
-                    <span className="text-primary mr-2 mt-1">•</span>
+                    <span className="text-[#005BA4] mr-2 mt-1">•</span>
                     <span>
                       NVIDIA-validated harnesses for DGX/HGX GPU clusters (400G/800G InfiniBand and Ethernet fabrics)
                     </span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-primary mr-2 mt-1">•</span>
+                    <span className="text-[#005BA4] mr-2 mt-1">•</span>
                     <span>Factory-tested for deployments from 8 to 1000+ nodes</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-primary mr-2 mt-1">•</span>
+                    <span className="text-[#005BA4] mr-2 mt-1">•</span>
                     <span>Custom polarity management to eliminate the #1 cause of AI network errors</span>
                   </li>
                 </ul>
@@ -261,27 +261,27 @@ export default function HomePage() {
 
             {/* Hyperscale & Cloud */}
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="bg-white p-6 rounded-lg border-l-4 border-purple-500 shadow-sm">
-                <h3 className="mb-4 text-purple-900">Hyperscale & Cloud Networks</h3>
+              <div className="bg-white p-6 rounded-lg border-l-4 border-[#333333] shadow-sm">
+                <h3 className="mb-4 text-[#333333]">Hyperscale & Cloud Networks</h3>
                 <ul className="space-y-3 text-slate-700">
                   <li className="flex items-start">
-                    <span className="text-primary mr-2 mt-1">•</span>
+                    <span className="text-[#333333] mr-2 mt-1">•</span>
                     <span>
                       Modular patch panel systems supporting 10G → 400G → 800G migrations without replacing cabling
                     </span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-primary mr-2 mt-1">•</span>
+                    <span className="text-[#333333] mr-2 mt-1">•</span>
                     <span>Spine-leaf kitting that reduces hundreds of SKUs into turnkey assemblies</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-primary mr-2 mt-1">•</span>
+                    <span className="text-[#333333] mr-2 mt-1">•</span>
                     <span>End-to-end solutions that scale with next-gen (800G/1.6T) architectures</span>
                   </li>
                 </ul>
                 <Link
                   href="/fiber/hyperscalers"
-                  className="inline-block mt-4 text-primary hover:text-primary-blue-dark font-medium"
+                  className="inline-block mt-4 text-[#0072CE] hover:text-[#005BA4] font-medium"
                 >
                   Learn more about hyperscale fiber solutions →
                 </Link>
@@ -306,19 +306,19 @@ export default function HomePage() {
                   className="object-cover"
                 />
               </div>
-              <div className="md:order-2 bg-white p-6 rounded-lg border-l-4 border-orange-500 shadow-sm">
-                <h3 className="mb-4 text-orange-900">Telecom & Fiber-to-the-Home (FTTH)</h3>
+              <div className="md:order-2 bg-white p-6 rounded-lg border-l-4 border-[#0090FF] shadow-sm">
+                <h3 className="mb-4 text-[#005BA4]">Telecom & Fiber-to-the-Home (FTTH)</h3>
                 <ul className="space-y-3 text-slate-700">
                   <li className="flex items-start">
-                    <span className="text-primary mr-2 mt-1">•</span>
+                    <span className="text-[#0090FF] mr-2 mt-1">•</span>
                     <span>Pre-connectorized assemblies that cut truck rolls by 40%</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-primary mr-2 mt-1">•</span>
+                    <span className="text-[#0090FF] mr-2 mt-1">•</span>
                     <span>Compliance with government standards for broadband projects</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-primary mr-2 mt-1">•</span>
+                    <span className="text-[#0090FF] mr-2 mt-1">•</span>
                     <span>Quick-connect fiber solutions for rapid outdoor deployments</span>
                   </li>
                 </ul>
