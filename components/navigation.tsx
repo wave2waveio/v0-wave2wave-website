@@ -74,16 +74,6 @@ export function Navigation() {
               Deployment Services
             </Link>
 
-            {/* High Speed Interconnect */}
-            <Link
-              href="/high-speed-interconnect"
-              className={`inline-flex h-9 items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:text-primary ${
-                isActive("/high-speed-interconnect") ? "text-primary" : ""
-              }`}
-            >
-              High Speed Interconnect
-            </Link>
-
             {/* Fiber */}
             <DropdownMenu>
               <DropdownMenuTrigger className="inline-flex h-9 items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:text-primary focus:outline-none">
@@ -117,6 +107,16 @@ export function Navigation() {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
+
+            {/* High Speed Interconnect */}
+            <Link
+              href="/high-speed-interconnect"
+              className={`inline-flex h-9 items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:text-primary ${
+                isActive("/high-speed-interconnect") ? "text-primary" : ""
+              }`}
+            >
+              High Speed Interconnect
+            </Link>
 
             {/* Ethernet */}
             <DropdownMenu>
