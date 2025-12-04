@@ -18,7 +18,7 @@ export function Navigation() {
           <Link href="/" className="flex items-center space-x-2">
             <div className="flex items-center">
               <Image
-                src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/wave2wave_logo_anchorcraft_business.png"
+                src="/images/design-mode/wave2wave_logo_anchorcraft_business.png"
                 alt="Wave2Wave.io"
                 className="h-12 md:h-14 w-auto object-contain"
                 unoptimized

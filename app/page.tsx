@@ -71,7 +71,7 @@ export default function HomePage() {
               <CardHeader className="text-center">
                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
                   <Image
-                    src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/icons/icon-fiber-optic.png"
+                    src="/images/design-mode/icon-fiber.png"
                     alt="Custom Engineering"
                     width={24}
                     height={24}
@@ -95,7 +95,7 @@ export default function HomePage() {
               <CardHeader className="text-center">
                 <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
                   <Image
-                    src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/icons/icon-diamond-quality.png"
+                    src="/images/design-mode/icon-diamond.png"
                     alt="Quality Assurance"
                     width={24}
                     height={24}
@@ -119,7 +119,7 @@ export default function HomePage() {
               <CardHeader className="text-center">
                 <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
                   <Image
-                    src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/icons/icon-fast-carrier.png"
+                    src="/images/design-mode/icon-fast.png"
                     alt="Fast Delivery"
                     width={24}
                     height={24}
@@ -139,7 +139,7 @@ export default function HomePage() {
               <CardHeader className="text-center">
                 <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
                   <Image
-                    src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/icons/icon-diamond-quality.png"
+                    src="/images/design-mode/icon-diamond.png"
                     alt="Great Pricing"
                     width={24}
                     height={24}
@@ -163,7 +163,7 @@ export default function HomePage() {
               <CardHeader className="text-center">
                 <div className="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
                   <Image
-                    src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/icons/icon-efficient02.png"
+                    src="/images/design-mode/icon.png"
                     alt="Value-Added Services for No Extra Cost"
                     width={24}
                     height={24}
@@ -187,7 +187,7 @@ export default function HomePage() {
               <CardHeader className="text-center">
                 <div className="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
                   <Image
-                    src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/icons/icon-efficient02.png"
+                    src="/images/design-mode/icon.png"
                     alt="Digital Twin Services"
                     width={24}
                     height={24}

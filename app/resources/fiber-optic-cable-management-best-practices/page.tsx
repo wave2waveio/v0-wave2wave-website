@@ -39,7 +39,7 @@ export default function FiberOpticCableManagementPage() {
             </div>
 
             <Image
-              src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/images/fiber-cable-management.jpeg"
+              src="/images/design-mode/fiber-cable.jpeg"
               alt="Professional fiber optic cable management in data center rack showing color-coded cables with proper bundling and routing"
               width={800}
               height={400}

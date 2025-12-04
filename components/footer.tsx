@@ -10,7 +10,7 @@ export function Footer() {
           <div>
             <div className="flex items-center mb-4">
               <Image
-                src="https://biezpt9rjogvsua7.public.blob.vercel-storage.com/public/wave2wave_logo_anchorcraft_business.png"
+                src="/images/design-mode/wave2wave_logo_anchorcraft_business.png"
                 alt="Wave2Wave.io"
                 width={200}
                 height={100}
