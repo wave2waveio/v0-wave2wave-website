@@ -66,7 +66,7 @@ export default function Cabling123Page() {
             <div className="grid md:grid-cols-2 gap-8 mb-12">
               <Card className="border-0 shadow-lg">
                 <CardHeader>
-                  <CardTitle className="text-xl text-green-600">✓ Same Trusted Service</CardTitle>
+                  <CardTitle className="text-xl text-black-600">✓ Same Trusted Service</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-base">
@@ -78,7 +78,7 @@ export default function Cabling123Page() {
 
               <Card className="border-0 shadow-lg">
                 <CardHeader>
-                  <CardTitle className="text-xl text-green-600">✓ Seamless Transition</CardTitle>
+                  <CardTitle className="text-xl text-black-600">✓ Seamless Transition</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-base">

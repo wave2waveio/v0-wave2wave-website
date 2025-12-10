@@ -387,7 +387,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold">Email</h3>
-                      <p className="text-slate-600">info@wave2wave.io</p>
+                      <p className="text-slate-600">sales@wave2wave.io</p>
                       <p className="text-sm text-slate-500">We respond within 24 hours</p>
                     </div>
                   </div>
