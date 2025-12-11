@@ -7,7 +7,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 const SURVICATE_URL = 'https://survey.survicate.com/0b81786631a86a8a/';
-const APPS_SCRIPT_URL = '"https://script.google.com/macros/s/AKfycbyLUPg4vJJ0w3FwvRtJpAf_CdDBNuS1dF5Je4wf2ZV7tKnojGmmyzTwTRxQwtanljI8/exec'; // Replace with your deployment URL
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyLUPg4vJJ0w3FwvRtJpAf_CdDBNuS1dF5Je4wf2ZV7tKnojGmmyzTwTRxQwtanljI8/exec'; // Replace with your deployment URL
 
 // App Router version
 export async function GET(request: NextRequest) {
