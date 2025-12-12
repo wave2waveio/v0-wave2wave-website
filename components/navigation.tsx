@@ -20,6 +20,8 @@ export function Navigation() {
               <Image
                 src="/images/design-mode/wave2wave_logo_anchorcraft_business.png"
                 alt="Wave2Wave.io"
+                width={200}
+                height={100}
                 className="h-12 md:h-14 w-auto object-contain"
                 unoptimized
               />
