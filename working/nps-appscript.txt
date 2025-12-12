@@ -1,0 +1,184 @@
+/**
+ * NPS Response Tracker - Google Apps Script
+ *
+ * This script receives NPS survey responses via POST from Next.js,
+ * logs them to a Google Sheet with 24 columns.
+ *
+ * Setup Instructions:
+ * 1. Create a new Google Sheet for tracking responses
+ * 2. Note the Sheet ID from the URL
+ * 3. Replace SHEET_ID below with your Sheet ID
+ * 4. Deploy as Web App:
+ *    - Execute as: Me
+ *    - Who has access: Anyone
+ * 5. Copy the deployment URL and use it in your Next.js API
+ */
+
+// CONFIGURATION - UPDATE THIS
+const SHEET_ID = '1lOLAtgFs0rNvbmxho3qX2xMEZGs7Ba8jL9H7xosNz8s'; // Replace with your Google Sheet ID
+const SHEET_NAME = 'NPS Responses'; // Name of the sheet tab
+
+/**
+ * Handle GET requests - for backwards compatibility
+ * Redirects to the Next.js survey page
+ */
+function doGet(e) {
+  const user = e.parameter.user || 'unknown';
+  const answer = e.parameter.answer || 'unknown';
+
+  // Redirect to Next.js survey page
+  const redirectUrl = 'https://wave2wave.io/nps-survey?email=' + encodeURIComponent(user) + '&initial_answer=' + encodeURIComponent(answer);
+  return HtmlService.createHtmlOutput('<script>window.location.href="' + redirectUrl + '";</script>');
+}
+
+/**
+ * Handle POST requests - accepts full survey data from Next.js API route
+ * Logs all 24 columns to Google Sheet and returns success
+ */
+function doPost(e) {
+  try {
+    // Parse incoming JSON data
+    const data = JSON.parse(e.postData.contents);
+
+    Logger.log('Received POST data: ' + JSON.stringify(data));
+
+    // Log to Google Sheet with all 24 columns
+    logSurveyResponse(data);
+
+    // Return success
+    return ContentService.createTextOutput(JSON.stringify({
+      success: true,
+      message: 'Survey response saved successfully'
+    })).setMimeType(ContentService.MimeType.JSON);
+
+  } catch (error) {
+    Logger.log('Error in doPost: ' + error.toString());
+    return ContentService.createTextOutput(JSON.stringify({
+      success: false,
+      error: error.toString()
+    })).setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+/**
+ * Log the full survey response to Google Sheet (24 columns)
+ */
+function logSurveyResponse(data) {
+  try {
+    const ss = SpreadsheetApp.openById(SHEET_ID);
+    let sheet = ss.getSheetByName(SHEET_NAME);
+
+    // Create sheet if it doesn't exist
+    if (!sheet) {
+      sheet = ss.insertSheet(SHEET_NAME);
+
+      // Add headers for all 24 columns
+      const headers = [
+        'Timestamp',                                                          // Column 1
+        'User Email',                                                         // Column 2
+        'Answer',                                                             // Column 3
+        'First Name',                                                         // Column 4
+        'Last Name',                                                          // Column 5
+        'Email',                                                              // Column 6
+        'Do you plan to order from Wave2Wave.io in the future?',            // Column 7
+        'How likely are you to recommend Wave2Wave to a colleague or peer?', // Column 8
+        'Which Wave2Wave products or services have you used?',               // Column 9
+        'Product quality',                                                    // Column 10
+        'Customization options',                                              // Column 11
+        'Delivery speed',                                                     // Column 12
+        'Labeling & documentation',                                           // Column 13
+        'Sales responsiveness',                                               // Column 14
+        'Technical support',                                                  // Column 15
+        'Pricing/value',                                                      // Column 16
+        'What could we improve?',                                             // Column 17
+        'Are there products or services you wish Wave2Wave offered that we currently don\'t?', // Column 18
+        'Do you have any upcoming projects where Wave2Wave could help?',     // Column 19
+        'Upcoming projects - Contact info',                                   // Column 20
+        'What best describes your role?',                                     // Column 21
+        'What type of organization do you work for?',                        // Column 22
+        'May we follow up with you about your feedback?',                   // Column 23
+        'Follow-up - Contact info'                                            // Column 24
+      ];
+
+      sheet.appendRow(headers);
+      sheet.getRange('A1:X1').setFontWeight('bold');
+      sheet.setFrozenRows(1);
+    }
+
+    // Prepare row data matching the exact 24 column structure
+    const rowData = [
+      data.timestamp || new Date().toISOString(),           // Column 1: Timestamp
+      data.user_email || '',                                // Column 2: User Email
+      data.answer || '',                                    // Column 3: Answer (from initial email response)
+      data.first_name || '',                                // Column 4: First Name
+      data.last_name || '',                                 // Column 5: Last Name
+      data.email || '',                                     // Column 6: Email
+      data.future_orders || '',                             // Column 7: Future orders
+      data.nps_rating || '',                                // Column 8: NPS rating
+      data.products_used || '',                             // Column 9: Products used
+      data.satisfaction_quality || '',                      // Column 10: Product quality
+      data.satisfaction_customization || '',                // Column 11: Customization
+      data.satisfaction_delivery || '',                     // Column 12: Delivery
+      data.satisfaction_labeling || '',                     // Column 13: Labeling
+      data.satisfaction_sales || '',                        // Column 14: Sales
+      data.satisfaction_support || '',                      // Column 15: Support
+      data.satisfaction_pricing || '',                      // Column 16: Pricing
+      data.improvements || '',                              // Column 17: Improvements
+      data.missing_products || '',                          // Column 18: Missing products
+      data.upcoming_projects || '',                         // Column 19: Upcoming projects
+      data.project_contact || '',                           // Column 20: Project contact
+      data.role || '',                                      // Column 21: Role
+      data.organization_type || '',                         // Column 22: Organization type
+      data.may_followup || '',                              // Column 23: May follow up
+      data.followup_contact || ''                           // Column 24: Follow-up contact
+    ];
+
+    // Append the response
+    sheet.appendRow(rowData);
+
+    // Auto-resize columns for readability
+    sheet.autoResizeColumns(1, 24);
+
+    Logger.log('Successfully logged survey response for: ' + (data.email || 'anonymous'));
+
+  } catch (error) {
+    Logger.log('Error logging to sheet: ' + error.toString());
+    throw error; // Re-throw to return error to caller
+  }
+}
+
+/**
+ * Test function - run this to verify sheet access works
+ */
+function testSetup() {
+  const testData = {
+    timestamp: new Date().toISOString(),
+    user_email: 'test@example.com',
+    answer: 'yes',
+    first_name: 'John',
+    last_name: 'Doe',
+    email: 'test@example.com',
+    future_orders: 'yes',
+    nps_rating: 5,
+    products_used: 'fiber, transceivers',
+    satisfaction_quality: 'Very Satisfied',
+    satisfaction_customization: 'Satisfied',
+    satisfaction_delivery: 'Satisfied',
+    satisfaction_labeling: 'Very Satisfied',
+    satisfaction_sales: 'Satisfied',
+    satisfaction_support: 'Satisfied',
+    satisfaction_pricing: 'Satisfied',
+    improvements: 'Everything is great!',
+    missing_products: 'None',
+    upcoming_projects: 'no',
+    project_contact: '',
+    role: 'Network / Infrastructure Engineer',
+    organization_type: 'Enterprise',
+    may_followup: 'yes',
+    followup_contact: 'test@example.com'
+  };
+
+  logSurveyResponse(testData);
+
+  Logger.log('Test completed! Check your Google Sheet.');
+}

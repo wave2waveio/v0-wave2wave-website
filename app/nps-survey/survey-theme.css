@@ -1,0 +1,234 @@
+/* Custom SurveyJS theme - Light form on dark background */
+
+/* Override SurveyJS default styles for light theme */
+.sd-root-modern {
+  background: white !important;
+  color: #1e293b !important;
+  border-radius: 8px !important;
+}
+
+/* Question titles */
+.sd-question__title {
+  color: #0f172a !important;
+  font-weight: 600 !important;
+}
+
+/* Radio buttons and checkboxes */
+.sd-item__control-label {
+  color: #0f172a !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+}
+
+/* Radio button items */
+.sd-selectbase__item {
+  color: #0f172a !important;
+}
+
+/* Make all radio/checkbox labels dark and visible */
+.sd-item label,
+.sd-radio label,
+.sd-checkbox label,
+.sd-item span,
+.sd-radio span,
+.sd-checkbox span {
+  color: #0f172a !important;
+  font-weight: 500 !important;
+}
+
+/* Input fields */
+.sd-input,
+.sd-comment {
+  background: white !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #0f172a !important;
+  border-radius: 6px !important;
+  padding: 8px 12px !important;
+}
+
+.sd-input:focus,
+.sd-comment:focus {
+  border-color: #0ea5e9 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1) !important;
+}
+
+/* Navigation buttons - Force visible styling */
+.sd-btn,
+.sd-navigation__next-btn,
+.sd-navigation__prev-btn,
+.sd-navigation__complete-btn,
+button[title="Next"],
+button[title="Complete"],
+button[title="Previous"] {
+  background: #0ea5e9 !important;
+  color: #ffffff !important;
+  border: none !important;
+  padding: 12px 32px !important;
+  border-radius: 8px !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+  text-shadow: none !important;
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.3) !important;
+}
+
+.sd-btn:hover,
+.sd-navigation__next-btn:hover,
+.sd-navigation__prev-btn:hover,
+.sd-navigation__complete-btn:hover,
+button[title="Next"]:hover,
+button[title="Complete"]:hover,
+button[title="Previous"]:hover {
+  background: #0284c7 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 16px rgba(14, 165, 233, 0.4) !important;
+}
+
+/* Specific targeting for SurveyJS button text */
+.sd-btn span,
+.sd-navigation__next-btn span,
+.sd-navigation__prev-btn span,
+.sd-navigation__complete-btn span {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+/* Progress bar */
+.sd-progress {
+  background: #e2e8f0 !important;
+}
+
+.sd-progress__bar {
+  background: linear-gradient(90deg, #0ea5e9 0%, #38bdf8 100%) !important;
+}
+
+/* Matrix table - Wider and more compact */
+.sd-table {
+  background: white !important;
+  width: 100% !important;
+  table-layout: auto !important;
+}
+
+.sd-table__cell {
+  color: #334155 !important;
+  border-color: #e2e8f0 !important;
+  padding: 6px 8px !important;
+}
+
+.sd-table tr:hover {
+  background: #f8fafc !important;
+}
+
+/* Make matrix responsive and prevent horizontal scrolling */
+.sd-matrix {
+  overflow-x: visible !important;
+  width: 100% !important;
+}
+
+.sd-matrix__responsive-table-wrapper {
+  overflow-x: visible !important;
+}
+
+/* Rating items */
+.sd-rating__item {
+  background: white !important;
+  color: #334155 !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 6px !important;
+}
+
+.sd-rating__item:hover {
+  background: #f0f9ff !important;
+  border-color: #0ea5e9 !important;
+}
+
+.sd-rating__item--selected {
+  background: #0ea5e9 !important;
+  color: white !important;
+  border-color: #0ea5e9 !important;
+}
+
+/* Required asterisk */
+.sd-question__required-text {
+  color: #dc2626 !important;
+}
+
+/* Page numbers */
+.sd-progress-buttons__page-title {
+  color: #64748b !important;
+}
+
+/* Dropdown */
+.sd-dropdown {
+  background: white !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+/* Radio/Checkbox items - Reduced padding */
+.sd-item {
+  border-color: #e2e8f0 !important;
+  cursor: pointer !important;
+  padding: 8px 12px !important;
+  margin-bottom: 6px !important;
+}
+
+.sd-item:hover {
+  background: #f8fafc !important;
+}
+
+/* Checkbox specific spacing - tighter */
+.sd-checkbox {
+  margin-bottom: 2px !important;
+  padding: 4px 12px !important;
+}
+
+.sd-selectbase {
+  gap: 2px !important;
+}
+
+/* Remove extra spacing from checkbox items */
+.sd-checkbox .sd-item {
+  margin-bottom: 2px !important;
+  padding: 4px 12px !important;
+}
+
+/* Radio buttons - BLACK styling */
+.sd-selectbase__item:not(.sd-selectbase__item--allowhover):hover .sd-selectbase__item-decorator,
+.sd-selectbase__item .sd-selectbase__item-decorator,
+.sd-item__decorator,
+.sd-radio__decorator {
+  border: 3px solid #000000 !important;
+  background-color: #ffffff !important;
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  min-height: 20px !important;
+}
+
+.sd-selectbase__item--checked .sd-selectbase__item-decorator,
+.sd-item--checked .sd-item__decorator,
+.sd-item--checked .sd-radio__decorator {
+  background-color: #000000 !important;
+  border-color: #000000 !important;
+}
+
+.sd-selectbase__item--checked .sd-selectbase__item-decorator::after,
+.sd-item--checked .sd-item__decorator::after,
+.sd-item--checked .sd-radio__decorator::after {
+  border-color: #ffffff !important;
+}
+
+/* Panel */
+.sd-panel {
+  background: white !important;
+}
+
+/* Error messages */
+.sd-question__erbox {
+  background: #fef2f2 !important;
+  color: #991b1b !important;
+  border: 1px solid #fecaca !important;
+}
