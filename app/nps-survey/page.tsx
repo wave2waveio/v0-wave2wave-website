@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 import { Card, CardContent } from "@/components/ui/card"
 import { Model } from 'survey-core'
@@ -9,7 +9,7 @@ import { surveyJson } from './survey-config'
 import 'survey-core/survey-core.min.css'
 import './survey-theme.css'
 
-export default function NpsSurveyPage() {
+function NpsSurveyContent() {
   const searchParams = useSearchParams()
   const email = searchParams.get("email") ?? ""
   const initialAnswer = searchParams.get("initial_answer") ?? ""
@@ -150,5 +150,20 @@ export default function NpsSurveyPage() {
         </p>
       </div>
     </div>
+  )
+}
+
+export default function NpsSurveyPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 text-white py-20 px-4">
+        <div className="max-w-[986px] mx-auto text-center">
+          <div className="animate-spin w-12 h-12 mx-auto mb-4 rounded-full border-4 border-sky-500 border-t-transparent"></div>
+          <p className="text-white">Loading survey...</p>
+        </div>
+      </div>
+    }>
+      <NpsSurveyContent />
+    </Suspense>
   )
 }
