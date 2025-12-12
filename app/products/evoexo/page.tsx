@@ -215,7 +215,7 @@ interface ImageWithFallbackProps extends ImgHTMLAttributes<HTMLImageElement> {
   fallbackSrc?: string
 }
 
-function ImageWithFallback({ fallbackSrc, src, onError, ...props }: ImageWithFallbackProps) {
+function ImageWithFallback({ fallbackSrc, src, onError, alt = "", ...props }: ImageWithFallbackProps) {
   const [currentSrc, setCurrentSrc] = useState(src)
 
   useEffect(() => {
@@ -224,6 +224,7 @@ function ImageWithFallback({ fallbackSrc, src, onError, ...props }: ImageWithFal
 
   return (
     <img
+      alt={alt}
       {...props}
       src={currentSrc || "/placeholder.svg"}
       onError={(event: SyntheticEvent<HTMLImageElement>) => {

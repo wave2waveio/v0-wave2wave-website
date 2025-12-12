@@ -2,7 +2,7 @@
 
 import { useEffect, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
-import Survicate, { ConfigModel } from '@survicate/survicate-web-package/survicate_widget'
+import type { ConfigModel } from "@survicate/survicate-web-package/survicate_widget"
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
@@ -12,26 +12,33 @@ function SurveyContent() {
   const initialAnswer = searchParams.get('initial_answer') || ''
 
   useEffect(() => {
-    const survicateConfig: ConfigModel = {
-      workspaceKey: '0ba7f90f67934152eee102283195a437',
-      traits: {
-        email: emailParam,
-        initial_answer: initialAnswer,
-        source: 'email_campaign',
-      },
+    let cancelled = false
+
+    const loadSurvey = async () => {
+      const { default: Survicate } = await import("@survicate/survicate-web-package/survicate_widget")
+      if (cancelled) return
+
+      const survicateConfig: ConfigModel = {
+        workspaceKey: "0ba7f90f67934152eee102283195a437",
+        traits: {
+          email: emailParam,
+          initial_answer: initialAnswer,
+          source: "email_campaign",
+        },
+      }
+
+      try {
+        await Survicate.init(survicateConfig)
+        console.log("Survicate initialized successfully")
+      } catch (error) {
+        console.error("Failed to initialize Survicate:", error)
+      }
     }
 
-    Survicate.init(survicateConfig)
-      .then(() => {
-        console.log('Survicate initialized successfully')
-      })
-      .catch((error) => {
-        console.error('Failed to initialize Survicate:', error)
-      })
+    loadSurvey()
 
-    // Cleanup on unmount
     return () => {
-      // Survicate cleanup if needed
+      cancelled = true
     }
   }, [emailParam, initialAnswer])
 

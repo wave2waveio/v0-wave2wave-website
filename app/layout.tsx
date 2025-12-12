@@ -1,13 +1,20 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import localFont from "next/font/local"
 import "./globals.css"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { AnnouncementBanner } from "@/components/announcement-banner"
 import Script from "next/script"
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = localFont({
+  src: [
+    { path: "../public/fonts/inter/Inter-Regular.woff2", weight: "400", style: "normal" },
+    { path: "../public/fonts/inter/Inter-SemiBold.woff2", weight: "600", style: "normal" },
+  ],
+  variable: "--font-inter",
+  display: "swap",
+})
 
 export const metadata: Metadata = {
   title: "Wave2Wave.io - Custom Structured Cabling, Data Center & DCIM Solutions",
