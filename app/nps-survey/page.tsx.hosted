@@ -15,7 +15,6 @@ function SurveyContent() {
     let cancelled = false
 
     const loadSurvey = async () => {
-      // Dynamic import to avoid SSR issues
       const { default: Survicate } = await import("@survicate/survicate-web-package/survicate_widget")
       if (cancelled) return
 
@@ -30,7 +29,7 @@ function SurveyContent() {
 
       try {
         await Survicate.init(survicateConfig)
-        console.log("Survicate initialized. Watching for container...")
+        console.log("Survicate initialized successfully")
       } catch (error) {
         console.error("Failed to initialize Survicate:", error)
       }
@@ -63,11 +62,9 @@ function SurveyContent() {
           </CardHeader>
 
           <CardContent>
-            {/* TODO: Replace 'survicate-box-xxxx' with the actual ID found in 
-               Survicate Dashboard > Share > Embed.
-            */}
-            <div id="survicate-box-0b81786631a86a8a" className="min-h-[400px] w-full flex items-center justify-center">
-              {/* Optional: A subtle CSS spinner could go here, but avoid text that won't disappear */}
+            {/* Survicate widget will appear here */}
+            <div id="survicate-survey-container" className="min-h-[400px]">
+              <p className="text-slate-400 text-center py-8">Loading survey...</p>
             </div>
           </CardContent>
         </Card>
@@ -82,7 +79,11 @@ function SurveyContent() {
 
 export default function NpsSurveyPage() {
   return (
-    <Suspense fallback={<div className="text-white p-10">Loading...</div>}>
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 text-white flex items-center justify-center">
+        <p className="text-slate-300">Loading...</p>
+      </div>
+    }>
       <SurveyContent />
     </Suspense>
   )
