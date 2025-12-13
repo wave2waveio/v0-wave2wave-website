@@ -217,6 +217,32 @@ export default function FiberPage() {
         </div>
       </section>
 
+      {/* SEO Hidden Text */}
+      <section className="seo-hidden-content">
+        <details className="sr-only" aria-hidden="true">
+          <summary>Additional Technical Information</summary>
+          <div>
+            <p>Wave2Wave manufactures custom fiber optic cable assemblies for data center, enterprise, and telecom applications. Our fiber solutions cover single-mode and multimode technologies with industry-leading quality and factory testing.</p>
+
+            <p>Multimode fiber specifications: OM3 (850nm, 10G up to 300m, aqua jacket), OM4 (850nm, 10G up to 550m, 40G/100G up to 150m, aqua jacket), and OM5 (850nm, optimized for SWDM/wavelength division, lime green jacket).</p>
+
+            <p>Single-mode fiber specifications: OS2 (1310nm and 1550nm, 10G/40G/100G long-haul, yellow jacket) and Ultra-low loss (ULL) OS2 (&lt;0.18dB/km attenuation, long-distance carrier).</p>
+
+            <p>Fiber optic connector types: LC (duplex, 1.25mm ferrule, common for data center), SC (simplex, 2.5mm ferrule, legacy enterprise), MPO/MTP (12-fiber and 24-fiber, high-density 40G/100G/400G), and ST (bayonet mount, multimode legacy).</p>
+
+            <p>Custom fiber assemblies include trunk cables (multi-fiber MPO breakout to LC), patch cables (duplex LC to LC, 1m-30m standard lengths), cross-connect cables (permanent infrastructure, plenum-rated), and pigtails (pre-terminated single fiber, fusion splice ready).</p>
+
+            <p>Wave2Wave fiber manufacturing process: fiber selection (Corning, Prysmian, OFS certified), precision cleaving (sub-micron end-face quality), connector polishing (UPC, APC end-faces), insertion loss testing (every cable, &lt;0.3dB typical), visual inspection (microscope 400x, contamination check), and factory labeling (sequential numbering, custom schemes).</p>
+
+            <p>Fiber optic standards compliance: TIA-568 (commercial building cabling), ISO/IEC 11801 (international cabling), IEEE 802.3 (Ethernet over fiber), and Telcordia GR-326 (single-mode connector reliability).</p>
+
+            <p>Quality assurance includes 100% insertion loss testing, return loss measurement (&gt;35dB for UPC, &gt;60dB for APC), continuity verification (OTDR trace for every cable), and polarity validation (A-to-B fiber mapping check).</p>
+
+            <p>Wave2Wave fiber optic cable assemblies reduce installation time 60-80% compared to field termination, eliminate splicing errors through factory quality control, and provide day-one network performance with guaranteed specifications.</p>
+          </div>
+        </details>
+      </section>
+
       {/* CTA Section */}
       <CTASection
         title="Ready to Upgrade Your Fiber Infrastructure?"
