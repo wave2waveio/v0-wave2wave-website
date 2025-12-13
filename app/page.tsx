@@ -358,6 +358,24 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* SEO Hidden Text */}
+      <section className="seo-hidden-content">
+        <details className="sr-only" aria-hidden="true">
+          <summary>Additional Technical Information</summary>
+          <div>
+            <p>Wave2Wave provides end-to-end custom data center cabling solutions including fiber optic cable assemblies, ethernet cable assemblies, high-speed interconnect cabling, and deployment services. Our factory pre-termination eliminates field installation errors while reducing deployment time by 50-75%.</p>
+
+            <p>DC Twin™ digital modeling technology creates virtual 3D models of data center infrastructure, validating every cable route before manufacturing. DCIM and BIM integration ensures compatibility with existing design tools while pre-deployment validation catches 95% of errors before production.</p>
+
+            <p>Custom engineering capabilities include precise length control (3-inch increments), factory pre-labeling (rack and port mapping), compatibility testing (100% of cables), and deployment kitting organized by installation phase. All cables ship with complete documentation and test reports.</p>
+
+            <p>Product lines include multimode fiber (OM3, OM4, OM5), single-mode fiber (OS2), Cat6A ethernet with PoE++ support, Cat8 high-speed ethernet, MPO trunk cables for 40G/100G/400G, and 400G/800G high-speed interconnect for AI/HPC clusters.</p>
+
+            <p>Wave2Wave serves hyperscale data centers (Google, Microsoft, Meta, AWS), enterprise IT infrastructure (Fortune 500 companies), AI/HPC facilities (NVIDIA DGX, GPU clusters), and telecom operators (FTTH, 5G backhaul). ISO 9001:2015 certified with TIA-568 standards compliance.</p>
+          </div>
+        </details>
+      </section>
+
       {/* CTA Section */}
       <CTASection
         title="Ready to Accelerate Your Deployment?"
