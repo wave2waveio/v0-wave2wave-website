@@ -42,6 +42,19 @@ export interface B2BButtonProps
 const B2BButton = React.forwardRef<HTMLButtonElement, B2BButtonProps>(
   ({ className, variant, size, asChild = false, loading = false, children, disabled, ...props }, ref) => {
     const Comp = asChild ? Slot : "button"
+
+    if (asChild) {
+      return (
+        <Comp
+          className={cn(b2bButtonVariants({ variant, size, className }))}
+          ref={ref}
+          {...props}
+        >
+          {children}
+        </Comp>
+      )
+    }
+
     return (
       <Comp
         className={cn(b2bButtonVariants({ variant, size, className }))}
