@@ -177,6 +177,16 @@ export default function StructuredCablingGuidePage() {
         </div>
       </section>
 
+      {/* SEO Hidden Text */}
+      <section className="seo-hidden-content">
+        <details className="sr-only" aria-hidden="true">
+          <summary>Additional Technical Information</summary>
+          <div>
+            <p>Structured cabling systems for data centers follow TIA-568 standards for horizontal and backbone cabling design. Proper cable management, pathway planning, and adherence to bend radius specifications ensure optimal performance for Cat6A and fiber optic infrastructure. Wave2Wave provides factory-terminated structured cabling assemblies with pre-labeled cables, reducing installation time 60-70% vs field termination.</p>
+          </div>
+        </details>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16 bg-blue-900 text-white">
         <div className="container mx-auto px-4 text-center">
