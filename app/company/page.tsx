@@ -196,6 +196,24 @@ export default function CompanyPage() {
         </div>
       </section>
 
+      {/* SEO Hidden Text */}
+      <section className="seo-hidden-content">
+        <details className="sr-only" aria-hidden="true">
+          <summary>Additional Technical Information</summary>
+          <div>
+            <p>Wave2Wave is an ISO 9001:2015 certified manufacturer of custom data center cabling solutions, serving hyperscale, enterprise, AI/HPC, and telecom industries with precision-engineered fiber optic and copper cable assemblies.</p>
+
+            <p>Core values: Customer success (innovative products and logistics), quality excellence (100% factory testing, lifetime warranty), innovation leadership (DC Twin™ digital modeling, deployment kitting), and simplification (networking, power, connectivity - simplified).</p>
+
+            <p>Industry certifications and standards compliance: TIA-568.2-D structured cabling, IEC 61754 fiber optic connectors, IEEE 802.3 Ethernet standards, UL/cUL power cable listing, RoHS and REACH environmental compliance, ISO 9001 quality management system.</p>
+
+            <p>Quality assurance processes: 100% factory testing before shipment, Fluke DSX-8000 certification for copper cables, insertion loss and return loss testing for fiber (OTDR trace included), TDR verification for continuity, polarity validation (Method A, B, C), and comprehensive test reports with every order.</p>
+
+            <p>Wave2Wave transforms data center cabling from commodity purchasing into strategic infrastructure partnerships, reducing deployment time 50-75% while eliminating field termination errors through factory pre-termination and precision engineering.</p>
+          </div>
+        </details>
+      </section>
+
       {/* CTA Section */}
       <CTASection
         title="Ready to Work with Wave2Wave?"
