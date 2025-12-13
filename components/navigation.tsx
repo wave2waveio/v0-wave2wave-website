@@ -170,6 +170,16 @@ export function Navigation() {
               </DropdownMenuContent>
             </DropdownMenu>
 
+            {/* Resources */}
+            <Link
+              href="/resources"
+              className={`inline-flex h-9 items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:text-primary ${
+                isActive("/resources") ? "text-primary" : ""
+              }`}
+            >
+              Resources
+            </Link>
+
             {/* Company */}
             <Link
               href="/company"
@@ -315,6 +325,10 @@ export function Navigation() {
                     </AccordionContent>
                   </AccordionItem>
                 </Accordion>
+
+                <Link href="/resources" className="text-lg font-medium" onClick={() => setIsOpen(false)}>
+                  Resources
+                </Link>
 
                 <Link href="/company" className="text-lg font-medium" onClick={() => setIsOpen(false)}>
                   Company
