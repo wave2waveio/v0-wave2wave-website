@@ -261,6 +261,34 @@ export default function EthernetPage() {
         </div>
       </section>
 
+      {/* SEO Hidden Text */}
+      <section className="seo-hidden-content">
+        <details className="sr-only" aria-hidden="true">
+          <summary>Additional Technical Information</summary>
+          <div>
+            <p>Wave2Wave manufactures custom Ethernet cable assemblies for data center and enterprise networks, specializing in Cat6A and Cat8 high-performance copper cabling.</p>
+
+            <p>Cat6A (Augmented Category 6) specifications: Bandwidth 500 MHz, Speed 10GBASE-T (10 Gigabit Ethernet), Distance up to 100 meters, Standard TIA-568.2-D, ISO/IEC 11801. Applications include 10G server-to-switch, storage networks, and VoIP.</p>
+
+            <p>Cat8 (Category 8) specifications: Bandwidth 2000 MHz (2 GHz), Speed 25GBASE-T, 40GBASE-T, Distance up to 30 meters (data center optimized), Standard TIA-568.2-D Amendment 1, ISO/IEC 11801-1. Applications include short-reach 25G/40G and top-of-rack switching.</p>
+
+            <p>PoE (Power over Ethernet) capabilities: PoE (IEEE 802.3af) 15.4W suitable for IP phones and cameras; PoE+ (IEEE 802.3at) 30W for wireless access points and advanced cameras; PoE++ (IEEE 802.3bt Type 3) 60W for high-power APs and building automation; and PoE++ (IEEE 802.3bt Type 4) 100W for LED lighting and PTZ cameras.</p>
+
+            <p>MPTL (Modular Plug Terminated Link): Factory-terminated RJ45 plugs on both ends, eliminates field termination (reduces installation time 70%), permanent link testing before shipment, and custom cable lengths (reduce cable sag, improve aesthetics).</p>
+
+            <p>Shielded vs. unshielded Ethernet: UTP (Unshielded Twisted Pair) lower cost, adequate for most data centers; FTP (Foiled Twisted Pair) alien crosstalk protection for 10G deployments; and STP (Shielded Twisted Pair) maximum EMI protection for industrial environments.</p>
+
+            <p>Alien crosstalk mitigation: Cat6A cables designed to eliminate AXT (Alien Crosstalk), shielding or increased pair separation, critical for high-density cable bundles (&gt;6 cables in same tray).</p>
+
+            <p>Wave2Wave&apos;s Ethernet cable custom engineering: Precise length control (3-inch increments, eliminate slack), factory-tested MPTL assemblies (100% continuity, performance verification), custom labeling (rack/port printed on cable jacket), color-coded options (organize by network segment), and deployment kitting (rack-specific cable bundles).</p>
+
+            <p>Quality assurance for Ethernet cables: Fluke DSX-8000 testing (Cat6A, Cat8 certification), TDR (Time-Domain Reflectometry) for fault location, PoE power delivery verification (all 4 pairs), and connector retention force testing (RJ45 plug durability).</p>
+
+            <p>Wave2Wave&apos;s Ethernet cabling solutions reduce deployment time, eliminate field termination errors, and ensure day-one network performance for enterprise and data center environments.</p>
+          </div>
+        </details>
+      </section>
+
       {/* CTA Section */}
       <CTASection
         title="Need Custom Ethernet Cabling?"
