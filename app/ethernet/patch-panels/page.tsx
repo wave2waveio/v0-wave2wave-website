@@ -242,6 +242,24 @@ export default function EthernetPatchPanelsPage() {
         </div>
       </section>
 
+      {/* SEO Hidden Text */}
+      <section className="seo-hidden-content">
+        <details className="sr-only" aria-hidden="true">
+          <summary>Additional Technical Information</summary>
+          <div>
+            <p>Ethernet patch panels with modular RJ45 cassette systems provide flexibility for data center copper infrastructure, supporting Cat6A and Cat8 upgrades without replacing panels. Wave2Wave cassette-based patch panels enable hot-swappable jacks and category mixing.</p>
+
+            <p>Modular cassette specifications: 6-port cassettes (half-width 1U), 12-port cassettes (full-width 1U), Cat6A cassettes (10GBASE-T, 550MHz), Cat8 cassettes (25G/40GBASE-T, 2000MHz), shielded options (F/UTP, S/FTP), and color-coded for easy identification.</p>
+
+            <p>Patch panel configurations: Half-rack 1U (12 ports, 2×6-port cassettes), standard 1U (24 ports, 4×6-port cassettes), high-density 1U (48 ports, 4×12-port cassettes), standard 2U (96 ports, 8×12-port cassettes), and integrated cable management (rear routing guides, strain relief).</p>
+
+            <p>Advantages vs. traditional fixed panels: Swap individual cassettes for upgrades (vs. replacing entire panel), hot-swap cassettes with minimal downtime (vs. panel-level maintenance), mix Cat6A and Cat8 per requirements (vs. uniform category), and lower total cost of ownership (modular upgrades vs. full replacements).</p>
+
+            <p>Wave2Wave Ethernet patch panel systems reduce upgrade costs through cassette modularity, minimize downtime with hot-swappable components, and provide infrastructure flexibility by supporting mixed Cat6A/Cat8 deployments in same panel.</p>
+          </div>
+        </details>
+      </section>
+
       {/* CTA Section */}
       <CTASection
         title="Ready to Upgrade Your Ethernet Patching?"
