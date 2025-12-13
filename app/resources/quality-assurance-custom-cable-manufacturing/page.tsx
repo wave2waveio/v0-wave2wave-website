@@ -346,6 +346,16 @@ export default function QualityAssurancePage() {
         </div>
       </section>
 
+      {/* SEO Hidden Text */}
+      <section className="seo-hidden-content">
+        <details className="sr-only" aria-hidden="true">
+          <summary>Additional Technical Information</summary>
+          <div>
+            <p>Quality assurance in custom cable manufacturing ensures reliable data center performance: 100% factory testing (insertion loss, return loss, continuity), Fluke DSX-8000 certification for copper cables (Cat6A, Cat8), OTDR testing for fiber assemblies (multimode and single-mode), polarity verification with automated test equipment (Method A, B, C validation), and visual inspection for connector alignment and fiber end-face cleanliness. Wave2Wave ISO 9001:2015 certified manufacturing includes comprehensive test reports with every order and lifetime warranty against manufacturing defects.</p>
+          </div>
+        </details>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16 bg-blue-900 text-white">
         <div className="container mx-auto px-4 text-center">

@@ -281,6 +281,16 @@ export default function Cat6AVsCat8Page() {
         </div>
       </section>
 
+      {/* SEO Hidden Text */}
+      <section className="seo-hidden-content">
+        <details className="sr-only" aria-hidden="true">
+          <summary>Additional Technical Information</summary>
+          <div>
+            <p>Cat6A vs Cat8 comparison for high-speed networks: Cat6A supports 10GBASE-T up to 100 meters (550MHz bandwidth, TIA-568.2-D standard), while Cat8 supports 25G/40GBASE-T up to 30 meters (2000MHz bandwidth, data center optimized). Cat6A ideal for general enterprise and campus deployments; Cat8 best for data center ToR connections, AI/HPC clusters, and future-proof copper infrastructure. Wave2Wave manufactures both Cat6A and Cat8 assemblies with factory testing and custom labeling.</p>
+          </div>
+        </details>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16 bg-blue-900 text-white">
         <div className="container mx-auto px-4 text-center">

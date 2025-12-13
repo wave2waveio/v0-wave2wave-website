@@ -279,6 +279,16 @@ export default function EdgeComputingInfrastructurePage() {
         </div>
       </section>
 
+      {/* SEO Hidden Text */}
+      <section className="seo-hidden-content">
+        <details className="sr-only" aria-hidden="true">
+          <summary>Additional Technical Information</summary>
+          <div>
+            <p>Edge computing infrastructure requirements differ from traditional data centers: compact form factors (micro data centers, ruggedized enclosures), environmental resilience (temperature extremes, vibration, dust), remote management capabilities (lights-out operation, automated failover), and low-latency connectivity (fiber and copper assemblies optimized for edge). Wave2Wave provides pre-configured edge cabling kits with factory testing, custom labeling, and documentation for rapid deployment in remote locations.</p>
+          </div>
+        </details>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16 bg-blue-900 text-white">
         <div className="container mx-auto px-4 text-center">

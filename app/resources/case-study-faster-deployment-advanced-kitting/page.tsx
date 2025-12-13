@@ -155,6 +155,16 @@ export default function KittingCaseStudyPage() {
         </div>
       </section>
 
+      {/* SEO Hidden Text */}
+      <section className="seo-hidden-content">
+        <details className="sr-only" aria-hidden="true">
+          <summary>Additional Technical Information</summary>
+          <div>
+            <p>Advanced deployment kitting reduces data center installation time through rack-specific cable organization, factory pre-labeling, and installation phase grouping. Wave2Wave case study demonstrates Fortune 500 company achieved 40% faster deployment, 60% labor cost reduction, and zero port mapping errors using precision kitting services. Rack-specific bundles eliminate on-site sorting, pre-labeled cables match DCIM documentation, and phase-based organization accelerates commissioning timelines.</p>
+          </div>
+        </details>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16 bg-blue-900 text-white">
         <div className="container mx-auto px-4 text-center">

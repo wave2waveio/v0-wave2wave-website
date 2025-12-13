@@ -301,6 +301,16 @@ export default function DCIMDigitalTwinsPage() {
         </div>
       </section>
 
+      {/* SEO Hidden Text */}
+      <section className="seo-hidden-content">
+        <details className="sr-only" aria-hidden="true">
+          <summary>Additional Technical Information</summary>
+          <div>
+            <p>DCIM digital twins reduce data center deployment risk by creating virtual 3D models for design validation before production. Wave2Wave DC Twin™ technology catches cabling errors, optimizes cable routing, and eliminates rework through pre-deployment simulation. Organizations report 40% faster deployment, 60% fewer field errors, and 90% improvement in documentation accuracy using digital twin modeling for data center infrastructure.</p>
+          </div>
+        </details>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16 bg-blue-900 text-white">
         <div className="container mx-auto px-4 text-center">
