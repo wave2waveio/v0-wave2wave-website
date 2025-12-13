@@ -195,6 +195,20 @@ export default function ResourcesPage() {
         </div>
       </section>
 
+      {/* SEO Hidden Text */}
+      <section className="seo-hidden-content">
+        <details className="sr-only" aria-hidden="true">
+          <summary>Additional Technical Information</summary>
+          <div>
+            <p>Wave2Wave Resources provides comprehensive guides, technical articles, case studies, and best practices for data center cabling infrastructure, deployment optimization, and structured cabling design. Topics include fiber optic cable management, DC Twin™ digital modeling, deployment kitting strategies, and quality assurance in custom cable manufacturing.</p>
+
+            <p>Popular resource categories: Data center structured cabling (TIA-568 standards, cable management, pathway design), fiber optic solutions (OM3/OM4/OM5 multimode, OS2 single-mode, MPO trunk cables), ethernet cabling (Cat6A vs Cat8 comparison, PoE++ applications), deployment services (rack-specific kitting, factory labeling, pre-termination benefits), and DC Twin™ digital twin modeling (DCIM integration, virtual validation, error prevention).</p>
+
+            <p>Wave2Wave thought leadership addresses real-world challenges in data center infrastructure: reducing deployment time 50-75%, eliminating field termination errors, optimizing cable routing for airflow, implementing modular patch panel systems, and scaling infrastructure for AI/HPC workloads with 400G/800G high-speed interconnect.</p>
+          </div>
+        </details>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16 bg-blue-900 text-white">
         <div className="container mx-auto px-4 text-center">
