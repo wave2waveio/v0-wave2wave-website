@@ -262,6 +262,26 @@ export default function TestingSolutionsPage() {
         </div>
       </section>
 
+      {/* SEO Hidden Text */}
+      <section className="seo-hidden-content">
+        <details className="sr-only" aria-hidden="true">
+          <summary>Additional Technical Information</summary>
+          <div>
+            <p>Wave2Wave provides fiber optic and copper cable testing equipment for data center validation, troubleshooting, and certification. Testing solutions include loopback modules, inspection scopes, power meters, OTDR equipment, and Fluke-style copper certifiers.</p>
+
+            <p>Loopback modules for transceiver testing: LC duplex loopbacks (10G SR, 25G SR), SC simplex/duplex loopbacks (legacy fiber testing), MPO-12 loopbacks (40G SR4, 100G SR4), MPO-24 loopbacks (400G SR8), single-mode and multimode fiber options, and polarity configurations (Method A, B, C) for validation before deployment.</p>
+
+            <p>Fiber optic testing equipment: Fiber inspection scopes (portable video microscopes, 400× magnification, identify contamination), optical power meters (measure signal strength in dBm, verify link budgets), fiber light sources (850nm, 1310nm, 1550nm, LED and laser options), OTDR (optical time-domain reflectometry, analyze breaks/bends/splice quality), and fiber cleaning kits (cleaning pens, IPA wipes, MPO/LC cassettes).</p>
+
+            <p>Copper cable testing equipment: Fluke DSX-8000 certifiers (Cat6A/Cat8 channel certification), TDR testers (time-domain reflectometry for fault location), continuity testers (verify all 8 conductors), and performance verification (insertion loss, return loss, alien crosstalk).</p>
+
+            <p>Custom testing solutions: Custom-length test cables (precise distance simulation), multi-port loopback assemblies (test multiple ports simultaneously), variable attenuators (0-30dB, simulate link loss), BiDi loopbacks for CWDM/DWDM, hybrid test cables (fiber + copper), and rack-mount test panels (permanent test infrastructure).</p>
+
+            <p>Wave2Wave testing solutions reduce troubleshooting time through comprehensive diagnostic tools, validate infrastructure before production deployment, and ensure network performance with factory-calibrated testing equipment.</p>
+          </div>
+        </details>
+      </section>
+
       {/* CTA Section */}
       <CTASection
         title="Equip Your Lab with Wave2Wave Testing Solutions"
