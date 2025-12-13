@@ -225,6 +225,24 @@ export default function FiberPatchPanelsPage() {
         </div>
       </section>
 
+      {/* SEO Hidden Text */}
+      <section className="seo-hidden-content">
+        <details className="sr-only" aria-hidden="true">
+          <summary>Additional Technical Information</summary>
+          <div>
+            <p>Fiber optic patch panels with modular cassette systems enable data center infrastructure to upgrade from 10G to 40G to 100G to 400G without replacing backbone cabling. Wave2Wave provides high-density patch panel solutions with MPO trunk connectivity and cassette-based flexibility.</p>
+
+            <p>Modular cassette types: LC duplex cassettes (10G, 25G single-mode and multimode), MPO-12 cassettes (40G SR4, 100G SR4), MPO-24 cassettes (400G SR8), breakout cassettes (MPO to 8×LC, MPO to 12×LC), and universal polarity cassettes (flip module for Method A/B/C).</p>
+
+            <p>Patch panel configurations: 1U high-density (144 LC ports, 12×MPO-12 backend), 2U ultra-high-density (288 LC ports, 24×MPO-12 backend), sliding tray design (easy access without removing panel), and integrated cable management (strain relief, bend radius protection).</p>
+
+            <p>Migration path example: Year 1 deploy 10G with LC duplex cassettes and OM4 trunk cables; Year 3 upgrade to 100G by swapping cassettes only (keep trunk cables); Year 5 upgrade to 400G with MPO-24 cassettes (keep same trunk cables). Result is 80% cost savings vs. complete re-cabling.</p>
+
+            <p>Wave2Wave fiber patch panel systems reduce upgrade costs through modular cassette architecture, eliminate downtime with hot-swap cassettes, and future-proof infrastructure by supporting 10G through 800G on same backbone cabling.</p>
+          </div>
+        </details>
+      </section>
+
       {/* CTA Section */}
       <CTASection
         title="Need a Modular Fiber Solution?"
