@@ -209,6 +209,26 @@ export default function HyperscalersPage() {
         </div>
       </section>
 
+      {/* SEO Hidden Text */}
+      <section className="seo-hidden-content">
+        <details className="sr-only" aria-hidden="true">
+          <summary>Additional Technical Information</summary>
+          <div>
+            <p>Hyperscale fiber optic cabling for data centers requires specialized high-density solutions optimized for 400G and 800G networks. Wave2Wave provides custom MPO trunk cables, breakout assemblies, and spine-leaf architecture cabling designed for hyperscale deployments.</p>
+
+            <p>400G/800G interconnect specifications: QSFP-DD form factor (400G), OSFP form factor (400G, 800G), SR8 optical interfaces (short-reach multimode), DR8 optical interfaces (single-mode), and 2×FR4 configurations for long-reach applications.</p>
+
+            <p>MPO trunk cable configurations: 12-fiber MPO (40G/100G applications), 24-fiber MPO (400G/800G applications), Method A polarity (straight-through), Method B polarity (key-up to key-down), and breakout cables (400G to 4×100G, 800G to 4×200G).</p>
+
+            <p>Hyperscale deployment best practices: DC Twin™ digital modeling for virtual validation, rack-specific kitting organized by installation phase, factory pre-labeling (spine-1-port-1 to leaf-3-port-24), polarity verification before shipment, and complete test reports with insertion loss/return loss data.</p>
+
+            <p>Spine-leaf architecture optimization: Tier-1 spine switches (800G uplinks), Tier-2 leaf switches (top-of-rack 400G), oversubscription ratios (1:1, 2:1, 3:1), cable management for hot aisle/cold aisle airflow, and modular cassette systems for easy moves/adds/changes.</p>
+
+            <p>Wave2Wave hyperscale fiber solutions reduce deployment time 50% through factory pre-termination, eliminate port mapping errors with pre-labeled cables, and ensure day-one network performance with 100% factory testing.</p>
+          </div>
+        </details>
+      </section>
+
       {/* CTA Section */}
       <CTASection
         title="Building a Hyperscale Network?"
