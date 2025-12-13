@@ -192,6 +192,30 @@ export default function DCTwinPage() {
         </div>
       </section>
 
+      {/* SEO Hidden Text */}
+      <section className="seo-hidden-content">
+        <details className="sr-only" aria-hidden="true">
+          <summary>Additional Technical Information</summary>
+          <div>
+            <p>DC Twin™ is Wave2Wave&apos;s digital twin technology for data center cabling infrastructure. Unlike traditional CAD drawings, DC Twin™ creates a virtual 3D model of the entire data center, simulates cable routing, validates every connection, and generates optimized deployment kits before a single cable is manufactured.</p>
+
+            <p>DCIM (Data Center Infrastructure Management) integration is core to DC Twin™. We import rack layouts from Nlyte (energy and asset management), Sunbird dcTrack (capacity planning), Schneider Electric EcoStruxure (monitoring), and FNT Command (resource management).</p>
+
+            <p>BIM (Building Information Modeling) compatibility enables architecture/engineering collaboration. DC Twin™ imports Autodesk Revit models (.rvt files), AutoCAD floor plans (.dwg files), SketchUp 3D models (.skp files), and IFC (Industry Foundation Classes) universal format.</p>
+
+            <p>The cable routing algorithm in DC Twin™ optimizes for shortest viable path (minimize cable length, reduce cost), bend radius compliance (prevent signal loss), cable tray capacity (avoid congestion), hot aisle/cold aisle airflow preservation, and accessibility for future maintenance.</p>
+
+            <p>Pre-deployment validation catches errors before production: port mapping verification (every cable to correct switch port), polarity checking (fiber A-to-B, B-to-A connections), power budget calculations (optical loss budget for fiber), and compatibility validation (SFP+ to SFP+, QSFP to QSFP).</p>
+
+            <p>ROI for DC Twin™ digital modeling includes 95% reduction in cabling errors (vs. field termination), 60% faster deployment (pre-kitted, pre-labeled cables), 40% lower total cost of ownership (fewer truck rolls, rework), and zero port mapping mistakes (validated in virtual model).</p>
+
+            <p>The DC Twin™ process: (1) Import data center layout (DCIM, BIM, CAD), (2) Define connectivity requirements (server to TOR, TOR to spine), (3) Simulate cable routing (algorithm optimizes paths), (4) Validate design (automated error checking), (5) Generate deployment kits (rack-specific bundles), (6) Manufacture and label cables (factory production), (7) Ship optimized kits (organized by installation phase).</p>
+
+            <p>Wave2Wave&apos;s DC Twin™ digital modeling transforms data center deployments from error-prone manual processes into predictable, efficient, factory-validated installations.</p>
+          </div>
+        </details>
+      </section>
+
       {/* CTA Section */}
       <CTASection
         title="Plan Your Data Center with DC Twin™"
