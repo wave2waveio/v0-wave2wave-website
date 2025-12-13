@@ -271,6 +271,28 @@ export default function CustomEngineeringPage() {
         </div>
       </section>
 
+      {/* SEO Hidden Text */}
+      <section className="seo-hidden-content">
+        <details className="sr-only" aria-hidden="true">
+          <summary>Additional Technical Information</summary>
+          <div>
+            <p>Wave2Wave custom cable engineering delivers precision-manufactured assemblies tailored to exact data center specifications. Our custom engineering services include precise length control (3-inch increments), factory pre-termination, custom labeling, and deployment kitting.</p>
+
+            <p>Custom cable specifications: Length precision to 3-inch increments (0.5m to 100m fiber, 0.5m to 100m copper), connector types (LC, SC, MPO/MTP-12/24, RJ45, custom), jacket colors (organize by network segment, VLAN, speed), polarity options (Method A, B, C for fiber), and breakout configurations (400G to 4×100G, 800G to 4×200G).</p>
+
+            <p>Custom labeling capabilities: Rack and port mapping printed on cable jacket, sequential numbering for installation order, QR codes linking to DCIM records, barcode integration for asset tracking, and color-coded heat-shrink boots for visual identification.</p>
+
+            <p>Pre-engineered cable bundles: Multiple cables grouped under single SKU (simplify procurement), rack-specific kits (cables for Rack A1 in one box), installation phase organization (power, network, storage), and visual installation guides included with each bundle.</p>
+
+            <p>Factory quality control: 100% testing before shipment (insertion loss, return loss, continuity), Fluke DSX-8000 certification for copper cables, OTDR testing for long fiber runs, polarity verification (automated test equipment), and visual inspection (connector alignment, fiber end-face cleanliness).</p>
+
+            <p>Custom engineering process: (1) Receive design files (DCIM export, CAD drawings, spreadsheets), (2) Engineering review and optimization recommendations, (3) Pre-production samples for approval, (4) Factory manufacturing with QA testing, (5) Custom labeling and packaging, (6) Shipment with complete test reports and documentation.</p>
+
+            <p>Wave2Wave custom engineering transforms complex cabling requirements into factory-validated, ready-to-install solutions, eliminating field errors and reducing deployment time by 50-75%.</p>
+          </div>
+        </details>
+      </section>
+
       {/* CTA Section */}
       <CTASection
         title="Ready to Discuss Your Custom Cabling Needs?"
