@@ -113,12 +113,47 @@ function handleEmailResponse(ss, data) {
     sheet.setFrozenRows(1);
   }
 
-  // Append the email response record
+  // Prepare data
   const datetime = data.datetime || new Date().toISOString();
   const userEmail = data.user_email || '';
   const answer = data.answer || '';
 
-  Logger.log('Logging email response: ' + userEmail + ' - ' + answer);
+  Logger.log('Checking for duplicates: ' + userEmail + ' - ' + answer);
+
+  // Check for duplicate entries within the last 10 seconds
+  // This prevents multiple clicks/browser prefetch from creating duplicates
+  const lastRow = sheet.getLastRow();
+  if (lastRow > 1) {
+    // Get the last 10 rows (or fewer if sheet has less)
+    const numRowsToCheck = Math.min(10, lastRow - 1);
+    const startRow = lastRow - numRowsToCheck + 1;
+    const recentEntries = sheet.getRange(startRow, 1, numRowsToCheck, 3).getValues();
+
+    const now = new Date();
+    const tenSecondsAgo = new Date(now.getTime() - 10000); // 10 seconds ago
+
+    for (let i = recentEntries.length - 1; i >= 0; i--) {
+      const entryDate = new Date(recentEntries[i][0]);
+      const entryEmail = recentEntries[i][1];
+      const entryAnswer = recentEntries[i][2];
+
+      // If we find a matching entry within the last 10 seconds, skip logging
+      if (entryEmail === userEmail &&
+          entryAnswer === answer &&
+          entryDate >= tenSecondsAgo) {
+        Logger.log('>>> DUPLICATE DETECTED - Skipping (entry from ' + entryDate.toISOString() + ')');
+        return ContentService
+          .createTextOutput(JSON.stringify({
+            success: true,
+            message: 'Duplicate skipped',
+            duplicate: true
+          }))
+          .setMimeType(ContentService.MimeType.JSON);
+      }
+    }
+  }
+
+  Logger.log('No duplicate found - Logging email response: ' + userEmail + ' - ' + answer);
 
   sheet.appendRow([
     datetime,

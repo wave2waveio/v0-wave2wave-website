@@ -3,11 +3,13 @@
 ## Problems Solved
 1. Unsubscribe requests were being posted to the "NPS Responses" sheet instead of the "Unsubscribe" sheet
 2. Email responses (initial question clicks) were only captured if user completed the full survey
+3. Multiple duplicate entries created when email links clicked (browser prefetch/multiple requests)
 
 ## Solution
 Update your Google Apps Script with the enhanced code that:
 - Properly routes unsubscribe requests to "Unsubscribe" sheet
 - Immediately logs email responses to "EmailResponse" sheet (before survey completion)
+- Prevents duplicate entries with 10-second duplicate detection
 - Continues to log full survey responses to "NPS Responses" sheet
 
 ---
@@ -97,7 +99,9 @@ To debug if issues persist:
 ### For EMAIL RESPONSE clicks (NEW):
 - Checks if `data.sheet === 'EmailResponse'`
 - Routes to `handleEmailResponse()` function
-- Writes to **"EmailResponse"** sheet with columns: `DateTime`, `User Email`, `Answer`
+- **Duplicate Detection:** Checks last 10 entries for same email+answer within 10 seconds
+- If duplicate found: Skips logging and returns success (prevents browser prefetch duplicates)
+- If no duplicate: Writes to **"EmailResponse"** sheet with columns: `DateTime`, `User Email`, `Answer`
 - Logs IMMEDIATELY when user clicks email link (before survey completion)
 - Captures 100% of email engagement regardless of survey completion
 
@@ -183,8 +187,15 @@ https://script.google.com/macros/s/AKfycbyLUPg4vJJ0w3FwvRtJpAf_CdDBNuS1dF5Je4wf2
 3. Check Google Apps Script logs for "Processing email response"
 4. Confirm EmailResponse sheet was created with correct headers
 
+**If seeing duplicate entries:**
+1. Verify you've deployed the latest Google Apps Script code
+2. Check Apps Script logs for ">>> DUPLICATE DETECTED - Skipping" messages
+3. Old duplicates won't be removed automatically - you can manually delete them
+4. New clicks should only create one entry per email+answer combination
+
 **Common Issues:**
 - **Script not deployed:** Must deploy as Web app after code changes
 - **Wrong URL:** Verify APPS_SCRIPT_URL in both route.ts files
 - **Sheet name typo:** Names are case-sensitive ("EmailResponse" not "emailresponse")
 - **Missing headers:** Script creates sheets automatically, but verify headers match
+- **Still seeing duplicates:** Make sure the Google Apps Script was saved AND deployed
