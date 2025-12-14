@@ -1,15 +1,17 @@
 /**
- * Google Apps Script for handling Wave2Wave NPS Survey + Unsubscribe
+ * Google Apps Script for handling Wave2Wave NPS Survey + Email Responses + Unsubscribe
  *
- * This script handles both:
- * 1. Survey responses (existing functionality)
- * 2. Unsubscribe requests (new functionality)
+ * This script handles three types of data:
+ * 1. Email responses (initial question clicks) - IMMEDIATE logging
+ * 2. Full survey responses (complete survey submissions)
+ * 3. Unsubscribe requests
  *
  * Spreadsheet ID: 1lOLAtgFs0rNvbmxho3qX2xMEZGs7Ba8jL9H7xosNz8s
  *
  * Sheets:
- * - "Responses" (existing) - NPS Survey responses
- * - "Unsubscribe" (new) - Email unsubscribe log
+ * - "EmailResponse" - Initial email question responses (logged immediately when clicked)
+ * - "NPS Responses" - Full survey responses (only if user completes survey)
+ * - "Unsubscribe" - Email unsubscribe log
  *
  * IMPORTANT: Add this code to your existing Google Apps Script
  * or replace the doPost function with this enhanced version.
@@ -33,6 +35,9 @@ function doPost(e) {
     if (data.sheet === 'Unsubscribe') {
       Logger.log('>>> ROUTING TO UNSUBSCRIBE HANDLER <<<');
       return handleUnsubscribe(ss, data);
+    } else if (data.sheet === 'EmailResponse') {
+      Logger.log('>>> ROUTING TO EMAIL RESPONSE HANDLER <<<');
+      return handleEmailResponse(ss, data);
     } else {
       // Handle regular survey response (existing functionality)
       Logger.log('>>> ROUTING TO SURVEY RESPONSE HANDLER <<<');
@@ -86,6 +91,47 @@ function handleUnsubscribe(ss, data) {
     .createTextOutput(JSON.stringify({
       success: true,
       message: 'Unsubscribed successfully'
+    }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+/**
+ * Handle email response (initial question from email campaign)
+ */
+function handleEmailResponse(ss, data) {
+  Logger.log('Processing email response');
+
+  // Get or create "EmailResponse" sheet
+  let sheet = ss.getSheetByName('EmailResponse');
+  if (!sheet) {
+    Logger.log('Creating EmailResponse sheet');
+    sheet = ss.insertSheet('EmailResponse');
+
+    // Add headers
+    sheet.getRange(1, 1, 1, 3).setValues([['DateTime', 'User Email', 'Answer']]);
+    sheet.getRange(1, 1, 1, 3).setFontWeight('bold');
+    sheet.setFrozenRows(1);
+  }
+
+  // Append the email response record
+  const datetime = data.datetime || new Date().toISOString();
+  const userEmail = data.user_email || '';
+  const answer = data.answer || '';
+
+  Logger.log('Logging email response: ' + userEmail + ' - ' + answer);
+
+  sheet.appendRow([
+    datetime,
+    userEmail,
+    answer
+  ]);
+
+  Logger.log('Email response logged successfully');
+
+  return ContentService
+    .createTextOutput(JSON.stringify({
+      success: true,
+      message: 'Email response recorded'
     }))
     .setMimeType(ContentService.MimeType.JSON);
 }

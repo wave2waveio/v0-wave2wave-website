@@ -8,6 +8,38 @@ export async function GET(request: NextRequest) {
   const user = searchParams.get('user') || 'unknown';
   const answer = searchParams.get('answer') || 'unknown';
 
+  console.log('=== EMAIL RESPONSE CLICKED ===');
+  console.log('User:', user);
+  console.log('Answer:', answer);
+
+  try {
+    // Immediately log the email response to "EmailResponse" sheet
+    const emailResponseData = {
+      sheet: 'EmailResponse', // Target the EmailResponse sheet
+      datetime: new Date().toISOString(),
+      user_email: user,
+      answer: answer,
+    };
+
+    console.log('Logging email response:', emailResponseData);
+
+    // Submit to Google Sheets
+    const gsResponse = await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(emailResponseData)
+    });
+
+    console.log('Email response logged, status:', gsResponse.status);
+
+    if (!gsResponse.ok) {
+      console.error('Failed to log email response:', gsResponse.status);
+    }
+  } catch (error) {
+    console.error('Error logging email response:', error);
+    // Continue to redirect even if logging fails
+  }
+
   // Redirect to survey page with parameters
   const redirectUrl = new URL('/nps-survey', request.url);
   redirectUrl.searchParams.set('email', user);
