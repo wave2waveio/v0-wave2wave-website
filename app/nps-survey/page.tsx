@@ -38,9 +38,9 @@ function NpsSurveyContent() {
         }
         console.log('Payload to send:', payload)
 
-        // Submit to Google Sheets via existing API endpoint
-        console.log('Sending POST to /api/nps-track...')
-        const response = await fetch('/api/nps-track', {
+        // Submit to Google Sheets via API endpoint
+        console.log('Sending POST to /api/survey...')
+        const response = await fetch('/api/survey', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
