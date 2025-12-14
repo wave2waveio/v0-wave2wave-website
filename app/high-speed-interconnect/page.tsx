@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Link from "next/link"
 import { HeroSection } from "@/components/HeroSection"
 import { FeatureBlock } from "@/components/FeatureBlock"
 import { CTASection } from "@/components/CTASection"
@@ -235,6 +236,24 @@ export default function HighSpeedInterconnectPage() {
                 </ul>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Products Catalog CTA */}
+      <section className="py-12 bg-gradient-to-br from-[#0072CE] to-[#005BA4]">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center text-white">
+            <h3 className="text-2xl font-bold mb-4">Explore Our High Speed Interconnect Product Catalog</h3>
+            <p className="text-lg text-blue-100 mb-6">
+              Browse detailed specifications, datasheets, and technical information for 800G, 400G, and 100G Active Optical Cables, Direct Attach Cables, and Optical Transceivers.
+            </p>
+            <Link
+              href="/high-speed-interconnect/products"
+              className="inline-block bg-white hover:bg-slate-100 text-[#0072CE] px-8 py-3 rounded font-semibold transition-colors"
+            >
+              View Full Product Catalog →
+            </Link>
           </div>
         </div>
       </section>

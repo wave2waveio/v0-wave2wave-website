@@ -12,8 +12,56 @@ export const metadata: Metadata = {
 }
 
 export default function FiberProductsPage() {
+  // Schema.org Structured Data - Product Catalog
+  const schemaOrg = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Fiber Optic Products",
+    "description": "Factory-terminated fiber optic assemblies including MPO patch cords, LC patch cords, trunk cables, and breakout assemblies",
+    "itemListElement": [
+      {
+        "@type": "Product",
+        "name": "MPO Patch Cord (12F/24F)",
+        "description": "High-density MPO/MTP patch cords for 12-fiber or 24-fiber connectivity with low insertion loss",
+        "brand": { "@type": "Brand", "name": "Wave2Wave" },
+        "category": "Fiber Optic Cable",
+        "offers": {
+          "@type": "AggregateOffer",
+          "availability": "https://schema.org/InStock",
+          "priceCurrency": "USD"
+        },
+        "additionalProperty": [
+          { "@type": "PropertyValue", "name": "Fiber Count", "value": "12-fiber or 24-fiber" },
+          { "@type": "PropertyValue", "name": "Standards", "value": "EIA/TIA-455-21A, IEC-61754-7, TIS-604-5" }
+        ]
+      },
+      {
+        "@type": "Product",
+        "name": "LC Duplex Patch Cord",
+        "description": "Industry-standard LC duplex connectors for 10G/40G/100G applications with duplex or uniboot configurations",
+        "brand": { "@type": "Brand", "name": "Wave2Wave" },
+        "category": "Fiber Optic Cable",
+        "offers": {
+          "@type": "AggregateOffer",
+          "availability": "https://schema.org/InStock",
+          "priceCurrency": "USD"
+        },
+        "additionalProperty": [
+          { "@type": "PropertyValue", "name": "Connector Type", "value": "LC Duplex" },
+          { "@type": "PropertyValue", "name": "Standards", "value": "EIA/TIA-568, IEC-61754-20" }
+        ]
+      }
+    ]
+  }
+
   return (
     <div className="flex flex-col min-h-screen">
+      {/* Schema.org JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }}
+      />
+
       <HeroSection
         title="Fiber Optic Products"
         subtitle="Complete catalog of factory-terminated fiber assemblies with detailed specifications and ordering information"

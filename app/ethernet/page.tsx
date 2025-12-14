@@ -261,6 +261,24 @@ export default function EthernetPage() {
         </div>
       </section>
 
+      {/* Products Catalog CTA */}
+      <section className="py-12 bg-gradient-to-br from-[#0072CE] to-[#005BA4]">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center text-white">
+            <h3 className="text-2xl font-bold mb-4">Explore Our Complete Ethernet Product Catalog</h3>
+            <p className="text-lg text-blue-100 mb-6">
+              Browse detailed specifications, datasheets, and technical information for all our copper products including Cat6A, Cat6, Super Slim Cat6A, and Direct Attach Cables.
+            </p>
+            <Link
+              href="/ethernet/products"
+              className="inline-block bg-white hover:bg-slate-100 text-[#0072CE] px-8 py-3 rounded font-semibold transition-colors"
+            >
+              View Full Product Catalog →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* SEO Hidden Text */}
       <section className="seo-hidden-content">
         <details className="sr-only" aria-hidden="true">

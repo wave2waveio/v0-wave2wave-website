@@ -199,6 +199,24 @@ export default function FiberPage() {
         </div>
       </section>
 
+      {/* Products Catalog CTA */}
+      <section className="py-12 bg-gradient-to-br from-[#0072CE] to-[#005BA4]">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center text-white">
+            <h3 className="text-2xl font-bold mb-4">Explore Our Complete Fiber Product Catalog</h3>
+            <p className="text-lg text-blue-100 mb-6">
+              Browse detailed specifications, datasheets, and technical information for all our fiber optic products including MPO patch cords, LC assemblies, breakouts, and more.
+            </p>
+            <Link
+              href="/fiber/products"
+              className="inline-block bg-white hover:bg-slate-100 text-[#0072CE] px-8 py-3 rounded font-semibold transition-colors"
+            >
+              View Full Product Catalog →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Hyperscale Solutions Callout */}
       <section className="py-12 bg-blue-50 border-t-4 border-primary">
         <div className="container mx-auto px-4">
