@@ -22,17 +22,25 @@ function doPost(e) {
 
     // Parse incoming data
     const data = JSON.parse(e.postData.contents);
-    Logger.log('Received data: ' + JSON.stringify(data));
+    Logger.log('=== RECEIVED DATA ===');
+    Logger.log('Full data: ' + JSON.stringify(data));
+    Logger.log('Sheet parameter: ' + data.sheet);
+    Logger.log('Has email field: ' + (data.email ? 'YES' : 'NO'));
+    Logger.log('Has datetime field: ' + (data.datetime ? 'YES' : 'NO'));
 
     // Check if this is an unsubscribe request
+    // Unsubscribe requests will have sheet='Unsubscribe' parameter
     if (data.sheet === 'Unsubscribe') {
+      Logger.log('>>> ROUTING TO UNSUBSCRIBE HANDLER <<<');
       return handleUnsubscribe(ss, data);
     } else {
       // Handle regular survey response (existing functionality)
+      Logger.log('>>> ROUTING TO SURVEY RESPONSE HANDLER <<<');
       return handleSurveyResponse(ss, data);
     }
 
   } catch (error) {
+    Logger.log('=== ERROR IN doPost ===');
     Logger.log('Error: ' + error.toString());
     return ContentService
       .createTextOutput(JSON.stringify({
@@ -88,11 +96,12 @@ function handleUnsubscribe(ss, data) {
 function handleSurveyResponse(ss, data) {
   Logger.log('Processing survey response');
 
-  // Get or create "Responses" sheet
-  let sheet = ss.getSheetByName('Responses');
+  // Try multiple possible sheet names for survey responses
+  let sheet = ss.getSheetByName('NPS Responses') || ss.getSheetByName('Responses');
+
   if (!sheet) {
-    Logger.log('Creating Responses sheet');
-    sheet = ss.insertSheet('Responses');
+    Logger.log('Creating NPS Responses sheet');
+    sheet = ss.insertSheet('NPS Responses');
 
     // Add headers (all 24 columns)
     const headers = [
