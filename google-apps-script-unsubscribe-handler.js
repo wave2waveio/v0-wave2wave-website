@@ -2,9 +2,9 @@
  * Google Apps Script for handling Wave2Wave NPS Survey + Email Responses + Unsubscribe
  *
  * This script handles three types of data:
- * 1. Email responses (initial question clicks) - IMMEDIATE logging
+ * 1. Email responses (initial question clicks) - IMMEDIATE logging with scanner detection
  * 2. Full survey responses (complete survey submissions)
- * 3. Unsubscribe requests
+ * 3. Unsubscribe requests - with scanner detection
  *
  * Spreadsheet ID: 1lOLAtgFs0rNvbmxho3qX2xMEZGs7Ba8jL9H7xosNz8s
  *
@@ -16,6 +16,25 @@
  * IMPORTANT: Add this code to your existing Google Apps Script
  * or replace the doPost function with this enhanced version.
  */
+
+/**
+ * Detect if a User-Agent string indicates an email security scanner
+ * @param {string} userAgent - The User-Agent string from the request
+ * @returns {boolean} - True if scanner patterns detected, false otherwise
+ */
+function detectScanner(userAgent) {
+  if (!userAgent || userAgent === 'unknown') return false;
+
+  const ua = userAgent.toLowerCase();
+  const scannerPatterns = [
+    'cisco', 'ironport', 'proofpoint', 'mimecast',
+    'barracuda', 'safelnks', 'safelinks', 'atp',
+    'bot', 'crawler', 'scanner', 'spider',
+    'linkvalidator', 'urldefense'
+  ];
+
+  return scannerPatterns.some(pattern => ua.includes(pattern));
+}
 
 function doPost(e) {
   try {
@@ -68,21 +87,26 @@ function handleUnsubscribe(ss, data) {
     Logger.log('Creating Unsubscribe sheet');
     sheet = ss.insertSheet('Unsubscribe');
 
-    // Add headers
-    sheet.getRange(1, 1, 1, 2).setValues([['email', 'DateTime']]);
-    sheet.getRange(1, 1, 1, 2).setFontWeight('bold');
+    // Add headers (4 columns now with UserAgent and ScannerSuspected)
+    sheet.getRange(1, 1, 1, 4).setValues([['email', 'DateTime', 'UserAgent', 'ScannerSuspected']]);
+    sheet.getRange(1, 1, 1, 4).setFontWeight('bold');
     sheet.setFrozenRows(1);
   }
 
   // Append the unsubscribe record
   const email = data.email || '';
   const datetime = data.datetime || new Date().toISOString();
+  const userAgent = data.user_agent || 'unknown';
+  const scannerSuspected = detectScanner(userAgent);
 
   Logger.log('Logging unsubscribe: ' + email);
+  Logger.log('Scanner suspected: ' + scannerSuspected);
 
   sheet.appendRow([
     email,
-    datetime
+    datetime,
+    userAgent,
+    scannerSuspected
   ]);
 
   Logger.log('Unsubscribe logged successfully');
@@ -107,9 +131,9 @@ function handleEmailResponse(ss, data) {
     Logger.log('Creating EmailResponse sheet');
     sheet = ss.insertSheet('EmailResponse');
 
-    // Add headers
-    sheet.getRange(1, 1, 1, 3).setValues([['DateTime', 'User Email', 'Answer']]);
-    sheet.getRange(1, 1, 1, 3).setFontWeight('bold');
+    // Add headers (5 columns now with UserAgent and ScannerSuspected)
+    sheet.getRange(1, 1, 1, 5).setValues([['DateTime', 'User Email', 'Answer', 'UserAgent', 'ScannerSuspected']]);
+    sheet.getRange(1, 1, 1, 5).setFontWeight('bold');
     sheet.setFrozenRows(1);
   }
 
@@ -117,31 +141,48 @@ function handleEmailResponse(ss, data) {
   const datetime = data.datetime || new Date().toISOString();
   const userEmail = data.user_email || '';
   const answer = data.answer || '';
+  const userAgent = data.user_agent || 'unknown';
+  const scannerSuspected = detectScanner(userAgent);
 
   Logger.log('Checking for duplicates: ' + userEmail + ' - ' + answer);
 
-  // Check for duplicate entries within the last 10 seconds
+  // Check for duplicate entries within the last 30 seconds
   // This prevents multiple clicks/browser prefetch from creating duplicates
   const lastRow = sheet.getLastRow();
   if (lastRow > 1) {
-    // Get the last 10 rows (or fewer if sheet has less)
-    const numRowsToCheck = Math.min(10, lastRow - 1);
+    // Get the last 20 rows (or fewer if sheet has less)
+    const numRowsToCheck = Math.min(20, lastRow - 1);
     const startRow = lastRow - numRowsToCheck + 1;
     const recentEntries = sheet.getRange(startRow, 1, numRowsToCheck, 3).getValues();
 
     const now = new Date();
-    const tenSecondsAgo = new Date(now.getTime() - 10000); // 10 seconds ago
+    const thirtySecondsAgo = new Date(now.getTime() - 30000); // 30 seconds ago
+
+    Logger.log('Checking last ' + numRowsToCheck + ' entries for duplicates');
+    Logger.log('Current time: ' + now.toISOString());
+    Logger.log('Cutoff time: ' + thirtySecondsAgo.toISOString());
 
     for (let i = recentEntries.length - 1; i >= 0; i--) {
-      const entryDate = new Date(recentEntries[i][0]);
-      const entryEmail = recentEntries[i][1];
-      const entryAnswer = recentEntries[i][2];
+      const entryDateRaw = recentEntries[i][0];
+      const entryEmail = String(recentEntries[i][1]).trim();
+      const entryAnswer = String(recentEntries[i][2]).trim();
 
-      // If we find a matching entry within the last 10 seconds, skip logging
+      // Convert to Date object (handles both Date objects and ISO strings)
+      let entryDate;
+      if (entryDateRaw instanceof Date) {
+        entryDate = entryDateRaw;
+      } else {
+        entryDate = new Date(entryDateRaw);
+      }
+
+      Logger.log('Row ' + (startRow + i) + ': ' + entryEmail + ' / ' + entryAnswer + ' / ' + entryDate.toISOString());
+
+      // If we find a matching entry within the last 30 seconds, skip logging
       if (entryEmail === userEmail &&
           entryAnswer === answer &&
-          entryDate >= tenSecondsAgo) {
+          entryDate >= thirtySecondsAgo) {
         Logger.log('>>> DUPLICATE DETECTED - Skipping (entry from ' + entryDate.toISOString() + ')');
+        Logger.log('Match: ' + entryEmail + ' === ' + userEmail + ' && ' + entryAnswer + ' === ' + answer);
         return ContentService
           .createTextOutput(JSON.stringify({
             success: true,
@@ -154,11 +195,14 @@ function handleEmailResponse(ss, data) {
   }
 
   Logger.log('No duplicate found - Logging email response: ' + userEmail + ' - ' + answer);
+  Logger.log('Scanner suspected: ' + scannerSuspected);
 
   sheet.appendRow([
     datetime,
     userEmail,
-    answer
+    answer,
+    userAgent,
+    scannerSuspected
   ]);
 
   Logger.log('Email response logged successfully');

@@ -8,9 +8,13 @@ export async function GET(request: NextRequest) {
   const user = searchParams.get('user') || 'unknown';
   const answer = searchParams.get('answer') || 'unknown';
 
+  // Extract User-Agent for scanner detection
+  const userAgent = request.headers.get('user-agent') || 'unknown';
+
   console.log('=== EMAIL RESPONSE CLICKED ===');
   console.log('User:', user);
   console.log('Answer:', answer);
+  console.log('User-Agent:', userAgent);
 
   try {
     // Immediately log the email response to "EmailResponse" sheet
@@ -19,6 +23,7 @@ export async function GET(request: NextRequest) {
       datetime: new Date().toISOString(),
       user_email: user,
       answer: answer,
+      user_agent: userAgent,
     };
 
     console.log('Logging email response:', emailResponseData);

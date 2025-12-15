@@ -4,12 +4,15 @@
 1. Unsubscribe requests were being posted to the "NPS Responses" sheet instead of the "Unsubscribe" sheet
 2. Email responses (initial question clicks) were only captured if user completed the full survey
 3. Multiple duplicate entries created when email links clicked (browser prefetch/multiple requests)
+4. **Email security scanners** (Cisco IronPort, Proofpoint, Mimecast) automatically clicking ALL links, creating fake/duplicate entries
 
 ## Solution
 Update your Google Apps Script with the enhanced code that:
 - Properly routes unsubscribe requests to "Unsubscribe" sheet
 - Immediately logs email responses to "EmailResponse" sheet (before survey completion)
-- Prevents duplicate entries with 10-second duplicate detection
+- Prevents duplicate entries with 30-second duplicate detection
+- **Detects email security scanners** using User-Agent analysis
+- **Flags scanner clicks** with `ScannerSuspected` column for easy filtering
 - Continues to log full survey responses to "NPS Responses" sheet
 
 ---
@@ -99,11 +102,12 @@ To debug if issues persist:
 ### For EMAIL RESPONSE clicks (NEW):
 - Checks if `data.sheet === 'EmailResponse'`
 - Routes to `handleEmailResponse()` function
-- **Duplicate Detection:** Checks last 10 entries for same email+answer within 10 seconds
+- **Duplicate Detection:** Checks last 20 entries for same email+answer within 30 seconds
 - If duplicate found: Skips logging and returns success (prevents browser prefetch duplicates)
 - If no duplicate: Writes to **"EmailResponse"** sheet with columns: `DateTime`, `User Email`, `Answer`
 - Logs IMMEDIATELY when user clicks email link (before survey completion)
 - Captures 100% of email engagement regardless of survey completion
+- Enhanced logging shows each entry checked for debugging
 
 ### For UNSUBSCRIBE requests:
 - Checks if `data.sheet === 'Unsubscribe'`
@@ -120,6 +124,16 @@ To debug if issues persist:
 - Shows incoming data structure
 - Shows which handler is being called
 - Easier to debug routing issues
+
+### Scanner Detection (NEW):
+- **Detects email security scanners** by analyzing User-Agent strings
+- **Scanner patterns detected**: cisco, ironport, proofpoint, mimecast, barracuda, safelnks, safelinks, atp, bot, crawler, scanner, spider, linkvalidator, urldefense
+- **New columns added**:
+  - `UserAgent`: Full User-Agent string from browser/scanner
+  - `ScannerSuspected`: TRUE if scanner pattern detected, FALSE otherwise
+- **All clicks logged**: Nothing is discarded, but scanners are flagged
+- **Easy filtering**: Filter by `ScannerSuspected = FALSE` to see only real user clicks
+- **Audit trail preserved**: Full transparency of all activity
 
 ---
 
@@ -145,14 +159,16 @@ https://script.google.com/macros/s/AKfycbyLUPg4vJJ0w3FwvRtJpAf_CdDBNuS1dF5Je4wf2
 ### Test Email Response (NEW):
 - [ ] Click email survey link: `https://wave2wave.io/api/survey?user=test@example.com&answer=yes`
 - [ ] Check **"EmailResponse"** sheet in Google Sheet
-- [ ] Verify row with: DateTime, test@example.com, yes
+- [ ] Verify row with: DateTime, test@example.com, yes, UserAgent (browser string), ScannerSuspected (FALSE for real browsers)
 - [ ] Confirm redirect to survey page works
+- [ ] Check `ScannerSuspected` column: should be FALSE for normal browser, TRUE for scanner User-Agents
 
 ### Test Unsubscribe:
 - [ ] Click unsubscribe link: `https://wave2wave.io/api/unsubscribe?email=test@example.com`
 - [ ] Check **"Unsubscribe"** sheet (NOT "NPS Responses")
-- [ ] Email appears with DateTime stamp
+- [ ] Verify row with: email, DateTime, UserAgent, ScannerSuspected
 - [ ] Confirmation page displays
+- [ ] Check `ScannerSuspected` column: should be FALSE for normal browser
 
 ### Test Full Survey Completion:
 - [ ] Complete entire survey from start to finish
@@ -199,3 +215,56 @@ https://script.google.com/macros/s/AKfycbyLUPg4vJJ0w3FwvRtJpAf_CdDBNuS1dF5Je4wf2
 - **Sheet name typo:** Names are case-sensitive ("EmailResponse" not "emailresponse")
 - **Missing headers:** Script creates sheets automatically, but verify headers match
 - **Still seeing duplicates:** Make sure the Google Apps Script was saved AND deployed
+
+---
+
+## Using Scanner Detection to Filter Data
+
+### Problem: Email Security Scanners
+Corporate email security systems (Cisco IronPort, Proofpoint, Mimecast, Barracuda, Microsoft ATP) automatically click ALL links in emails to check for malware/phishing. This creates:
+- Multiple duplicate entries (same user, different answers, within milliseconds)
+- Fake email addresses in unsubscribe logs
+- Inflated engagement metrics
+
+### Solution: Filter by ScannerSuspected Column
+
+**To view only REAL user clicks:**
+
+1. Open your Google Sheet
+2. Click the **"EmailResponse"** or **"Unsubscribe"** sheet tab
+3. Click the filter icon in the **"ScannerSuspected"** column header
+4. **Uncheck "TRUE"** to hide scanner clicks
+5. **Check only "FALSE"** to show real user clicks
+6. Now you're viewing clean data from actual users!
+
+**What the columns mean:**
+- **UserAgent**: Full browser/scanner identifier string
+- **ScannerSuspected**:
+  - `FALSE` = Real user (normal browser like Chrome, Firefox, Safari)
+  - `TRUE` = Likely email security scanner (Cisco, Proofpoint, etc.)
+
+**Scanner patterns detected:**
+- cisco, ironport, proofpoint, mimecast, barracuda
+- safelnks, safelinks, atp (Microsoft Advanced Threat Protection)
+- bot, crawler, scanner, spider
+- linkvalidator, urldefense
+
+### Understanding Your Data
+
+**Example WITHOUT filtering:**
+- Total clicks: 100
+- Scanner clicks: 85 (ScannerSuspected = TRUE)
+- Real user clicks: 15 (ScannerSuspected = FALSE)
+- **Engagement rate**: 15% (not 100%!)
+
+**To analyze engagement accurately:**
+1. Filter `ScannerSuspected = FALSE` to see real users
+2. Count filtered rows for true engagement
+3. Review `ScannerSuspected = TRUE` to identify new scanner patterns
+4. Update `detectScanner()` function if needed with new patterns
+
+### Nothing is Lost
+- ALL clicks are logged (real + scanner)
+- Full audit trail preserved
+- Scanner detection helps you filter, not delete
+- You can always change the filter to see everything

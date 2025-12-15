@@ -9,8 +9,12 @@ export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const email = searchParams.get('email') || 'unknown';
 
+  // Extract User-Agent for scanner detection
+  const userAgent = request.headers.get('user-agent') || 'unknown';
+
   console.log('=== UNSUBSCRIBE REQUEST ===');
   console.log('Email:', email);
+  console.log('User-Agent:', userAgent);
 
   try {
     // Prepare data for Google Sheets "Unsubscribe" tab
@@ -18,6 +22,7 @@ export async function GET(request: NextRequest) {
       sheet: 'Unsubscribe', // Target the Unsubscribe sheet
       email: email,
       datetime: new Date().toISOString(),
+      user_agent: userAgent,
     };
 
     console.log('Unsubscribe data:', unsubscribeData);
