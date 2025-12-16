@@ -18,14 +18,20 @@
  */
 
 /**
- * Detect if a User-Agent string indicates an email security scanner
- * @param {string} userAgent - The User-Agent string from the request
- * @returns {boolean} - True if scanner patterns detected, false otherwise
+ * Comprehensive scanner detection with multi-signal scoring
+ * @param {Object} requestData - All request metadata
+ * @returns {Object} - { suspected: boolean, score: number, signals: string }
  */
-function detectScanner(userAgent) {
-  if (!userAgent || userAgent === 'unknown') return false;
+function detectScanner(requestData) {
+  let score = 0;
+  const signals = [];
 
-  const ua = userAgent.toLowerCase();
+  const ua = (requestData.user_agent || '').toLowerCase();
+  const acceptLang = (requestData.accept_language || '').toLowerCase();
+  const referer = (requestData.referer || '').toLowerCase();
+  const accept = (requestData.accept || '').toLowerCase();
+
+  // Signal 1: Known scanner User-Agent patterns (weight: 3)
   const scannerPatterns = [
     'cisco', 'ironport', 'proofpoint', 'mimecast',
     'barracuda', 'safelnks', 'safelinks', 'atp',
@@ -33,7 +39,85 @@ function detectScanner(userAgent) {
     'linkvalidator', 'urldefense'
   ];
 
-  return scannerPatterns.some(pattern => ua.includes(pattern));
+  if (scannerPatterns.some(pattern => ua.includes(pattern))) {
+    score += 3;
+    signals.push('scanner_ua');
+  }
+
+  // Signal 2: Missing or suspicious Accept-Language (weight: 2)
+  if (!acceptLang || acceptLang === 'unknown' || acceptLang === '*') {
+    score += 2;
+    signals.push('missing_language');
+  }
+
+  // Signal 3: Missing Referer from email (weight: 1)
+  if (!referer || referer === 'unknown') {
+    score += 1;
+    signals.push('no_referer');
+  }
+
+  // Signal 4: Generic or missing Accept header (weight: 2)
+  if (!accept || accept === 'unknown' || accept === '*/*') {
+    score += 2;
+    signals.push('generic_accept');
+  }
+
+  // Signal 5: Standard browser User-Agent but with scanner patterns (weight: 1)
+  // Example: "Mozilla/5.0... Chrome/133.0" (looks real) but has other signals
+  if (ua.includes('mozilla') && ua.includes('chrome') && signals.length > 1) {
+    score += 1;
+    signals.push('masked_scanner');
+  }
+
+  // Threshold: Score >= 5 = likely scanner
+  return {
+    suspected: score >= 5,
+    score: score,
+    signals: signals.join(',')
+  };
+}
+
+/**
+ * Detect if this email has multiple different answers in rapid succession
+ * Scanners click ALL links within seconds
+ * @param {Object} sheet - EmailResponse sheet
+ * @param {string} userEmail - User's email
+ * @param {string} currentAnswer - Current answer being logged
+ * @returns {boolean} - True if rapid multi-click detected
+ */
+function detectRapidMultiClick(sheet, userEmail, currentAnswer) {
+  const lastRow = sheet.getLastRow();
+  if (lastRow <= 1) return false; // No previous entries
+
+  // Check last 50 entries for same email with different answers
+  const numRowsToCheck = Math.min(50, lastRow - 1);
+  const startRow = lastRow - numRowsToCheck + 1;
+  const recentEntries = sheet.getRange(startRow, 1, numRowsToCheck, 3).getValues();
+
+  const now = new Date();
+  const tenSecondsAgo = new Date(now.getTime() - 10000); // 10 seconds
+
+  let differentAnswers = [];
+
+  for (let i = 0; i < recentEntries.length; i++) {
+    const entryDateRaw = recentEntries[i][0];
+    const entryEmail = String(recentEntries[i][1]).trim();
+    const entryAnswer = String(recentEntries[i][2]).trim();
+
+    let entryDate = entryDateRaw instanceof Date
+      ? entryDateRaw
+      : new Date(entryDateRaw);
+
+    // Same email, different answer, within last 10 seconds
+    if (entryEmail === userEmail &&
+        entryAnswer !== currentAnswer &&
+        entryDate >= tenSecondsAgo) {
+      differentAnswers.push(entryAnswer);
+    }
+  }
+
+  // If 2+ different answers within 10 seconds = scanner pattern
+  return differentAnswers.length >= 2;
 }
 
 function doPost(e) {
@@ -87,26 +171,53 @@ function handleUnsubscribe(ss, data) {
     Logger.log('Creating Unsubscribe sheet');
     sheet = ss.insertSheet('Unsubscribe');
 
-    // Add headers (4 columns now with UserAgent and ScannerSuspected)
-    sheet.getRange(1, 1, 1, 4).setValues([['email', 'DateTime', 'UserAgent', 'ScannerSuspected']]);
-    sheet.getRange(1, 1, 1, 4).setFontWeight('bold');
+    // Add headers (9 columns with multi-signal detection)
+    const headers = [
+      'email',
+      'DateTime',
+      'UserAgent',
+      'AcceptLanguage',
+      'Referer',
+      'IP Address',
+      'ScannerScore',
+      'ScannerSignals',
+      'ScannerSuspected'
+    ];
+    sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
+    sheet.getRange(1, 1, 1, headers.length).setFontWeight('bold');
     sheet.setFrozenRows(1);
   }
 
-  // Append the unsubscribe record
+  // Prepare all request data for detection
   const email = data.email || '';
   const datetime = data.datetime || new Date().toISOString();
-  const userAgent = data.user_agent || 'unknown';
-  const scannerSuspected = detectScanner(userAgent);
+  const requestData = {
+    user_agent: data.user_agent || 'unknown',
+    accept_language: data.accept_language || 'unknown',
+    referer: data.referer || 'unknown',
+    accept: data.accept || 'unknown',
+    connection: data.connection || 'unknown'
+  };
+
+  // Run multi-signal detection
+  const detection = detectScanner(requestData);
 
   Logger.log('Logging unsubscribe: ' + email);
-  Logger.log('Scanner suspected: ' + scannerSuspected);
+  Logger.log('Scanner detection score: ' + detection.score);
+  Logger.log('Scanner signals: ' + detection.signals);
+  Logger.log('Scanner suspected: ' + detection.suspected);
 
+  // Append with all 9 columns
   sheet.appendRow([
     email,
     datetime,
-    userAgent,
-    scannerSuspected
+    requestData.user_agent,
+    requestData.accept_language,
+    requestData.referer,
+    data.ip_address || 'unknown',
+    detection.score,
+    detection.signals,
+    detection.suspected
   ]);
 
   Logger.log('Unsubscribe logged successfully');
@@ -131,9 +242,21 @@ function handleEmailResponse(ss, data) {
     Logger.log('Creating EmailResponse sheet');
     sheet = ss.insertSheet('EmailResponse');
 
-    // Add headers (5 columns now with UserAgent and ScannerSuspected)
-    sheet.getRange(1, 1, 1, 5).setValues([['DateTime', 'User Email', 'Answer', 'UserAgent', 'ScannerSuspected']]);
-    sheet.getRange(1, 1, 1, 5).setFontWeight('bold');
+    // Add headers (10 columns with multi-signal detection)
+    const headers = [
+      'DateTime',
+      'User Email',
+      'Answer',
+      'UserAgent',
+      'AcceptLanguage',
+      'Referer',
+      'IP Address',
+      'ScannerScore',
+      'ScannerSignals',
+      'ScannerSuspected'
+    ];
+    sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
+    sheet.getRange(1, 1, 1, headers.length).setFontWeight('bold');
     sheet.setFrozenRows(1);
   }
 
@@ -141,8 +264,13 @@ function handleEmailResponse(ss, data) {
   const datetime = data.datetime || new Date().toISOString();
   const userEmail = data.user_email || '';
   const answer = data.answer || '';
-  const userAgent = data.user_agent || 'unknown';
-  const scannerSuspected = detectScanner(userAgent);
+  const requestData = {
+    user_agent: data.user_agent || 'unknown',
+    accept_language: data.accept_language || 'unknown',
+    referer: data.referer || 'unknown',
+    accept: data.accept || 'unknown',
+    connection: data.connection || 'unknown'
+  };
 
   Logger.log('Checking for duplicates: ' + userEmail + ' - ' + answer);
 
@@ -195,14 +323,35 @@ function handleEmailResponse(ss, data) {
   }
 
   Logger.log('No duplicate found - Logging email response: ' + userEmail + ' - ' + answer);
-  Logger.log('Scanner suspected: ' + scannerSuspected);
 
+  // Run multi-signal detection
+  const detection = detectScanner(requestData);
+
+  // Check for rapid multi-click pattern
+  const hasRapidMultiClick = detectRapidMultiClick(sheet, userEmail, answer);
+  if (hasRapidMultiClick) {
+    detection.score += 3;
+    detection.signals += (detection.signals ? ',rapid_multi_click' : 'rapid_multi_click');
+    detection.suspected = detection.score >= 5;
+    Logger.log('>>> RAPID MULTI-CLICK DETECTED <<<');
+  }
+
+  Logger.log('Scanner detection score: ' + detection.score);
+  Logger.log('Scanner signals: ' + detection.signals);
+  Logger.log('Scanner suspected: ' + detection.suspected);
+
+  // Append with all 10 columns
   sheet.appendRow([
     datetime,
     userEmail,
     answer,
-    userAgent,
-    scannerSuspected
+    requestData.user_agent,
+    requestData.accept_language,
+    requestData.referer,
+    data.ip_address || 'unknown',
+    detection.score,
+    detection.signals,
+    detection.suspected
   ]);
 
   Logger.log('Email response logged successfully');

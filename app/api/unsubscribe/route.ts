@@ -9,12 +9,23 @@ export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const email = searchParams.get('email') || 'unknown';
 
-  // Extract User-Agent for scanner detection
+  // Extract all detection signals for multi-signal scanner detection
   const userAgent = request.headers.get('user-agent') || 'unknown';
+  const acceptLanguage = request.headers.get('accept-language') || 'unknown';
+  const referer = request.headers.get('referer') || 'unknown';
+  const accept = request.headers.get('accept') || 'unknown';
+  const connection = request.headers.get('connection') || 'unknown';
+
+  // Get IP address (Vercel provides x-forwarded-for)
+  const ip = request.headers.get('x-forwarded-for')?.split(',')[0] ||
+             request.headers.get('x-real-ip') ||
+             'unknown';
 
   console.log('=== UNSUBSCRIBE REQUEST ===');
   console.log('Email:', email);
   console.log('User-Agent:', userAgent);
+  console.log('Accept-Language:', acceptLanguage);
+  console.log('IP:', ip);
 
   try {
     // Prepare data for Google Sheets "Unsubscribe" tab
@@ -23,6 +34,11 @@ export async function GET(request: NextRequest) {
       email: email,
       datetime: new Date().toISOString(),
       user_agent: userAgent,
+      accept_language: acceptLanguage,
+      referer: referer,
+      accept: accept,
+      connection: connection,
+      ip_address: ip,
     };
 
     console.log('Unsubscribe data:', unsubscribeData);
