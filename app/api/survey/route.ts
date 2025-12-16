@@ -8,13 +8,24 @@ export async function GET(request: NextRequest) {
   const user = searchParams.get('user') || 'unknown';
   const answer = searchParams.get('answer') || 'unknown';
 
-  // Extract User-Agent for scanner detection
+  // Extract all detection signals for multi-signal scanner detection
   const userAgent = request.headers.get('user-agent') || 'unknown';
+  const acceptLanguage = request.headers.get('accept-language') || 'unknown';
+  const referer = request.headers.get('referer') || 'unknown';
+  const accept = request.headers.get('accept') || 'unknown';
+  const connection = request.headers.get('connection') || 'unknown';
+
+  // Get IP address (Vercel provides x-forwarded-for)
+  const ip = request.headers.get('x-forwarded-for')?.split(',')[0] ||
+             request.headers.get('x-real-ip') ||
+             'unknown';
 
   console.log('=== EMAIL RESPONSE CLICKED ===');
   console.log('User:', user);
   console.log('Answer:', answer);
   console.log('User-Agent:', userAgent);
+  console.log('Accept-Language:', acceptLanguage);
+  console.log('IP:', ip);
 
   try {
     // Immediately log the email response to "EmailResponse" sheet
@@ -24,6 +35,11 @@ export async function GET(request: NextRequest) {
       user_email: user,
       answer: answer,
       user_agent: userAgent,
+      accept_language: acceptLanguage,
+      referer: referer,
+      accept: accept,
+      connection: connection,
+      ip_address: ip,
     };
 
     console.log('Logging email response:', emailResponseData);
