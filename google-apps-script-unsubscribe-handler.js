@@ -358,6 +358,39 @@ function handleEmailResponse(ss, data) {
   Logger.log('Scanner signals: ' + detection.signals);
   Logger.log('Scanner suspected: ' + detection.suspected);
 
+  // Additional check: If this is a high-score scanner, check for duplicates over longer window
+  if (detection.score >= 5) {
+    Logger.log('High scanner score detected - checking for duplicates over 5-minute window');
+    const fiveMinutesAgo = new Date(now.getTime() - 300000); // 5 minutes
+
+    for (let i = recentEntries.length - 1; i >= 0; i--) {
+      const entryDateRaw = recentEntries[i][0];
+      const entryEmail = String(recentEntries[i][1]).trim();
+      const entryAnswer = String(recentEntries[i][2]).trim();
+
+      let entryDate = entryDateRaw instanceof Date
+        ? entryDateRaw
+        : new Date(entryDateRaw);
+
+      // Same email + same answer within 5 minutes for high-scoring scanners
+      if (entryEmail === userEmail &&
+          entryAnswer === answer &&
+          entryDate >= fiveMinutesAgo) {
+        Logger.log('>>> SCANNER DUPLICATE DETECTED - Same scanner email/answer within 5 minutes');
+        Logger.log('Previous entry: ' + entryAnswer + ' at ' + entryDate.toISOString());
+        Logger.log('Current request - SKIPPING as likely scanner retry');
+        return ContentService
+          .createTextOutput(JSON.stringify({
+            success: true,
+            message: 'Scanner duplicate skipped (5-minute window)',
+            duplicate: true,
+            scanner_pattern: true
+          }))
+          .setMimeType(ContentService.MimeType.JSON);
+      }
+    }
+  }
+
   // Append with all 10 columns
   sheet.appendRow([
     datetime,
