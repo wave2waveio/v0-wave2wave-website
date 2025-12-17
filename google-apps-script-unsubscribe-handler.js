@@ -278,17 +278,19 @@ function handleEmailResponse(ss, data) {
   // This prevents multiple clicks/browser prefetch from creating duplicates
   const lastRow = sheet.getLastRow();
   if (lastRow > 1) {
-    // Get the last 20 rows (or fewer if sheet has less)
-    const numRowsToCheck = Math.min(20, lastRow - 1);
+    // Get the last 50 rows (increased from 20 to catch more scanner patterns)
+    const numRowsToCheck = Math.min(50, lastRow - 1);
     const startRow = lastRow - numRowsToCheck + 1;
     const recentEntries = sheet.getRange(startRow, 1, numRowsToCheck, 3).getValues();
 
     const now = new Date();
     const thirtySecondsAgo = new Date(now.getTime() - 30000); // 30 seconds ago
+    const tenSecondsAgo = new Date(now.getTime() - 10000); // 10 seconds for ANY answer check
 
     Logger.log('Checking last ' + numRowsToCheck + ' entries for duplicates');
     Logger.log('Current time: ' + now.toISOString());
-    Logger.log('Cutoff time: ' + thirtySecondsAgo.toISOString());
+    Logger.log('Cutoff time (same answer): ' + thirtySecondsAgo.toISOString());
+    Logger.log('Cutoff time (any answer): ' + tenSecondsAgo.toISOString());
 
     for (let i = recentEntries.length - 1; i >= 0; i--) {
       const entryDateRaw = recentEntries[i][0];
@@ -305,17 +307,33 @@ function handleEmailResponse(ss, data) {
 
       Logger.log('Row ' + (startRow + i) + ': ' + entryEmail + ' / ' + entryAnswer + ' / ' + entryDate.toISOString());
 
-      // If we find a matching entry within the last 30 seconds, skip logging
+      // Check 1: Exact duplicate (same email + same answer within 30 seconds)
       if (entryEmail === userEmail &&
           entryAnswer === answer &&
           entryDate >= thirtySecondsAgo) {
-        Logger.log('>>> DUPLICATE DETECTED - Skipping (entry from ' + entryDate.toISOString() + ')');
+        Logger.log('>>> EXACT DUPLICATE DETECTED - Skipping (entry from ' + entryDate.toISOString() + ')');
         Logger.log('Match: ' + entryEmail + ' === ' + userEmail + ' && ' + entryAnswer + ' === ' + answer);
         return ContentService
           .createTextOutput(JSON.stringify({
             success: true,
             message: 'Duplicate skipped',
             duplicate: true
+          }))
+          .setMimeType(ContentService.MimeType.JSON);
+      }
+
+      // Check 2: Scanner pattern (same email with ANY answer within 10 seconds = scanner clicking all links)
+      if (entryEmail === userEmail &&
+          entryDate >= tenSecondsAgo) {
+        Logger.log('>>> SCANNER DUPLICATE DETECTED - Same email with different answer within 10 seconds');
+        Logger.log('Previous answer: ' + entryAnswer + ' at ' + entryDate.toISOString());
+        Logger.log('Current answer: ' + answer + ' - SKIPPING as likely scanner');
+        return ContentService
+          .createTextOutput(JSON.stringify({
+            success: true,
+            message: 'Scanner duplicate skipped',
+            duplicate: true,
+            scanner_pattern: true
           }))
           .setMimeType(ContentService.MimeType.JSON);
       }
